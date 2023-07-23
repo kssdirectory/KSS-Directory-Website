@@ -308,10 +308,9 @@ a:active {
   padding: 0px;
   margin: 0px;
   margin-left: 12rem;
-  font-size: 75%;
   font-variation-settings:
   'FILL' 0,
   'wght' 800,
   'GRAD' 0,
-  'opsz' 32
+  'opsz' 16;
 }
