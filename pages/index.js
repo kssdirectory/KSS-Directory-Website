@@ -119,13 +119,20 @@ export default function Home() {
               specificAnceBrief.push(<div class = "anceTag">{indivAnceSort[i][k][1]}</div>)
               
               // announcement brief description
-              specificAnceBrief.push(<div class = "anceBrief">{indivAnceSort[i][k][2]}</div>)
+              if (indivAnceSort[i][k][2].length > 80) {
+                specificAnceBrief.push(<div class = "anceBrief">{indivAnceSort[i][k][2].slice(0,80) + "..."}</div>)
+              } else {
+                specificAnceBrief.push(<div class = "anceBrief">{indivAnceSort[i][k][2]}</div>)
+              }
 
               specificAnce.push(<div class = "container">{specificAnceBrief}</div>)
-    
-              // announcement detailed description
-              specificAnce.push(<div class = "anceDtls">{indivAnceSort[i][k][3]}</div>)
               
+              if (indivAnceSort[i][k][3].length > 86) {
+              // announcement detailed description
+                specificAnce.push(<div class = "anceDtls">{indivAnceSort[i][k][3].slice(0,86) + "..."}</div>)
+              } else{
+                specificAnce.push(<div class = "anceDtls">{indivAnceSort[i][k][3]}</div>)
+              }
               specificAnceSect.push(<div class = "anceSection">{specificAnce}</div>)
               console.log("specificAnceSect")
               console.log(indivAnceSort[i])
