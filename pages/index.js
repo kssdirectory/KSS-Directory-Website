@@ -242,10 +242,10 @@ export default function Home() {
 
           {/* This header is for all of the elements that actually go inside of the header, i.e., links */}
           <div id = "inside-header">
-            <a href = "https://kss.limestone.on.ca/">KSS Website</a>
-            <a href = "https://ldsb.elearningontario.ca/d2l/home/13979494">D2L</a>
-            <a href = "https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst">Aspen</a>
-            <a href = "https://discord.gg/smmE34cHZh">Join our Discord!</a>
+            <a href = "https://kss.limestone.on.ca/" target="_blank">KSS Website</a>
+            <a href = "https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank">D2L</a>
+            <a href = "https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank">Aspen</a>
+            <a href = "https://discord.gg/smmE34cHZh" target="_blank">Join our Discord!</a>
           </div>
         </div>
       </header>
