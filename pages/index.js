@@ -40,10 +40,11 @@ export default function Home() {
         // I need to do this because the webpage runs the code several times
         // and so the useEffect() function is not synced with the rest of the program.
         if (anceList) {
-          const tempList = anceList
+          const tempList = {...anceList};
           for (const [key, value] of Object.entries(response)) {
             tempList[key] = value
           }
+          setAnceList(tempList);
         } else {
 
           // if anceList has not been defined yet, define it as the response Object.
