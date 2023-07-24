@@ -22,7 +22,7 @@ export default function Home() {
     
     // Sending an HTTP request to the web server
     // Change this to the correct URL
-    const myRequest = new Request("http://35.227.86.218/ance/batch/" + numAnceTotal + "/" + index);
+    const myRequest = new Request("https://3b13-35-227-86-218.ngrok-free.app/ance/batch/" + numAnceTotal + "/" + index);
     fetch(myRequest, {method:"GET", headers:{Accept:"application/json"}})
 
       .then((response) => {
