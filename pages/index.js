@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
+import Link from "next/link";
 
 headers: new Headers({
   "ngrok-skip-browser-warning": "true",
@@ -164,16 +165,7 @@ export default function Home() {
                     specificAnceBrief.push(<div class="anceTag" key = {k + "anceSorted" + key2}>{indivAnceSort[i][k][1]}</div>)
 
                     // announcement brief description
-                    if (indivAnceSort[i][k][2].length > 80) {
-                      // this checks if the announcement brief description is too long, and then only pushes the first 80 characters
-                      // necessary to ensure that it doesn't flow over the announcement cards
-                      // contrary to popular belief, the condensed KSS Directory announcements are for some reason often not that condensed...
-                      // not my problem, I'm just the guy that's coding the website I guess.
-                      // I don't actually write the condensed announcements lol
-                      specificAnceBrief.push(<div class="anceBrief" key = {k + " " + i + "anceBrief" + key2}>{indivAnceSort[i][k][2].slice(0, 80) + "..."}</div>)
-                    } else {
-                      specificAnceBrief.push(<div class="anceBrief" key = {k + " " + i + "anceBrief" + key2}>{indivAnceSort[i][k][2]}</div>)
-                    }
+                    specificAnceBrief.push(<div class="anceBrief" key = {k + " " + i + "anceBrief" + key2}>{indivAnceSort[i][k][2]}</div>)
 
                     // container css class used here to allow for the announcement tag and brief description to be in the same line.
                     specificAnce.push(<div class="container" key = {k + " " + i +"specificAnce" + key2}>{specificAnceBrief}</div>)
@@ -229,37 +221,182 @@ export default function Home() {
         {/* Setting the favicon of the site to the KSS Directory logo */}
         <link rel="icon" sizes="76x76" href="static/compassLogo.ico" />
 
-        {/* Importing the search icon */}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       </Head>
 
-      <header>
-        <div class="container">
-          {/* div with container class used so that all divs immediately inside of it can be overlapping */}
+      <main class="body">
 
-          {/* this div is for the background blur thing, scroll downwards on the site to see it in action */}
-          <div id="inside-header-bg">
-          </div>
+        <div class = "wrapper">
+            <div class = "button0">
+                <div class = "overlapContainer">
 
-          {/* This header is for all of the elements that actually go inside of the header, i.e., links */}
-          <div id="inside-header">
-            <a href="https://kss.limestone.on.ca/" target="_blank">KSS Website</a>
-            <a href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank">D2L</a>
-            <a href="https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank">Aspen</a>
-            <a href="https://discord.gg/smmE34cHZh" target="_blank">Join our Discord!</a>
-          </div>
+                    <div class = "background">
+                        <div style = {{ "position": "absolute", "overflow": "hidden", "width": "100%", "height": "100%" }}>
+                            <div id = "heroButtonText1">KSS
+                                <span class = "heroButtonTextOutline"> DIRECTORY</span>
+                            </div>
+                            <div id = "heroButtonText2">
+                                <span class = "heroButtonTextOutline">KSS </span>
+                                DIRECT
+                                <span class = "heroButtonTextOutline">ORY</span>
+                            </div>
+                            <div id = "heroButtonText3">
+                                <span class = "heroButtonTextOutline">KSS DIRECT</span>
+                                ORY
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "foreground">
+                        <div class = "overlapContainer">
+                            <div class = "background">
+                                <div class = "overlapContainer">
+                                    <div class = "background" id = "b0GradientOpaque"></div>
+                                    <div class = "foreground" id = "b0Gradient"></div>
+                                </div>
+                            </div>
+                            <div class = "foreground">
+                                <h5>Learn more!</h5>
+                                <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
+                                <img src = "svg_assets/compass_logo_vector.svg" id = "b0CompassLogo"/>
+                                <h4 style = {{ "color": "white" }}>KSS Directory is a student-run resource repository for Kingston Secondary School! Scroll down to see a full announcement archive, or click on one of the buttons on the right to access the plethora of other KSS resources.</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "verticalButtonWrapper1">
+                <Link href = "#mainAnnouncementsSection" class = "button1">
+                    
+                    <div class = "overlapContainer">
+                        
+                        <div class = "background">
+                            <div id = "b1Ance1">
+                                <div class = "b1AnceTag"></div>
+                                <div id = "b1AnceBrief1"></div>
+                                <div id = "b1AnceDetails1"></div>
+                            </div>
+                            <div id = "b1Ance2">
+                                <div class = "b1AnceTag"></div>
+                                <div id = "b1AnceBrief2"></div>
+                                <div id = "b1AnceDetails2"></div>
+                            </div>
+                            <div id = "b1Ance3">
+                                <div class = "b1AnceTag"></div>
+                                <div id = "b1AnceBrief3"></div>
+                                <div id = "b1AnceDetails3"></div>
+                            </div>
+                        </div>
+
+                        <div class = "foreground">
+                            <div class = "overlapContainer">
+                                <div class = "background">
+                                    <div class = "overlapContainer">
+                                        <div class = "background" id = "b1GradientOpaque"></div>
+                                        <div class = "foreground" id = "b1Gradient"></div>
+                                    </div>
+                                </div>
+                                <div class = "foreground">
+                                    <h3>ANNOUNCEMENTS</h3>
+                                    <h4>Scroll to see a complete archive of KSS announcements!</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Link>
+                <div class = "button2">
+                    <div class = "overlapContainer">
+
+                        <div class = "background">
+                            <div style = {{ "position": "absolute", "width": "100%", "height": "100%", "overflow": "hidden", "border-radius": "25px" }}>
+                                <img src = "svg_assets/b2Map.svg" id = "b2Map"/>
+                            </div>
+                        </div>
+                        <div class = "foreground">
+                            <div class = "overlapContainer">
+                                <div class = "background">
+                                    <div class = "overlapContainer">
+                                        <div class = "background" id = "b2GradientOpaque"></div>
+                                        <div class = "foreground" id = "b2Gradient"></div>
+                                    </div>
+                                </div>
+                                <div class = "foreground">
+                                    <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
+                                    <h3>INTERACTIVE MAP</h3>
+                                    <h4>Click to view an interactive map of KSS and its surrounding areas!</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "verticalButtonWrapper2">
+                <div class = "button3">
+
+                    <div class = "overlapContainer">
+
+                        <div class = "background">
+                            <img src = "svg_assets/kssLogo.svg" id = "kssLogo"/>
+                        </div>
+
+                        <div class = "foreground">
+                            <div class = "overlapContainer">
+                                <div class = "background">
+                                    <div class = "overlapContainer">
+                                        <div class = "background" id = "b3GradientOpaque"></div>
+                                        <div class = "foreground" id = "b3Gradient"></div>
+                                    </div>
+                                </div>
+                                <div class = "foreground">
+                                    <div style = {{ "display": "flex", "flex-flow": "column wrap", "width": "100%", "height": "80%", "justify-content": "center", "padding-top": "3%" }}>
+                                        <div class = "b3Links"><a href="" target="_blank"><h4>23/24 Semester 1 Timetables</h4></a></div>
+                                        <div class = "b3Links"><a href="" target="_blank"><h4>School Year Calendar</h4></a></div>
+                                        <div class = "b3Links"><a href="" target="_blank"><h4>Official KSS Floor Plans</h4></a></div>
+                                        <div class = "b3Links"><a href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank"><h4>D2L Minds Online</h4></a></div>
+                                        <div class = "b3Links"><a href="https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank"><h4>Aspen (Course Schedules)</h4></a></div>
+
+                                    </div>
+                                    <h3>OFFICIAL KSS RESOURCES</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class = "button4">
+                    <div class = "overlapContainer">
+
+                        <div class = "background">
+                            <div class = "overlapContainer">
+                                <div class = "background">
+                                    <img src = "svg_assets/b4Folder.svg" id = "b4Folder"/>
+                                </div>
+                                <div class = "foreground">
+                                    <img src = "svg_assets/b4Arrow.svg" id = "b4Arrow" />
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class = "foreground">
+                            <div class = "overlapContainer">
+                                <div class = "background">
+                                    <div class = "overlapContainer">
+                                        <div class = "background" id = "b4GradientOpaque"></div>
+                                        <div class = "foreground" id = "b4Gradient"></div>
+                                    </div>
+                                </div>
+                                <div class = "foreground">
+                                    <h3>SCHOOLWORK DATABASES</h3>
+                                    <h4>A database of resources to help with your schoolwork!</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </header>
 
-      <main class="body" style={{ "padding-top": "200px" }}>
-
-        {/* Main title */}
-        <h1 style={{ "text-align": "center" }}>Welcome to <b class="h1-highlight">KSS Directory!</b></h1>
-
-        {/* description of the site */}
-        <p style={{ "width": "40%", "text-align": "center", "margin-left": "auto", "margin-right": "auto", "margin-bottom": "2rem" }}><b>KSS Directory is Kingston Secondary School’s #1 student-run resource repository!</b> <br></br>Easily access a complete announcement archive, alongside the plethora of other student resources, by scrolling or clicking one of the following buttons.</p>
-
-        <div class="container">
+        <div class="container" style = {{"padding-top": "50px"}} id = "mainAnnouncementsSection">
           {/* Container used to centre the buttons */}
           <div class="buttonCentre">
             <div style={{ "width": "34rem", "margin-top": '1.5rem', "margin-bottom": '3rem' }} class="buttonCentre">
@@ -271,9 +408,7 @@ export default function Home() {
               <button class="regularButton">
                 <div class="container">
                   Search
-                  <span class="material-symbols-outlined">
-                    search
-                  </span>
+                  <img src = "svg_assets/searchIcon.svg" class = "searchIcon" />
                 </div>
               </button>
 

@@ -1,6 +1,6 @@
 .body {
   /* just adding padding to the whole body */
-  padding: 100px;
+  padding: 10px;
 }
 
 /* font family stuff */
@@ -118,14 +118,12 @@
   .anceCards {
     /* The class for each full announcement card */
     background-color: 0C151D;
-    border-radius: 30px;
+    border-radius: 24px;
     border: 1px solid #626262;
     flex-shrink: 0;
-    padding: 4rem;
-    margin: 4rem;
-    width: 720px;
-    margin-left: auto;
-    margin-right: auto;
+    padding:40px;
+    margin-bottom: 64px;
+    margin-top: 64px;
   }
 
   .container {
@@ -147,31 +145,29 @@
 
   .anceTag {
     /* The class for each announcement ping/role (e.g. Graphic Design Club) */
-    flex-shrink:0;
+    float: left;
     border: 1px solid #A9A9A9;
     background-color: #626262;
     color: white;
     border-radius: 3rem;
-    flex-shrink: 0;
-    display: inline-block;
     font-size: 75%;
     padding-left: 0.4rem;
     padding-right: 0.4rem;
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     margin-right: 0.5rem;
-
+    margin-bottom:-0.4rem;
     font-family: Outfit;
     font-weight: 100;
   }
 
   .anceBrief {
     /* The class for each announcement brief description */
-    color:brown;
-    display: inline-block;
     color: #626262;
     font-family: Outfit;
     font-weight: bold;
+    white-space: normal;
+    margin-bottom: 0.3rem;
   }
 
   .anceDtls {
@@ -319,7 +315,11 @@
       cursor: not-allowed;
     }
 
-
+  /* Search icon stuff (for the search bar */
+    .searchIcon {
+      height: 16px;
+      margin-left: 200px;
+    }
 
 
 
@@ -330,3 +330,634 @@
   margin-left: 12rem;
   font-size: 90% !important;
 }
+
+
+
+
+
+@media screen and (min-width: 1080px) {
+  .anceCards {
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding:64px;
+    border-radius: 30px;
+  }
+  .body {
+    padding: 25px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Stuff for the hero section */
+
+.wrapper {
+  display: flex;  
+  flex-flow: row wrap;
+  font-weight: bold;
+  height: 720px;
+  gap: 5px;
+  margin: auto;
+}
+
+.verticalButtonWrapper1 {
+  display: flex;
+  flex-flow: column wrap;
+  order:2;
+  flex: 1;
+  gap: 5px;
+}
+
+.verticalButtonWrapper2 {
+  display: flex;
+  flex-flow: column wrap;
+  order:3;
+  flex: 1;
+  gap: 5px;
+}
+
+h3 {
+  font-family: Outfit;
+  font-weight: bold;
+  color: white;
+  font-size:22px;
+  padding-left:36px;
+  padding-right: 36px;
+  position: absolute;
+  bottom: 12px;
+}
+
+h4, h5 {
+  font-family: Outfit;
+  font-weight: 100;
+  font-size: 18px;
+  color: #A1A1A1;
+}
+
+.arrowIcon {
+  width: 32px;
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  opacity: 0%;
+}
+
+.overlapContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.background {
+  /* Background layer */
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.foreground {
+  /* Foreground layer */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+/* Button 0 stuff */
+
+.button0 {
+  background-color: #072136;
+  flex: 2.1 0px;
+  order: 1;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#b0CompassLogo, .button0 h4, .button0 h5, .button0 .arrowIcon {
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+#b0CompassLogo {
+  width: 100px;
+  position: absolute;
+  bottom: 72px;
+  left: 72px;
+}
+
+.button0 h4 {
+  position: absolute;
+  bottom: -24px;
+  left: 72px;
+  right:72px;
+  opacity: 0%;
+}
+
+.button0 h5 {
+  position: absolute;
+  top: 24px;
+  right: 128px;
+  opacity: 0%;
+}
+
+.heroButtonTextOutline {
+  color:#072136;
+  text-shadow: -2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff;
+}
+
+#heroButtonText1, #heroButtonText2, #heroButtonText3 {
+  position: absolute;
+  font-family: Outfit;
+  font-weight: bold;
+  font-size: 200px;
+  color: white;
+  white-space: nowrap;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+#heroButtonText1 {
+  left: 56px;
+  top: 0px;
+}
+
+#heroButtonText2 {
+  top: 50%;
+  left: 55%;
+  transform: translate(-50.75%, -50%);
+}
+
+#heroButtonText3 {
+  right: 56px;
+  bottom: 0px;
+}
+
+.button0 .arrowIcon {
+  top: 48px;
+  right:64px;
+}
+
+#b0Gradient, #b0GradientOpaque, #b1Gradient, #b1GradientOpaque, #b2Gradient, #b2GradientOpaque, #b3Gradient, #b3GradientOpaque, #b4Gradient, #b4GradientOpaque {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+#b0Gradient {
+  background:radial-gradient(70.61% 100% at 50% 10%, rgba(7, 33, 54, 0.00) 0%, #072136 100.00%);
+}
+
+#b0GradientOpaque {
+  background: #072136;
+  opacity: 0%;
+}
+
+.button0:hover #b0GradientOpaque {
+  opacity: 89%;
+}
+
+.button0:hover .arrowIcon, .button0:hover h5, .button0:hover h4 {
+  opacity: 100%
+}
+
+.button0:hover h4 {
+  bottom: 48px;
+}
+
+.button0:hover .arrowIcon {
+  right: 48px;
+}
+
+.button0:hover h5 {
+  right: 90px;
+}
+
+.button0:hover #b0CompassLogo {
+  bottom: 168px;
+}
+
+.button0:hover #heroButtonText1 {
+  top: 8px;
+  left: 60px;
+}
+
+.button0:hover #heroButtonText3 {
+  bottom: 8px;
+  right: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Button 1 stuff */
+
+.button1 {
+  position: relative;
+  background-color: #113451;
+  order: 1;
+  flex: 1;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.button1 h4 {
+  position: absolute;
+  padding-left: 36px;
+  padding-right: 36px;
+  bottom:-40px;
+  opacity: 0%
+}
+
+.button1 h4, h3, #b1Ance1 {
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+.button1:hover h4 {
+  bottom: 12px;
+  opacity: 100%
+}
+
+.button1:hover h3 {
+  bottom: 64px;
+}
+
+#b1Gradient {
+  background: radial-gradient(119.61% 49.96% at 50.83% 44.89%, rgba(17, 52, 81, 0.00) 0%, #113451 100.00%);
+}
+
+#b1GradientOpaque {
+  background: #113451;
+  opacity: 0%;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+.button1:hover #b1GradientOpaque {
+  opacity: 65%
+}
+
+.b1AnceTag, #b1AnceBrief1, #b1AnceBrief2, #b1AnceBrief3, #b1AnceDetails1, #b1AnceDetails2, #b1AnceDetails3 {
+  height: 20px;
+  background-color:#A1A1A1;
+  border-radius: 50px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+.b1AnceTag {
+  width: 70px; 
+  display: inline-block;
+}
+
+#b1AnceBrief1, #b1AnceBrief2, #b1AnceBrief3 {
+  opacity: 75%;
+  display: inline-block;
+  border-radius: 25px 0px 0px 25px
+}
+
+#b1AnceBrief1 {
+  width: 205px;
+}
+
+#b1AnceBrief2 {
+  width: 135px;
+}
+
+#b1AnceBrief3 {
+  width: 65px;
+}
+
+
+
+#b1AnceDetails1, #b1AnceDetails2, #b1AnceDetails3 {
+  opacity: 50%;
+  border-radius: 25px 0px 0px 25px;
+}
+
+#b1AnceDetails1 {
+  width: 280px;
+}
+
+#b1AnceDetails2 {
+  width: 210px;
+}
+
+#b1AnceDetails3 {
+  width: 140px;
+}
+
+#b1Ance1, #b1Ance2, #b1Ance3 {
+  position: absolute;
+}
+
+#b1Ance1 {
+  right: 0px;
+  top: 48px;
+}
+
+#b1Ance2 {
+  right: 0px;
+  top: 120px;
+}
+
+#b1Ance3 {
+  right: 0px;
+  top: 192px;
+}
+
+.button1:hover #b1AnceBrief1 {
+  width: 115px;
+}
+.button1:hover #b1AnceDetails1 {
+  width:190px;
+}
+
+.button1:hover #b1AnceBrief2 {
+  width: 75px;
+}
+.button1:hover #b1AnceDetails2 {
+  width: 150px;
+}
+
+.button1:hover #b1AnceBrief3 {
+  width: 35px;
+}
+.button1:hover #b1AnceDetails3 {
+  width: 110px;
+}
+
+
+
+
+
+/* Button 2 stuff */
+
+.button2 {
+  background-color: #134287;
+  order: 2;
+  flex: 1;
+  border-radius: 25px;
+  cursor:pointer;
+}
+
+.button2 h4 {
+  position: absolute;
+  padding-left: 36px;
+  padding-right: 36px;
+  bottom:-40px;
+  opacity: 0%
+}
+
+.button2 h4, .button2 .arrowIcon, #b2Map {
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+.button2:hover h4 {
+  bottom: 12px;
+  opacity: 100%
+}
+
+.button2:hover h3 {
+  bottom: 64px;
+}
+
+#b2GradientOpaque {
+  background: #134287;
+  opacity: 0%;
+}
+
+#b2Gradient {
+  background: radial-gradient(100% 40.26% at 90.57% 30.07%, rgba(19, 65, 135, 0) 0%, #134187d7 100.00%);
+}
+
+#b2Map {
+  position: absolute;
+  height: 100%;
+  bottom: 20px;
+}
+
+.button2 .arrowIcon {
+  transform: translateX(-5px);
+}
+
+.button2:hover .arrowIcon {
+  opacity: 100%;
+  transform: translateX(5px);
+}
+
+.button2:hover #b2Map {
+  height: 103%;
+  transform: translateX(-5px)
+}
+
+.button2:hover #b2GradientOpaque {
+  opacity:56%;
+}
+
+
+
+
+
+/* Button 3 stuff */
+
+.button3 {
+  background-color: #4341B5;
+  order: 1;
+  flex: 1.8;
+  border-radius: 25px
+}
+
+.button3 h4, .b3Links {
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+#kssLogo {
+  position: absolute;
+  height:33%;
+  top: 36px;
+  right: 36px;
+}
+
+#b3GradientOpaque {
+  background: #4341B5;
+  opacity: 0%;
+}
+
+#b3Gradient {
+  background: radial-gradient(55% 30% at 100% 15%, rgba(67, 65, 181, 0.00) 0%, #4341B5 100.00%);
+}
+
+.button3:hover #b3GradientOpaque {
+  opacity: 85%;
+}
+
+.b3Links {
+  width: 100%;
+  height: 14%;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  justify-content: center;
+  opacity: 0%;
+  transform: translateY(25%);
+  cursor: pointer;
+}
+
+.b3Links:hover h4 {
+  color: white;
+  text-decoration-line: underline;
+}
+
+.button3:hover .b3Links {
+  opacity: 100%;
+  transform: translateY(-10%);
+  height: 15%
+}
+
+
+
+
+
+/* Button 4 stuff */
+
+.button4 {
+  background-color: #5E4CCD;
+  order: 2;
+  flex: 1;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#b4Folder, #b4Arrow, .button4 h4, .button4 h3, #b4GradientOpaque {
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+#b4Folder, #b4Arrow {
+  height: 30%;
+  position: absolute;
+  top: 28px;
+  right: 42px;
+}
+
+.button4:hover #b4Folder {
+  right: 36px;
+}
+
+.button4:hover #b4Arrow {
+  right: 30px;
+}
+
+#b4Gradient {
+  background: radial-gradient(90.10% 34.54% at 90.51% 19.46%, rgba(94, 76, 205, 0.00) 0%, #5E4CCD 100.00%);
+}
+
+#b4GradientOpaque {
+  background: #5E4CCD;
+  opacity: 0%;
+}
+
+.button4:hover #b4GradientOpaque {
+  opacity: 50%;
+}
+
+.button4 h4 {
+  position: absolute;
+  padding-left: 36px;
+  padding-right: 36px;
+  bottom:-40px;
+  opacity: 0%
+}
+
+.button4:hover h4 {
+  bottom: 12px;
+  opacity: 100%
+}
+
+.button4:hover h3 {
+  bottom: 64px;
+}
+
+
+
+
+
+@media all and (min-width: 2100px) {
+  /* When the user has an uber wide screen */
+  .wrapper {
+    width: 2100px;
+  }
+}
+
+@media all and (max-height: 800px) {
+  .wrapper {
+    height: 550px;
+  }
+  #heroButtonText1, #heroButtonText2, #heroButtonText3 {
+    font-size: 160px;
+  }
+}
+
+@media all and (max-width: 1600px) {
+  /* When the user has a screen that's 1600px wide or less */
+  h3 {
+    font-size: 18px;
+  }
+
+  .wrapper {
+    height:550px;
+  }
+
+  h4, h5 {
+    font-size: 14px;
+  }
+
+  .button0 h5 {
+    top: 32px;
+  }
+
+  #heroButtonText1, #heroButtonText2, #heroButtonText3 {
+    font-size: 160px;
+  }
+
+  #heroButtonText1 {
+    left: 32px;
+  }
+
+  #heroButtonText3 {
+    right: 32px;
+  }
+}
+
