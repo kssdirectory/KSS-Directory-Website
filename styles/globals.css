@@ -23,6 +23,54 @@
     font-weight: 200;
   }
 
+/* Page load animations */
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-20%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInTop {
+  0% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInBottom {
+  0% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight1 {
+  0% {
+    transform: translateX(20%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight2 {
+  0% {
+    transform: translateX(10%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
 /* header IDs and tags */
 
   header {
@@ -449,6 +497,7 @@ h4, h5 {
   order: 1;
   border-radius: 25px;
   cursor: pointer;
+  animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft;
 }
 
 #b0CompassLogo, .button0 h4, .button0 h5, .button0 .arrowIcon {
@@ -578,6 +627,7 @@ h4, h5 {
 /* Button 1 stuff */
 
 .button1 {
+  animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInTop;
   position: relative;
   background-color: #113451;
   order: 1;
@@ -682,17 +732,17 @@ h4, h5 {
 
 #b1Ance1 {
   right: 0px;
-  top: 48px;
+  top: 16%;
 }
 
 #b1Ance2 {
   right: 0px;
-  top: 120px;
+  top: 36%;
 }
 
 #b1Ance3 {
   right: 0px;
-  top: 192px;
+  top: 56%;
 }
 
 .button1:hover #b1AnceBrief1 {
@@ -720,9 +770,14 @@ h4, h5 {
 
 
 
+
+
+
+
 /* Button 2 stuff */
 
 .button2 {
+  animation: 0.7s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInBottom;
   background-color: #134287;
   order: 2;
   flex: 1;
@@ -792,6 +847,7 @@ h4, h5 {
 /* Button 3 stuff */
 
 .button3 {
+  animation: 0.35s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight1;
   background-color: #4341B5;
   order: 1;
   flex: 1.8;
@@ -853,6 +909,7 @@ h4, h5 {
 /* Button 4 stuff */
 
 .button4 {
+  animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight2;
   background-color: #5E4CCD;
   order: 2;
   flex: 1;
@@ -937,7 +994,11 @@ h4, h5 {
   }
 
   .wrapper {
-    height:550px;
+    height:500px;
+  }
+
+  .verticalButtonWrapper1, .verticalButtonWrapper2, .wrapper {
+    gap: 2px;
   }
 
   h4, h5 {
@@ -959,5 +1020,53 @@ h4, h5 {
   #heroButtonText3 {
     right: 32px;
   }
+
+  .b1AnceTag, #b1AnceBrief1, #b1AnceBrief2, #b1AnceBrief3, #b1AnceDetails1, #b1AnceDetails2, #b1AnceDetails3 {
+    height: 15px;
+  }
+
+  .b1AnceTag {
+    height: 15px;
+    width: 40px;
+  }
+  
+  #b1AnceBrief1 {
+    width: 130px;
+  }
+  #b1AnceDetails1 {
+    width: 175px;
+  }
+  #b1AnceBrief2 {
+    width: 85px
+  }
+  #b1AnceDetails2 {
+    width: 130px;
+  }
+  #b1AnceBrief3 {
+    width: 40px;
+  }
+  #b1AnceDetails3 {
+    width: 85px;
+  }
+
+  .button1:hover #b1AnceBrief1 {
+    width: 70px;
+  }
+  .button1:hover #b1AnceDetails1 {
+    width: 120px
+  }
+  .button1:hover #b1AnceBrief2 {
+    width: 45px;
+  }
+  .button1:hover #b1AnceDetails2 {
+    width: 90px;
+  }
+  .button1:hover #b1AnceBrief3 {
+    width: 20px;
+  }
+  .button1:hover #b1AnceDetails3 {
+    width: 65px;
+  }
+
 }
 
