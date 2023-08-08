@@ -824,10 +824,6 @@ h4, h5 {
   bottom: 20px;
 }
 
-.button2 .arrowIcon {
-  transform: translateX(-5px);
-}
-
 .button2:hover .arrowIcon {
   opacity: 100%;
   transform: translateX(5px);
@@ -1136,6 +1132,12 @@ h4, h5 {
     background: radial-gradient(50% 90% at 50% 80%, rgba(7, 33, 54, 0.00) 0%, #072136dc 100.00%);
     opacity: 100%;
   }
+
+  .button0:hover #b0GradientOpaque {
+    background: radial-gradient(50% 90% at 50% 80%, rgba(7, 33, 54, 0.00) 0%, #072136dc 100.00%);
+    opacity: 100%;
+  }
+
   .button0 h5 {
     opacity: 100%;
     font-size: 12px;
@@ -1159,6 +1161,33 @@ h4, h5 {
     padding-left: 32px;
     padding-bottom: 16px;
   }
+
+  .button0:hover #heroButtonText1 {
+    top: 0px;
+    left: 32px;
+  }
+  
+  .button0:hover #heroButtonText3 {
+    bottom: 0px;
+    right: 32px;
+  }
+
+  .button0:hover h5 {
+    right: 48px;
+  }
+
+  .button0:hover .arrowIcon {
+    right:24px;
+  }
+  
+  .button0:active #b0GradientOpaque {
+    opacity: 100%;
+  }
+
+  .button0:hover #b0Text {
+    bottom: -32px;
+  }
+
 
   .button1 {
     height: 100%;
@@ -1188,6 +1217,14 @@ h4, h5 {
   
   #b1Text, #b2Text, #b4Text {
     bottom:0px;
+  }
+
+  .button1:hover #b1Text, .button2:hover #b2Text, .button4:hover #b4Text {
+    bottom: 0px;
+  }
+
+  .button1:hover #b1GradientOpaque, .button2:hover #b2GradientOpaque, .button3:hover #b3GradientOpaque, .button4:hover #b4GradientOpaque {
+    opacity: 0%;
   }
 
   #b1AnceBrief1 {
@@ -1228,11 +1265,21 @@ h4, h5 {
     width: 46px;
   }
 
+
   .button2 .arrowIcon {
     opacity: 100%;
     width: 16px;
     top: 16px;
     right: 16px;
+  }
+
+  .button2:hover .arrowIcon {
+    transform: translateX(0px);
+  }
+
+  .button2:hover #b2Map {
+    height: auto;
+    transform: translateX(0px)
   }
 
   #b2Map {
@@ -1273,6 +1320,11 @@ h4, h5 {
     height: 30%;
   }
 
+  .button4:hover #b4Folder, .button4:hover #b4Arrow {
+    right: 24px;
+    height: 30%;
+  }
+
 
 
 
@@ -1285,6 +1337,10 @@ h4, h5 {
   }
   .regularButton:hover {
     transform: translateY(0px);
+  }
+
+  .regularButton:active {
+    transform: translateY(5px)
   }
 
   .searchIcon {
