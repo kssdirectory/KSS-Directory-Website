@@ -1391,4 +1391,13 @@ h4, h5 {
   .anceSection:active {
     transform: translateY(8px);
   }
+  
+  .anceBrief, .anceDtls {
+    font-size: 14px;
+  }
+  
+  .anceTag {
+    font-size: 9px;
+    margin-right:3px;
+  }
 }

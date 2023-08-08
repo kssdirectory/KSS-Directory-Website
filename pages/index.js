@@ -183,7 +183,6 @@ export default function Home() {
                     specificAnceSect.push(<div class="anceSection" key = {k + " " + i + "anceSection" + key2} onClick = {() => console.log(valueDict[0])}>{specificAnce}</div>)
                     // put valueDict[0] for the announcement date details
                     // put ances for the specific announcement details
-                    // put 
 
                     // pushing the announcement to the errorCheck list so that it doesn't render multiple times
                     errorCheck.push(indivAnceSort[i][k])
