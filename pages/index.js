@@ -16,7 +16,6 @@ export default function Home() {
   const [index, updateIndex] = useState(0)
   const numAnceTotal = 7
   let loadMore = <button class="loadMore" onClick={() => updateIndex(index + 1)}>Load more...</button>
-
   const errorCheck = []
 
   useEffect(() => {
@@ -181,7 +180,10 @@ export default function Home() {
 
                     // All of the parts of a specific individual announcement are pushed (as React objects) to this list
                     // It is given the CSS class called "anceSection" so that the hover effect can work
-                    specificAnceSect.push(<div class="anceSection" key = {k + " " + i + "anceSection" + key2}>{specificAnce}</div>)
+                    specificAnceSect.push(<div class="anceSection" key = {k + " " + i + "anceSection" + key2} onClick = {() => console.log(valueDict[0])}>{specificAnce}</div>)
+                    // put valueDict[0] for the announcement date details
+                    // put ances for the specific announcement details
+                    // put 
 
                     // pushing the announcement to the errorCheck list so that it doesn't render multiple times
                     errorCheck.push(indivAnceSort[i][k])
@@ -232,15 +234,15 @@ export default function Home() {
                     <div class = "background">
                         <div style = {{ "position": "absolute", "overflow": "hidden", "width": "100%", "height": "100%" }}>
                             <div id = "heroButtonText1">KSS
-                                <span class = "heroButtonTextOutline"> DIRECTORY</span>
+                                <span class = "heroButtonTextOutline"> DIRECTORY KSS DIRECTORY</span>
                             </div>
                             <div id = "heroButtonText2">
-                                <span class = "heroButtonTextOutline">KSS </span>
+                                <span class = "heroButtonTextOutline"> KSS DIRECTORY KSS </span>
                                 DIRECT
-                                <span class = "heroButtonTextOutline">ORY</span>
+                                <span class = "heroButtonTextOutline">ORY KSS DIRECTORY</span>
                             </div>
                             <div id = "heroButtonText3">
-                                <span class = "heroButtonTextOutline">KSS DIRECT</span>
+                                <span class = "heroButtonTextOutline">KSS DIRECTORY KSS DIRECT</span>
                                 ORY
                             </div>
                         </div>
@@ -257,8 +259,10 @@ export default function Home() {
                             <div class = "foreground">
                                 <h5>Learn more!</h5>
                                 <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
-                                <img src = "svg_assets/compass_logo_vector.svg" id = "b0CompassLogo"/>
-                                <h4 style = {{ "color": "white" }}>KSS Directory is a student-run resource repository for Kingston Secondary School! Scroll down to see a full announcement archive, or click on one of the buttons on the right to access the plethora of other KSS resources.</h4>
+                                <div id = "b0Text">
+                                  <img src = "svg_assets/compass_logo_vector.svg" id = "b0CompassLogo"/>
+                                  <h4 style = {{ "color": "white" }}>KSS Directory is a student-run resource repository for Kingston Secondary School! Scroll down to see a full announcement archive, or click on one of the buttons on the right to access the plethora of other KSS resources.</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -296,8 +300,10 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div class = "foreground">
+                                  <div id = "b1Text">
                                     <h3>ANNOUNCEMENTS</h3>
                                     <h4>Scroll to see a complete archive of KSS announcements!</h4>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -321,8 +327,10 @@ export default function Home() {
                                 </div>
                                 <div class = "foreground">
                                     <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
-                                    <h3>INTERACTIVE MAP</h3>
-                                    <h4>Click to view an interactive map of KSS and its surrounding areas!</h4>
+                                    <div id = "b2Text">
+                                      <h3>INTERACTIVE MAP</h3>
+                                      <h4>Click to view an interactive map of KSS and its surrounding area!</h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -347,7 +355,7 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div class = "foreground">
-                                    <div style = {{ "display": "flex", "flex-flow": "column wrap", "width": "100%", "height": "80%", "justify-content": "center", "padding-top": "3%" }}>
+                                    <div style = {{ "display": "flex", "flex-flow": "column wrap", "width": "100%", "height": "80%", "justify-content": "center", "padding-top": "8%" }}>
                                         <div class = "b3Links"><a href="" target="_blank"><h4>23/24 Semester 1 Timetables</h4></a></div>
                                         <div class = "b3Links"><a href="" target="_blank"><h4>School Year Calendar</h4></a></div>
                                         <div class = "b3Links"><a href="" target="_blank"><h4>Official KSS Floor Plans</h4></a></div>
@@ -386,8 +394,10 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div class = "foreground">
+                                  <div id = "b4Text">
                                     <h3>SCHOOLWORK DATABASES</h3>
                                     <h4>A database of resources to help with your schoolwork!</h4>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -405,9 +415,9 @@ export default function Home() {
               <button class="regularButton" style={{ "margin-left": "0" }}>Date</button>
 
               {/* search button */}
-              <button class="regularButton">
+              <button class="regularButton" id = "searchButton">
                 <div class="container">
-                  Search
+                  <span id = "searchButtonText">Search</span>
                   <img src = "svg_assets/searchIcon.svg" class = "searchIcon" />
                 </div>
               </button>

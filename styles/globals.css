@@ -166,10 +166,10 @@
   .anceCards {
     /* The class for each full announcement card */
     background-color: 0C151D;
-    border-radius: 24px;
+    border-radius: 16px;
     border: 1px solid #626262;
     flex-shrink: 0;
-    padding:40px;
+    padding:30px;
     margin-bottom: 64px;
     margin-top: 64px;
   }
@@ -233,7 +233,7 @@
       border: 1px solid white;
       border-radius: 1rem;
       transition-duration: 0.3s;
-      transition-timing-function: cubic-bezier(0.56, 0.01, 0, 0.99);
+      transition-timing-function: cubic-bezier(0, 0, 0.13, 0.98);
       opacity: 69%;
     }
 
@@ -369,20 +369,6 @@
       margin-left: 200px;
     }
 
-
-
-.material-symbols-outlined {
-  /* class for the search button */
-  padding: 0px;
-  margin: 0px;
-  margin-left: 12rem;
-  font-size: 90% !important;
-}
-
-
-
-
-
 @media screen and (min-width: 1080px) {
   .anceCards {
     width: 720px;
@@ -440,8 +426,7 @@ h3 {
   font-size:22px;
   padding-left:36px;
   padding-right: 36px;
-  position: absolute;
-  bottom: 12px;
+  margin: 0px;
 }
 
 h4, h5 {
@@ -449,6 +434,7 @@ h4, h5 {
   font-weight: 100;
   font-size: 18px;
   color: #A1A1A1;
+  margin: 0px;
 }
 
 .arrowIcon {
@@ -500,29 +486,35 @@ h4, h5 {
   animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft;
 }
 
-#b0CompassLogo, .button0 h4, .button0 h5, .button0 .arrowIcon {
+#b0Text, .button0 h4, .button0 h5, .button0 .arrowIcon {
   transition-duration: 0.35s;
   transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
 }
 
 #b0CompassLogo {
   width: 100px;
-  position: absolute;
-  bottom: 72px;
-  left: 72px;
+  padding-left: 72px;
 }
 
 .button0 h4 {
-  position: absolute;
-  bottom: -24px;
-  left: 72px;
-  right:72px;
+  padding-left: 72px;
+  padding-right:72px;
+  padding-top: 24px;
   opacity: 0%;
+}
+
+#b0Text {
+  position: absolute;
+  bottom: -32px;
+}
+
+.button0:hover #b0Text {
+  bottom: 56px;
 }
 
 .button0 h5 {
   position: absolute;
-  top: 24px;
+  top: 54px;
   right: 128px;
   opacity: 0%;
 }
@@ -589,20 +581,12 @@ h4, h5 {
   opacity: 100%
 }
 
-.button0:hover h4 {
-  bottom: 48px;
-}
-
 .button0:hover .arrowIcon {
   right: 48px;
 }
 
 .button0:hover h5 {
   right: 90px;
-}
-
-.button0:hover #b0CompassLogo {
-  bottom: 168px;
 }
 
 .button0:hover #heroButtonText1 {
@@ -615,6 +599,9 @@ h4, h5 {
   right: 60px;
 }
 
+.button0:active #b0GradientOpaque {
+  opacity: 100%;
+}
 
 
 
@@ -638,25 +625,28 @@ h4, h5 {
 }
 
 .button1 h4 {
-  position: absolute;
   padding-left: 36px;
   padding-right: 36px;
-  bottom:-40px;
+  padding-top: 8px;
   opacity: 0%
 }
 
-.button1 h4, h3, #b1Ance1 {
+#b1Text {
+  position: absolute;
+  bottom: -16px;
+}
+
+.button1:hover #b1Text {
+  bottom: 32px;
+}
+
+.button1 h4, h3, #b1Ance1, #b1Text {
   transition-duration: 0.35s;
   transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
 }
 
 .button1:hover h4 {
-  bottom: 12px;
   opacity: 100%
-}
-
-.button1:hover h3 {
-  bottom: 64px;
 }
 
 #b1Gradient {
@@ -766,6 +756,10 @@ h4, h5 {
   width: 110px;
 }
 
+.button1:active #b1GradientOpaque {
+  opacity: 90%
+}
+
 
 
 
@@ -786,14 +780,22 @@ h4, h5 {
 }
 
 .button2 h4 {
-  position: absolute;
   padding-left: 36px;
   padding-right: 36px;
-  bottom:-40px;
+  padding-top: 8px;
   opacity: 0%
 }
 
-.button2 h4, .button2 .arrowIcon, #b2Map {
+#b2Text {
+  position: absolute;
+  bottom: -16px;
+}
+
+.button2:hover #b2Text {
+  bottom: 32px;
+}
+
+.button2 h4, .button2 .arrowIcon, #b2Map, #b2Text {
   transition-duration: 0.35s;
   transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
 }
@@ -840,6 +842,10 @@ h4, h5 {
   opacity:56%;
 }
 
+.button2:active #b2GradientOpaque {
+  opacity: 90%;
+}
+
 
 
 
@@ -857,6 +863,11 @@ h4, h5 {
 .button3 h4, .b3Links {
   transition-duration: 0.35s;
   transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+.button3 h3 {
+  position: absolute;
+  bottom: 36px;
 }
 
 #kssLogo {
@@ -902,6 +913,10 @@ h4, h5 {
   height: 15%
 }
 
+.button3:active #b3GradientOpaque {
+  opacity: 100%;
+}
+
 
 
 
@@ -917,7 +932,16 @@ h4, h5 {
   cursor: pointer;
 }
 
-#b4Folder, #b4Arrow, .button4 h4, .button4 h3, #b4GradientOpaque {
+#b4Text {
+  position: absolute;
+  bottom: -16px;
+}
+
+.button4:hover #b4Text {
+  bottom: 32px;
+}
+
+#b4Folder, #b4Arrow, .button4 h4, .button4 h3, #b4GradientOpaque, #b4Text {
   transition-duration: 0.35s;
   transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
 }
@@ -951,21 +975,20 @@ h4, h5 {
 }
 
 .button4 h4 {
-  position: absolute;
   padding-left: 36px;
   padding-right: 36px;
-  bottom:-40px;
+  padding-top: 8px;
   opacity: 0%
 }
 
 .button4:hover h4 {
-  bottom: 12px;
   opacity: 100%
 }
 
-.button4:hover h3 {
-  bottom: 64px;
+.button4:active #b4GradientOpaque {
+  opacity: 100%;
 }
+
 
 
 
@@ -1005,8 +1028,20 @@ h4, h5 {
     font-size: 14px;
   }
 
+  h4 {
+    padding-bottom:15px;
+  }
+
+  .button0:hover #b0Text {
+    bottom: 32px;
+  }
+
   .button0 h5 {
-    top: 32px;
+    top: 56px;
+  }
+
+  .button1:hover #b1Text {
+    bottom: 16px;
   }
 
   #heroButtonText1, #heroButtonText2, #heroButtonText3 {
@@ -1026,7 +1061,6 @@ h4, h5 {
   }
 
   .b1AnceTag {
-    height: 15px;
     width: 40px;
   }
   
@@ -1070,3 +1104,235 @@ h4, h5 {
 
 }
 
+@media all and (max-width: 1000px) {
+  /* Basically just mobile support lol */
+  .body {
+    padding: 0px;
+  }
+  .wrapper {
+    flex-flow: column wrap;
+    height: 520px;
+  }
+
+  .button0, .button1, .button2, .button3, .button4 {
+    border-radius: 16px;
+  }
+
+  h3 {
+    font-size: 13px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  h4 {
+    font-size: 0px;
+  }
+  .button0 {
+    flex: 1.5 0px;
+  }
+  #b0Gradient {
+    background: radial-gradient(50% 90% at 50% 10%, rgba(7, 33, 54, 0.00) 0%, #072136cb 100.00%);
+  }
+  #b0GradientOpaque {
+    background: radial-gradient(50% 90% at 50% 80%, rgba(7, 33, 54, 0.00) 0%, #072136dc 100.00%);
+    opacity: 100%;
+  }
+  .button0 h5 {
+    opacity: 100%;
+    font-size: 12px;
+    top: 24px;
+    right: 48px;
+  }
+  .button0 .arrowIcon {
+    opacity: 100%;
+    width: 16px;
+    top: 24px;
+    right: 24px;
+  }
+  .verticalButtonWrapper1, .verticalButtonWrapper2 {
+    flex-flow: row wrap;
+  }
+  #heroButtonText1, #heroButtonText2, #heroButtonText3 {
+    font-size: 60px;
+  }
+  #b0CompassLogo {
+    width: 50%;
+    padding-left: 32px;
+    padding-bottom: 16px;
+  }
+
+  .button1 {
+    height: 100%;
+  }
+
+  #b1Ance1 {
+    top: 12px;
+  }
+
+  #b1Ance2 {
+    top: 42px;
+  }
+
+  #b1Ance3 {
+    top: 72px;
+  }
+
+  .b1AnceTag, #b1AnceBrief1, #b1AnceBrief2, #b1AnceBrief3, #b1AnceDetails1, #b1AnceDetails2, #b1AnceDetails3 {
+    height: 8px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+  }
+
+  .b1AnceTag {
+    width: 24px;
+  }
+  
+  #b1Text, #b2Text, #b4Text {
+    bottom:0px;
+  }
+
+  #b1AnceBrief1 {
+    width: 72px;
+  }
+  #b1AnceDetails1 {
+    width: 94px;
+  }
+  #b1AnceBrief2 {
+    width: 46px
+  }
+  #b1AnceDetails2 {
+    width: 72px;
+  }
+  #b1AnceBrief3 {
+    width: 20px;
+  }
+  #b1AnceDetails3 {
+    width: 46px;
+  }
+
+  .button1:hover #b1AnceBrief1 {
+    width: 72px;
+  }
+  .button1:hover #b1AnceDetails1 {
+    width: 94px
+  }
+  .button1:hover #b1AnceBrief2 {
+    width: 46px;
+  }
+  .button1:hover #b1AnceDetails2 {
+    width: 72px;
+  }
+  .button1:hover #b1AnceBrief3 {
+    width: 20px;
+  }
+  .button1:hover #b1AnceDetails3 {
+    width: 46px;
+  }
+
+  .button2 .arrowIcon {
+    opacity: 100%;
+    width: 16px;
+    top: 16px;
+    right: 16px;
+  }
+
+  #b2Map {
+    height: auto;
+    width: 100%;
+    top: 0px;
+  }
+
+
+  .button3 {
+    flex: 1 0px;
+  }
+
+  .b3Links {
+    height: 0%;
+    width: 0%;
+  }
+
+  .button3 h3 {
+    position: absolute;
+    bottom: 23px;
+  }
+
+  #kssLogo {
+    height: 30%;
+    right:24px;
+    top:24px;
+  }
+
+  #b3Gradient {
+    background: radial-gradient(25% 30% at 80% 25%, rgba(67, 65, 181, 0.00) 0%, #4341B5 100.00%);
+  }
+
+
+  #b4Folder, #b4Arrow {
+    top: 24px;
+    right: 24px;
+    height: 30%;
+  }
+
+
+
+
+  .regularButton {
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .regularButton:hover {
+    transform: translateY(0px);
+  }
+
+  .searchIcon {
+    position: absolute;
+    right: 16px;
+    width: 30%;
+  }
+
+  .regularButton {
+    flex-grow: 1;
+  }
+
+  #searchButton {
+    flex-grow: 8;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  #searchButtonText {
+    width: 100%;
+  }
+
+  .buttonCentre {
+    gap: 5px;
+  }
+
+
+
+
+  .dateIdentifier-day {
+    font-size: 24px;
+  }
+  .dateIdentifier-date {
+    font-size: 16px;
+  }
+
+  .anceSection {
+    opacity: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
+    border: 1px solid #ffffff00;
+  }
+  .anceSection:hover {
+    transform: translateX(0px);
+    border: 1px solid #ffffff00;
+    box-shadow: none;
+  }
+  .anceSection:active {
+    transform: translateY(8px);
+  }
+}
