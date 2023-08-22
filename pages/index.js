@@ -2,14 +2,71 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Link from "next/link";
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+
 headers: new Headers({
   "ngrok-skip-browser-warning": "true",
 })
 
-// function checkForErrors(errorCheck, )
+Modal.setAppElement('#__next');
+
+const announcementPopupModal = {
+  content: {
+    width: "100%",
+  },
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.75)',
+  },
+};
+
+
+// This is the URL for the server that the website sends HTTP requests to.
+// URL of the current web server is "https://a23b-35-227-86-218.ngrok-free.app"
+const webServerURL = "https://a23b-35-227-86-218.ngrok-free.app"
+
 const loadMore = "loading"
 export default function Home() {
   // Runs everytime the state changes
+
+  function hslToHex(hue, sat, light) {
+    light /= 100;
+    const a = sat * Math.min(light, 1 - light) / 100;
+    const f = n => {
+      const k = (n + hue / 30) % 12;
+      const color = light - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+      return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+  }
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    document.body.style.overflow = 'hidden' 
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    document.body.style.overflow = 'auto' 
+  }
+
+  const [modalCont, setModalCont] = useState([["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"]])
+  const [modalColour, setModalColour] = useState("#FFFFFF")
+  const noClubDtlsDesc = <h2 id = "clubDtlsDesc">No description added yet. Please contact the KSS Directory Maintainers on our <a href = 'https://discord.gg/BJtVbtqdDY' style = {{"fontWeight": 100, "margin": "0px", "textDecoration": "underline"}}>Discord Server</a> to see if one can be added! Thanks :)</h2>
+  const [clubDtlsDesc, setclubDtlsDesc] = useState(noClubDtlsDesc)
+  const [clubDtlsFlex, setClubDtlsFlex] = useState(<div></div>)
 
   const [anceList, setAnceList] = useState()
 
@@ -23,8 +80,7 @@ export default function Home() {
     // because of the 'index' var that is passed through
 
     // Sending an HTTP request to the web server
-    // Change this to the correct URL
-    const myRequest = new Request("https://a23b-35-227-86-218.ngrok-free.app/ance/batch/" + numAnceTotal + "/" + index);
+    const myRequest = new Request(webServerURL + "/ance/batch/" + numAnceTotal + "/" + index);
     fetch(myRequest, { method: "GET", headers: { Accept: "application/json", "ngrok-skip-browser-warning": "true" } })
 
       .then((response) => {
@@ -53,6 +109,70 @@ export default function Home() {
       });
 
   }, [index])
+
+  useEffect(() => {
+    // Function for retrieving club info data from web server
+
+    if (modalCont !== [["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"]]) {
+      let modalContUpdated = modalCont[1][1]
+
+      if (modalCont[1][1].includes(" ")) {
+        let modalContUpdated = (modalCont[1][1].replace(" ", "%20"))
+      }
+      
+      const myRequest = new Request(webServerURL + "/clubinfo/" + modalContUpdated);
+      fetch(myRequest, { method: "GET", headers: { Accept: "application/json", "ngrok-skip-browser-warning": "true" } })
+  
+        .then((response) => {
+          // if the web server doesn't respond, return an error
+          if (!response.ok) {
+            console.log(modalCont[1][1])
+            console.log(response)
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+  
+        .then((response) => {
+          // "hsl(" + response['Colour'] + ", 67, 68)"
+
+          if (response !== "none") {
+            setModalColour(hslToHex(response['Colour'], 63, 57))
+
+            if ("Description" in response) {
+              setclubDtlsDesc(<h2 id = "clubDtlsDesc">{response["Description"]}</h2>)
+            } else {
+              setclubDtlsDesc(noClubDtlsDesc)
+            }
+            let clubDtlsFlexTemp = []
+            for (const i of ["Meeting times/dates", "Location", "Supervisor(s)"]) {
+              if (i in response) {
+                if (i == "Meeting times/dates") {
+                  clubDtlsFlexTemp.push(<div class = "clubDtlsFlexItemBG" style = {{"flex": 1.6}}>
+                    <h2 class = "clubDtlsFlexItemTitle">{i}</h2>
+                    <h2 class = "clubDtlsFlexItemDtls">{response[i]}</h2>
+                  </div>)
+                } else {
+                  clubDtlsFlexTemp.push(<div class = "clubDtlsFlexItemBG">
+                    <h2 class = "clubDtlsFlexItemTitle">{i}</h2>
+                    <h2 class = "clubDtlsFlexItemDtls">{response[i]}</h2>
+                  </div>)
+                }
+                
+              }
+            }
+            setClubDtlsFlex(clubDtlsFlexTemp)
+
+          } else {
+            setModalColour("#A1A1A1")
+            setclubDtlsDesc(noClubDtlsDesc)
+            setClubDtlsFlex(<div></div>)
+          }
+          
+        })
+      }
+  
+  }, [modalCont])
 
   // anceCards is the list with all of the React components for the announcement cards
   const anceCards = []
@@ -89,6 +209,8 @@ export default function Home() {
         // checking if it's a boolean
         // needed because anceList always has a boolean variable that tells the website that if it's the last batch of not.
 
+        console.log(typeof(value))
+        console.log(value)
         // 'value' is originally a string, so this converts it back into a dictionary
         const valueDict = JSON.parse(value)
 
@@ -180,7 +302,7 @@ export default function Home() {
 
                     // All of the parts of a specific individual announcement are pushed (as React objects) to this list
                     // It is given the CSS class called "anceSection" so that the hover effect can work
-                    specificAnceSect.push(<div class="anceSection" key = {k + " " + i + "anceSection" + key2} onClick = {() => console.log(valueDict[0])}>{specificAnce}</div>)
+                    specificAnceSect.push(<div class="anceSection" key = {k + " " + i + "anceSection" + key2} onClick = {() => {openModal(); setModalCont([valueDict[0], ances])}}>{specificAnce}</div>)
                     // put valueDict[0] for the announcement date details
                     // put ances for the specific announcement details
 
@@ -226,6 +348,68 @@ export default function Home() {
 
       <main class="body">
 
+        <div>
+            <Modal
+              isOpen={modalIsOpen}
+              onAfterOpen={afterOpenModal}
+              onRequestClose={closeModal}
+              className="announcementPopupModalBG"
+              overlayClassName="popupOverlay"
+              
+            >
+              <div class = "announcementPopupModalBG">
+                <div class = "announcementPopupModal">
+                  <div class = "overlapContainer" style = {{"transform": "translate(-64px, -64px)", "width": "848px"}}>
+                    <div class = "background" style = {{"background": modalColour}} id = "announcementPopupModalColourBG"></div>
+                    <div class = "foreground" id = "announcementPopupModalColourFG">
+                      <div class = "overlapContainer" style = {{"width": "100%"}}>
+                        <div class = "background">
+                          <h3 id = "announcementPopupModalTagBG">{modalCont[1][1]}</h3>
+                        </div>
+                        <div class = "foreground">
+                          <div class = "overlapContainer">
+                            <div class = "background">
+                              <div style = {{"display": "flex", "flex-flow": "row wrap", "height": "47px", "width": "100%", "position": "absolute", "bottom": "0px"}}>
+                                <div class = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
+                                <div id = "announcementPopupModalTag">
+                                  <h3 id = "announcementPopupModalTagText">{modalCont[1][1]}</h3>
+                                </div>
+                                <div class = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
+                              </div>
+                            </div>
+                            <div class = "foreground">
+                              <button onClick={closeModal} id = "announcementPopupModalXIconBG">
+                                <img src = "svg_assets/x_icon.svg" id = "announcementPopupModalXIcon"/>
+                              </button>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class = "overlapContainer" style = {{"transform": "translate(-64px, -64px)", "width": "848px"}}>
+                    <div class = "background" id = "announcementPopupModalColourBelowBG" style = {{"background": modalColour}}></div>
+                    <div class = "foreground" id = "announcementPopupModalColourBelowFG"></div>
+                  </div>
+                  <div style = {{"transform": "translateY(-48px)"}}>
+                    <h2 id = "announcementPopupModalAnceBrief">{modalCont[1][2]}</h2>
+                    <h2 id = "announcementPopupModalAnceDtls">{modalCont[1][3]}</h2>
+                    <div id = "clubDtlsBorder">
+                      <h2 id = "clubDtlsLegend">Club/event details</h2>
+                      <h2 id = "clubDtlsName">{modalCont[1][1]}</h2>
+                      {clubDtlsDesc}
+                      <div id = "clubDtlsFlexBox">
+                        {clubDtlsFlex}
+                      </div>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+              
+            </Modal>
+        </div>
+
         <div class = "wrapper">
             <div class = "button0">
                 <div class = "overlapContainer">
@@ -268,7 +452,7 @@ export default function Home() {
                 </div>
             </div>
             <div class = "verticalButtonWrapper1">
-                <Link href = "#mainAnnouncementsSection" class = "button1">
+                <a href = "#mainAnnouncementsSection" class = "button1">
                     
                     <div class = "overlapContainer">
                         
@@ -307,7 +491,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                </Link>
+                </a>
                 <div class = "button2">
                     <div class = "overlapContainer">
 
