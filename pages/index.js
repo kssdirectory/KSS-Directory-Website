@@ -60,6 +60,9 @@ export default function Home() {
   function closeModal() {
     setIsOpen(false);
     document.body.style.overflow = 'auto' 
+    setModalColour("#A1A1A1")
+    setclubDtlsDesc(noClubDtlsDesc)
+    setClubDtlsFlex(<div></div>)
   }
 
   const [modalCont, setModalCont] = useState([["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"]])
