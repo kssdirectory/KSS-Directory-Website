@@ -328,11 +328,14 @@
       right: 42px;
     }
 
+    #announceemntPopupModalXIcon, .socialsButtons {
+      transition-duration: 0.25s;
+      transition-timing-function: cubic-bezier(0.56, 0.01, 0, 0.99);
+    }
+
     #announcementPopupModalXIcon {
       width: 32px;
       cursor: pointer;
-      transition-duration: 0.25s;
-      transition-timing-function: cubic-bezier(0.56, 0.01, 0, 0.99);
     }
 
     #announcementPopupModalXIcon:hover {
@@ -458,6 +461,27 @@
     .clubDtlsFlexItemDtls {
       color: #626262;
       font-weight: 100;
+    }
+
+    .socialsButtons {
+      width: 36px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    .socialsButtons:hover {
+      opacity: 75%;
+    }
+
+    #socialsListBG {
+      margin-top: 12px;
+      border-radius: 16px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      background: hsla(0, 0%, 63%, 0.15);
+      gap: 12px;
+      animation: 0.25s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 fadeIn;
     }
 
     .popupOverlay {

@@ -29,6 +29,7 @@ const announcementPopupModal = {
 
 // This is the URL for the server that the website sends HTTP requests to.
 // URL of the current web server is "https://a23b-35-227-86-218.ngrok-free.app"
+// Local URL of webServer.py is obviously http://127.0.0.1:8000
 const webServerURL = "https://a23b-35-227-86-218.ngrok-free.app"
 
 const loadMore = "loading"
@@ -36,6 +37,9 @@ export default function Home() {
   // Runs everytime the state changes
 
   function hslToHex(hue, sat, light) {
+    // Function to turn HSL values into hex, which is needed becuase the web server provides the 
+    // colour for the banner of each club as a hue value. The JSX(?) here doesn't recognize HSL
+    // for some reason....
     light /= 100;
     const a = sat * Math.min(light, 1 - light) / 100;
     const f = n => {
@@ -70,6 +74,7 @@ export default function Home() {
   const noClubDtlsDesc = <h2 id = "clubDtlsDesc">No description added yet. Please contact the KSS Directory Maintainers on our <a href = 'https://discord.gg/BJtVbtqdDY' style = {{"fontWeight": 100, "margin": "0px", "textDecoration": "underline"}}>Discord Server</a> to see if one can be added! Thanks :)</h2>
   const [clubDtlsDesc, setclubDtlsDesc] = useState(noClubDtlsDesc)
   const [clubDtlsFlex, setClubDtlsFlex] = useState(<div></div>)
+  const [socialsListBG, setSocialsListBG] = useState(<div></div>)
 
   const [anceList, setAnceList] = useState()
 
@@ -129,8 +134,6 @@ export default function Home() {
         .then((response) => {
           // if the web server doesn't respond, return an error
           if (!response.ok) {
-            console.log(modalCont[1][1])
-            console.log(response)
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
           return response.json();
@@ -164,12 +167,45 @@ export default function Home() {
                 
               }
             }
+
+            const socialsListFileNames = ["discord", "instagram", "classroom", "linktr", "tiktok", "youtu"]
+
+            if ("Socials" in response) {
+              let socialsList = []
+              let socialsListNotReact = []
+              for (let i = 0; i < response["Socials"].length; i++) {
+                for (const k of socialsListFileNames) {
+                  if (response["Socials"][i].includes(k)) {
+                    socialsList.push(
+                      <a style = {{"background": "rgba(255, 255, 255, 0)", "padding": "0px", "border": "0px", "margin": "0px", "padding": "0px", "height": "auto"}} href={response["Socials"][i]} target="_blank">
+                        <img src = {"svg_assets/socials_icons/" + k + ".svg"} class = "socialsButtons"/>
+                      </a>
+                    )
+                    socialsListNotReact.push(response["Socials"][i])
+                  }
+                } 
+              } if (socialsList.length !== response["Socials"].length) {
+                  for (const i of response["Socials"]) {
+                    if (!socialsListNotReact.includes(i)) {
+                      socialsList.push(
+                        <a style = {{"background": "rgba(255, 255, 255, 0)", "padding": "0px", "border": "0px", "margin": "0px", "padding": "0px", "height": "auto"}} href={i} target="_blank">
+                          <img src = {"svg_assets/socials_icons/unknown.svg"} class = "socialsButtons"/>
+                        </a>
+                      )
+                    }
+                  }
+                }
+              setSocialsListBG(<div id = "socialsListBG">{socialsList}</div>)
+            } else {
+              setSocialsListBG('')
+            }
             setClubDtlsFlex(clubDtlsFlexTemp)
 
           } else {
             setModalColour("#A1A1A1")
             setclubDtlsDesc(noClubDtlsDesc)
-            setClubDtlsFlex(<div></div>)
+            setClubDtlsFlex('')
+            setSocialsListBG('')
           }
           
         })
@@ -212,8 +248,6 @@ export default function Home() {
         // checking if it's a boolean
         // needed because anceList always has a boolean variable that tells the website that if it's the last batch of not.
 
-        console.log(typeof(value))
-        console.log(value)
         // 'value' is originally a string, so this converts it back into a dictionary
         const valueDict = JSON.parse(value)
 
@@ -405,6 +439,7 @@ export default function Home() {
                       <div id = "clubDtlsFlexBox">
                         {clubDtlsFlex}
                       </div>
+                      {socialsListBG}
                     </div> 
                   </div>
                 </div>
