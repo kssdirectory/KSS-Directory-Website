@@ -481,7 +481,6 @@
       justify-content: center;
       background: hsla(0, 0%, 63%, 0.15);
       gap: 12px;
-      animation: 0.25s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 fadeIn;
     }
 
     .popupOverlay {
