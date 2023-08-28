@@ -448,9 +448,7 @@
 
     .clubDtlsFlexItemBG {
       padding: 16px;
-      background: hsla(0, 0%, 63%, 0.15);
       flex: 1;
-      border-radius: 16px;
     }
 
     .clubDtlsFlexItemTitle {
@@ -475,12 +473,16 @@
 
     #socialsListBG {
       margin-top: 12px;
-      border-radius: 16px;
       display: flex;
       flex-flow: row wrap;
       justify-content: center;
-      background: hsla(0, 0%, 63%, 0.15);
       gap: 12px;
+    }
+
+    #socialsListBG, .clubDtlsFlexItemBG {
+      background: hsla(0, 0%, 63%, 0.15);
+      border-radius: 16px;
+      border: 1px solid #A1A1A1;
     }
 
     .popupOverlay {
