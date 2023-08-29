@@ -143,7 +143,7 @@ export default function Home() {
           // "hsl(" + response['Colour'] + ", 67, 68)"
 
           if (response !== "none") {
-            setModalColour(hslToHex(response['Colour'], 63, 57))
+            setModalColour(hslToHex(response['Colour'], 60, 62))
 
             if ("Description" in response) {
               setclubDtlsDesc(<h2 id = "clubDtlsDesc">{response["Description"]}</h2>)
@@ -372,7 +372,7 @@ export default function Home() {
         <title>KSS Directory</title>
 
         {/* Setting the website metadata (if that's what you call it), this shows up on embeds and I think google search? */}
-        <meta name="description" content="KSS Directory is Kingston Secondary School’s #1 student-run resource repository, where you can easily access a complete announcement archive, alongside a plethora of other student resources." />
+        <meta name="description" content="KSS Directory is a student-run resource repository for Kingston Secondary School, where you can easily access a complete announcement archive, alongside a plethora of other student resources! Made by Matthew Kong." />
 
         {/* Not exactly sure what this to be honest, but when I remove it, it breaks my website */}
         {/* I think it sets the viewable area of my website? This is my first time using NextJS and React, so I don't really know */}
