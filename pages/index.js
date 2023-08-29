@@ -629,24 +629,24 @@ export default function Home() {
 
         <div class="container" style = {{"padding-top": "50px"}} id = "mainAnnouncementsSection">
           {/* Container used to centre the buttons */}
-          <div class="buttonCentre">
-            <div style={{ "width": "34rem", "margin-top": '1.5rem', "margin-bottom": '3rem' }} class="buttonCentre">
+          {/* Commenting it out because I can't implement the features in time for the start of school... */}
+          {/*
+            <div class="buttonCentre">
+              <div style={{ "width": "34rem", "margin-top": '1.5rem', "margin-bottom": '3rem' }} class="buttonCentre">
 
-              {/* Date filter button */}
-              <button class="regularButton" style={{ "margin-left": "0" }}>Date</button>
+                <button class="regularButton" style={{ "margin-left": "0" }}>Date</button>
 
-              {/* search button */}
-              <button class="regularButton" id = "searchButton">
-                <div class="container">
-                  <span id = "searchButtonText">Search</span>
-                  <img src = "svg_assets/searchIcon.svg" class = "searchIcon" />
-                </div>
-              </button>
+                <button class="regularButton" id = "searchButton">
+                  <div class="container">
+                    <span id = "searchButtonText">Search</span>
+                    <img src = "svg_assets/searchIcon.svg" class = "searchIcon" />
+                  </div>
+                </button>
 
-              {/* club filter button */}
-              <button class="regularButton" style={{ "margin-right": "0" }}>Club</button>
+                <button class="regularButton" style={{ "margin-right": "0" }}>Club</button>
+              </div>
             </div>
-          </div>
+          */}
         </div>
 
         {/* this is to call the anceCards variable that was set before */}
