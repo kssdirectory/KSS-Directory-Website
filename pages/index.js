@@ -151,7 +151,7 @@ export default function Home() {
               setclubDtlsDesc(noClubDtlsDesc)
             }
             let clubDtlsFlexTemp = []
-            for (const i of ["Meeting times/dates", "Location", "Supervisor(s)"]) {
+            for (const i of [ "Location", "Supervisor(s)", "Meeting times/dates"]) {
               if (i in response) {
                 if (i == "Meeting times/dates") {
                   clubDtlsFlexTemp.push(<div class = "clubDtlsFlexItemBG" style = {{"flex": 1.6}}>
