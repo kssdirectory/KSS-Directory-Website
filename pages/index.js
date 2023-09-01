@@ -396,7 +396,7 @@ export default function Home() {
             >
               <div class = "announcementPopupModalBG">
                 <div class = "announcementPopupModal">
-                  <div class = "overlapContainer" style = {{"transform": "translate(-64px, -64px)", "width": "848px"}}>
+                  <div class = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
                     <div class = "background" style = {{"background": modalColour}} id = "announcementPopupModalColourBG"></div>
                     <div class = "foreground" id = "announcementPopupModalColourFG">
                       <div class = "overlapContainer" style = {{"width": "100%"}}>
@@ -406,7 +406,7 @@ export default function Home() {
                         <div class = "foreground">
                           <div class = "overlapContainer">
                             <div class = "background">
-                              <div style = {{"display": "flex", "flex-flow": "row wrap", "height": "47px", "width": "100%", "position": "absolute", "bottom": "0px"}}>
+                              <div id = "announcementPopupModalTagFlexBox">
                                 <div class = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
                                 <div id = "announcementPopupModalTag">
                                   <h3 id = "announcementPopupModalTagText">{modalCont[1][1]}</h3>
@@ -425,7 +425,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div class = "overlapContainer" style = {{"transform": "translate(-64px, -64px)", "width": "848px"}}>
+                  <div class = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
                     <div class = "background" id = "announcementPopupModalColourBelowBG" style = {{"background": modalColour}}></div>
                     <div class = "foreground" id = "announcementPopupModalColourBelowFG"></div>
                   </div>
