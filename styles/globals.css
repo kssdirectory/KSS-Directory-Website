@@ -293,7 +293,6 @@
 
     .announcementPopupModal {
       outline: 0;
-
       background: #FFFFFF;
       box-shadow: 0px 58px 129px 0px rgba(0, 0, 0, 0.25);
       border-radius: 30px;
@@ -393,13 +392,13 @@
 
     #announcementPopupModalTagBG {
       background: white;
-      font-size: 16px;
+      font-size: 14px;
       padding: 0px;
-      padding-right: 18px;
-      padding-left: 18px;
+      padding-right: 27px;
+      padding-left: 27px;
       position: absolute;
       bottom: 0px;
-      left: 18px;
+      left: 16px;
     }
 
     #announcementPopupModalColourBelowBG, #announcementPopupModalColourBelowFG {
@@ -454,7 +453,7 @@
     }
 
     #clubDtlsFlexBox {
-      margin-top: 24px;
+      margin-top: 16px;
       display: flex;
       flex-flow: row wrap;
       gap: 6px;
@@ -683,6 +682,7 @@
 
   #clubDtlsFlexBox {
     gap: 12px;
+    margin-top: 24px;
   }
 
   #socialsListBG {
