@@ -47,16 +47,12 @@
 }
 
 
-
 .body {
     height: auto;
-    width: 100vw;
+    width: 100%;
+    overflow: hidden;
     background: #072136;
-    position: absolute;
-    top: 0px;
-    left: 0px;
     height: 100vh;
-    
 }
 
 .bodyInner {
