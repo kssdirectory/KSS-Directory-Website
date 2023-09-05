@@ -26,6 +26,7 @@ const announcementPopupModal = {
   },
 };
 
+const bgColour = "#072136"
 
 // This is the URL for the server that the website sends HTTP requests to.
 // URL of the current web server is "https://a23b-35-227-86-218.ngrok-free.app"

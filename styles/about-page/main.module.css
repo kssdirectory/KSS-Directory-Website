@@ -46,6 +46,8 @@
     }
 }
 
+
+
 .body {
     height: auto;
     width: 100vw;
@@ -59,7 +61,6 @@
 
 .bodyInner {
     margin: 72px;
-    
 }
 
 #starLogo {
