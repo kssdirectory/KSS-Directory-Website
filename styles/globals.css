@@ -1566,7 +1566,7 @@ html{scroll-behavior:smooth}
     width: 72px;
   }
   #b1AnceDetails1 {
-    width: 94px;
+    width: 98px;
   }
   #b1AnceBrief2 {
     width: 46px
@@ -1585,7 +1585,7 @@ html{scroll-behavior:smooth}
     width: 72px;
   }
   .button1:hover #b1AnceDetails1 {
-    width: 94px
+    width: 98px
   }
   .button1:hover #b1AnceBrief2 {
     width: 46px;
