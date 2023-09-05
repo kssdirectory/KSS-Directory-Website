@@ -1,3 +1,9 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+}
+
 .body {
   /* just adding padding to the whole body */
   padding: 10px;
@@ -88,38 +94,6 @@
     opacity: 100%
   }
 }
-
-/* header IDs and tags */
-
-  header {
-    /* for the header overall */
-    position: fixed;
-    width: 100%;
-    height: 10rem;
-    z-index:999;
-  }
-
-  #inside-header {
-    /* for the elements that go inside the header, i.e., links */
-    position: absolute;
-    width: 100%;
-    padding-left: 3rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    filter: blur(0px);
-    
-  }
-
-  #inside-header-bg {
-    /* for the background blur, which goes underneath the other elements in the header */
-    position: absolute;
-    width: 100%;
-    height: 10rem;
-    background-color:rgba(255, 255, 255, 0.479);
-    backdrop-filter: blur(1px);
-    filter: blur(25px);
-    transform: translateY(-3rem);
-  }
 
 /* text styles */
 
@@ -830,6 +804,8 @@ html{scroll-behavior:smooth}
   border-radius: 25px;
   cursor: pointer;
   animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft;
+  height: 100%;
+  margin: 0px;
 }
 
 #b0Text, .button0 h4, .button0 h5, .button0 .arrowIcon {
@@ -1123,6 +1099,7 @@ html{scroll-behavior:smooth}
   flex: 1;
   border-radius: 25px;
   cursor:pointer;
+  margin: 0px;
 }
 
 .button2 h4 {
@@ -1199,7 +1176,8 @@ html{scroll-behavior:smooth}
   background-color: #4341B5;
   order: 1;
   flex: 1.8;
-  border-radius: 25px
+  border-radius: 25px;
+  margin: 0px;
 }
 
 .button3 h4, .b3Links {
@@ -1244,6 +1222,15 @@ html{scroll-behavior:smooth}
   cursor: pointer;
 }
 
+.b3LinksBig {
+  width: 100%;
+  height: 0%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+}
+
 .b3Links:hover h4 {
   color: white;
   text-decoration-line: underline;
@@ -1272,6 +1259,7 @@ html{scroll-behavior:smooth}
   flex: 1;
   border-radius: 25px;
   cursor: pointer;
+  margin: 0px;
 }
 
 #b4Text {
@@ -1449,7 +1437,7 @@ html{scroll-behavior:smooth}
 @media all and (max-width: 1000px) {
   /* Basically just mobile support lol */
   .body {
-    padding: 0px;
+    padding: 5px;
   }
   .wrapper {
     flex-flow: column wrap;
@@ -1642,6 +1630,11 @@ html{scroll-behavior:smooth}
   .b3Links {
     height: 0%;
     width: 0%;
+  }
+
+  .b3LinksBig {
+    height: 100%;
+    width: 100%;
   }
 
   .button3 h3 {

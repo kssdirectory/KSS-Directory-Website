@@ -449,7 +449,7 @@ export default function Home() {
         </div>
 
         <div class = "wrapper">
-            <div class = "button0">
+            <Link class = "button0" href = "about">
                 <div class = "overlapContainer">
 
                     <div class = "background">
@@ -488,7 +488,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Link>
             <div class = "verticalButtonWrapper1">
                 <a href = "#mainAnnouncementsSection" class = "button1">
                     
@@ -530,7 +530,7 @@ export default function Home() {
                         </div>
                     </div>
                 </a>
-                <div class = "button2">
+                <Link class = "button2" href = "coming-soon">
                     <div class = "overlapContainer">
 
                         <div class = "background">
@@ -556,7 +556,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             </div>
             <div class = "verticalButtonWrapper2">
                 <div class = "button3">
@@ -572,13 +572,17 @@ export default function Home() {
                                 <div class = "background">
                                     <div class = "overlapContainer">
                                         <div class = "background" id = "b3GradientOpaque"></div>
-                                        <div class = "foreground" id = "b3Gradient"></div>
+                                        <div class = "foreground" id = "b3Gradient">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class = "foreground">
+                                    <Link href = "coming-soon" class = "b3LinksBig">
+                                      <div class = "b3LinksBig"></div>
+                                    </Link>
                                     <div style = {{ "display": "flex", "flex-flow": "column wrap", "width": "100%", "height": "80%", "justify-content": "center", "padding-top": "8%" }}>
                                         <div class = "b3Links"><a href="" target="_blank"><h4>23/24 Semester 1 Timetables</h4></a></div>
-                                        <div class = "b3Links"><a href="" target="_blank"><h4>School Year Calendar</h4></a></div>
+                                        <div class = "b3Links"><a href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Calendar/new%20cal%202023-2024%20updated.pdf" target="_blank"><h4>School Year Calendar</h4></a></div>
                                         <div class = "b3Links"><a href="" target="_blank"><h4>Official KSS Floor Plans</h4></a></div>
                                         <div class = "b3Links"><a href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank"><h4>D2L Minds Online</h4></a></div>
                                         <div class = "b3Links"><a href="https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank"><h4>Aspen (Course Schedules)</h4></a></div>
@@ -591,7 +595,7 @@ export default function Home() {
                     </div>
 
                 </div>
-                <div class = "button4">
+                <Link class = "button4" href = "coming-soon">
                     <div class = "overlapContainer">
 
                         <div class = "background">
@@ -623,7 +627,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
 
