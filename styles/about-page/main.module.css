@@ -46,35 +46,34 @@
     }
 }
 
-
 .body {
-    height: auto;
+    height: 100%;
     width: 100%;
-    overflow: hidden;
     background: #072136;
-    height: 100vh;
+    overflow: scroll;
+    padding-bottom: 40px;
+    position: relative;
 }
 
-.bodyInner {
-    margin: 72px;
+.textContainer {
+    padding-top: 260px;
 }
 
 #starLogo {
+    position: absolute;
+
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 40px;
     width: 200px;
     height: 200px;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-top: 80px;
     animation: 3s cubic-bezier(0.26, 0.02, 0, 0.99) 0s 1 rotateIn;
     scale: 3;
     transform: rotate(-45deg);
     animation-fill-mode: forwards;
 }
-
-
-
-
 
 
 #ring1, #ring2, #ring3, #ring4, #innerStar, .outerStar, #outerStarSVGBox1, #outerStarSVGBox2, #innerRing1, #innerRing2, #innerRing3, #innerRing4, #outerRing1, #outerRing2, #outerRing3, #outerRing4 {
@@ -173,8 +172,7 @@
 #heroTextAbove {
     color: #81ADD4;
     font-size: 20px;
-    margin-top: 300px;
-    margin-bottom: 0px;
+    margin: 0;
 }
 
 #heroText {
@@ -254,7 +252,6 @@
 
     #heroTextAbove {
         font-size: 16px;
-        margin-top: 240px;
     }
 
     #heroText, #heroTextBody {

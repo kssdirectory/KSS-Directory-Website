@@ -1,11 +1,13 @@
-body {
+body, html, #__next {
   padding: 0px;
   margin: 0px;
+  height: 100%;
 }
 
 .body {
   /* just adding padding to the whole body */
   padding: 10px;
+  padding-bottom: 0;
 }
 
 /* font family stuff */
