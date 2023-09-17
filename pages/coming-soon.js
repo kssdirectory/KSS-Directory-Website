@@ -7,7 +7,7 @@ function ComingSoonPage() {
     return (
         <>
             <Head>
-                <title>KSS Directory</title>
+                <title>Coming soon!</title>
 
                 <meta name="description" content="KSS Directory is a student-run resource repository for Kingston Secondary School, where you can easily access a complete announcement archive, alongside a plethora of other student resources! Made by Matthew Kong." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -483,7 +483,7 @@ export default function Home() {
                                 <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
                                 <div id = "b0Text">
                                   <img src = "svg_assets/compass_logo_vector.svg" id = "b0CompassLogo"/>
-                                  <h4 style = {{ "color": "white" }}>KSS Directory is a student-run resource repository for Kingston Secondary School! Scroll down to see a full announcement archive, or click on one of the buttons on the right to access the plethora of other KSS resources.</h4>
+                                  <h4 style = {{ "color": "white" }}>KSS Directory is a student-run resource repository for Kingston Secondary School! Scroll down to see a full announcement archive, or click on one of the buttons on the right to access the plethora of other KSS resources. Website made by Matthew Kong.</h4>
                                 </div>
                             </div>
                         </div>
@@ -582,7 +582,7 @@ export default function Home() {
                                       <div class = "b3LinksBig"></div>
                                     </Link>
                                     <div style = {{ "display": "flex", "flex-flow": "column wrap", "width": "100%", "height": "80%", "justify-content": "center", "padding-top": "8%" }}>
-                                        <div class = "b3Links"><a href="" target="_blank"><h4>23/24 Semester 1 Timetables</h4></a></div>
+                                        <div class = "b3Links"><a href="https://outlook.office365.com/owa/calendar/KCVIStudentServices1@limestoneschools.onmicrosoft.com/bookings/" target="_blank"><h4>Student Services</h4></a></div>
                                         <div class = "b3Links"><a href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Calendar/new%20cal%202023-2024%20updated.pdf" target="_blank"><h4>School Year Calendar</h4></a></div>
                                         <div class = "b3Links"><a href="" target="_blank"><h4>Official KSS Floor Plans</h4></a></div>
                                         <div class = "b3Links"><a href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank"><h4>D2L Minds Online</h4></a></div>

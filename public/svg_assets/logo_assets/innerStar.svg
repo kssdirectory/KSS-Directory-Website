@@ -1,20 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 257.44 257.44">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #fff;
-      }
-
-      .cls-2 {
-        fill: none;
-      }
-    </style>
-  </defs>
-  <g id="Layer_4" data-name="Layer 4">
-    <g>
-      <rect class="cls-2" width="257.44" height="257.44"/>
-      <polygon class="cls-1" points="141.47 134.65 192.14 122.36 139.98 120.27 146.53 106.88 134.65 115.97 122.36 65.3 120.27 117.46 106.89 110.92 115.97 122.8 65.3 135.08 117.46 137.17 110.92 150.56 122.8 141.47 135.08 192.14 137.17 139.98 150.56 146.53 141.47 134.65"/>
+<svg data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 257.44 257.44">
+    <g data-name="Layer 4">
+        <path style="fill:none" d="M0 0h257.44v257.44H0z"/>
+        <path style="fill:#fff" d="m141.47 134.65 50.67-12.29-52.16-2.09 6.55-13.39-11.88 9.09-12.29-50.67-2.09 52.16-13.38-6.54 9.08 11.88-50.67 12.28 52.16 2.09-6.54 13.39 11.88-9.09 12.28 50.67 2.09-52.16 13.39 6.55-9.09-11.88z"/>
     </g>
-  </g>
 </svg>

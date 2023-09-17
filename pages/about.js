@@ -8,6 +8,12 @@ import main from '../styles/about-page/main.module.css'
 function AboutPage() {
     return (
       <>
+        <Head>
+            <title>About KSS Directory</title>
+            <meta name="description" content="KSS Directory is a student-run resource repository for Kingston Secondary School, where you can easily access a complete announcement archive, alongside a plethora of other student resources! Made by Matthew Kong." />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="icon" sizes="76x76" href="static/compassLogo.ico" />
+        </Head>
         <div className = {main.body}>
           <div id = {main.starLogo}>
             <img src = "svg_assets/logo_assets/innerStar.svg" id = {main.innerStar}/>
@@ -38,7 +44,7 @@ function AboutPage() {
           <div className={main.textContainer}>
             <p id = {main.heroTextAbove}>Hey, traveler!</p>
             <h1 id = {main.heroText}>Welcome to the KSS Directory!</h1>
-            <p id = {main.heroTextBody}>KSS Directory is a student-run resource repository for Kingston Secondary School! We aim to catalogue all of the events happening at KSS, and serve as a convenient and organized archive. Daily announcements and many school/studying resources are hosted here, all in one place!</p>
+            <p id = {main.heroTextBody}>KSS Directory is a student-run resource repository for Kingston Secondary School! We aim to catalogue all of the events happening at KSS, and serve as a convenient and organized archive. Daily announcements and many school/studying resources are hosted here, all in one place! Website made by Matthew Kong.</p>
             <div id = {main.heroButtonSection}>
               <div>
                 <a href = "https://discord.gg/BJtVbtqdDY" id = {main.discordButton}>
