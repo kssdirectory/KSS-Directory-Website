@@ -275,6 +275,16 @@ body, html, #__next {
       padding-bottom: 8px;
       animation: 0.25s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 fadeInMoveUp;
       margin: 10px;
+      z-index: 1;
+    }
+
+    .announcementPopupModalBGClick {
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer
     }
 
     #announcementPopupModalAnceBrief {

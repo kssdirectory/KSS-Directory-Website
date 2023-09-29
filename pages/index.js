@@ -31,7 +31,7 @@ const bgColour = "#072136"
 // This is the URL for the server that the website sends HTTP requests to.
 // URL of the current web server is "https://a23b-35-227-86-218.ngrok-free.app"
 // Local URL of webServer.py is obviously http://127.0.0.1:8000
-const webServerURL = "https://a23b-35-227-86-218.ngrok-free.app"
+const webServerURL = "http://127.0.0.1:8000"
 
 const loadMore = "loading"
 export default function Home() {
@@ -396,6 +396,8 @@ export default function Home() {
               
             >
               <div class = "announcementPopupModalBG">
+                <div class = "announcementPopupModalBGClick" onClick = {closeModal}>
+                </div>
                 <div class = "announcementPopupModal">
                   <div class = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
                     <div class = "background" style = {{"background": modalColour}} id = "announcementPopupModalColourBG"></div>
@@ -621,8 +623,8 @@ export default function Home() {
                                 </div>
                                 <div class = "foreground">
                                   <div id = "b4Text">
-                                    <h3>SCHOOLWORK DATABASES</h3>
-                                    <h4>A database of resources to help with your schoolwork!</h4>
+                                    <h3>OTHER RESOURCES</h3>
+                                    <h4>A database of other resources to help with your school life!</h4>
                                   </div>
                                 </div>
                             </div>
