@@ -185,8 +185,8 @@ body, html, #__next {
     border: 1px solid #626262;
     flex-shrink: 0;
     padding:30px;
-    margin-bottom: 64px;
-    margin-top: 64px;
+    margin-bottom: 32px;
+    margin-top: 32px;
     animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft;
   }
 
@@ -201,7 +201,7 @@ body, html, #__next {
   .anceType {
     /* The class for each announcement role type (e.g., clubs) */
     color: #A9A9A9;
-    margin-top: 3rem;
+    margin-top: 30px;
     margin-bottom: 1rem;
     font-family: Outfit;
     font-weight: 100;
