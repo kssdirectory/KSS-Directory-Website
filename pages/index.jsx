@@ -250,7 +250,9 @@ export default function Home() {
         // needed because anceList always has a boolean variable that tells the website that if it's the last batch of not.
 
         // 'value' is originally a string, so this converts it back into a dictionary
-        const valueDict = JSON.parse(value)
+        // note: i'm not sure why, but it's no longer a string? so i just set valueDict equal to value straight up
+        // great code yes.
+        const valueDict = value
 
         // anceTags is a list of all the announcement categories
         const anceTags = []
@@ -321,7 +323,14 @@ export default function Home() {
                     const specificAnce = []
                     const specificAnceBrief = []
                     // announcement tag, e.g., graphic design club
-                    specificAnceBrief.push(<div class="anceTag" key = {k + "anceSorted" + key2}>{indivAnceSort[i][k][1]}</div>)
+
+                    if (indivAnceSort[i][k][4] !== "none") {
+
+                      specificAnceBrief.push(<div class="anceTag" key = {k + "anceSorted" + key2} style = {{"background": hslToHex(indivAnceSort[i][k][4], 40, 55)}}>{indivAnceSort[i][k][1]}</div>)
+                    } else {
+                      specificAnceBrief.push(<div class="anceTag" key = {k + "anceSorted" + key2} style = {{"background": "#626262"}}>{indivAnceSort[i][k][1]}</div>)
+                    }
+
 
                     // announcement brief description
                     specificAnceBrief.push(<div class="anceBrief" key = {k + " " + i + "anceBrief" + key2}>{indivAnceSort[i][k][2]}</div>)
@@ -330,13 +339,14 @@ export default function Home() {
                     specificAnce.push(<div class="container" key = {k + " " + i +"specificAnce" + key2}>{specificAnceBrief}</div>)
 
                     // announcement detailed description
-                    if (indivAnceSort[i][k][3].length > 86) {
-                      // just like with the announcement brief description, this checks if the detailed description is too long
+                    // if (indivAnceSort[i][k][3].length > 86) {
+                    //   // just like with the announcement brief description, this checks if the detailed description is too long
 
-                      specificAnce.push(<div class="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3].slice(0, 86) + "..."}</div>)
-                    } else {
-                      specificAnce.push(<div class="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3]}</div>)
-                    }
+                    //   specificAnce.push(<div class="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3].slice(0, 86) + "..."}</div>)
+                    // } else {
+                    //   specificAnce.push(<div class="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3]}</div>)
+                    // }
+                    specificAnce.push(<div class="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3]}</div>)
 
                     // All of the parts of a specific individual announcement are pushed (as React objects) to this list
                     // It is given the CSS class called "anceSection" so that the hover effect can work

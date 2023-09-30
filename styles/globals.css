@@ -211,7 +211,6 @@ body, html, #__next {
     /* The class for each announcement ping/role (e.g. Graphic Design Club) */
     float: left;
     border: 1px solid #A9A9A9;
-    background-color: #626262;
     color: white;
     border-radius: 3rem;
     font-size: 75%;
@@ -236,7 +235,7 @@ body, html, #__next {
 
   .anceDtls {
     /* The class for each announcement detailed description */
-    color: #626262;
+    color: #A9A9A9;
     font-family: Outfit;
     font-weight: 100;
   }
@@ -250,7 +249,7 @@ body, html, #__next {
       border-radius: 1rem;
       transition-duration: 0.3s;
       transition-timing-function: cubic-bezier(0, 0, 0.13, 0.98);
-      opacity: 69%;
+      /* opacity: 69%; */
     }
 
     .anceSection:hover {
@@ -258,7 +257,7 @@ body, html, #__next {
       border: 1px solid #A9A9A9;
       border-radius: 1rem;
       opacity: 100%;
-      box-shadow: 0 16px 64px #2878be3b;
+      box-shadow: 0 16px 64px rgba(188, 188, 188, 0.473);
       cursor:pointer;
     }
 
