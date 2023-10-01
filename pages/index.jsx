@@ -325,10 +325,10 @@ export default function Home() {
                     // announcement tag, e.g., graphic design club
 
                     if (indivAnceSort[i][k][4] !== "none") {
-
-                      specificAnceBrief.push(<div class="anceTag" key = {k + "anceSorted" + key2} style = {{"background": hslToHex(indivAnceSort[i][k][4], 40, 55)}}>{indivAnceSort[i][k][1]}</div>)
+                      let indivAnceColour = hslToHex(indivAnceSort[i][k][4], 80, 40)
+                      specificAnceBrief.push(<div class="anceTag" key = {k + "anceSorted" + key2} style = {{"background": indivAnceColour + 10, "border": "1px solid " + indivAnceColour, "color": indivAnceColour}}>{indivAnceSort[i][k][1]}</div>)
                     } else {
-                      specificAnceBrief.push(<div class="anceTag" key = {k + "anceSorted" + key2} style = {{"background": "#626262"}}>{indivAnceSort[i][k][1]}</div>)
+                      specificAnceBrief.push(<div class="anceTag" key = {k + "anceSorted" + key2} style = {{"background": "#62626210", "border": "1px solid #626262", "color": "#626262"}}>{indivAnceSort[i][k][1]}</div>)
                     }
 
 

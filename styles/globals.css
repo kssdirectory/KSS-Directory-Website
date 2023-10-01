@@ -210,7 +210,6 @@ body, html, #__next {
   .anceTag {
     /* The class for each announcement ping/role (e.g. Graphic Design Club) */
     float: left;
-    border: 1px solid #A9A9A9;
     color: white;
     border-radius: 3rem;
     font-size: 75%;
@@ -249,7 +248,6 @@ body, html, #__next {
       border-radius: 1rem;
       transition-duration: 0.3s;
       transition-timing-function: cubic-bezier(0, 0, 0.13, 0.98);
-      /* opacity: 69%; */
     }
 
     .anceSection:hover {
