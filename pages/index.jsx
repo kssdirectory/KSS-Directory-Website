@@ -393,292 +393,295 @@ export default function Home() {
         <link rel="icon" sizes="76x76" href="static/compassLogo.ico" />
 
       </Head>
-
-      <main class="body">
+      <body>
         <Analytics />
-        <div>
-            <Modal
-              isOpen={modalIsOpen}
-              onAfterOpen={afterOpenModal}
-              onRequestClose={closeModal}
-              className="announcementPopupModalBG"
-              overlayClassName="popupOverlay"
-              
-            >
-              <div class = "announcementPopupModalBG">
-                <div class = "announcementPopupModalBGClick" onClick = {closeModal}>
-                </div>
-                <div class = "announcementPopupModal">
-                  <div class = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
-                    <div class = "background" style = {{"background": modalColour}} id = "announcementPopupModalColourBG"></div>
-                    <div class = "foreground" id = "announcementPopupModalColourFG">
-                      <div class = "overlapContainer" style = {{"width": "100%"}}>
-                        <div class = "background">
-                          <h3 id = "announcementPopupModalTagBG">{modalCont[1][1]}</h3>
-                        </div>
-                        <div class = "foreground">
-                          <div class = "overlapContainer">
-                            <div class = "background">
-                              <div id = "announcementPopupModalTagFlexBox">
-                                <div class = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
-                                <div id = "announcementPopupModalTag">
-                                  <h3 id = "announcementPopupModalTagText">{modalCont[1][1]}</h3>
+        {/* i love how i have a <body> tag and then a <main class="body"> instead of just editing the <body> tag properties themselves */}
+        {/* great coding practices */}
+        <main class="body">
+          <div>
+              <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                className="announcementPopupModalBG"
+                overlayClassName="popupOverlay"
+                
+              >
+                <div class = "announcementPopupModalBG">
+                  <div class = "announcementPopupModalBGClick" onClick = {closeModal}>
+                  </div>
+                  <div class = "announcementPopupModal">
+                    <div class = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
+                      <div class = "background" style = {{"background": modalColour}} id = "announcementPopupModalColourBG"></div>
+                      <div class = "foreground" id = "announcementPopupModalColourFG">
+                        <div class = "overlapContainer" style = {{"width": "100%"}}>
+                          <div class = "background">
+                            <h3 id = "announcementPopupModalTagBG">{modalCont[1][1]}</h3>
+                          </div>
+                          <div class = "foreground">
+                            <div class = "overlapContainer">
+                              <div class = "background">
+                                <div id = "announcementPopupModalTagFlexBox">
+                                  <div class = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
+                                  <div id = "announcementPopupModalTag">
+                                    <h3 id = "announcementPopupModalTagText">{modalCont[1][1]}</h3>
+                                  </div>
+                                  <div class = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
                                 </div>
-                                <div class = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
+                              </div>
+                              <div class = "foreground">
+                                <button onClick={closeModal} id = "announcementPopupModalXIconBG">
+                                  <img src = "svg_assets/x_icon.svg" id = "announcementPopupModalXIcon"/>
+                                </button>
                               </div>
                             </div>
-                            <div class = "foreground">
-                              <button onClick={closeModal} id = "announcementPopupModalXIconBG">
-                                <img src = "svg_assets/x_icon.svg" id = "announcementPopupModalXIcon"/>
-                              </button>
-                            </div>
-                          </div>
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
-                    <div class = "background" id = "announcementPopupModalColourBelowBG" style = {{"background": modalColour}}></div>
-                    <div class = "foreground" id = "announcementPopupModalColourBelowFG"></div>
-                  </div>
-                  <div style = {{"transform": "translateY(-48px)"}}>
-                    <h2 id = "announcementPopupModalAnceBrief">{modalCont[1][2]}</h2>
-                    <h2 id = "announcementPopupModalAnceDtls">{modalCont[1][3]}</h2>
-                    <div id = "clubDtlsBorder">
-                      <h2 id = "clubDtlsLegend">Club/event details</h2>
-                      <h2 id = "clubDtlsName">{modalCont[1][1]}</h2>
-                      {clubDtlsDesc}
-                      <div id = "clubDtlsFlexBox">
-                        {clubDtlsFlex}
-                      </div>
-                      {socialsListBG}
-                    </div> 
-                  </div>
-                </div>
-              </div>
-              
-            </Modal>
-        </div>
-
-        <div class = "wrapper">
-            <Link class = "button0" href = "about">
-                <div class = "overlapContainer">
-
-                    <div class = "background">
-                        <div style = {{ "position": "absolute", "overflow": "hidden", "width": "100%", "height": "100%" }}>
-                            <div id = "heroButtonText1">KSS
-                                <span class = "heroButtonTextOutline"> DIRECTORY KSS DIRECTORY</span>
-                            </div>
-                            <div id = "heroButtonText2">
-                                <span class = "heroButtonTextOutline"> KSS DIRECTORY KSS </span>
-                                DIRECT
-                                <span class = "heroButtonTextOutline">ORY KSS DIRECTORY</span>
-                            </div>
-                            <div id = "heroButtonText3">
-                                <span class = "heroButtonTextOutline">KSS DIRECTORY KSS DIRECT</span>
-                                ORY
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class = "foreground">
-                        <div class = "overlapContainer">
-                            <div class = "background">
-                                <div class = "overlapContainer">
-                                    <div class = "background" id = "b0GradientOpaque"></div>
-                                    <div class = "foreground" id = "b0Gradient"></div>
-                                </div>
-                            </div>
-                            <div class = "foreground">
-                                <h5>Learn more!</h5>
-                                <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
-                                <div id = "b0Text">
-                                  <img src = "svg_assets/compass_logo_vector.svg" id = "b0CompassLogo"/>
-                                  <h4 style = {{ "color": "white" }}>KSS Directory is a student-run resource repository for Kingston Secondary School! Scroll down to see a full announcement archive, or click on one of the buttons on the right to access the plethora of other KSS resources. Website made by Matthew Kong.</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Link>
-            <div class = "verticalButtonWrapper1">
-                <a href = "#mainAnnouncementsSection" class = "button1">
-                    
-                    <div class = "overlapContainer">
-                        
-                        <div class = "background">
-                            <div id = "b1Ance1">
-                                <div class = "b1AnceTag"></div>
-                                <div id = "b1AnceBrief1"></div>
-                                <div id = "b1AnceDetails1"></div>
-                            </div>
-                            <div id = "b1Ance2">
-                                <div class = "b1AnceTag"></div>
-                                <div id = "b1AnceBrief2"></div>
-                                <div id = "b1AnceDetails2"></div>
-                            </div>
-                            <div id = "b1Ance3">
-                                <div class = "b1AnceTag"></div>
-                                <div id = "b1AnceBrief3"></div>
-                                <div id = "b1AnceDetails3"></div>
-                            </div>
-                        </div>
-
-                        <div class = "foreground">
-                            <div class = "overlapContainer">
-                                <div class = "background">
-                                    <div class = "overlapContainer">
-                                        <div class = "background" id = "b1GradientOpaque"></div>
-                                        <div class = "foreground" id = "b1Gradient"></div>
-                                    </div>
-                                </div>
-                                <div class = "foreground">
-                                  <div id = "b1Text">
-                                    <h3>ANNOUNCEMENTS</h3>
-                                    <h4>Scroll to see a complete archive of KSS announcements!</h4>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <Link class = "button2" href = "coming-soon">
-                    <div class = "overlapContainer">
-
-                        <div class = "background">
-                            <div style = {{ "position": "absolute", "width": "100%", "height": "100%", "overflow": "hidden", "border-radius": "25px" }}>
-                                <img src = "svg_assets/b2Map.svg" id = "b2Map"/>
-                            </div>
-                        </div>
-                        <div class = "foreground">
-                            <div class = "overlapContainer">
-                                <div class = "background">
-                                    <div class = "overlapContainer">
-                                        <div class = "background" id = "b2GradientOpaque"></div>
-                                        <div class = "foreground" id = "b2Gradient"></div>
-                                    </div>
-                                </div>
-                                <div class = "foreground">
-                                    <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
-                                    <div id = "b2Text">
-                                      <h3>INTERACTIVE MAP</h3>
-                                      <h4>Click to view an interactive map of KSS and its surrounding area!</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Link>
-            </div>
-            <div class = "verticalButtonWrapper2">
-                <div class = "button3">
-
-                    <div class = "overlapContainer">
-
-                        <div class = "background">
-                            <img src = "svg_assets/kssLogo.svg" id = "kssLogo"/>
-                        </div>
-
-                        <div class = "foreground">
-                            <div class = "overlapContainer">
-                                <div class = "background">
-                                    <div class = "overlapContainer">
-                                        <div class = "background" id = "b3GradientOpaque"></div>
-                                        <div class = "foreground" id = "b3Gradient">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class = "foreground">
-                                    <Link href = "coming-soon" class = "b3LinksBig">
-                                      <div class = "b3LinksBig"></div>
-                                    </Link>
-                                    <div style = {{ "display": "flex", "flex-flow": "column wrap", "width": "100%", "height": "80%", "justify-content": "center", "padding-top": "8%" }}>
-                                        <div class = "b3Links"><a href="https://outlook.office365.com/owa/calendar/KCVIStudentServices1@limestoneschools.onmicrosoft.com/bookings/" target="_blank"><h4>Student Services</h4></a></div>
-                                        <div class = "b3Links"><a href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Calendar/new%20cal%202023-2024%20updated.pdf" target="_blank"><h4>School Year Calendar</h4></a></div>
-                                        <div class = "b3Links"><a href="" target="_blank"><h4>Official KSS Floor Plans</h4></a></div>
-                                        <div class = "b3Links"><a href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank"><h4>D2L Minds Online</h4></a></div>
-                                        <div class = "b3Links"><a href="https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank"><h4>Aspen (Course Schedules)</h4></a></div>
-
-                                    </div>
-                                    <h3>OFFICIAL KSS RESOURCES</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <Link class = "button4" href = "coming-soon">
-                    <div class = "overlapContainer">
-
-                        <div class = "background">
-                            <div class = "overlapContainer">
-                                <div class = "background">
-                                    <img src = "svg_assets/b4Folder.svg" id = "b4Folder"/>
-                                </div>
-                                <div class = "foreground">
-                                    <img src = "svg_assets/b4Arrow.svg" id = "b4Arrow" />
-                                </div>
-                            </div>
                             
+                          </div>
                         </div>
-
-                        <div class = "foreground">
-                            <div class = "overlapContainer">
-                                <div class = "background">
-                                    <div class = "overlapContainer">
-                                        <div class = "background" id = "b4GradientOpaque"></div>
-                                        <div class = "foreground" id = "b4Gradient"></div>
-                                    </div>
-                                </div>
-                                <div class = "foreground">
-                                  <div id = "b4Text">
-                                    <h3>OTHER RESOURCES</h3>
-                                    <h4>A database of other resources to help with your school life!</h4>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
+                      </div>
                     </div>
-                </Link>
-            </div>
-        </div>
-
-        <div class="container" style = {{"padding-top": "50px"}} id = "mainAnnouncementsSection">
-          {/* Container used to centre the buttons */}
-          {/* Commenting it out because I can't implement the features in time for the start of school... */}
-          {/*
-            <div class="buttonCentre">
-              <div style={{ "width": "34rem", "margin-top": '1.5rem', "margin-bottom": '3rem' }} class="buttonCentre">
-
-                <button class="regularButton" style={{ "margin-left": "0" }}>Date</button>
-
-                <button class="regularButton" id = "searchButton">
-                  <div class="container">
-                    <span id = "searchButtonText">Search</span>
-                    <img src = "svg_assets/searchIcon.svg" class = "searchIcon" />
+                    <div class = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
+                      <div class = "background" id = "announcementPopupModalColourBelowBG" style = {{"background": modalColour}}></div>
+                      <div class = "foreground" id = "announcementPopupModalColourBelowFG"></div>
+                    </div>
+                    <div style = {{"transform": "translateY(-48px)"}}>
+                      <h2 id = "announcementPopupModalAnceBrief">{modalCont[1][2]}</h2>
+                      <h2 id = "announcementPopupModalAnceDtls">{modalCont[1][3]}</h2>
+                      <div id = "clubDtlsBorder">
+                        <h2 id = "clubDtlsLegend">Club/event details</h2>
+                        <h2 id = "clubDtlsName">{modalCont[1][1]}</h2>
+                        {clubDtlsDesc}
+                        <div id = "clubDtlsFlexBox">
+                          {clubDtlsFlex}
+                        </div>
+                        {socialsListBG}
+                      </div> 
+                    </div>
                   </div>
-                </button>
-
-                <button class="regularButton" style={{ "margin-right": "0" }}>Club</button>
-              </div>
-            </div>
-          */}
-        </div>
-
-        {/* this is to call the anceCards variable that was set before */}
-        {anceCards}
-
-        <div class="container">
-          {/* container class used here so that the "load more" button can be centred horizontally */}
-          <div class="buttonCentre">
-            {/* this is to call the button was set before */}
-            {/* needs to be a React compeonent because it changes depending on if there are any announcements available to load. */}
-            {loadMore}
+                </div>
+                
+              </Modal>
           </div>
-        </div>
 
-      </main>
+          <div class = "wrapper">
+              <Link class = "button0" href = "about">
+                  <div class = "overlapContainer">
+
+                      <div class = "background">
+                          <div style = {{ "position": "absolute", "overflow": "hidden", "width": "100%", "height": "100%" }}>
+                              <div id = "heroButtonText1">KSS
+                                  <span class = "heroButtonTextOutline"> DIRECTORY KSS DIRECTORY</span>
+                              </div>
+                              <div id = "heroButtonText2">
+                                  <span class = "heroButtonTextOutline"> KSS DIRECTORY KSS </span>
+                                  DIRECT
+                                  <span class = "heroButtonTextOutline">ORY KSS DIRECTORY</span>
+                              </div>
+                              <div id = "heroButtonText3">
+                                  <span class = "heroButtonTextOutline">KSS DIRECTORY KSS DIRECT</span>
+                                  ORY
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class = "foreground">
+                          <div class = "overlapContainer">
+                              <div class = "background">
+                                  <div class = "overlapContainer">
+                                      <div class = "background" id = "b0GradientOpaque"></div>
+                                      <div class = "foreground" id = "b0Gradient"></div>
+                                  </div>
+                              </div>
+                              <div class = "foreground">
+                                  <h5>Learn more!</h5>
+                                  <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
+                                  <div id = "b0Text">
+                                    <img src = "svg_assets/compass_logo_vector.svg" id = "b0CompassLogo"/>
+                                    <h4 style = {{ "color": "white" }}>KSS Directory is a student-run resource repository for Kingston Secondary School! Scroll down to see a full announcement archive, or click on one of the buttons on the right to access the plethora of other KSS resources. Website made by Matthew Kong.</h4>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </Link>
+              <div class = "verticalButtonWrapper1">
+                  <a href = "#mainAnnouncementsSection" class = "button1">
+                      
+                      <div class = "overlapContainer">
+                          
+                          <div class = "background">
+                              <div id = "b1Ance1">
+                                  <div class = "b1AnceTag"></div>
+                                  <div id = "b1AnceBrief1"></div>
+                                  <div id = "b1AnceDetails1"></div>
+                              </div>
+                              <div id = "b1Ance2">
+                                  <div class = "b1AnceTag"></div>
+                                  <div id = "b1AnceBrief2"></div>
+                                  <div id = "b1AnceDetails2"></div>
+                              </div>
+                              <div id = "b1Ance3">
+                                  <div class = "b1AnceTag"></div>
+                                  <div id = "b1AnceBrief3"></div>
+                                  <div id = "b1AnceDetails3"></div>
+                              </div>
+                          </div>
+
+                          <div class = "foreground">
+                              <div class = "overlapContainer">
+                                  <div class = "background">
+                                      <div class = "overlapContainer">
+                                          <div class = "background" id = "b1GradientOpaque"></div>
+                                          <div class = "foreground" id = "b1Gradient"></div>
+                                      </div>
+                                  </div>
+                                  <div class = "foreground">
+                                    <div id = "b1Text">
+                                      <h3>ANNOUNCEMENTS</h3>
+                                      <h4>Scroll to see a complete archive of KSS announcements!</h4>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+                  <Link class = "button2" href = "coming-soon">
+                      <div class = "overlapContainer">
+
+                          <div class = "background">
+                              <div style = {{ "position": "absolute", "width": "100%", "height": "100%", "overflow": "hidden", "border-radius": "25px" }}>
+                                  <img src = "svg_assets/b2Map.svg" id = "b2Map"/>
+                              </div>
+                          </div>
+                          <div class = "foreground">
+                              <div class = "overlapContainer">
+                                  <div class = "background">
+                                      <div class = "overlapContainer">
+                                          <div class = "background" id = "b2GradientOpaque"></div>
+                                          <div class = "foreground" id = "b2Gradient"></div>
+                                      </div>
+                                  </div>
+                                  <div class = "foreground">
+                                      <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
+                                      <div id = "b2Text">
+                                        <h3>INTERACTIVE MAP</h3>
+                                        <h4>Click to view an interactive map of KSS and its surrounding area!</h4>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </Link>
+              </div>
+              <div class = "verticalButtonWrapper2">
+                  <div class = "button3">
+
+                      <div class = "overlapContainer">
+
+                          <div class = "background">
+                              <img src = "svg_assets/kssLogo.svg" id = "kssLogo"/>
+                          </div>
+
+                          <div class = "foreground">
+                              <div class = "overlapContainer">
+                                  <div class = "background">
+                                      <div class = "overlapContainer">
+                                          <div class = "background" id = "b3GradientOpaque"></div>
+                                          <div class = "foreground" id = "b3Gradient">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class = "foreground">
+                                      <Link href = "coming-soon" class = "b3LinksBig">
+                                        <div class = "b3LinksBig"></div>
+                                      </Link>
+                                      <div style = {{ "display": "flex", "flex-flow": "column wrap", "width": "100%", "height": "80%", "justify-content": "center", "padding-top": "8%" }}>
+                                          <div class = "b3Links"><a href="https://outlook.office365.com/owa/calendar/KCVIStudentServices1@limestoneschools.onmicrosoft.com/bookings/" target="_blank"><h4>Student Services</h4></a></div>
+                                          <div class = "b3Links"><a href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Calendar/new%20cal%202023-2024%20updated.pdf" target="_blank"><h4>School Year Calendar</h4></a></div>
+                                          <div class = "b3Links"><a href="" target="_blank"><h4>Official KSS Floor Plans</h4></a></div>
+                                          <div class = "b3Links"><a href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank"><h4>D2L Minds Online</h4></a></div>
+                                          <div class = "b3Links"><a href="https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank"><h4>Aspen (Course Schedules)</h4></a></div>
+
+                                      </div>
+                                      <h3>OFFICIAL KSS RESOURCES</h3>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+                  <Link class = "button4" href = "coming-soon">
+                      <div class = "overlapContainer">
+
+                          <div class = "background">
+                              <div class = "overlapContainer">
+                                  <div class = "background">
+                                      <img src = "svg_assets/b4Folder.svg" id = "b4Folder"/>
+                                  </div>
+                                  <div class = "foreground">
+                                      <img src = "svg_assets/b4Arrow.svg" id = "b4Arrow" />
+                                  </div>
+                              </div>
+                              
+                          </div>
+
+                          <div class = "foreground">
+                              <div class = "overlapContainer">
+                                  <div class = "background">
+                                      <div class = "overlapContainer">
+                                          <div class = "background" id = "b4GradientOpaque"></div>
+                                          <div class = "foreground" id = "b4Gradient"></div>
+                                      </div>
+                                  </div>
+                                  <div class = "foreground">
+                                    <div id = "b4Text">
+                                      <h3>OTHER RESOURCES</h3>
+                                      <h4>A database of other resources to help with your school life!</h4>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </Link>
+              </div>
+          </div>
+
+          <div class="container" style = {{"padding-top": "50px"}} id = "mainAnnouncementsSection">
+            {/* Container used to centre the buttons */}
+            {/* Commenting it out because I can't implement the features in time for the start of school... */}
+            {/*
+              <div class="buttonCentre">
+                <div style={{ "width": "34rem", "margin-top": '1.5rem', "margin-bottom": '3rem' }} class="buttonCentre">
+
+                  <button class="regularButton" style={{ "margin-left": "0" }}>Date</button>
+
+                  <button class="regularButton" id = "searchButton">
+                    <div class="container">
+                      <span id = "searchButtonText">Search</span>
+                      <img src = "svg_assets/searchIcon.svg" class = "searchIcon" />
+                    </div>
+                  </button>
+
+                  <button class="regularButton" style={{ "margin-right": "0" }}>Club</button>
+                </div>
+              </div>
+            */}
+          </div>
+
+          {/* this is to call the anceCards variable that was set before */}
+          {anceCards}
+
+          <div class="container">
+            {/* container class used here so that the "load more" button can be centred horizontally */}
+            <div class="buttonCentre">
+              {/* this is to call the button was set before */}
+              {/* needs to be a React compeonent because it changes depending on if there are any announcements available to load. */}
+              {loadMore}
+            </div>
+          </div>
+
+        </main>
+      </body>
     </>
   )
 
