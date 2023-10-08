@@ -4,6 +4,19 @@ body, html, #__next {
   height: 100%;
 }
 
+:root {
+  /* reused colours */
+  --dark-gray: #626262;
+  --light-gray: #A1A1A1;
+  --blue-link: #2878BE;
+
+  --b0BG: #072136;
+  --b1BG: #113451;
+  --b2BG: #134287;
+  --b3BG: #4341B5;
+  --b4BG: #5E4CCD;
+}
+
 .body {
   /* just adding padding to the whole body */
   padding: 10px;
@@ -99,7 +112,7 @@ body, html, #__next {
 /* text styles */
 
   b {
-    color: #626262;
+    color: var(--dark-gray);
     font-family: Outfit;
     font-weight: 200;
   }
@@ -112,16 +125,8 @@ body, html, #__next {
     font-size:3rem;
   }
 
-  .h1-highlight {
-    color: #2878BE;
-    font-family: Outfit;
-    font-weight: bold;
-    border-radius: 25px;
-    font-size:3rem;
-  }
-
   p {
-    color: #A1A1A1;
+    color: var(--light-gray);
     font-family: Outfit;
     font-weight: 100;
     line-height: 125%;
@@ -146,7 +151,7 @@ body, html, #__next {
     font-family: Outfit;
     font-weight: 100;
     font-size: 18px;
-    color: #A1A1A1;
+    color: var(--light-gray);
     margin: 0px;
   }
 
@@ -156,7 +161,7 @@ body, html, #__next {
     height: 10rem;
     font-family: Outfit;
     font-weight: 200;
-    color:#626262;
+    color:var(--dark-gray);
     cursor:pointer;
     transition-duration: 0.3s;
     transition-timing-function: cubic-bezier(0.56, 0.01, 0, 0.99);
@@ -166,12 +171,12 @@ body, html, #__next {
   }
 
   a:hover {
-    color:#2878BE;
+    color:var(--blue-link);
     text-decoration:underline;
   }
 
   a:active {
-    color:#626262;
+    color:var(--dark-gray);
   }
 
 
@@ -182,7 +187,7 @@ body, html, #__next {
   .anceCards {
     /* The class for each full announcement card */
     border-radius: 16px;
-    border: 1px solid #626262;
+    border: 1px solid var(--dark-gray);
     flex-shrink: 0;
     padding:30px;
     margin-bottom: 32px;
@@ -200,7 +205,7 @@ body, html, #__next {
 
   .anceType {
     /* The class for each announcement role type (e.g., clubs) */
-    color: #A9A9A9;
+    color: var(--light-gray);
     margin-top: 30px;
     margin-bottom: 1rem;
     font-family: Outfit;
@@ -225,7 +230,7 @@ body, html, #__next {
 
   .anceBrief {
     /* The class for each announcement brief description */
-    color: #626262;
+    color: var(--dark-gray);
     font-family: Outfit;
     font-weight: bold;
     white-space: normal;
@@ -234,7 +239,7 @@ body, html, #__next {
 
   .anceDtls {
     /* The class for each announcement detailed description */
-    color: #A9A9A9;
+    color: var(--light-gray);
     font-family: Outfit;
     font-weight: 100;
   }
@@ -252,7 +257,7 @@ body, html, #__next {
 
     .anceSection:hover {
       transform: translateX(1rem);
-      border: 1px solid #A9A9A9;
+      border: 1px solid var(--light-gray);
       border-radius: 1rem;
       opacity: 100%;
       box-shadow: 0 16px 64px rgba(188, 188, 188, 0.473);
@@ -265,7 +270,7 @@ body, html, #__next {
 
     .announcementPopupModal {
       outline: 0;
-      background: #FFFFFF;
+      background: white;
       box-shadow: 0px 58px 129px 0px rgba(0, 0, 0, 0.25);
       border-radius: 30px;
       padding:32px;
@@ -287,13 +292,13 @@ body, html, #__next {
     #announcementPopupModalAnceBrief {
       margin-top: 12px;
       margin-bottom: 8px;
-      color: #626262;
+      color: var(--dark-gray);
       font-weight: 200;
       font-size: 18px;
     }
 
     #announcementPopupModalAnceDtls {
-      color: #A1A1A1;
+      color: var(--light-gray);
       margin-top: 0px;
       margin-bottom: 32px;
       font-weight: 100;
@@ -368,7 +373,7 @@ body, html, #__next {
 
     #announcementPopupModalTagText {
       padding: 0px;
-      color: #A1A1A1;
+      color: var(--light-gray);
       font-size: 14px;
     }
 
@@ -400,7 +405,7 @@ body, html, #__next {
 
     #clubDtlsBorder {
       border-radius: 16px;
-      border: 1px solid #A1A1A1;
+      border: 1px solid var(--light-gray);
       padding: 24px;
     }
     
@@ -419,14 +424,14 @@ body, html, #__next {
     #clubDtlsLegend {
       position: absolute;
       transform: translate(-8px, -42px);
-      color: #A1A1A1;
+      color: var(--light-gray);
       font-weight: 100;
       background: white;
       padding: 8px;
     }
 
     #clubDtlsName, #clubDtlsDesc {
-      color: #626262;
+      color: var(--dark-gray);
     }
 
     #clubDtlsDesc {
@@ -447,12 +452,12 @@ body, html, #__next {
     }
 
     .clubDtlsFlexItemTitle {
-      color: #626262;
+      color: var(--dark-gray);
       font-weight: 200;
     }
 
     .clubDtlsFlexItemDtls {
-      color: #626262;
+      color: var(--dark-gray);
       font-weight: 100;
     }
 
@@ -477,7 +482,7 @@ body, html, #__next {
     #socialsListBG, .clubDtlsFlexItemBG {
       background: hsla(0, 0%, 63%, 0.15);
       border-radius: 16px;
-      border: 1px solid #A1A1A1;
+      border: 1px solid var(--light-gray);
     }
 
     .popupOverlay {
@@ -493,7 +498,7 @@ body, html, #__next {
 
   .dateIdentifier-day {
     /* The class for each announcement day (specific to the date-identifier), e.g. WEDNESDAY */
-    color:#626262;
+    color:var(--dark-gray);
     font-family: Outfit;
     font-weight: bold;
     font-size: 2rem;
@@ -502,7 +507,7 @@ body, html, #__next {
 
   .dateIdentifier-date {
     /* The class for each announcement date (specific to the date-identifer), e.g. 10/09/2020 */
-    color:#A9A9A9;
+    color:var(--light-gray);
     font-family: Outfit;
     font-weight:bold;
     font-size: 1rem;
@@ -522,12 +527,12 @@ body, html, #__next {
 
     .regularButton {
       background-color: white;
-      border: 1px solid #626262;
+      border: 1px solid var(--dark-gray);
       border-radius: 1rem;
       font-family: Outfit;
       font-weight: 100;
       font-size: 115%;
-      color: #626262;
+      color: var(--dark-gray);
       padding-left: 1.5rem;
       padding-right: 1.5rem;
       padding-top: 0.7rem;
@@ -538,7 +543,7 @@ body, html, #__next {
       cursor: pointer;
       transition-duration: 0.25s;
       transition-timing-function: cubic-bezier(0.06, 0.7, 0, 1.01);
-      box-shadow: 0 0.3rem 0px #626262;
+      box-shadow: 0 0.3rem 0px var(--dark-gray);
       margin-left: auto;
       margin-right: auto;
     }
@@ -546,19 +551,19 @@ body, html, #__next {
     .regularButton:hover {
       transform: translateY(-0.3rem);
       background-color: #f2f2f2;
-      box-shadow: 0 0.3rem 0px #2878BE;
+      box-shadow: 0 0.3rem 0px var(--blue-link);
     }
 
     .regularButton:active {
       transform: translateY(0.3rem);
-      box-shadow: 0 0rem 0px #2878BE;
+      box-shadow: 0 0rem 0px var(--blue-link);
     }
   
   /* the "load more" button styles */
 
     .loadMore {
       background-color: white;
-      border: 0px solid #626262;
+      border: 0px solid var(--dark-gray);
       font-family: Outfit;
       font-weight: 100;
       font-size: 115%;
@@ -588,7 +593,7 @@ body, html, #__next {
     .loadMore-disabled {
       opacity: 0.5;
       background-color: white;
-      border: 0px solid #626262;
+      border: 0px solid var(--dark-gray);
       font-family: Outfit;
       font-weight: 100;
       font-size: 115%;
@@ -806,7 +811,7 @@ html{scroll-behavior:smooth}
 /* Button 0 stuff */
 
 .button0 {
-  background-color: #072136;
+  background-color: var(--b0BG);
   flex: 2.1 0px;
   order: 1;
   border-radius: 25px;
@@ -850,8 +855,8 @@ html{scroll-behavior:smooth}
 }
 
 .heroButtonTextOutline {
-  color:#072136;
-  text-shadow: -2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff;
+  color: var(--b0BG);
+  text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
 }
 
 #heroButtonText1, #heroButtonText2, #heroButtonText3 {
@@ -895,11 +900,11 @@ html{scroll-behavior:smooth}
 }
 
 #b0Gradient {
-  background:radial-gradient(70.61% 100% at 50% 10%, rgba(7, 33, 54, 0.00) 0%, #072136 100.00%);
+  background:radial-gradient(70.61% 100% at 50% 10%, rgba(7, 33, 54, 0.00) 0%, var(--b0BG) 100.00%);
 }
 
 #b0GradientOpaque {
-  background: #072136;
+  background: var(--b0BG);
   opacity: 0%;
 }
 
@@ -946,7 +951,7 @@ html{scroll-behavior:smooth}
 .button1 {
   animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInTop;
   position: relative;
-  background-color: #113451;
+  background-color: var(--b1BG);
   order: 1;
   flex: 1;
   border-radius: 25px;
@@ -980,11 +985,11 @@ html{scroll-behavior:smooth}
 }
 
 #b1Gradient {
-  background: radial-gradient(119.61% 49.96% at 50.83% 44.89%, rgba(17, 52, 81, 0.00) 0%, #113451 100.00%);
+  background: radial-gradient(119.61% 49.96% at 50.83% 44.89%, rgba(17, 52, 81, 0.00) 0%, var(--b1BG) 100.00%);
 }
 
 #b1GradientOpaque {
-  background: #113451;
+  background: var(--b1BG);
   opacity: 0%;
   transition-duration: 0.35s;
   transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
@@ -996,7 +1001,7 @@ html{scroll-behavior:smooth}
 
 .b1AnceTag, #b1AnceBrief1, #b1AnceBrief2, #b1AnceBrief3, #b1AnceDetails1, #b1AnceDetails2, #b1AnceDetails3 {
   height: 20px;
-  background-color:#A1A1A1;
+  background-color:var(--light-gray);
   border-radius: 50px;
   margin-left: 5px;
   margin-bottom: 5px;
@@ -1102,7 +1107,7 @@ html{scroll-behavior:smooth}
 
 .button2 {
   animation: 0.7s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInBottom;
-  background-color: #134287;
+  background-color: var(--b2BG);
   order: 2;
   flex: 1;
   border-radius: 25px;
@@ -1141,7 +1146,7 @@ html{scroll-behavior:smooth}
 }
 
 #b2GradientOpaque {
-  background: #134287;
+  background: var(--b2BG);
   opacity: 0%;
 }
 
@@ -1181,7 +1186,7 @@ html{scroll-behavior:smooth}
 
 .button3 {
   animation: 0.35s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight1;
-  background-color: #4341B5;
+  background-color: var(--b3BG);
   order: 1;
   flex: 1.8;
   border-radius: 25px;
@@ -1206,12 +1211,12 @@ html{scroll-behavior:smooth}
 }
 
 #b3GradientOpaque {
-  background: #4341B5;
+  background: var(--b3BG);
   opacity: 0%;
 }
 
 #b3Gradient {
-  background: radial-gradient(55% 30% at 100% 15%, rgba(67, 65, 181, 0.00) 0%, #4341B5 100.00%);
+  background: radial-gradient(55% 30% at 100% 15%, rgba(67, 65, 181, 0.00) 0%, var(--b3BG) 100.00%);
 }
 
 .button3:hover #b3GradientOpaque {
@@ -1232,7 +1237,7 @@ html{scroll-behavior:smooth}
 
 .b3LinksBig {
   width: 100%;
-  height: 0%;
+  height: 100%;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -1262,7 +1267,7 @@ html{scroll-behavior:smooth}
 
 .button4 {
   animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight2;
-  background-color: #5E4CCD;
+  background-color: var(--b4BG);
   order: 2;
   flex: 1;
   border-radius: 25px;
@@ -1300,11 +1305,11 @@ html{scroll-behavior:smooth}
 }
 
 #b4Gradient {
-  background: radial-gradient(90.10% 34.54% at 90.51% 19.46%, rgba(94, 76, 205, 0.00) 0%, #5E4CCD 100.00%);
+  background: radial-gradient(90.10% 34.54% at 90.51% 19.46%, rgba(94, 76, 205, 0.00) 0%, var(--b4BG) 100.00%);
 }
 
 #b4GradientOpaque {
-  background: #5E4CCD;
+  background: var(--b4BG);
   opacity: 0%;
 }
 
@@ -1640,11 +1645,6 @@ html{scroll-behavior:smooth}
     width: 0%;
   }
 
-  .b3LinksBig {
-    height: 100%;
-    width: 100%;
-  }
-
   .button3 h3 {
     position: absolute;
     bottom: 23px;
@@ -1657,7 +1657,7 @@ html{scroll-behavior:smooth}
   }
 
   #b3Gradient {
-    background: radial-gradient(25% 30% at 80% 25%, rgba(67, 65, 181, 0.00) 0%, #4341B5 100.00%);
+    background: radial-gradient(25% 30% at 80% 25%, rgba(67, 65, 181, 0.00) 0%, var(--b3BG) 100.00%);
   }
 
 

@@ -141,7 +141,6 @@ export default function Home() {
         })
   
         .then((response) => {
-          // "hsl(" + response['Colour'] + ", 67, 68)"
 
           if (response !== "none") {
             setModalColour(hslToHex(response['Colour'], 60, 62))
@@ -393,10 +392,6 @@ export default function Home() {
         <link rel="icon" sizes="76x76" href="static/compassLogo.ico" />
 
       </Head>
-      <body>
-        <Analytics />
-        {/* i love how i have a <body> tag and then a <main class="body"> instead of just editing the <body> tag properties themselves */}
-        {/* great coding practices */}
         <main class="body">
           <div>
               <Modal
@@ -681,7 +676,6 @@ export default function Home() {
           </div>
 
         </main>
-      </body>
     </>
   )
 
