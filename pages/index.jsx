@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Link from "next/link";
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import { Analytics } from '@vercel/analytics/react';
 
 headers: new Headers({
   "ngrok-skip-browser-warning": "true",
@@ -395,7 +395,7 @@ export default function Home() {
       </Head>
 
       <main class="body">
-
+        <Analytics />
         <div>
             <Modal
               isOpen={modalIsOpen}
