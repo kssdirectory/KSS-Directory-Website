@@ -17,15 +17,15 @@ const TestPage = () => {
         src="https://lh7-us.googleusercontent.com/MxFWmpW1pg3pPEliCc2awEOdFlloiwNHXNlYeKEfmJPP-LhLLPFw8GaTCRdVPjioN6LmOQtpPvfPVgEf4xSMOC2_y67ucuLxipwMhkNNxBklzxiioqMJPwy07cMzX-Vclf-PsyvHkJfdDFN-P_z8RsycZOALYytY"
         style={{width:500,height:500}}
         ></img>
-        hi
+        
       </div>;
-      if (scrollPos < 100) {
+      if (scrollPos < 67) {
 
         return <div className={main.tilesFlexBox} style={{ alignItem: "center", justifyContent: "center" }}>
           <div style={{
             backgroundColor: mainColour,
-            width: window.innerWidth - scrollPos * 2,
-            height: window.innerHeight - scrollPos * 2,
+            width: window.innerWidth - scrollPos * 3,
+            height: window.innerHeight - scrollPos * 3,
             borderRadius: scrollPos / 2,
             position: "fixed",
             top: "50%",
@@ -40,7 +40,7 @@ const TestPage = () => {
         return <div className={main.tilesFlexBox}>
           <div style={{
             backgroundColor: mainColour,
-            width: window.innerWidth - scrollPos * 2,
+            width: window.innerWidth - 67 * 3 - (scrollPos - 67) * 5,
             height: window.innerHeight - 200,
             borderRadius: 50,
             position: "fixed",
@@ -53,7 +53,7 @@ const TestPage = () => {
             height: window.innerHeight - 200,
             backgroundColor: "red",
             position: "fixed",
-            marginLeft: window.innerWidth - scrollPos * 2 + 150,
+            marginLeft: window.innerWidth - 67 * 3 - (scrollPos - 67) * 5 + 150,
             position: "fixed",
             top: 100
             }}>

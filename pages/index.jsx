@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import { Analytics } from '@vercel/analytics/react';
 
 headers: new Headers({
   "ngrok-skip-browser-warning": "true",
