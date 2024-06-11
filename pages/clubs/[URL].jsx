@@ -23,7 +23,8 @@ export const getStaticProps = async (context) => {
     const data = await res.json();
 
     return {
-        props: { stuff: data }
+        props: { stuff: data },
+        revalidate: 10 // re-generate the page when a new request comes in?
     }
 }
 
