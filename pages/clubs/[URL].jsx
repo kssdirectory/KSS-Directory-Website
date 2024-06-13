@@ -1,13 +1,18 @@
-const webServerURL = "https://a23b-35-227-86-218.ngrok-free.app"
+import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
+import main from '../../styles/club_directory/club_pages/main.module.css'
 
+
+const webServerURL = "https://a23b-35-227-86-218.ngrok-free.app"
 
 export const getStaticPaths = async () => {
     const res = await fetch(webServerURL + "/club_repo_main");
     const data = await res.json();
 
-    const paths = data.map(stuff => {
+    const paths = data.map(listed_pages => {
         return {
-            params: { URL: stuff.Content.Metadata.URL.toString() }
+            params: { URL: listed_pages.Content.Metadata.URL.toString() }
         }
     })
 
@@ -23,17 +28,86 @@ export const getStaticProps = async (context) => {
     const data = await res.json();
 
     return {
-        props: { stuff: data },
+        props: { listed_pages: data },
         revalidate: 10 // re-generate the page when a new request comes in?
     }
 }
 
-const individualClubPage = ( stuff ) => {
+const individualClubPage = ( listed_pages ) => {
+
+    // idk why i gotta do listed_pages twice
+    // so i just created a new var for my own sanity
+    let listed_page = listed_pages.listed_pages
+    
+    if ("Metadata" in listed_page.Metadata) {
+        console.log("yep")
+    }
+
+    let tiles = []
+
+    // stuff that goes in the <Head> tag
+    console.log(listed_page.Images)
+    if ("Images" in listed_page && "banner" in listed_page.Images) {
+        // if there is a logo available, use it as favicon for this webpage.
+        // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
+        const logo = (
+            <Image src={webServerURL + "/club_images/" + listed_page.Metadata.URL + "/banner"}
+            className={main.masked_banner}
+            alt="picture of the author"
+            fill={true}
+            objectFit="contain"
+            />
+        )
+        tiles.push(
+            <div style={{width: "200px", height: "200px"}}>
+                {logo}
+            </div>
+        )
+    }
+
+    // create the tiles
+    if ("Images" in listed_page && "banner" in listed_page.Images) {
+        // if there is a banner available, set it as the 
+    }
+
     return (
-        <div>
-            <h1>{stuff.stuff.Metadata.Club_Name}</h1>
-            <p>{stuff.stuff.Basic_Info.Description}</p>
-        </div>
+        <>
+            <Head>
+                <title>{listed_pages.listed_pages.Metadata.Club_Name} - KSS Directory Club Repository</title>
+
+                {/* Setting the favicon of the site to the KSS Directory logo */}
+                {/* Not the individual logo of each club because that'd be a PITA, especially if they didn't use a perfectly square logo...*/}
+                <link rel="icon" sizes="76x76" href="../static/compassLogo.ico" />
+            </Head>
+
+            <main id={main.bg}>
+                <header id={main.header}>
+                    <div id={main.header_logo_button}>
+                        <Link href="/" style={{width: "200px", margin:0}}>
+                            <div id={main.header_logo_div}>
+                                <div id={main.kssdir_logo_BG}>
+                                    <img src = "../svg_assets/compass_logo_vector.svg" id={main.kssdir_logo}/>
+                                </div>
+                                <p id={main.kssdir_logo_text}>KSS DIRECTORY</p>                        
+                            </div>
+                        </Link>
+                    </div>
+                    
+                    
+                    <div id={main.header_path_div}>
+                        <a id={main.header_path_link} href="/clubs">CLUB REPOSITORY</a>
+                        <span id={main.header_path_text}> / {listed_page.Metadata.Category.toUpperCase()} / {listed_page.Metadata.Club_Name.toUpperCase()}</span>
+                    </div>
+                </header>
+                <div>
+                    <h1>{listed_page.Metadata.Club_Name}</h1>
+                    <p>{listed_page.Basic_Info.Description}</p>
+                    {tiles}
+                </div>
+            </main>
+        </>
+        
+        
     )
 }
 

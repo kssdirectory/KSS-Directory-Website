@@ -1,0 +1,109 @@
+/* Header stuff */
+
+#header {
+    height: 64px;
+}
+
+#header_path_div {
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 550px;
+    margin-left: 25px;
+}
+
+#header_path_link, #header_path_text {
+    font-family: Outfit;
+    font-weight: 100;
+    color: var(--light-gray)
+}
+
+#header_path_link {
+    margin-right: 0px;
+    text-decoration: underline;
+    margin-left: 0;
+}
+#header_path_link:hover {
+    color: var(--blue-link)
+}
+
+#header_logo_button {
+    position: absolute;
+    z-index: 0;
+    height: 64px;
+    width: 100vw;
+}
+#header_logo_button:hover {
+    text-decoration: none;
+    opacity: 50%;
+}
+
+#header_logo_div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#kssdir_logo_BG {
+    height: 36px;
+    width: 36px;
+    background-color: #072136;
+    border-radius: 50%;
+}
+
+#kssdir_logo {
+    position: relative;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#kssdir_logo_text {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 12px;
+    font-family: Outfit;
+    font-weight: bold;
+    color: #072136;
+    align-content: center;
+}
+
+
+
+
+
+/* Tiles */
+
+/* Tile 1 stuff */
+
+.masked_banner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+#bg {
+    background-color: #EDEDED;
+    height: 100vh;
+}
