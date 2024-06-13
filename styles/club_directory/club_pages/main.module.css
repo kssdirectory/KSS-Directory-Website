@@ -86,20 +86,68 @@
 
 /* Tiles */
 
+.tiles_flex {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: 25px;
+    margin-right: 25px;
+    height: calc(100vh - 64px - 25px);
+    gap: 2px;
+}
+
+
+
 /* Tile 1 stuff */
 
 .masked_banner {
-    position: relative;
+    border-radius: 25px;
     overflow: hidden;
-    border-radius: 20px;
+}
+
+#banner_div {
+    position: relative;
+    flex: 2;
 }
 
 
 
 
+/* Secondary Tiles */
+
+#secondary_tiles_div {
+    display: flex;
+    flex-flow: column wrap;
+    flex: 1;
+    background-color: red;
+    position: relative;
+}
 
 
+#logo_BG, #logo_cutout_main {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+}
 
+#logo_BG {
+    background-color: white;
+    width: 128px;
+    height: 128px;
+    border-radius: 25px;
+    border: 1px solid var(--dark-gray);
+}
+
+#logo_cutout_main {
+    background-color: #EDEDED;
+    width: calc(128px + 12px);
+    height: calc(128px + 12px);
+    border-top-right-radius: 25px;
+}
+
+#logo_cutout_rounded {
+    position: absolute;
+    
+}
 
 
 

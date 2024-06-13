@@ -43,6 +43,20 @@ const individualClubPage = ( listed_pages ) => {
         console.log("yep")
     }
 
+    const club_logo = []
+    
+    if ("Images" in listed_page && "logo" in listed_page.Images) {
+        // if there is a logo
+        const logo_BG = (
+            <div id={main.logo_BG}></div>
+        )
+        const logo_cutout_main = (
+            <div id={main.logo_cutout_main}></div>
+        )
+        club_logo.push([logo_cutout_main, logo_BG])
+    }
+
+
     let tiles = []
 
     // stuff that goes in the <Head> tag
@@ -50,25 +64,34 @@ const individualClubPage = ( listed_pages ) => {
     if ("Images" in listed_page && "banner" in listed_page.Images) {
         // if there is a logo available, use it as favicon for this webpage.
         // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
-        const logo = (
+        const banner = (
             <Image src={webServerURL + "/club_images/" + listed_page.Metadata.URL + "/banner"}
             className={main.masked_banner}
             alt="picture of the author"
-            fill={true}
-            objectFit="contain"
+            objectFit="cover"
+            layout="fill"
             />
         )
+        
         tiles.push(
-            <div style={{width: "200px", height: "200px"}}>
-                {logo}
+            <div className={main.tiles_flex}>
+                <div id={main.banner_div}>
+                    {banner}
+                </div>
+                <div id={main.secondary_tiles_div}>
+                    
+                </div>
             </div>
+            
         )
     }
+
 
     // create the tiles
     if ("Images" in listed_page && "banner" in listed_page.Images) {
         // if there is a banner available, set it as the 
     }
+
 
     return (
         <>
@@ -100,9 +123,10 @@ const individualClubPage = ( listed_pages ) => {
                     </div>
                 </header>
                 <div>
-                    <h1>{listed_page.Metadata.Club_Name}</h1>
-                    <p>{listed_page.Basic_Info.Description}</p>
+                    {/* <h1>{listed_page.Metadata.Club_Name}</h1>
+                    <p>{listed_page.Basic_Info.Description}</p> */}
                     {tiles}
+                    {club_logo}
                 </div>
             </main>
         </>
