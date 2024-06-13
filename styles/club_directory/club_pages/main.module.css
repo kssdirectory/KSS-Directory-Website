@@ -1,3 +1,9 @@
+#bg {
+    background-color: #D9D9D9;
+    height: 100vh;
+}
+
+
 /* Header stuff */
 
 #header {
@@ -17,7 +23,7 @@
 #header_path_link, #header_path_text {
     font-family: Outfit;
     font-weight: 100;
-    color: var(--light-gray)
+    color: var(--dark-gray)
 }
 
 #header_path_link {
@@ -92,7 +98,7 @@
     margin-left: 25px;
     margin-right: 25px;
     height: calc(100vh - 64px - 25px);
-    gap: 2px;
+    gap: 12px;
 }
 
 
@@ -100,7 +106,7 @@
 /* Tile 1 stuff */
 
 .masked_banner {
-    border-radius: 25px;
+    border-radius: 32px;
     overflow: hidden;
 }
 
@@ -118,7 +124,6 @@
     display: flex;
     flex-flow: column wrap;
     flex: 1;
-    background-color: red;
     position: relative;
 }
 
@@ -133,25 +138,75 @@
     background-color: white;
     width: 128px;
     height: 128px;
-    border-radius: 25px;
+    border-radius: 32px;
     border: 1px solid var(--dark-gray);
 }
 
 #logo_cutout_main {
-    background-color: #EDEDED;
+    background-color: #D9D9D9;
     width: calc(128px + 12px);
     height: calc(128px + 12px);
-    border-top-right-radius: 25px;
+    border-top-right-radius: 32px;
 }
 
-#logo_cutout_rounded {
+#logo_cutout_rounded_1, #logo_cutout_rounded_2 {
     position: absolute;
-    
+    width: 32px;
+    height: 32px;
+}
+
+#logo_cutout_rounded_1 {
+    bottom: 25px;
+    left: calc(140px + 25px);
+}
+
+#logo_cutout_rounded_2 {
+    left: 25px;
+    bottom: calc(140px + 25px);
+}
+
+
+#club_logo {
+    position: absolute;
+    bottom: calc(25px + 20px);
+    left: calc(25px + 20px);
+    border-radius: 24px;
 }
 
 
 
-#bg {
-    background-color: #EDEDED;
-    height: 100vh;
+/* General tiles stuff */
+
+.body_text {
+    font-family: Outfit;
+    font-weight: 100;
+    font-size: 16px;
+    margin: 0;
+    margin-top: 8px;
+    color: var(--dark-gray);
+}
+
+
+
+
+
+/* Tile 1: Title */
+
+#tile1_div {
+    width: inherit;
+    border-radius: 32px;
+    background-color: white;
+    border: 1px solid var(--dark-gray);
+    padding: 48px;
+}
+
+#club_name {
+    margin: 0;
+    font-weight: 200;
+    font-size: 40px;
+}
+
+#last_modified {
+    font-size: 16px;
+    margin-bottom: 8px;
 }

@@ -47,50 +47,104 @@ const individualClubPage = ( listed_pages ) => {
     
     if ("Images" in listed_page && "logo" in listed_page.Images) {
         // if there is a logo
+
+        const club_logo_img = (
+            <Image src={webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo"}
+            width="90"
+            height="90"
+            //TODO: make this support non-square logos
+            id={main.club_logo}
+            />
+        )
+
         const logo_BG = (
             <div id={main.logo_BG}></div>
         )
         const logo_cutout_main = (
             <div id={main.logo_cutout_main}></div>
         )
-        club_logo.push([logo_cutout_main, logo_BG])
-    }
-
-
-    let tiles = []
-
-    // stuff that goes in the <Head> tag
-    console.log(listed_page.Images)
-    if ("Images" in listed_page && "banner" in listed_page.Images) {
-        // if there is a logo available, use it as favicon for this webpage.
-        // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
-        const banner = (
-            <Image src={webServerURL + "/club_images/" + listed_page.Metadata.URL + "/banner"}
-            className={main.masked_banner}
-            alt="picture of the author"
-            objectFit="cover"
-            layout="fill"
-            />
+        const logo_cutout_rounded_1 = (
+            // Note: this is disgusting, but idk how else to achieve the inverted rounded effect
+            <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_1}></img>
+        )
+        const logo_cutout_rounded_2 = (
+            // same as above....
+            <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_2}></img>
         )
         
-        tiles.push(
-            <div className={main.tiles_flex}>
-                <div id={main.banner_div}>
-                    {banner}
-                </div>
-                <div id={main.secondary_tiles_div}>
-                    
-                </div>
-            </div>
+        club_logo.push([logo_cutout_main, logo_cutout_rounded_1, logo_cutout_rounded_2, logo_BG, club_logo_img])
+    }
+
+
+    // Tiles section
+
+    let tiles = []
+    const month = ""
+
+    for (const [key, value] of Object.entries({
+        // iterates through each month to check if the month in Last_modified is the same.
+        "01": "January",
+        "02": "February",
+        "03": "March",
+        "04": "April",
+        "05": "May",
+        "06": "June",
+        "07": "July",
+        "08": "August",
+        "09": "September",
+        "10": "October",
+        "11": "November",
+        "12": "December"
+    })) {
+        if (listed_page.Metadata.Last_modified.slice(5,7) === key) {
+            // if the month is equal to the key, i.e. the program has found the correct month
+            const month = value
+            console.log(month)
+            let description = []
             
-        )
+            if ("Description" in listed_page.Basic_Info) {
+                description.push(<p className={main.body_text}>{listed_page.Basic_Info.Description}</p>)
+                console.log(description)
+            }
+            
+            // Tile 1: Title
+            const tile1 = (
+                <div id={main.tile1_div}>
+                    <h1 id={main.club_name}>{listed_page.Metadata.Club_Name}</h1>
+                    <p id={main.last_modified}>Last modified: {month} {listed_page.Metadata.Last_modified.slice(8,10)}, {listed_page.Metadata.Last_modified.slice(0,4)}</p>
+                    {description}
+                </div>
+            )
+        
+            if ("Images" in listed_page && "banner" in listed_page.Images) {
+                // if there is a logo available, use it as favicon for this webpage.
+                // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
+                const banner = (
+                    <Image src={webServerURL + "/club_images/" + listed_page.Metadata.URL + "/banner"}
+                    className={main.masked_banner}
+                    alt={"Banner of " + listed_page.Metadata.Club_Name}
+                    objectFit="cover"
+                    layout="fill"
+                    />
+                )
+                
+                tiles.push(
+                    <div className={main.tiles_flex}>
+                        <div id={main.banner_div}>
+                            {banner}
+                        </div>
+                        <div id={main.secondary_tiles_div}>
+                            {tile1}
+                        </div>
+                    </div>
+                )
+            }
+        }
     }
+   
+    
 
 
-    // create the tiles
-    if ("Images" in listed_page && "banner" in listed_page.Images) {
-        // if there is a banner available, set it as the 
-    }
 
 
     return (
