@@ -186,19 +186,17 @@
     color: var(--dark-gray);
 }
 
-
-
-
-
-/* Tile 1: Title */
-
-#tile1_div {
+.tile_div {
     width: inherit;
     border-radius: 32px;
     background-color: white;
     border: 1px solid var(--dark-gray);
     padding: 48px;
 }
+
+
+
+/* Tile 1: Title */
 
 #club_name {
     margin: 0;
@@ -209,4 +207,22 @@
 #last_modified {
     font-size: 16px;
     margin-bottom: 8px;
+}
+
+#activity_div {
+    position: absolute;
+    right: 0px;
+    top: 6px;
+    display: flex;
+    gap: 10px;
+    padding: 48px;
+}
+
+#activity_div p {
+    margin: 0;
+    font-size: 16px;
+}
+
+#activity_div img {
+    width: 20px;
 }

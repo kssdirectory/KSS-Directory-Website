@@ -101,20 +101,50 @@ const individualClubPage = ( listed_pages ) => {
             const month = value
             console.log(month)
             let description = []
+            let activity = []
             
             if ("Description" in listed_page.Basic_Info) {
                 description.push(<p className={main.body_text}>{listed_page.Basic_Info.Description}</p>)
                 console.log(description)
             }
+
+            if (listed_page.Basic_Info.Activity === "Yes") {
+                // if the club is set to be currently "active"
+                activity.push(
+                    <div id={main.activity_div}>
+                        <p style={{color:"#2BB673"}}>Active</p>
+                        <img src="../../svg_assets/club_pages/checkmark.svg"></img>
+                    </div>
+                )
+            } else {
+                // if the club is set to be currently "inactive"
+                activity.push(
+                    <div id={main.activity_div}>
+                        <p style={{color:"#8E1111"}}>Inactive</p>
+                        <img src="../../svg_assets/club_pages/cross.svg"></img>
+                    </div>
+                )
+            }
             
             // Tile 1: Title
             const tile1 = (
-                <div id={main.tile1_div}>
+                <div className={main.tile_div}>
                     <h1 id={main.club_name}>{listed_page.Metadata.Club_Name}</h1>
                     <p id={main.last_modified}>Last modified: {month} {listed_page.Metadata.Last_modified.slice(8,10)}, {listed_page.Metadata.Last_modified.slice(0,4)}</p>
                     {description}
+                    {activity}
                 </div>
             )
+
+            let tile2 = []
+            if (1 in listed_page.Meeting_Times) {
+                tile2.push(
+                    <div className={main.tile_div}>
+                        <h1 id={main.meeting_times}>Meeting times</h1>
+                    </div>
+                )
+                tiles.push(tile2)
+            }
         
             if ("Images" in listed_page && "banner" in listed_page.Images) {
                 // if there is a logo available, use it as favicon for this webpage.
