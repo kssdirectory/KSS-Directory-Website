@@ -122,11 +122,25 @@
 
 #secondary_tiles_div {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     flex: 1;
     position: relative;
+    gap: 12px;
+    height: inherit;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
+ /* Hide scrollbar for Chrome, Safari and Opera */
+ #secondary_tiles_div::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  #secondary_tiles_div {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  } 
 
 #logo_BG, #logo_cutout_main {
     position: absolute;
@@ -187,13 +201,19 @@
 }
 
 .tile_div {
-    width: inherit;
+    width: 100%;
     border-radius: 32px;
     background-color: white;
     border: 1px solid var(--dark-gray);
     padding: 48px;
 }
 
+.tile_div_subtitle {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 100;
+}
 
 
 /* Tile 1: Title */
@@ -226,3 +246,84 @@
 #activity_div img {
     width: 20px;
 }
+
+
+/* Tile 2: Meeting Times */
+
+.meeting_times_container {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.text_side_line {
+    width: 4px;
+    height: inherit;
+    background-color: var(--light-gray);
+    border-radius: 25px;
+}
+
+.meeting_times_div {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 4px;
+}
+
+.meeting_times_div h2 {
+    font-weight: 100;
+    margin: 0px;
+    font-size: 18px;
+}
+
+.meeting_times_div p {
+    font-weight: 100;
+    margin: 0px;
+    font-size: 16px;
+}
+
+
+/* Tile 3: Links */
+
+#links_container {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px;
+}
+
+.link {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 6px;
+    background-color: #EDEDED;
+    border-radius: 25px;
+    border: 1px solid var(--light-gray);
+    height: auto;
+    margin: 0;
+    padding: 3px;
+    align-items: center;
+}
+
+.link p {
+    font-size: 14px;
+    margin: 0px;
+    width: auto;
+    margin-right: 6px;
+    color: var(--dark-gray)
+}
+
+.link:hover {
+    background-color: #cccccc;
+    text-decoration: none;
+}
+
+.link img {
+    height: 16px;
+    width: 16px;
+    margin-left: 3px;
+}
+
+
+
+/* Tile 4: Supervisors */
+

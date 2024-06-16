@@ -33,7 +33,28 @@ export const getStaticProps = async (context) => {
     }
 }
 
+
+
 const individualClubPage = ( listed_pages ) => {
+
+    function convert_iso_time(raw_time) {
+        // converts a time in iso 8601 format (e.g. 13:35 or 02:16) to standard American time (e.g. 1:35 PM or 2:16 AM)
+        let converted_time = ""
+        if (raw_time[0] === "0") {
+            if (raw_time[1] !== "0"){
+                converted_time += raw_time.slice(1) + " AM"
+            } else {
+                converted_time += 12 + raw_time(2) + " AM"
+            }
+        } else if (raw_time[0] === "1" && Number(raw_time[1]) < 3) {
+            converted_time += raw_time + " AM"
+        } else if (raw_time[0] !== "0" && 12 < Number(raw_time.slice(0,3)) < 25) {
+            converted_time += (Number(raw_time.slice(0,2)) - 12).toString() + raw_time.slice(2) + " PM"
+        } else {
+            return "{invalid time}"
+        }
+        return converted_time
+    }
 
     // idk why i gotta do listed_pages twice
     // so i just created a new var for my own sanity
@@ -137,15 +158,77 @@ const individualClubPage = ( listed_pages ) => {
             )
 
             let tile2 = []
+
+            let tile2_meeting_times = []
+
             if (1 in listed_page.Meeting_Times) {
+                for (const [key, value] of Object.entries(listed_page.Meeting_Times)) {
+                    // iterate through each meeting time and push it as a <div> to tile2_meeting_times
+                    let meeting_title = []
+                    if ("Meeting_Title" in value) {
+                        meeting_title.push(value.Meeting_Title)
+                    } else {
+                        meeting_title.push("Meeting " + key)
+                    }
+                    let meeting_end_time = []
+                    if ("Meeting_End_Time" in value) {
+                        meeting_end_time.push(" to " + convert_iso_time(value.Meeting_End_Time))
+                    }
+                    tile2_meeting_times.push(
+                        <div className={main.meeting_times_container}>
+                            <rect className={main.text_side_line}></rect>
+                            <div className={main.meeting_times_div}>
+                                <h2>{meeting_title}</h2>
+                                <p>
+                                    {value.Meeting_Day[0].toUpperCase() + value.Meeting_Day.slice(1)}s at {convert_iso_time(value.Meeting_Start_Time)} {meeting_end_time} in {value.Meeting_Location}
+                                </p>
+                            </div>
+                            
+                        </div>
+                    )
+
+                }
                 tile2.push(
                     <div className={main.tile_div}>
-                        <h1 id={main.meeting_times}>Meeting times</h1>
+                        <h1 className={main.tile_div_subtitle}>Weekly Meeting Times</h1>
+                        {tile2_meeting_times}
                     </div>
                 )
-                tiles.push(tile2)
             }
-        
+
+            let tile3 = []
+            if (1 in listed_page.Links) {
+                let links = []
+                for (const [key, value] of Object.entries(listed_page.Links)) {
+                    let link_name = []
+                    if (value[0] !== "none") {
+                        link_name.push(value[0])
+                    } else {
+                        link_name.push(value[1])
+                    }
+                    links.push(
+                        <a href={value[1]} className={main.link}>
+                            <img src={"https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=" + value[1] + "&size=32"}/>
+                            <p>{link_name}</p>
+                        </a>
+                    )
+                }
+                tile3.push(
+                    <div className={main.tile_div}>
+                        <h1 className={main.tile_div_subtitle}>Links</h1>
+                        <div id={main.links_container}>
+                            {links}
+                        </div>
+                        
+                    </div>
+                )
+            }
+            
+            let tile4 = []
+            if ("Supervisors" in listed_page.Basic_Info && 1 in listed_page.Basic_Info.Supervisors) {
+                console.log("ok")
+            }
+
             if ("Images" in listed_page && "banner" in listed_page.Images) {
                 // if there is a logo available, use it as favicon for this webpage.
                 // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
@@ -165,6 +248,8 @@ const individualClubPage = ( listed_pages ) => {
                         </div>
                         <div id={main.secondary_tiles_div}>
                             {tile1}
+                            {tile2}
+                            {tile3}
                         </div>
                     </div>
                 )
