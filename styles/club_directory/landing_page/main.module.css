@@ -1,0 +1,27 @@
+#bg {
+    background-color: #D9D9D9;
+    display: inline-block;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+#header_path_div {
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 550px;
+    margin-left: 25px;
+}
+
+#header_path_link, #header_path_text {
+    font-family: Outfit;
+    font-weight: 100;
+    color: var(--dark-gray)
+}
+
+#header_path_link {
+    margin-right: 0px;
+    margin-left: 0;
+}
