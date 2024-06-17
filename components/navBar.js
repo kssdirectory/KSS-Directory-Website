@@ -14,7 +14,7 @@ const NavBar = ({ extra_additions }) => {
                     </div>
                 </Link>
             </div>
-            {extra_additions}
+            {extra_additions} 
         </header>
     );
 };
