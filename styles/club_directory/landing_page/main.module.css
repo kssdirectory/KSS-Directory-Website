@@ -34,7 +34,7 @@
     display: flex;
     flex-flow: row wrap;
     gap: 12px;
-    height: 500px;
+    height: calc((100vh - 64px) * 2 / 3);
 }
 
 #club_repo_title_section {
@@ -56,8 +56,15 @@
 }
 
 #title_section_kss_dir_logo {
-    width: 700px;
+    width: 100%;
     position: absolute;
-    top: -200px;
-    left: 100px;
+    top: -250px;
+    right: -250px;
+}
+
+#title_section_kss_dir_logo_mask {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    mask-image: radial-gradient(circle, rgba(7,33,54,1) 0%, rgba(7,33,54,0) 80%);
 }

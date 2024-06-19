@@ -43,16 +43,15 @@ export default function clubsPage({ all_club_pages }) {
                 />
 
                 <div style={{marginLeft:"25px", marginRight:"25px"}}>
-                    {/* <div id={main.top_section}>
+                    <div id={main.top_section}>
                         <div id={main.club_repo_title_section}>
-                            <mask id={main.title_section_kss_dir_logo_mask}>
-                                <rect style={{width: "100%", height: "100%"}}></rect>
-                            </mask>
-                            <img src="../../svg_assets/compass_logo_vector.svg" id={main.title_section_kss_dir_logo}></img>
+                            <div id={main.title_section_kss_dir_logo_mask}>
+                                <img src="../../svg_assets/compass_logo_vector.svg" mask="url(#title_section_kss_dir_logo_mask)" id={main.title_section_kss_dir_logo}></img>
+                            </div>
                         </div>
                         <div id={main.club_repo_carousel}>
                         </div>
-                    </div> */}
+                    </div>
                     <h1>Club Pages (highly unfinished)</h1>
                     {listed_pages.map(listed_pages => (
                         <Link href={'/clubs/' + listed_pages.Content.Metadata.URL} key={listed_pages.Content.Metadata.URL}>
