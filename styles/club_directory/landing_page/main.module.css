@@ -38,7 +38,7 @@
 }
 
 #club_repo_title_section {
-    background-color: var(--b1BG);
+    background-color: var(--b0BG);
     border-radius: 32px;
     flex: 1;
     min-width: 500px;
@@ -46,7 +46,27 @@
     height: inherit;
     overflow: hidden;
     object-fit: fill;
+    position: relative;
 }
+
+#title_section_text {
+    position: absolute;
+    bottom: 0;
+    padding: 50px;
+}
+
+#title_section_text h1 {
+    color: white;
+    font-size: calc(100vw / 36);
+    margin: 0;
+}
+
+#title_section_text p {
+    font-size: 18px;
+    width: calc(100% * 3 / 4);
+    margin-bottom: 0;
+}
+
 
 #club_repo_carousel {
     background-color: red;
@@ -56,7 +76,8 @@
 }
 
 #title_section_kss_dir_logo {
-    width: 100%;
+    height: 115%;
+    width: 115%;
     position: absolute;
     top: -250px;
     right: -250px;
@@ -68,3 +89,4 @@
     position: relative;
     mask-image: radial-gradient(circle, rgba(7,33,54,1) 0%, rgba(7,33,54,0) 80%);
 }
+

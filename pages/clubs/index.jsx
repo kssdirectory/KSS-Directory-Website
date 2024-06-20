@@ -27,7 +27,7 @@ export default function clubsPage({ all_club_pages }) {
     return (
         <>
             <Head>
-                <title>KSS Directory Club Repository</title>
+                <title>KSS Club Repository</title>
 
                 {/* Setting the favicon of the site to the KSS Directory logo */}
                 {/* Not the individual logo of each club because that'd be a PITA, especially if they didn't use a perfectly square logo...*/}
@@ -46,7 +46,11 @@ export default function clubsPage({ all_club_pages }) {
                     <div id={main.top_section}>
                         <div id={main.club_repo_title_section}>
                             <div id={main.title_section_kss_dir_logo_mask}>
-                                <img src="../../svg_assets/compass_logo_vector.svg" mask="url(#title_section_kss_dir_logo_mask)" id={main.title_section_kss_dir_logo}></img>
+                                <img src="../../svg_assets/compass_logo_vector.svg" id={main.title_section_kss_dir_logo}></img>
+                            </div>
+                            <div id={main.title_section_text}>
+                                <h1>CLUB<br/>REPOSITORY</h1>
+                                <p>A treasure trove of up-to-date information on KSS clubs, compiled by their respective execs.</p>
                             </div>
                         </div>
                         <div id={main.club_repo_carousel}>
