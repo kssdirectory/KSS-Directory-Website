@@ -5,7 +5,7 @@ import main from '../../styles/club_directory/club_pages/main.module.css';
 import NavBar from "../../components/navBar";
 
 
-const webServerURL = "https://a23b-35-227-86-218.ngrok-free.app"
+const webServerURL = "https://8648-35-185-101-48.ngrok-free.app"
 
 export const getStaticPaths = async () => {
     const res = await fetch(webServerURL + "/club_repo_main");
