@@ -6,7 +6,7 @@ import NavBar from "../../components/navBar";
 
 
 
-const webServerURL = "https://8648-35-185-101-48.ngrok-free.app"
+const webServerURL = "https://0d3c-35-185-101-48.ngrok-free.app"
 
 
 export const getServerSideProps = async () => {

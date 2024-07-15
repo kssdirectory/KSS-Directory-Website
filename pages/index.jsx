@@ -28,9 +28,9 @@ const announcementPopupModal = {
 const bgColour = "#072136"
 
 // This is the URL for the server that the website sends HTTP requests to.
-// URL of the current web server is "https://a23b-35-227-86-218.ngrok-free.app"
+// URL of the current web server is "https://0d3c-35-185-101-48.ngrok-free.app"
 // Local URL of webServer.py is obviously http://127.0.0.1:8000
-const webServerURL = "https://8648-35-185-101-48.ngrok-free.app"
+const webServerURL = "https://0d3c-35-185-101-48.ngrok-free.app"
 
 const loadMore = "loading"
 export default function Home() {
