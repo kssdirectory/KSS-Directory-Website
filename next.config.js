@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '0d3c-35-185-101-48.ngrok-free.app',
+        hostname: 'musical-blindly-cheetah.ngrok-free.app',
         port: ''
       },
     ],
