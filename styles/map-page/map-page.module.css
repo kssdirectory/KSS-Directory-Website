@@ -1,0 +1,17 @@
+#header_path_div {
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 550px;
+    margin-left: 25px;
+}
+
+#header_path_text {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    font-family: Outfit;
+    font-weight: 100;
+    color: var(--light-gray)
+}

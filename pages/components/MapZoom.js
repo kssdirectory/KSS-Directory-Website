@@ -16,6 +16,7 @@ const MapSvgZoom = ({ floor1, floor1_roof, floor2, floor2_roof, floor3 }) => {
   }, []);
 
   return (
+    <div style={{height:"100%"}}>
     <QuickPinchZoom
       onUpdate={onUpdate}
       inertia={true}
@@ -33,12 +34,12 @@ const MapSvgZoom = ({ floor1, floor1_roof, floor2, floor2_roof, floor3 }) => {
         ref={containerRef}
         style={{
           width: "100vw",
-          height: "100vh",
           transformOrigin: "0 0",
+          height: "100%",
           position: "relative"
         }}
       >
-        <div style={{position:'absolute', top:'0', left:'0', width:"100vw", height:"100vh"}}>
+        <div style={{position:'relative', overflow:"hidden", width:"100vw", height: "100%"}}>
           <ReactSVG src={floor1} style={{ width: "100%", height: "100%" }} />
         </div>
         {/* <div style={{position:'absolute', top:'0', left:'0', width:"100vw", height:"100vh"}}>
@@ -47,6 +48,7 @@ const MapSvgZoom = ({ floor1, floor1_roof, floor2, floor2_roof, floor3 }) => {
       </div>
 
     </QuickPinchZoom>
+    </div>
   );
 };
 

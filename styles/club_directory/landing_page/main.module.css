@@ -16,6 +16,8 @@
 }
 
 #header_path_link, #header_path_text {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
     font-family: Outfit;
     font-weight: 100;
     color: var(--dark-gray)
@@ -89,4 +91,3 @@
     position: relative;
     mask-image: radial-gradient(circle, rgba(7,33,54,1) 0%, rgba(7,33,54,0) 80%);
 }
-
