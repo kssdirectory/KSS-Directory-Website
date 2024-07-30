@@ -589,7 +589,7 @@ export default function Home() {
                                       <Link href = "coming-soon" class = "b3LinksBig">
                                         <div class = "b3LinksBig"></div>
                                       </Link>
-                                      <div style = {{ "display": "flex", "flex-flow": "column wrap", "width": "100%", "height": "80%", "justify-content": "center", "padding-top": "8%" }}>
+                                      <div style = {{ "display": "flex", "flexFlow": "column wrap", "width": "100%", "height": "80%", "justify-content": "center", "padding-top": "8%" }}>
                                           <div class = "b3Links"><a href="https://outlook.office365.com/owa/calendar/KCVIStudentServices1@limestoneschools.onmicrosoft.com/bookings/" target="_blank"><h4>Student Services</h4></a></div>
                                           <div class = "b3Links"><a href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Calendar/new%20cal%202023-2024%20updated.pdf" target="_blank"><h4>School Year Calendar</h4></a></div>
                                           <div class = "b3Links"><a href="" target="_blank"><h4>Official KSS Floor Plans</h4></a></div>

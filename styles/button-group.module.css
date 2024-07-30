@@ -1,0 +1,8 @@
+.button_group_div {
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+} 

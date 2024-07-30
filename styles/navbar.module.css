@@ -21,6 +21,12 @@
     width: 100vw;
 }
 
+@media (max-width: 625px) {
+    .header_logo_button{
+        justify-content: right;
+    }
+}
+
 .header_logo_div {
     display: inline-flex;
     align-content: center;

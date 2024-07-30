@@ -1,9 +1,11 @@
 // pages/index.js
 import MapSvgZoom from './components/MapZoom';
 import NavBar from '@/components/navBar';
-import mapPage from '/styles/map-page/map-page.module.css';
+import MapPage from '/styles/map-page/map-page.module.css';
 import '@/styles/globals.css'
 import Head from 'next/head';
+import ButtonGroup from "@/components/ButtonGroup";
+import Button from '@/components/Button';
 
 export default function Home() {
   return (
@@ -19,8 +21,8 @@ export default function Home() {
           <div style={{flexShrink:"0"}}>
             <NavBar
               extra_additions={(
-                <div id={mapPage.header_path_div}>
-                    <p id={mapPage.header_path_text}>INTERACTIVE MAP</p>
+                <div id={MapPage.header_path_div}>
+                    <p id={MapPage.header_path_text}>INTERACTIVE MAP</p>
                 </div>
               )}
               text_color = "#ffffff"
@@ -28,14 +30,21 @@ export default function Home() {
             </NavBar>
           </div>
           
-          <div style={{ flexGrow: "1", width: "100vw", borderRadius:"25px 25px 0px 0px", overflow:"hidden", backgroundColor:"#ffffff" }}>
-            <MapSvgZoom style={{ width: "100vw", height: "100%"}}
-            floor1="/svg_assets/map_page/floor_1_and_ground.svg"
-            floor1_roof=""
-            floor2="/svg_assets/map_page/floor_2.svg"
-            floor2_roof=""
-            floor3=""
+          <div style={{ flexGrow: "1", width: "100vw", borderRadius:"25px 25px 0px 0px", overflow:"hidden", backgroundColor:"#ffffff", position:"relative"}}>
+            <MapSvgZoom
+              floor1="/svg_assets/map_page/floor_1_and_ground.svg"
+              floor2="/svg_assets/map_page/floor_1.svg"
+              floor3=""
             />
+
+            <div id={MapPage.floor_navigation_button_div}>
+              <ButtonGroup buttons={[
+                  <Button text="First Floor"/>,
+                  <Button text="Second Floor"/>,
+                  <Button text="Third Floor"/>
+                ]}
+              />
+            </div>
           </div>
         </div>
       </div>
