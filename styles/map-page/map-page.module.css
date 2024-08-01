@@ -34,4 +34,10 @@
         left:10px;
         height:180px;
     }
+    #header_path_text {
+        font-size: 100%;
+    }
+    #header_path_div {
+        margin-left: 10px;
+    }
 }

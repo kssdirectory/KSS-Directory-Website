@@ -156,16 +156,20 @@
 }
 
 
-#heroTextAbove, #heroText, #heroTextBody, #heroButtonSection {
+#heroTextAbove, #heroText, #heroTextBody, #heroButtonSection, #creditsText {
     animation: 1s cubic-bezier(0.26, 0.02, 0, 0.99) 0s 1 slideUp;
     opacity: 0%;
     animation-fill-mode: forwards;
     transform: translateY(50px);
 }
 
+#creditsText {
+    animation-delay: 0.55s;
+    margin-top: 32px;
+    font-size: 16px;
+}
 
-
-#heroTextAbove, #heroText, #heroTextBody {
+#heroTextAbove, #heroText, #heroTextBody, #creditsText {
     text-align: center;
 }
 
@@ -248,6 +252,11 @@
         width: auto;
         font-size: 14px;
         
+    }
+
+    #creditsText {
+        width: auto;
+        font-size: 12px;
     }
 
     #heroTextAbove {

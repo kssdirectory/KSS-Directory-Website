@@ -21,16 +21,31 @@
     width: 100vw;
 }
 
-@media (max-width: 625px) {
-    .header_logo_button{
-        justify-content: right;
-    }
+.header_link {
+    width:200px;
+    margin:0;
+    height:inherit; 
+    display:inline-flex; 
+    text-decoration:none;
+    justify-content: center;
 }
 
 .header_logo_div {
     display: inline-flex;
     align-content: center;
     flex-flow: row wrap;
+}
+
+@media (max-width: 625px) {
+    .header_logo_button {
+        justify-content: right;
+    }
+    .header_link {
+        justify-content: right;
+    }
+    .header_logo_div {
+        margin-right: 10px;
+    }
 }
 
 .header_logo_div:hover {

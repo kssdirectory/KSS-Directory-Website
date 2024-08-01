@@ -385,7 +385,7 @@ export default function Home() {
 
         {/* Not exactly sure what this to be honest, but when I remove it, it breaks my website */}
         {/* I think it sets the viewable area of my website? This is my first time using NextJS and React, so I don't really know */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 
         {/* Setting the favicon of the site to the KSS Directory logo */}
         <link rel="icon" sizes="76x76" href="static/compassLogo.ico" />

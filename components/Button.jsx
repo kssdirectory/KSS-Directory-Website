@@ -1,9 +1,12 @@
 import styles from "../styles/generic-button.module.css"
 
-const Button = ({text, onClick}) => {
+const Button = ({text, selected, stateID = 0, onClick}) => {
+    function clickForwarder(){
+        onClick(stateID);
+    }
+
     return (
-        // Todo move to css file
-        <button type="button" onClick={onClick} className={styles.generic_button}> 
+        <button type="button" onClick={clickForwarder} className={[styles.generic_button, selected ? styles.selected : ""].join(" ")}> 
             {text}
         </button>
     );

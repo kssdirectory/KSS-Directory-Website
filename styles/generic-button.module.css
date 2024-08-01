@@ -15,16 +15,22 @@
 }
 
 .generic_button:hover{
-    background:var(--b1BG); 
-    color:white;
-}
-
-.generic_button:active {
     background:var(--b0BG); 
     color:white;
 }
 
+.generic_button:active {
+    background:var(--b1BG); 
+    color:white;
+}
+
 .generic_button.selected {
+    background:var(--b1BG); 
+    color:white;
+}
+
+/* Provides a bit of feedback when clicking a button that has been already selected, just so that it feels nicer*/
+.generic_button.selected:active {
     background:var(--b0BG); 
     color:white;
 }
