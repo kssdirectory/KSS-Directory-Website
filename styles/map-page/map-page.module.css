@@ -24,6 +24,17 @@
     height:212px;
 }
 
+#scale_indicator_div {
+    position: absolute;
+    bottom: 0px;
+    left: 34px;
+}
+
+#mapSVG{
+    position:absolute;
+    width:50%;
+}
+
 @media (max-width: 625px) {
     #floor_navigation_button_div {
         position:absolute; 
@@ -39,5 +50,10 @@
     }
     #header_path_div {
         margin-left: 10px;
+    }
+
+    #mapSVG{
+        position:absolute;
+        width:100%;
     }
 }

@@ -3,6 +3,7 @@ import { useState } from "react";
 import MapSvgZoom from "./MapZoom";
 import Button from '@/components/Button';
 import MapPage from '/styles/map-page/map-page.module.css';
+import MapScaleIndicator from "./MapScaleIndicator";
 
 function MapView(){
     const [mapFloorState, setMapFloorState] = useState(0)
@@ -14,6 +15,10 @@ function MapView(){
               floor2={mapFloorState >= 1 ? "/svg_assets/map_page/Floor 2.svg" : ""}
               floor3={mapFloorState == 2 ? "/svg_assets/map_page/Floor 3.svg" : ""}
             />
+
+            <div id={MapPage.scale_indicator_div}>
+              <MapScaleIndicator pixelWidth={"250px"} sizeMeters={15} />
+            </div>
 
             <div id={MapPage.floor_navigation_button_div}>
               <SimpleButtonGroup 
