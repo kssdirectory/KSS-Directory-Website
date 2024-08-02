@@ -312,7 +312,7 @@ const individualClubPage = ( listed_pages ) => {
                             <div className={main.secondary_tiles_div}>
                             </div>
                         </div>
-                        <div className={main.tiles_flex} style={{marginTop: "calc(-100vh + 25px + 64px)", zIndex:1}}>
+                        <div className={main.tiles_flex} style={{marginTop: "calc(-100dvh + 25px + 64px)", zIndex:1}}>
                             <div className={main.banner_div}>
                             </div>
                             <div className={main.secondary_tiles_div}>

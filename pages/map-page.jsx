@@ -12,13 +12,12 @@ export default function Home() {
     <>
       <Head>
         <title>KSS Map</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
         <link rel="icon" sizes="76x76" href="/static/compassLogo.ico" />
       </Head>
       
-
+      
       <div style={{background:"var(--b0BG)"}}>
-        <div style={{flexDirection:"column", display:"flex", height:"100vh"}} class="flex-container">
+        <div style={{flexDirection:"column", display:"flex", height:"100dvh"}} class="flex-container">
           <div style={{flexShrink:"0"}}>
             <NavBar
               extra_additions={(

@@ -29,7 +29,7 @@
         position:absolute; 
         width:200px;
         top:auto;
-        bottom:calc(10px + env(safe-area-inset-bottom));
+        bottom:calc(10px + env(safe-area-inset-bottom, 10px));
         right:auto;
         left:10px;
         height:180px;

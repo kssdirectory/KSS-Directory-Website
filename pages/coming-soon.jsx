@@ -17,7 +17,7 @@ function ComingSoonPage() {
                 <div style = {{position: "absolute", top:"0px", bottom:"0px", left:"0px", right:"0px", padding: "calc(100vw/10)", background: "#072136", margin: "25px", "border-radius": "32px", animation: "0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInTop"}}>
                     <div class = "overlapContainer">
                         <div class = "background">
-                            <img src = "art_assets/waifu1.png" style = {{width: "calc(100vh/4)", position: "absolute", bottom: "0px", right: "0px"}}></img>
+                            <img src = "art_assets/waifu1.png" style = {{width: "calc(100dvh/4)", position: "absolute", bottom: "0px", right: "0px"}}></img>
                         </div>
                         <div class = "foreground" style = {{background: "linear-gradient(0.25turn, #072136, rgba(7, 33, 54, 0))"}}>
                             <h1 style = {{color: "white"}}>This page is coming soon!</h1>

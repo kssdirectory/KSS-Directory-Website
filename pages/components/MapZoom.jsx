@@ -5,6 +5,7 @@ import { ReactSVG } from "react-svg";
 const MapSvgZoom = ({ floor1, floor1_roof, floor2, floor2_roof, floor3 }) => {
   const containerRef = useRef();
 
+  const shouldInterceptWheel = event => false;
   const onUpdate = useCallback(({ x, y, scale }) => {
     const { current: container } = containerRef;
     //console.log("wuh");
@@ -28,6 +29,7 @@ const MapSvgZoom = ({ floor1, floor1_roof, floor2, floor2_roof, floor3 }) => {
       doubleTapToggleZoom={true}
       maxZoom={15000}
       tapZoomFactor={5}
+      shouldInterceptWheel={shouldInterceptWheel}
     >
 
       <div
@@ -39,7 +41,7 @@ const MapSvgZoom = ({ floor1, floor1_roof, floor2, floor2_roof, floor3 }) => {
           position: "relative"
         }}
       >
-        <div style={{position:'relative', width:"100vw", height: "100%"}}>
+        <div style={{position:'relative', width:"max(100vw, 100vh)"}}>
           <ReactSVG src={floor1} style={{ position:"absolute", width: "100%", height: "100%" }} />
           <ReactSVG src={floor2} style={{ position:"absolute", width: "100%", height: "100%" }} />
           <ReactSVG src={floor3} style={{ position:"absolute", width: "100%", height: "100%" }} />
