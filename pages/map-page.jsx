@@ -13,6 +13,7 @@ export default function Home() {
       <Head>
         <title>KSS Map</title>
         <link rel="icon" sizes="76x76" href="/static/compassLogo.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover user-scalable=no"/>
       </Head>
       
       

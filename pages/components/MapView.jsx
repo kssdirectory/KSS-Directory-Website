@@ -33,6 +33,7 @@ function MapView(){
                     selected = {mapFloorState === buttonData.stateID}
                     stateID = {buttonData.stateID}
                     onClick = {setMapFloorState}
+                    key={buttonData.stateID} // This line avoids a warning from react
                   />
                 }
               />

@@ -30,7 +30,7 @@
     left: 34px;
 }
 
-#mapSVG{
+.mapSVG{
     position:absolute;
     width:50%;
 }
@@ -52,8 +52,9 @@
         margin-left: 10px;
     }
 
-    #mapSVG{
+    .mapSVG{
         position:absolute;
         width:100%;
+        
     }
 }
