@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Link from "next/link";
 import React from 'react';
-import OfficialResourcesModal from "@/pages/components/OfficialResourcesModal"
+import OfficialResourcesModal from "@/components/index/OfficialResourcesModal"
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
@@ -517,7 +517,7 @@ export default function Home() {
                                   <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
                                   <div id = "b0Text">
                                     <img src = "svg_assets/compass_logo_vector.svg" id = "b0CompassLogo"/>
-                                    <h4 style = {{ "color": "white" }}>KSS Directory is a student-run resource repository for Kingston Secondary School! Scroll down to see a full announcement archive, or click on one of the buttons on the right to access the plethora of other KSS resources. Website made by Matthew Kong.</h4>
+                                    <h4 style = {{ "color": "white" }}>KSS Directory is a student-run resource repository for Kingston Secondary School! Scroll down to see a full announcement archive, or click on one of the buttons on the right to access the plethora of other KSS resources.</h4>
                                   </div>
                               </div>
                           </div>
@@ -690,6 +690,13 @@ export default function Home() {
 
               {/* this is to call the anceCards variable that was set before */}
               {anceCards}
+
+              {/* container class used here so that the "load more" button can be centred horizontally */}
+              <div class="buttonCentre">
+                {/* this is to call the button was set before */}
+                {/* needs to be a React compeonent because it changes depending on if there are any announcements available to load. */}
+                {loadMore}
+              </div>
             </div>
             <div class="rightInfoContainer">
               {/* <div class="discordPromptBox">
@@ -700,16 +707,6 @@ export default function Home() {
                   </a>
                 </div>
               </div> */}
-            </div>
-          </div>
-          
-
-          <div class="container">
-            {/* container class used here so that the "load more" button can be centred horizontally */}
-            <div class="buttonCentre">
-              {/* this is to call the button was set before */}
-              {/* needs to be a React compeonent because it changes depending on if there are any announcements available to load. */}
-              {loadMore}
             </div>
           </div>
 

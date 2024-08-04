@@ -5,7 +5,7 @@ import '@/styles/globals.css'
 import Head from 'next/head';
 import ButtonGroup from "@/components/ButtonGroup";
 
-import MapView from './components/MapView';
+import MapView from '../components/map-page/MapView';
 
 export default function Home() {
   return (

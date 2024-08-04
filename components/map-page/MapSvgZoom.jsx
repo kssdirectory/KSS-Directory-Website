@@ -2,11 +2,10 @@ import React, { useCallback, useRef } from "react";
 import QuickPinchZoom, { make3dTransformValue, make2dTransformValue, hasTranslate3DSupport } from "react-quick-pinch-zoom";
 import { ReactSVG } from "react-svg";
 import styles from "@/styles/map-page/map-page.module.css"
-import useWindowSize from "@/hooks/useWindowSize";
-import { platform } from 'os';
 
-const MapSvgZoom = ({windowSize, floor1, floor1_roof, floor2, floor2_roof, floor3}) => {
+const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor2_roof, floor3}) => {
   const isSafari = typeof window !== 'undefined' ? /^((?!chrome|android).)*safari/i.test(navigator.userAgent) : false;
+  const isMobileLayout = windowSize.width < 625;
 
   const use3DTransform = hasTranslate3DSupport() && !isSafari;
 
@@ -17,15 +16,16 @@ const MapSvgZoom = ({windowSize, floor1, floor1_roof, floor2, floor2_roof, floor
   const containerRef = useRef();
 
   var horizontalPadding = windowSize.width / 4;
-  if (windowSize.width < 625){
+  if (isMobileLayout){
     horizontalPadding = 0;
   }
 
-  console.log("Padding calculated: " + horizontalPadding + " Is safari: " + isSafari);
+  //console.log("Preparing map page:\nPadding calculated: " + horizontalPadding + " Is safari: " + isSafari);
 
   const shouldInterceptWheel = event => false;
   const onUpdate = useCallback(({ x, y, scale }) => {
     const { current: container } = containerRef;
+    setZoomFunc(scale);
     //console.log("scale is " + scale);
 
     if (container) {

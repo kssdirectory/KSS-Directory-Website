@@ -183,40 +183,27 @@ body, html, #__next {
 .scrollWrapper{
   display: flex;
   justify-content: space-between;
+  gap:25px;
 }
 
 /* Empty as it stands, but could be filled conditionally later */
 .leftInfoContainer{
+  flex-basis: 0;
   flex-grow: 1;
+  min-width: 0;
+  animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft;
 }
 
 .rightInfoContainer{
+  flex-basis: 0;
   flex-grow: 1;
-  padding-top: 82px;
-}
-
-/* Switch to two column layout (all extra info moved to right)*/
-@media (max-width:1400px) {
-  .leftInfoContainer {
-    flex-grow: 0;
-  }
-}
-
-/* Switch to one column layout (extra info moved above announcements)*/
-@media (max-width:1000px){
-  .scrollWrapper{
-    flex-direction: column;
-  }
+  min-width: 0;
   
-  .rightInfoContainer{
-    order: -1;
-    padding-left:0px;
-    padding-top:0px;
-  }
+  padding-top: 82px;
+  animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight1;
 }
 
 .discordPromptBox {
-  margin-left:32px;
   border: 1px solid var(--dark-gray);
   border-radius: 16px;
 }
@@ -225,7 +212,9 @@ body, html, #__next {
   padding-top:36px;
   padding-bottom:36px;
   justify-content: space-between;
+  align-items: center;
   display: flex;
+  gap:40px;
 }
 
 .infoHeaderText {
@@ -251,10 +240,39 @@ body, html, #__next {
   color:black;
 }
 
+/* Switch to two column layout (all extra info moved to right)*/
+@media (max-width:1500px) {
+  .leftInfoContainer {
+    flex-grow: 0;
+    /* take out of the flex flow so there aren't any extra gaps */
+    position: absolute ;
+  }
+}
+
+/* Switch to one column layout (extra info moved above announcements)*/
+@media (max-width:1250px){
+  .scrollWrapper{
+    flex-direction: column;
+    align-items: center;
+    max-width: 850px;
+    margin: auto;
+    gap: 0;
+  }
+  
+  .rightInfoContainer{
+    order: -1;
+    width: 100%;
+    padding-left:0px;
+    padding-top: 32px;
+  }
+}
+
 /* Stuff for the announcemnt cards */
 
   .annnouncementContainer{
     padding-top:50px;
+    flex-shrink: 0;
+    flex-grow: 0;
   }
 
   .anceCards {
@@ -635,7 +653,7 @@ body, html, #__next {
   /* the "load more" button styles */
 
     .loadMore {
-      background-color: white;
+      background-color: #ffffff00;
       border: 0px solid var(--dark-gray);
       font-family: Outfit;
       font-weight: 100;
@@ -688,12 +706,22 @@ body, html, #__next {
       margin-left: 200px;
     }
 
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1000px) {
   .anceCards {
     width: 720px;
     /* margin-left: auto;
     margin-right: auto; */
     padding:64px;
+    border-radius: 30px;
+  }
+
+  .annnouncementContainer {
+    /* Keep the announcements container big enough to hold an announcement card even when there aren't any, 
+    so that the page doesn't resize once the backend finishes loading announcements and cards are suddenly added when the page first loads */
+    min-width: 850px;
+  }
+
+  .discordPromptBox{
     border-radius: 30px;
   }
   .body {

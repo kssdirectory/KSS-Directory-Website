@@ -1,9 +1,13 @@
 import useWindowSize from "@/hooks/useWindowSize";
 import styles from "@/styles/map-page/map-scale-indicator.module.css"
 
-const MapScaleIndicator = ({pixelWidth: pixelSize, sizeMeters}) => {
+const MapScaleIndicator = ({calculateSizeFunc, mapScale}) => {
     const windowSize = useWindowSize();
     const mobileLayout = windowSize.width < 625;
+
+    const sizeData = calculateSizeFunc(mapScale);
+    const pixelSize = sizeData.pixelSize;
+    const sizeMeters = sizeData.sizeMeters;
 
     return (
         <div className={styles.indicatorContainer}>
