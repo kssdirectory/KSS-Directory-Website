@@ -1,12 +1,18 @@
 import SimpleButtonGroup from "@/components/SimpleButtonGroup";
 import { useState } from "react";
-import MapSvgZoom from "./MapZoom";
+import MapSvgZoom from "./MapSvgZoom";
 import Button from '@/components/Button';
 import MapPage from '/styles/map-page/map-page.module.css';
 import MapScaleIndicator from "./MapScaleIndicator";
+import useWindowSize from "@/hooks/useWindowSize";
 
 function MapView(){
     const [mapFloorState, setMapFloorState] = useState(0)
+    const desktopReferenceIndicatorSize = 250;
+    const mobileReferenceIndicatorSize = 180-30; // height of buttongroup - height of text in indicator
+
+    const windowSize = useWindowSize();
+    const mobileLayout = windowSize.width < 625;
 
     return (
         <>
@@ -14,10 +20,11 @@ function MapView(){
               floor1={mapFloorState <= 1 ? "/svg_assets/map_page/Floor 1.svg" : ""}
               floor2={mapFloorState >= 1 ? "/svg_assets/map_page/Floor 2.svg" : ""}
               floor3={mapFloorState == 2 ? "/svg_assets/map_page/Floor 3.svg" : ""}
+              windowSize={windowSize}
             />
 
             <div id={MapPage.scale_indicator_div}>
-              <MapScaleIndicator pixelWidth={"250px"} sizeMeters={15} />
+              <MapScaleIndicator pixelWidth={mobileLayout ? mobileReferenceIndicatorSize : desktopReferenceIndicatorSize + "px"} sizeMeters={15} />
             </div>
 
             <div id={MapPage.floor_navigation_button_div}>

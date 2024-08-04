@@ -5,10 +5,7 @@ import styles from "@/styles/map-page/map-page.module.css"
 import useWindowSize from "@/hooks/useWindowSize";
 import { platform } from 'os';
 
-
-
-
-const MapSvgZoom = ({ floor1, floor1_roof, floor2, floor2_roof, floor3 }) => {
+const MapSvgZoom = ({windowSize, floor1, floor1_roof, floor2, floor2_roof, floor3}) => {
   const isSafari = typeof window !== 'undefined' ? /^((?!chrome|android).)*safari/i.test(navigator.userAgent) : false;
 
   const use3DTransform = hasTranslate3DSupport() && !isSafari;
@@ -18,7 +15,6 @@ const MapSvgZoom = ({ floor1, floor1_roof, floor2, floor2_roof, floor3 }) => {
   : make2dTransformValue;
 
   const containerRef = useRef();
-  const windowSize = useWindowSize();
 
   var horizontalPadding = windowSize.width / 4;
   if (windowSize.width < 625){

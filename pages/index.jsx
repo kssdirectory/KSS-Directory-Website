@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Link from "next/link";
 import React from 'react';
+import OfficialResourcesModal from "@/pages/components/OfficialResourcesModal"
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
@@ -50,19 +51,19 @@ export default function Home() {
     return `#${f(0)}${f(8)}${f(4)}`;
   }
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [anceModalIsOpen, setAnceModalIsOpen] = React.useState(false);
 
-  function openModal() {
-    setIsOpen(true);
+  function openAnceModal() {
+    setAnceModalIsOpen(true);
   }
 
-  function afterOpenModal() {
+  function afterOpenAnceModal() {
     // references are now sync'd and can be accessed.
     document.body.style.overflow = 'hidden' 
   }
 
-  function closeModal() {
-    setIsOpen(false);
+  function closeAnceModal() {
+    setAnceModalIsOpen(false);
     document.body.style.overflow = 'auto' 
     setModalColour("#A1A1A1")
     setclubDtlsDesc(noClubDtlsDesc)
@@ -82,6 +83,25 @@ export default function Home() {
   const numAnceTotal = 7
   let loadMore = <button class="loadMore" onClick={() => updateIndex(index + 1)}>Load more...</button>
   const errorCheck = []
+
+  // Resources modal stuff
+  const [resModalIsOpen, setResModalIsOpen] = useState(false);
+  function OpenResModal(){
+    console.log("Trying to open res modal");
+    setResModalIsOpen(true);
+    console.log(resModalIsOpen);
+  }
+
+  function afterOpenResModal() {
+    // make sure scrolling on page is disabled while modal is open
+    document.body.style.overflow = 'hidden' 
+  } 
+
+  function closeResModal() {
+    document.body.style.overflow = 'auto'
+    setResModalIsOpen(false);
+  }
+  
 
   useEffect(() => {
     // Any code here will only run once on page load, or when 'index' var is updated
@@ -348,7 +368,7 @@ export default function Home() {
 
                     // All of the parts of a specific individual announcement are pushed (as React objects) to this list
                     // It is given the CSS class called "anceSection" so that the hover effect can work
-                    specificAnceSect.push(<div class="anceSection" key = {k + " " + i + "anceSection" + key2} onClick = {() => {openModal(); setModalCont([valueDict[0], ances])}}>{specificAnce}</div>)
+                    specificAnceSect.push(<div class="anceSection" key = {k + " " + i + "anceSection" + key2} onClick = {() => {openAnceModal(); setModalCont([valueDict[0], ances])}}>{specificAnce}</div>)
                     // put valueDict[0] for the announcement date details
                     // put ances for the specific announcement details
 
@@ -394,15 +414,15 @@ export default function Home() {
         <main class="body">
           <div>
               <Modal
-                isOpen={modalIsOpen}
-                onAfterOpen={afterOpenModal}
-                onRequestClose={closeModal}
+                isOpen={anceModalIsOpen}
+                onAfterOpen={afterOpenAnceModal}
+                onRequestClose={closeAnceModal}
                 className="announcementPopupModalBG"
                 overlayClassName="popupOverlay"
                 
               >
                 <div class = "announcementPopupModalBG">
-                  <div class = "announcementPopupModalBGClick" onClick = {closeModal}>
+                  <div class = "announcementPopupModalBGClick" onClick = {closeAnceModal}>
                   </div>
                   <div class = "announcementPopupModal">
                     <div class = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
@@ -424,7 +444,7 @@ export default function Home() {
                                 </div>
                               </div>
                               <div class = "foreground">
-                                <button onClick={closeModal} id = "announcementPopupModalXIconBG">
+                                <button onClick={closeAnceModal} id = "announcementPopupModalXIconBG">
                                   <img src = "svg_assets/x_icon.svg" id = "announcementPopupModalXIcon"/>
                                 </button>
                               </div>
@@ -455,6 +475,12 @@ export default function Home() {
                 </div>
                 
               </Modal>
+
+              <OfficialResourcesModal
+                openState={resModalIsOpen}
+                afterOpen={afterOpenResModal}
+                closeModal={closeResModal}
+              />
           </div>
 
           <div class = "wrapper">
@@ -573,7 +599,7 @@ export default function Home() {
                       <div class = "overlapContainer">
 
                           <div class = "background">
-                              <img src = "svg_assets/kssLogo.svg" id = "kssLogo"/>
+                            <img src = "svg_assets/kssLogo.svg" id = "kssLogo"/>
                           </div>
 
                           <div class = "foreground">
@@ -586,21 +612,19 @@ export default function Home() {
                                       </div>
                                   </div>
                                   <div class = "foreground">
-                                      <Link href = "coming-soon" class = "b3LinksBig">
-                                        <div class = "b3LinksBig"></div>
-                                      </Link>
-                                      <div style = {{ "display": "flex", "flexFlow": "column wrap", "width": "100%", "height": "80%", "justify-content": "center", "padding-top": "8%" }}>
+                                      <div class="b3LinkContainer" >
                                           <div class = "b3Links"><a href="https://outlook.office365.com/owa/calendar/KCVIStudentServices1@limestoneschools.onmicrosoft.com/bookings/" target="_blank"><h4>Student Services</h4></a></div>
-                                          <div class = "b3Links"><a href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Calendar/new%20cal%202023-2024%20updated.pdf" target="_blank"><h4>School Year Calendar</h4></a></div>
-                                          <div class = "b3Links"><a href="" target="_blank"><h4>Official KSS Floor Plans</h4></a></div>
+                                          <div class = "b3Links"><a href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Board/School%20Year%20Calendar/2024-07-02-2024-2025-LDSB%20School%20Year%20Calendar.pdf" target="_blank"><h4>School Year Calendar</h4></a></div>
+                                          <div class = "b3Links"><a href="https://app.myblueprint.ca/student/dashboard" target="_blank"><h4>My Blueprint (Course Selection)</h4></a></div>
                                           <div class = "b3Links"><a href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank"><h4>D2L Minds Online</h4></a></div>
                                           <div class = "b3Links"><a href="https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank"><h4>Aspen (Course Schedules)</h4></a></div>
-
                                       </div>
                                       <h3>OFFICIAL KSS RESOURCES</h3>
                                   </div>
                               </div>
                           </div>
+
+                          <div onClick={OpenResModal} class = "button3MobileLink"/>
                       </div>
 
                   </div>
@@ -640,30 +664,45 @@ export default function Home() {
               </div>
           </div>
 
-          <div class="container" style = {{"padding-top": "50px"}} id = "mainAnnouncementsSection">
-            {/* Container used to centre the buttons */}
-            {/* Commenting it out because I can't implement the features in time for the start of school... */}
-            {/*
-              <div class="buttonCentre">
-                <div style={{ "width": "34rem", "margin-top": '1.5rem', "margin-bottom": '3rem' }} class="buttonCentre">
+          {/* This wrapper holds the side content (discord prompt, current menu) while also centering the announcements list on screen*/}
+          <div class="scrollWrapper">
+            <div class="leftInfoContainer"></div>
+            <div class="annnouncementContainer" id = "mainAnnouncementsSection">
+              {/* Container used to centre the buttons */}
+              {/* Commenting it out because I can't implement the features in time for the start of school... */}
+              {/*
+                <div class="buttonCentre">
+                  <div style={{ "width": "34rem", "margin-top": '1.5rem', "margin-bottom": '3rem' }} class="buttonCentre">
 
-                  <button class="regularButton" style={{ "margin-left": "0" }}>Date</button>
+                    <button class="regularButton" style={{ "margin-left": "0" }}>Date</button>
 
-                  <button class="regularButton" id = "searchButton">
-                    <div class="container">
-                      <span id = "searchButtonText">Search</span>
-                      <img src = "svg_assets/searchIcon.svg" class = "searchIcon" />
-                    </div>
-                  </button>
+                    <button class="regularButton" id = "searchButton">
+                      <div class="container">
+                        <span id = "searchButtonText">Search</span>
+                        <img src = "svg_assets/searchIcon.svg" class = "searchIcon" />
+                      </div>
+                    </button>
 
-                  <button class="regularButton" style={{ "margin-right": "0" }}>Club</button>
+                    <button class="regularButton" style={{ "margin-right": "0" }}>Club</button>
+                  </div>
                 </div>
-              </div>
-            */}
-          </div>
+              */}
 
-          {/* this is to call the anceCards variable that was set before */}
-          {anceCards}
+              {/* this is to call the anceCards variable that was set before */}
+              {anceCards}
+            </div>
+            <div class="rightInfoContainer">
+              {/* <div class="discordPromptBox">
+                <div class="discordPromptContainer">
+                  <h3 class="infoHeaderText"> Join our discord for announcement pings! </h3>
+                  <a href = "https://discord.gg/BJtVbtqdDY" class="discordButton">
+                    <img src = "svg_assets/about_page/discord_black.svg" class="discordIcon"/>
+                  </a>
+                </div>
+              </div> */}
+            </div>
+          </div>
+          
 
           <div class="container">
             {/* container class used here so that the "load more" button can be centred horizontally */}

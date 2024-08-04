@@ -40,7 +40,7 @@
         position:absolute; 
         width:200px;
         top:auto;
-        bottom:calc(10px + env(safe-area-inset-bottom, 10px));
+        bottom:calc(10px + env(safe-area-inset-bottom, 0px));
         right:auto;
         left:10px;
         height:180px;
@@ -52,9 +52,14 @@
         margin-left: 10px;
     }
 
+    #scale_indicator_div {
+        left:auto;
+        right:10px;
+        bottom:calc(10px + env(safe-area-inset-bottom, 0px));
+    }
+
     .mapSVG{
         position:absolute;
         width:100%;
-        
     }
 }

@@ -4,15 +4,19 @@
 
 .visualContainer{
     width: 100%;
+    display:flex;
+    flex-direction: column;
 }
 
 .scaleText{
     color:black;
     font-size: 24px;
     padding-left: 0px;
+    padding-right: 0px;
 }
 
 .bottomLine{
+    width:100%;
     height:2px;
     background:black;
 }
@@ -40,4 +44,38 @@
     background:black;
     height:14px;
     width:2px;
+}
+
+@media (max-width: 625px) {
+    .bottomLine{
+        height:100%;
+        width:2px;
+    }
+
+    .visualContainer{
+        flex-direction: row;
+    }
+
+    .distanceTickContainer{
+        flex-direction: column;
+    }
+
+    /*Now bottom tick line*/
+    .leftTickLine{
+        height:2px;
+        width:14px;
+    }
+
+    .centerTickLine{
+        height:2px;
+        width:7px;
+    }
+
+    /*Now top tick line*/
+    .rightTickLine{
+        height:2px;
+        width:14px;
+    }
+    
+
 }
