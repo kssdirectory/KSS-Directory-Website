@@ -12,18 +12,34 @@ import MapSvgZoom from "./MapSvgZoom";
 function MapView(){
     const [mapFloorState, setMapFloorState] = useState(0);
     const [mapZoomValue, setMapZoomValue] = useState(1);
-    const desktopReferenceIndicatorSize = 250;
-    const mobileReferenceIndicatorSize = 180-30; // height of buttongroup - height of text in indicator
+    // Measured horizontally across a defined part of the svg
+    const referenceIndicatorSize = 0.15; // what fraction of the image is covered by measure
+    const referenceIndicatorMeasure = 15; // measure in meters
+
+    // at what fraction of the screen size does the indicator wrap to the next measure available 
+    const wrappingValue = 1/5; 
+    // 180-30; // height of buttongroup - height of text in indicator
 
     const windowSize = useWindowSize();
     const mobileLayout = windowSize.width < 625;
 
     // This function decides what values should be shown in the size indicator
     function calculateScaleIndicatorValues(mapScale){
-      console.log("Recalculating indicator size");
+      var pxPerMeter = (referenceIndicatorSize / referenceIndicatorMeasure) * mapScale * 
+                        (windowSize.width / (mobileLayout ? 1 : 2)); // account for map being half window width on desktop
+
+      var i = 0;
+      var chosenMeasure = referenceIndicatorMeasure;
+      while (chosenMeasure * pxPerMeter > (mobileLayout ? windowSize.height : windowSize.width) * wrappingValue){
+        if (i > referenceIndicatorMeasure) { chosenMeasure = 1; console.error("Error choosing indicator size"); break}; // Something went wrong
+        
+        chosenMeasure-=3; // step down by three meters at a time
+        i++;
+      }
+
+      var pixelSize = chosenMeasure * pxPerMeter;
+      var sizeMeters = chosenMeasure;
       
-      var pixelSize = mobileLayout ? mobileReferenceIndicatorSize : desktopReferenceIndicatorSize;
-      var sizeMeters = 15;
       
       return {pixelSize:pixelSize + "px", sizeMeters:sizeMeters}
     }

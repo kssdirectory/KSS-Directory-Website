@@ -3,9 +3,8 @@ import NavBar from '@/components/navBar';
 import MapPage from '/styles/map-page/map-page.module.css';
 import '@/styles/globals.css'
 import Head from 'next/head';
-import ButtonGroup from "@/components/ButtonGroup";
-
-import MapView from '../components/map-page/MapView';
+import dynamic from 'next/dynamic'
+const MapView = dynamic(() => import('../components/map-page/MapView'), {ssr:false});
 
 export default function Home() {
   return (
