@@ -1,3 +1,22 @@
+@keyframes slideInBottom {
+    0% {
+      transform: translateY(20%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+      transform: translateX(20%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
+
+
 #header_path_div {
     position: relative;
     top: 50%;
@@ -22,6 +41,7 @@
     top:15px;
     right:15px;
     height:212px;
+    animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight;
 }
 
 #scale_indicator_div {
@@ -44,6 +64,7 @@
         right:auto;
         left:10px;
         height:180px;
+        animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInBottom;
     }
     #header_path_text {
         font-size: 100%;

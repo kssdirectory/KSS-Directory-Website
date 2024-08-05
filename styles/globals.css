@@ -194,6 +194,12 @@ body, html, #__next {
   animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft;
 }
 
+.annnouncementContainer{
+  padding-top:50px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
 .rightInfoContainer{
   flex-basis: 0;
   flex-grow: 1;
@@ -211,6 +217,8 @@ body, html, #__next {
 .discordPromptContainer{
   padding-top:36px;
   padding-bottom:36px;
+  padding-right: 24px;
+  padding-left: 24px;
   justify-content: space-between;
   align-items: center;
   display: flex;
@@ -220,23 +228,41 @@ body, html, #__next {
 .infoHeaderText {
   color:var(--dark-gray);
   padding-right: 0px;
+  font-size: 24px;
+  font-family: Outfit;
+  font-weight: bold;
+}
+
+.infoBodyText{
+  color:var(--light-gray);
+  padding-right: 0px;
+  padding-top: 12px;
+  font-size: 20px;
+  font-family: Outfit;
+  font-weight: 100;
+  max-width: 300px;
 }
 
 .discordButton{
   flex-shrink: 0;
   display: block;
   border: 1px solid #A1A1A1;
-  height: 44px;
-  width: 44px;
+  height: 54px;
+  width: 54px;
   border-radius: 16px;
   display: flex;
   justify-content: center;
   margin: 0px;
-  margin-right: 36px;
+  background: var(--b1BG);
+  transition: background 0.25s;
+}
+
+.discordButton:hover{
+  background: var(--b2BG);
 }
 
 .discordIcon{
-  width: 24px;
+  width: 30px;
   color:black;
 }
 
@@ -246,6 +272,15 @@ body, html, #__next {
     flex-grow: 0;
     /* take out of the flex flow so there aren't any extra gaps */
     position: absolute ;
+  }
+
+  .discordButton{
+    height: 50px;
+    width: 50px;
+  }
+
+  .discordIcon{
+    width: 28px;
   }
 }
 
@@ -258,22 +293,38 @@ body, html, #__next {
     margin: auto;
     gap: 0;
   }
-  
+
+  .discordButton{
+    height: 44px;
+    width: 44px;
+  }
+
+  .infoHeaderText {
+    font-size: 20px;
+  }
+
+  .infoBodyText{
+    font-size: 16px;
+    padding-top: 6px;
+  }
+
   .rightInfoContainer{
     order: -1;
     width: 100%;
     padding-left:0px;
     padding-top: 32px;
   }
+
+  .discordIcon{
+    width: 26px;
+  }
+
+  .annnouncementContainer{
+    padding-top:0px;
+  }
 }
 
 /* Stuff for the announcemnt cards */
-
-  .annnouncementContainer{
-    padding-top:50px;
-    flex-shrink: 0;
-    flex-grow: 0;
-  }
 
   .anceCards {
     /* The class for each full announcement card */

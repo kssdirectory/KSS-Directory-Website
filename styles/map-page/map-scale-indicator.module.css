@@ -1,5 +1,14 @@
-.indicatorContainer{
+@keyframes slideInBottom {
+    0% {
+      transform: translateY(20%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
 
+.indicatorContainer{
+    animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInBottom;
 }
 
 .visualContainer{

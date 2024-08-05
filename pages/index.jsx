@@ -699,14 +699,19 @@ export default function Home() {
               </div>
             </div>
             <div class="rightInfoContainer">
-              {/* <div class="discordPromptBox">
+              <div class="discordPromptBox">
                 <div class="discordPromptContainer">
-                  <h3 class="infoHeaderText"> Join our discord for announcement pings! </h3>
+                  <div class="discordPromptTextContainer"> 
+                    <div class="infoHeaderText"> Join our Discord! </div>
+                    <div class="infoBodyText"> Subscribe to specific topics and get daily announcement pings. </div>
+                  </div>
+                  
                   <a href = "https://discord.gg/BJtVbtqdDY" class="discordButton">
-                    <img src = "svg_assets/about_page/discord_black.svg" class="discordIcon"/>
+
+                    <img src = "svg_assets/about_page/discord.svg" class="discordIcon"/>
                   </a>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
 
