@@ -3,7 +3,7 @@ import QuickPinchZoom, { make3dTransformValue, make2dTransformValue, hasTranslat
 import { ReactSVG } from "react-svg";
 import styles from "@/styles/map-page/map-page.module.css"
 
-const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor2_roof, floor3}) => {
+const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor2_roof, floor3, floorState}) => {
   const isSafari = typeof window !== 'undefined' ? /^((?!chrome|android).)*safari/i.test(navigator.userAgent) : false;
   const isMobileLayout = windowSize.width < 625;
 
@@ -26,7 +26,7 @@ const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor
   const onUpdate = useCallback(({ x, y, scale }) => {
     const { current: container } = containerRef;
     setZoomFunc(scale);
-    //console.log("scale is " + scale);
+    console.log("scale is " + scale);
 
     if (container) {
       const value = makeTransformValue({ x, y, scale });
@@ -88,10 +88,10 @@ const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor
           willChange:"auto",
         }}
       >
-        <div style={{position:'relative', width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
-          <ReactSVG src={floor1} className={styles.mapSVG} />
-          <ReactSVG src={floor2} className={styles.mapSVG} />
-          <ReactSVG src={floor3} className={styles.mapSVG} />
+        <div id={styles.map_content_container} >
+          <img src={floor1} className={[styles.mapSVG, floorState <= 1 ? styles.floorVisible : ""].join(" ")} />
+          <img src={floor2} className={[styles.mapSVG, floorState >= 1 ? styles.floorVisible : ""].join(" ")} />
+          <img src={floor3} className={[styles.mapSVG, floorState == 2 ? styles.floorVisible : ""].join(" ")} />
         </div>
         {/* <div style={{position:'absolute', top:'0', left:'0', width:"100vw", height:"100vh"}}>
           <ReactSVG src={floor2} style={{ width: "100%", height: "100%" }} />

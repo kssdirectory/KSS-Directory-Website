@@ -141,94 +141,96 @@ export default function Home() {
   useEffect(() => {
     // Function for retrieving club info data from web server
 
-    if (modalCont !== [["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"]]) {
+    // Used to have the following in brackets, but it always evaluates to true
+    // modalCont !== [["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"]]
+    if (true) {
       let modalContUpdated = modalCont[1][1]
 
       if (modalCont[1][1].includes(" ")) {
-        let modalContUpdated = (modalCont[1][1].replace(" ", "%20"))
+        modalContUpdated = (modalCont[1][1].replace(" ", "%20"))
       }
       
       const myRequest = new Request(webServerURL + "/clubinfo/" + modalContUpdated);
       fetch(myRequest, { method: "GET", headers: { Accept: "application/json", "ngrok-skip-browser-warning": "true" } })
   
-        .then((response) => {
-          // if the web server doesn't respond, return an error
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+      .then((response) => {
+        // if the web server doesn't respond, return an error
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+
+      .then((response) => {
+
+        if (response !== "none") {
+          setModalColour(hslToHex(response['Colour'], 60, 62))
+
+          if ("Description" in response) {
+            setclubDtlsDesc(<h2 id = "clubDtlsDesc">{response["Description"]}</h2>)
+          } else {
+            setclubDtlsDesc(noClubDtlsDesc)
           }
-          return response.json();
-        })
-  
-        .then((response) => {
-
-          if (response !== "none") {
-            setModalColour(hslToHex(response['Colour'], 60, 62))
-
-            if ("Description" in response) {
-              setclubDtlsDesc(<h2 id = "clubDtlsDesc">{response["Description"]}</h2>)
-            } else {
-              setclubDtlsDesc(noClubDtlsDesc)
-            }
-            let clubDtlsFlexTemp = []
-            for (const i of [ "Location", "Supervisor(s)", "Meeting times/dates"]) {
-              if (i in response) {
-                if (i == "Meeting times/dates") {
-                  clubDtlsFlexTemp.push(<div class = "clubDtlsFlexItemBG" style = {{"flex": 1.6}}>
-                    <h2 class = "clubDtlsFlexItemTitle">{i}</h2>
-                    <h2 class = "clubDtlsFlexItemDtls">{response[i]}</h2>
-                  </div>)
-                } else {
-                  clubDtlsFlexTemp.push(<div class = "clubDtlsFlexItemBG">
-                    <h2 class = "clubDtlsFlexItemTitle">{i}</h2>
-                    <h2 class = "clubDtlsFlexItemDtls">{response[i]}</h2>
-                  </div>)
-                }
-                
+          let clubDtlsFlexTemp = []
+          for (const i of [ "Location", "Supervisor(s)", "Meeting times/dates"]) {
+            if (i in response) {
+              if (i == "Meeting times/dates") {
+                clubDtlsFlexTemp.push(<div class = "clubDtlsFlexItemBG" style = {{"flex": 1.6}}>
+                  <h2 class = "clubDtlsFlexItemTitle">{i}</h2>
+                  <h2 class = "clubDtlsFlexItemDtls">{response[i]}</h2>
+                </div>)
+              } else {
+                clubDtlsFlexTemp.push(<div class = "clubDtlsFlexItemBG">
+                  <h2 class = "clubDtlsFlexItemTitle">{i}</h2>
+                  <h2 class = "clubDtlsFlexItemDtls">{response[i]}</h2>
+                </div>)
               }
+              
             }
+          }
 
-            const socialsListFileNames = ["discord", "instagram", "classroom", "linktr", "tiktok", "youtu"]
+          const socialsListFileNames = ["discord", "instagram", "classroom", "linktr", "tiktok", "youtu"]
 
-            if ("Socials" in response) {
-              let socialsList = []
-              let socialsListNotReact = []
-              for (let i = 0; i < response["Socials"].length; i++) {
-                for (const k of socialsListFileNames) {
-                  if (response["Socials"][i].includes(k)) {
+          if ("Socials" in response) {
+            let socialsList = []
+            let socialsListNotReact = []
+            for (let i = 0; i < response["Socials"].length; i++) {
+              for (const k of socialsListFileNames) {
+                if (response["Socials"][i].includes(k)) {
+                  socialsList.push(
+                    <a style = {{"background": "rgba(255, 255, 255, 0)", "padding": "0px", "border": "0px", "margin": "0px", "padding": "0px", "height": "auto"}} href={response["Socials"][i]} target="_blank">
+                      <img src = {"svg_assets/socials_icons/" + k + ".svg"} class = "socialsButtons"/>
+                    </a>
+                  )
+                  socialsListNotReact.push(response["Socials"][i])
+                }
+              } 
+            } if (socialsList.length !== response["Socials"].length) {
+                for (const i of response["Socials"]) {
+                  if (!socialsListNotReact.includes(i)) {
                     socialsList.push(
-                      <a style = {{"background": "rgba(255, 255, 255, 0)", "padding": "0px", "border": "0px", "margin": "0px", "padding": "0px", "height": "auto"}} href={response["Socials"][i]} target="_blank">
-                        <img src = {"svg_assets/socials_icons/" + k + ".svg"} class = "socialsButtons"/>
+                      <a style = {{"background": "rgba(255, 255, 255, 0)", "padding": "0px", "border": "0px", "margin": "0px", "padding": "0px", "height": "auto"}} href={i} target="_blank">
+                        <img src = {"svg_assets/socials_icons/unknown.svg"} class = "socialsButtons"/>
                       </a>
                     )
-                    socialsListNotReact.push(response["Socials"][i])
-                  }
-                } 
-              } if (socialsList.length !== response["Socials"].length) {
-                  for (const i of response["Socials"]) {
-                    if (!socialsListNotReact.includes(i)) {
-                      socialsList.push(
-                        <a style = {{"background": "rgba(255, 255, 255, 0)", "padding": "0px", "border": "0px", "margin": "0px", "padding": "0px", "height": "auto"}} href={i} target="_blank">
-                          <img src = {"svg_assets/socials_icons/unknown.svg"} class = "socialsButtons"/>
-                        </a>
-                      )
-                    }
                   }
                 }
-              setSocialsListBG(<div id = "socialsListBG">{socialsList}</div>)
-            } else {
-              setSocialsListBG('')
-            }
-            setClubDtlsFlex(clubDtlsFlexTemp)
-
+              }
+            setSocialsListBG(<div id = "socialsListBG">{socialsList}</div>)
           } else {
-            setModalColour("#A1A1A1")
-            setclubDtlsDesc(noClubDtlsDesc)
-            setClubDtlsFlex('')
             setSocialsListBG('')
           }
-          
-        })
-      }
+          setClubDtlsFlex(clubDtlsFlexTemp)
+
+        } else {
+          setModalColour("#A1A1A1")
+          setclubDtlsDesc(noClubDtlsDesc)
+          setClubDtlsFlex('')
+          setSocialsListBG('')
+        }
+        
+      })
+    }
   
   }, [modalCont])
 
@@ -565,7 +567,7 @@ export default function Home() {
                           </div>
                       </div>
                   </a>
-                  <Link class = "button2" href = "coming-soon">
+                  <Link class = "button2" href = "map-page">
                       <div class = "overlapContainer">
 
                           <div class = "background">

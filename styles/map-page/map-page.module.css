@@ -44,6 +44,16 @@
     animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight;
 }
 
+#map_content_container {
+    animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInBottom;
+    position:relative; 
+    width:100%; 
+    height:100%; 
+    display:flex;
+    justify-content:center; 
+    align-items:center;
+}
+
 #scale_indicator_div {
     position: absolute;
     bottom: 0px;
@@ -53,6 +63,11 @@
 .mapSVG{
     position:absolute;
     width:50%;
+    visibility: hidden;
+}
+
+.floorVisible {
+    visibility: visible;
 }
 
 @media (max-width: 625px) {

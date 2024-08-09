@@ -13,8 +13,9 @@ function MapView(){
     const [mapFloorState, setMapFloorState] = useState(0);
     const [mapZoomValue, setMapZoomValue] = useState(1);
     // Measured horizontally across a defined part of the svg
-    const referenceIndicatorSize = 0.15; // what fraction of the image is covered by measure
+    const referenceIndicatorSize = 0.1; // what fraction of the image is covered by measure
     const referenceIndicatorMeasure = 15; // measure in meters
+    const referenceStartingMeasureMultiplier = 2; 
 
     // at what fraction of the screen size does the indicator wrap to the next measure available 
     const wrappingValue = 1/5; 
@@ -29,7 +30,7 @@ function MapView(){
                         (windowSize.width / (mobileLayout ? 1 : 2)); // account for map being half window width on desktop
 
       var i = 0;
-      var chosenMeasure = referenceIndicatorMeasure;
+      var chosenMeasure = referenceIndicatorMeasure * referenceStartingMeasureMultiplier;
       while (chosenMeasure * pxPerMeter > (mobileLayout ? windowSize.height : windowSize.width) * wrappingValue){
         if (i > referenceIndicatorMeasure) { chosenMeasure = 1; console.error("Error choosing indicator size"); break}; // Something went wrong
         
@@ -47,9 +48,10 @@ function MapView(){
     return (
         <>
             <MapSvgZoom
-              floor1={mapFloorState <= 1 ? "/svg_assets/map_page/Floor 1.svg" : ""}
-              floor2={mapFloorState >= 1 ? "/svg_assets/map_page/Floor 2.svg" : ""}
-              floor3={mapFloorState == 2 ? "/svg_assets/map_page/Floor 3.svg" : ""}
+              floor1={"/svg_assets/map_page/Floor 1.svg"}
+              floor2={"/svg_assets/map_page/Floor 2.svg"}
+              floor3={"/svg_assets/map_page/Floor 3.svg"}
+              floorState={mapFloorState}
               windowSize={windowSize}
               setZoomFunc={setMapZoomValue}
             />
