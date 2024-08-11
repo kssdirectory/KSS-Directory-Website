@@ -9,6 +9,32 @@
     margin-right: 0;
 }
 
+.modalForeground {
+    background: linear-gradient(0.22turn, var(--b3BG) 20%, rgba(67, 65, 181, 0));
+    padding-top: calc(100vw/10);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    box-sizing: border-box;
+}
+
+.modalBackgroundContainer{
+    padding-top:calc(100vw/10);
+    padding-bottom:calc(100vw/10);
+    height:100%;
+    box-sizing:border-box;
+}
+
+.modalBackground {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
 #logoContainer{
     position:absolute;
     bottom: 0;
@@ -23,6 +49,7 @@
     margin: 0;
     right:0;
     top:0;
+    z-index: 1;
 }
 
 #kssResourcesPageLogo{
@@ -46,5 +73,18 @@
 @media (max-width: 415px) {
     .resourceLink{
         margin-left: 0;
+    }
+}
+
+/*Horizontal modal on phone stuff*/
+@media (max-height:500px) {
+    .modalForeground {
+        background: linear-gradient(0.22turn, var(--b3BG) 80%, rgba(67, 65, 181, 0));
+        padding-top: 0px;
+    }
+
+    .modalBackgroundContainer{
+        padding-top:calc(100vw/20);
+        padding-bottom:calc(100vw/20);
     }
 }

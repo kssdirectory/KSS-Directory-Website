@@ -2,8 +2,7 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Link from "next/link";
 import React from 'react';
-import OfficialResourcesModal from "@/components/index/OfficialResourcesModal"
-import ReactDOM from 'react-dom';
+import OfficialResourcesModal from "@/components/index/OfficialResourcesModal" 
 import Modal from 'react-modal';
 
 headers: new Headers({
@@ -403,7 +402,7 @@ export default function Home() {
         <title>KSS Directory</title>
 
         {/* Setting the website metadata (if that's what you call it), this shows up on embeds and I think google search? */}
-        <meta name="description" content="KSS Directory is a student-run resource repository for Kingston Secondary School, where you can easily access a complete announcement archive, alongside a plethora of other student resources! Made by Matthew Kong." />
+        <meta name="description" content="KSS Directory is a student-run resource repository for Kingston Secondary School, where you can easily access a complete announcement archive, alongside a plethora of other student resources! " />
 
         {/* Not exactly sure what this to be honest, but when I remove it, it breaks my website */}
         {/* I think it sets the viewable area of my website? This is my first time using NextJS and React, so I don't really know */}
