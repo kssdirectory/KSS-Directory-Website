@@ -15,6 +15,16 @@
     margin-left: 25px;
 }
 
+@media (max-width: 625px) {
+    #header_path_div {
+        margin-left: 10px;
+    }
+    #header_path_text {
+        font-size: 100%;
+    }
+}
+
+
 #header_path_link, #header_path_text {
     margin-block-start: 0em;
     margin-block-end: 0em;

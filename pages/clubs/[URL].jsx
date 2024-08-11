@@ -1,11 +1,13 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 import main from '../../styles/club_directory/club_pages/main.module.css';
 import NavBar from "../../components/navBar";
-
+import { useRouter } from 'next/router'
+import { notFound } from 'next/navigation';
 
 const webServerURL = "https://musical-blindly-cheetah.ngrok-free.app"
+
+// -------------------- Routing & Setup -------------------- //
 
 export const getStaticPaths = async () => {
     const res = await fetch(webServerURL + "/club_repo_main");
@@ -19,7 +21,7 @@ export const getStaticPaths = async () => {
 
     return {
         paths,
-        fallback: false 
+        fallback: true // If page hasn't been generated before, display a fallback while it loads for the first time 
     }
 }
 
@@ -27,77 +29,46 @@ export const getStaticProps = async (context) => {
     const URL = context.params.URL;
     const res = await fetch(webServerURL + "/specific_club_repo/" + URL);
     const data = await res.json();
+    var isValid = true;
+
+    // Backend can't find club
+    if (data.toString() == "none") {
+        return {
+            notFound: true,
+            revalidate: 30
+        }
+    }
 
     return {
-        props: { listed_pages: data },
-        revalidate: 10 // re-generate the page when a new request comes in?
+        props: { listed_page:data},
+        revalidate: 30 // re-generate the page if it's been more than thirty seconds since the last request, while regenerating, will still show old page, but next visitor will see new page.
     }
 }
 
+// -------------------- Page Code -------------------- //
 
-
-const individualClubPage = ( listed_pages ) => {
-    
-    function convert_iso_time(raw_time) {
-        // converts a time in iso 8601 format (e.g. 13:35 or 02:16) to standard American time (e.g. 1:35 PM or 2:16 AM)
-        let converted_time = ""
-        if (raw_time[0] === "0") {
-            if (raw_time[1] !== "0"){
-                converted_time += raw_time.slice(1) + " AM"
-            } else {
-                converted_time += 12 + raw_time(2) + " AM"
-            }
-        } else if (raw_time[0] === "1" && Number(raw_time[1]) < 3) {
-            converted_time += raw_time + " AM"
-        } else if (raw_time[0] !== "0" && 12 < Number(raw_time.slice(0,3)) < 25) {
-            converted_time += (Number(raw_time.slice(0,2)) - 12).toString() + raw_time.slice(2) + " PM"
+function convert_iso_time(raw_time) {
+    // converts a time in iso 8601 format (e.g. 13:35 or 02:16) to standard American time (e.g. 1:35 PM or 2:16 AM)
+    let converted_time = ""
+    if (raw_time[0] === "0") {
+        if (raw_time[1] !== "0"){
+            converted_time += raw_time.slice(1) + " AM"
         } else {
-            return "{invalid time}"
+            converted_time += 12 + raw_time(2) + " AM"
         }
-        return converted_time
+    } else if (raw_time[0] === "1" && Number(raw_time[1]) < 3) {
+        converted_time += raw_time + " AM"
+    } else if (raw_time[0] !== "0" && 12 < Number(raw_time.slice(0,3)) < 25) {
+        converted_time += (Number(raw_time.slice(0,2)) - 12).toString() + raw_time.slice(2) + " PM"
+    } else {
+        return "{invalid time}"
     }
+    return converted_time
+}
 
-    // idk why i gotta do listed_pages twice
-    // so i just created a new var for my own sanity
-    let listed_page = listed_pages.listed_pages
-
-    const club_logo = []
-    
-    if ("Images" in listed_page && "logo" in listed_page.Images) {
-        // if there is a logo
-
-        const club_logo_img = (
-            <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/logo"}
-            width="90"
-            height="90"
-            //TODO: make this support non-square logos
-            id={main.club_logo}
-            />
-        )
-
-        const logo_BG = (
-            <div id={main.logo_BG}></div>
-        )
-        const logo_cutout_main = (
-            <div id={main.logo_cutout_main}></div>
-        )
-        const logo_cutout_rounded_1 = (
-            // Note: this is disgusting, but idk how else to achieve the inverted rounded effect
-            <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_1}></img>
-        )
-        const logo_cutout_rounded_2 = (
-            // same as above....
-            <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_2}></img>
-        )
-        
-        club_logo.push([logo_cutout_main, logo_cutout_rounded_1, logo_cutout_rounded_2, logo_BG, club_logo_img])
-    }
-
-
-    // Tiles section
-
-    let tiles = []
-    const month = ""
+function createClubPageContent(listed_page) {
+    var tiles = [];
+    const month = "";
 
     for (const [key, value] of Object.entries({
         // iterates through each month to check if the month in Last_modified is the same.
@@ -281,7 +252,7 @@ const individualClubPage = ( listed_pages ) => {
                                 </div>
                             </div>
                         )
-                        console.log(exec_list_formatted)
+                        //console.log(exec_list_formatted)
                     }
                     tile5.push(
                         <div className={main.tile_div}>
@@ -330,12 +301,87 @@ const individualClubPage = ( listed_pages ) => {
             }
         }
     }
-   
 
+    return tiles;
+}
+
+// Equivalent to const individualClubPage = ( {listed_page} = props)
+// since we just need to destructure from whatever argument is passed to the func.
+// Damn that's weird. Javascript is weird.
+const individualClubPage = ( {listed_page} ) => {
+    const router = useRouter();
+    
+
+    const club_logo = [];
+    var club_logo_img;
+    var pageTitle;
+    var club_navbar_path;
+
+    // if our data is defined in the first place, setup values
+    if (listed_page && !router.isFallback){
+        if ("Images" in listed_page && "logo" in listed_page?.Images) {
+            // if there is a logo
+    
+            club_logo_img = (
+                <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/logo"}
+                width="90"
+                height="90"
+                //TODO: make this support non-square logos
+                id={main.club_logo}
+            />
+            )
+        }
+
+        // don't do this inline to avoid a weird warning I don't understand
+        // https://github.com/vercel/next.js/discussions/38256
+        pageTitle = listed_page.Metadata.Club_Name + "- KSS Directory Club Repository";
+
+        club_navbar_path = listed_page.Metadata.Category.toUpperCase() + "/" + listed_page.Metadata.Club_Name.toUpperCase();
+
+    } else { // provide suitable fallback values 
+        pageTitle = "Loading... - KSS Directory Club Repository";
+        club_navbar_path = "Loading.../Loading..."
+
+        // provide default logo in case webserver is unavailable
+        club_logo_img = (
+            <Image src={"/static/defaultClubLogo.png"}
+            width="90"
+            height="90"
+            //TODO: make this support non-square logos
+            id={main.club_logo} />
+        )
+    }
+
+    // Create club icon
+    const logo_BG = (
+        <div id={main.logo_BG}></div>
+    )
+    const logo_cutout_main = (
+        <div id={main.logo_cutout_main}></div>
+    )
+    const logo_cutout_rounded_1 = (
+        // Note: this is disgusting, but idk how else to achieve the inverted rounded effect
+        <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_1}></img>
+    )
+    const logo_cutout_rounded_2 = (
+        // same as above....
+        <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_2}></img>
+    )
+    
+    club_logo.push([logo_cutout_main, logo_cutout_rounded_1, logo_cutout_rounded_2, logo_BG, club_logo_img])
+
+
+    // Create club tiles section
+    let tiles = [];
+
+    if (listed_page && !router.isFallback) {
+        tiles = createClubPageContent(listed_page);
+    }
+    
     return (
         <>
             <Head>
-                <title>{listed_pages.listed_pages.Metadata.Club_Name} - KSS Directory Club Repository</title>
+                <title>{pageTitle}</title>
 
                 {/* Setting the favicon of the site to the KSS Directory logo */}
                 {/* Not the individual logo of each club because that'd be a PITA, especially if they didn't use a perfectly square logo...*/}
@@ -347,7 +393,7 @@ const individualClubPage = ( listed_pages ) => {
                     extra_additions={(
                         <div id={main.header_path_div}>
                             <a id={main.header_path_link} href="/clubs">CLUB REPOSITORY</a>
-                            <span id={main.header_path_text}> / {listed_page.Metadata.Category.toUpperCase()} / {listed_page.Metadata.Club_Name.toUpperCase()}</span>
+                            <span id={main.header_path_text}> / {club_navbar_path}</span>
                         </div>
                     )}
                 />
@@ -360,8 +406,6 @@ const individualClubPage = ( listed_pages ) => {
                 </div>
             </main>
         </>
-        
-        
     )
 }
 

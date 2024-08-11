@@ -57,10 +57,10 @@ export default function clubsPage({ all_club_pages }) {
                         </div>
                     </div>
                     <h1>Club Pages (highly unfinished)</h1>
-                    {listed_pages.map(listed_pages => (
-                        <Link href={'/clubs/' + listed_pages.Content.Metadata.URL} key={listed_pages.Content.Metadata.URL}>
+                    {listed_pages.map(listed_page => (
+                        <Link href={'/clubs/' + listed_page.Content.Metadata.URL} key={listed_page.Content.Metadata.URL}>
                             <div>
-                                <h3 style={{color:"gray"}}>{listed_pages.Content.Metadata.Club_Name}</h3>
+                                <h3 style={{color:"gray"}}>{listed_page.Content.Metadata.Club_Name}</h3>
                             </div>
                         </Link>
                     ))}

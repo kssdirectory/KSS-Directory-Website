@@ -86,9 +86,9 @@ export default function Home() {
   // Resources modal stuff
   const [resModalIsOpen, setResModalIsOpen] = useState(false);
   function OpenResModal(){
-    console.log("Trying to open res modal");
+    //console.log("Trying to open res modal");
     setResModalIsOpen(true);
-    console.log(resModalIsOpen);
+    //console.log(resModalIsOpen);
   }
 
   function afterOpenResModal() {

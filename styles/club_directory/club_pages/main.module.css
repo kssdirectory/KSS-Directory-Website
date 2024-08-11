@@ -18,6 +18,15 @@
     margin-left: 25px;
 }
 
+@media (max-width: 625px) {
+    #header_path_div {
+        margin-left: 10px;
+    }
+    #header_path_text {
+        font-size: 100%;
+    }
+}
+
 #header_path_link, #header_path_text {
     font-family: Outfit;
     font-weight: 100;

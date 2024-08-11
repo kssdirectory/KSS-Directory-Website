@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import '@/styles/globals.css'
  
 function NotFound() {
   return (

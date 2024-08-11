@@ -1,7 +1,6 @@
 // pages/index.js
 import NavBar from '@/components/navBar';
 import MapPage from '/styles/map-page/map-page.module.css';
-import '@/styles/globals.css'
 import Head from 'next/head';
 import dynamic from 'next/dynamic'
 const MapView = dynamic(() => import('../components/map-page/MapView'), {ssr:false});

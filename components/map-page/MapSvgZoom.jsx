@@ -26,7 +26,7 @@ const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor
   const onUpdate = useCallback(({ x, y, scale }) => {
     const { current: container } = containerRef;
     setZoomFunc(scale);
-    console.log("scale is " + scale);
+    //console.log("scale is " + scale);
 
     if (container) {
       const value = makeTransformValue({ x, y, scale });
