@@ -30,7 +30,8 @@ const bgColour = "#072136"
 // This is the hopefully static URL for the server that the website sends HTTP requests to. 
 // URL of the current web server is "https://musical-blindly-cheetah.ngrok-free.app"
 // Local URL of webServer.py is obviously http://127.0.0.1:8000
-const webServerURL = "https://musical-blindly-cheetah.ngrok-free.app"
+// It is set through the .env.local file for development and through the vercel dashboard for production
+const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const loadMore = "loading"
 export default function Home() {
@@ -101,11 +102,10 @@ export default function Home() {
     setResModalIsOpen(false);
   }
   
-
+  console.log("URL IS: " + webServerURL);
   useEffect(() => {
     // Any code here will only run once on page load, or when 'index' var is updated
     // because of the 'index' var that is passed through
-
     // Sending an HTTP request to the web server
     const myRequest = new Request(webServerURL + "/ance/batch/" + numAnceTotal + "/" + index);
     fetch(myRequest, { method: "GET", headers: { Accept: "application/json", "ngrok-skip-browser-warning": "true" } })

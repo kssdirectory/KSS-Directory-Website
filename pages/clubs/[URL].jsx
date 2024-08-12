@@ -5,7 +5,7 @@ import NavBar from "../../components/navBar";
 import { useRouter } from 'next/router'
 import { notFound } from 'next/navigation';
 
-const webServerURL = "https://musical-blindly-cheetah.ngrok-free.app"
+const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 // -------------------- Routing & Setup -------------------- //
 

@@ -6,7 +6,7 @@ import NavBar from "../../components/navBar";
 
 
 
-const webServerURL = "https://musical-blindly-cheetah.ngrok-free.app"
+const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 
 export const getServerSideProps = async () => {
