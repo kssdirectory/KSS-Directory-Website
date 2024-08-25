@@ -8,6 +8,9 @@ const nextConfig = {
         hostname: 'musical-blindly-cheetah.ngrok-free.app',
         port: ''
       },
+      {
+        hostname: "127.0.0.1"
+      }
     ],
   }
 }
