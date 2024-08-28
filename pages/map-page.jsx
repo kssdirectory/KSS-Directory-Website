@@ -1,5 +1,5 @@
 // pages/index.js
-import NavBar from '@/components/navBar';
+import NavBar from '@/components/NavBar';
 import MapPage from '/styles/map-page/map-page.module.css';
 import Head from 'next/head';
 import dynamic from 'next/dynamic'

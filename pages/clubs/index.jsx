@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Head from 'next/head';
 import main from '../../styles/club_directory/landing_page/main.module.css';
-import NavBar from "../../components/navBar";
+import NavBar from "../../components/NavBar";
 
 
 

@@ -2,11 +2,14 @@
     background-color: #D9D9D9;
     height: 100vh;
 }
-
-
+  
 /* Header stuff */
 
-
+#pageContent{
+    height: calc(100vh - 64px);
+    position:relative;
+    overflow: hidden;
+}
 
 #header_path_div {
     position: relative;
@@ -14,17 +17,8 @@
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    width: 550px;
+    /* width: 550px; */
     margin-left: 25px;
-}
-
-@media (max-width: 625px) {
-    #header_path_div {
-        margin-left: 10px;
-    }
-    #header_path_text {
-        font-size: 100%;
-    }
 }
 
 #header_path_link, #header_path_text {
@@ -42,10 +36,9 @@
     color: var(--blue-link)
 }
 
-
-
-
-
+#mobile_back_button_div {
+    visibility: hidden;
+}
 
 
 /* Tiles */
@@ -54,52 +47,53 @@
     display: flex;
     flex-flow: row wrap;
     margin-left: 25px;
-    margin-right: 25px;
-    height: calc(100vh - 64px - 25px);
     gap: 12px;
-    overflow: scroll;
-    overflow-x: hidden;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+
 }
 
-
+.tile_list_spacer{
+    height: 13px;
+    flex-shrink: 0;
+}
 
 /* Tile 1 stuff */
 
 .masked_banner {
-    border-radius: 32px;
     overflow: hidden;
 }
 
 .banner_div {
     position: relative;
+    margin-bottom: 25px;
     flex: 2;
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
 }
 
 
 
 
-/* Secondary Tiles */
+/* Info Tiles */
 
-.secondary_tiles_div {
+.info_tiles_div {
     display: flex;
     flex-flow: row wrap;
     flex: 1;
     max-width: 500px;
     position: relative;
     gap: 12px;
-    height: inherit;
+    height: 100%;
+    padding-right: 10px;
+    overflow-x:hidden;
+    overflow-y: scroll;
 }
-
- /* Hide scrollbar for Chrome, Safari and Opera */
- #secondary_tiles_div::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Hide scrollbar for IE, Edge and Firefox */
-  #secondary_tiles_div {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
 
 #logo_BG, #logo_cutout_main {
     position: absolute;
@@ -147,16 +141,13 @@
 }
 
 
-
 /* General tiles stuff */
 
-.body_text {
+.title_body_text {
     font-family: Outfit;
     font-weight: 100;
     font-size: 16px;
     margin: 0;
-    margin-top: 8px;
-    color: var(--dark-gray);
 }
 
 .tile_div {
@@ -188,28 +179,28 @@
 
 #club_name {
     margin: 0;
-    font-weight: 200;
-    font-size: 40px;
+    font-weight: 600;
+    font-size: 30px;
 }
 
-#club_name_activity_container {
+#update_date_activity_container {
     display: flex;
     flex-flow: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    gap: 15px;
+    align-items: center;
 }
 
 #last_modified {
     font-size: 16px;
-    margin-bottom: 8px;
+    margin: 0;
 }
 
 #activity_div {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
-    margin-top: 7px;
-    min-width: 128px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 #activity_div p {
@@ -219,6 +210,15 @@
 
 #activity_div img {
     width: 20px;
+}
+
+
+.title_tile_mobile {
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 36px;
+    padding-left: 36px;
+    padding-right: 36px;
 }
 
 
@@ -306,6 +306,7 @@
 .supervisor_list {
     font-weight: 100;
     font-size: 16px;
+    color: var(--dark-gray);
 }
 
 
@@ -313,4 +314,132 @@
 
 .exec_position_container {
     margin-bottom: 12px;
+}
+
+
+/* Utility */
+.mobileEnabled {
+    display: none;
+}
+
+.mobileDisabled {
+    display: initial;
+}
+
+@media (max-width: 1000px) {
+    /* Utility */
+    
+    .mobileEnabled {
+        display: initial;
+    }
+    .mobileDisabled {
+        display: none;
+    }
+
+    /* Text Stuff */
+    #club_name{
+        color: white;
+    }
+
+    .tile_div_subtitle {
+        font-size: 24px;
+    }
+
+    .title_body_text {
+        font-size: 14px;
+    }
+
+    .meeting_times_div p {
+        font-size: 14px;
+    }
+
+    .generic_body_text {
+        font-size: 14px;
+    }
+    
+    #last_modified {
+        font-size: 14px;
+    }
+
+    #activity_div p {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    #activity_div img {
+        width: 18px;
+    }
+
+    /* Header Stuff */
+    #mobile_back_button_div {
+        visibility: visible;
+        position: absolute;
+        height:inherit;
+        width:15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        top:0
+    }
+    .arrowIcon {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    #header_path_div {
+        visibility: hidden;
+    }
+
+    /* Tile Stuff */
+
+    .supervisor_list {
+        font-size: 14px;
+        margin-top: 7px;
+        margin-bottom: 7px;
+        margin-left: 7px;
+    }
+
+    .meeting_times_container {
+        flex-flow: row nowrap;
+    }
+
+    .tiles_flex {
+        flex-direction: column;
+        margin-left: 15px;
+        margin-right: 15px;
+        overflow-y: scroll;
+        flex-flow: column;
+    }
+    .tile_div {
+        width: auto;
+        padding: 36px;
+    }
+    .banner_div {
+        margin-bottom: 0;
+        flex-grow: 1;
+        flex-shrink: 0;
+        height:340px;
+        flex-basis: auto;
+    }
+    .banner_gradient {
+        position: absolute;
+        background: linear-gradient(180deg, rgba(7, 33, 54, 0.48) 20%, var(--b0BG));
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    .info_tiles_div {
+        padding: 0;
+        overflow-y: auto;
+        flex-shrink: 0;
+        flex-grow: 0;
+        min-height: 100px;
+    }
+    .club_logo_desktop {
+        visibility: hidden;
+    }
+    .tile_list_spacer{
+        height: 3px;
+    }
+    
 }

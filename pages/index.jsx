@@ -102,7 +102,7 @@ export default function Home() {
     setResModalIsOpen(false);
   }
   
-  console.log("URL IS: " + webServerURL);
+  //console.log("URL IS: " + webServerURL);
   useEffect(() => {
     // Any code here will only run once on page load, or when 'index' var is updated
     // because of the 'index' var that is passed through

@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import main from '../../styles/club_directory/club_pages/main.module.css';
-import NavBar from "../../components/navBar";
+import NavBar from "../../components/NavBar";
 import { useRouter } from 'next/router'
-import { notFound } from 'next/navigation';
+import Link from 'next/link';
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -67,8 +67,11 @@ function convert_iso_time(raw_time) {
 }
 
 function createClubPageContent(listed_page) {
-    var tiles = [];
-    const month = "";
+    var banner;
+    var info_tiles = [];
+    var title_tile_data;
+
+    var month = "";
 
     for (const [key, value] of Object.entries({
         // iterates through each month to check if the month in Last_modified is the same.
@@ -87,222 +90,228 @@ function createClubPageContent(listed_page) {
     })) {
         if (listed_page.Metadata.Last_modified.slice(5,7) === key) {
             // if the month is equal to the key, i.e. the program has found the correct month
-            const month = value
-            let description = []
-            let activity = []
-            
-            if ("Description" in listed_page.Basic_Info) {
-                description.push(<p className={main.body_text}>{listed_page.Basic_Info.Description}</p>)
-            }
-
-            if (listed_page.Basic_Info.Activity === "Yes") {
-                // if the club is set to be currently "active"
-                activity.push(
-                    <div id={main.activity_div}>
-                        <p style={{color:"#2BB673"}}>Active</p>
-                        <img src="../../svg_assets/club_pages/checkmark.svg"></img>
-                    </div>
-                )
-            } else {
-                // if the club is set to be currently "inactive"
-                activity.push(
-                    <div id={main.activity_div}>
-                        <p style={{color:"#8E1111"}}>Inactive</p>
-                        <img src="../../svg_assets/club_pages/cross.svg"></img>
-                    </div>
-                )
-            }
-            
-            // Tile 1: Title
-            const tile1 = (
-                <div className={main.tile_div}>
-                    <div id={main.club_name_activity_container}>
-                        <h1 id={main.club_name}>{listed_page.Metadata.Club_Name}</h1>
-                        {activity}
-                    </div>
-                    <p id={main.last_modified}>Last modified: {month} {listed_page.Metadata.Last_modified.slice(8,10)}, {listed_page.Metadata.Last_modified.slice(0,4)}</p>
-                    {description}
-                    
-                </div>
-            )
-
-            let tile2 = []
-
-            let tile2_meeting_times = []
-
-            if (1 in listed_page.Meeting_Times) {
-                for (const [key, value] of Object.entries(listed_page.Meeting_Times)) {
-                    // iterate through each meeting time and push it as a <div> to tile2_meeting_times
-                    let meeting_title = []
-                    if ("Meeting_Title" in value) {
-                        meeting_title.push(value.Meeting_Title)
-                    } else {
-                        meeting_title.push("Meeting " + key)
-                    }
-                    let meeting_end_time = []
-                    if ("Meeting_End_Time" in value) {
-                        meeting_end_time.push(" to " + convert_iso_time(value.Meeting_End_Time))
-                    }
-                    tile2_meeting_times.push(
-                        <div className={main.meeting_times_container}>
-                            <rect className={main.text_side_line}/>
-                            <div className={main.meeting_times_div}>
-                                <h2>{meeting_title}</h2>
-                                <p>
-                                    {value.Meeting_Day[0].toUpperCase() + value.Meeting_Day.slice(1)}s at {convert_iso_time(value.Meeting_Start_Time)} {meeting_end_time} in {value.Meeting_Location}
-                                </p>
-                            </div>
-                            
-                        </div>
-                    )
-
-                }
-                tile2.push(
-                    <div className={main.tile_div}>
-                        <h1 className={main.tile_div_subtitle}>Weekly Meeting Times</h1>
-                        {tile2_meeting_times}
-                    </div>
-                )
-            }
-
-            let tile3 = []
-            if (1 in listed_page.Links) {
-                let links = []
-                for (const [key, value] of Object.entries(listed_page.Links)) {
-                    let link_name = []
-                    if (value[0] !== "none") {
-                        link_name.push(value[0])
-                    } else {
-                        link_name.push(value[1])
-                    }
-                    links.push(
-                        <a href={value[1]} className={main.link}>
-                            <img src={"https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=" + value[1] + "&size=32"}/>
-                            <p>{link_name}</p>
-                        </a>
-                    )
-                }
-                tile3.push(
-                    <div className={main.tile_div}>
-                        <h1 className={main.tile_div_subtitle}>Links</h1>
-                        <div id={main.links_container}>
-                            {links}
-                        </div>
-                        
-                    </div>
-                )
-            }
-            
-            let tile4 = []
-            if ("Supervisors" in listed_page.Basic_Info) {
-                if (1 in listed_page.Basic_Info.Supervisors) {
-                    let supervisor_list = []
-                    for (const [key, value] of Object.entries(listed_page.Basic_Info.Supervisors)) {
-                        supervisor_list.push(
-                            <p className={main.supervisor_list}>{value}</p>
-                        )
-                    }
-                    tile4.push(
-                        <div className={main.tile_div}>
-                            <h1 className={main.tile_div_subtitle}>Supervisors</h1>
-                            {supervisor_list}
-                        </div>
-                    )
-                }
-            }
-
-            let tile5 = []
-            if ("Execs" in listed_page) {
-                if (Object.keys(listed_page.Execs).length > 0) {
-                    let exec_list_unformatted = {}
-                    for (const [key, value] of Object.entries(listed_page.Execs)) {
-                        if (value !== "none") {
-                            // if there is an assigned position title
-                            if (value in exec_list_unformatted) {
-                                exec_list_unformatted[value].push(key)
-                            } else {
-                                exec_list_unformatted[value] = [key]
-                            }
-                        } else {
-                            // if the exec is not assigned a position title
-                            if ("Unspecified role" in exec_list_unformatted) {
-                                exec_list_unformatted["Unspecified role"].push(key)
-                            } else {
-                                exec_list_unformatted["Unspecified role"] = [key]
-                            }
-                        }
-                        
-                    }
-                    let exec_list_formatted = []
-                    for (const [position, names] of Object.entries(exec_list_unformatted)) {
-                        let exec_position_list = []
-                        for (const individual_exec of names) {
-                            exec_position_list.push(
-                                <p className={main.generic_body_text}>{individual_exec}</p>
-                            )
-                        }
-                        exec_list_formatted.push(
-                            <div>
-                                <h2 className={main.exec_position_title}>{position}</h2>
-                                <div className={main.exec_position_container}>
-                                    <rect className={main.text_side_line}/>
-                                    <div>
-                                        {exec_position_list}
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                        //console.log(exec_list_formatted)
-                    }
-                    tile5.push(
-                        <div className={main.tile_div}>
-                            <h1 className={main.tile_div_subtitle}>Current Execs</h1>
-                            {exec_list_formatted}
-                        </div>
-                    )
-                }
-            }
-            if ("Images" in listed_page && "banner" in listed_page.Images) {
-                // if there is a logo available, use it as favicon for this webpage.
-                // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
-                const banner = (
-                    <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/banner"}
-                    className={main.masked_banner}
-                    alt={"Banner of " + listed_page.Metadata.Club_Name}
-                    objectFit="cover"
-                    layout="fill"
-                    />
-                )
-                
-                tiles.push(
-                    <div style={{position: "relative"}}>
-                        <div className={main.tiles_flex} style={{zIndex:0}}>
-                            <div className={main.banner_div}>
-                                {banner}
-                            </div>
-                            <div className={main.secondary_tiles_div}>
-                            </div>
-                        </div>
-                        <div className={main.tiles_flex} style={{marginTop: "calc(-100dvh + 25px + 64px)", zIndex:1}}>
-                            <div className={main.banner_div}>
-                            </div>
-                            <div className={main.secondary_tiles_div}>
-                                {tile1}
-                                {tile2}
-                                {tile3}
-                                {tile4}
-                                {tile5}
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                )
-            }
+            month = value
         }
     }
 
-    return tiles;
+    let description = []
+    let activity = []
+    
+    if ("Description" in listed_page.Basic_Info) {
+        description.push(<p className={main.title_body_text}>{listed_page.Basic_Info.Description}</p>)
+    }
+
+    if (listed_page.Basic_Info.Activity === "Yes") {
+        // if the club is set to be currently "active"
+        activity.push(
+            <div id={main.activity_div}>
+                <p style={{color:"#2BB673"}}>Active</p>
+                <img src="../../svg_assets/club_pages/checkmark.svg"></img>
+            </div>
+        )
+    } else {
+        // if the club is set to be currently "inactive"
+        activity.push(
+            <div id={main.activity_div}>
+                <p style={{color:"#8E1111"}}>Inactive</p>
+                <img src="../../svg_assets/club_pages/cross.svg"></img>
+            </div>
+        )
+    }
+    
+    // Tile 1: Title
+    title_tile_data = (
+        <>
+            <h1 id={main.club_name}>{listed_page.Metadata.Club_Name}</h1>
+            <div id={main.update_date_activity_container}>
+                {activity}
+                <p id={main.last_modified}>Last updated: {month} {listed_page.Metadata.Last_modified.slice(8,10)}, {listed_page.Metadata.Last_modified.slice(0,4)}</p>
+            </div>
+            {description}
+        </>
+    );
+
+    if (1 in listed_page.Meeting_Times) {
+        let tile2_meeting_times = []
+
+        for (const [key, value] of Object.entries(listed_page.Meeting_Times)) {
+            // iterate through each meeting time and push it as a <div> to tile2_meeting_times
+            let meeting_title = []
+            if ("Meeting_Title" in value) {
+                meeting_title.push(value.Meeting_Title)
+            } else {
+                meeting_title.push("Meeting " + key)
+            }
+            let meeting_end_time = []
+            if ("Meeting_End_Time" in value) {
+                meeting_end_time.push(" to " + convert_iso_time(value.Meeting_End_Time))
+            }
+            tile2_meeting_times.push(
+                <div className={main.meeting_times_container}>
+                    <rect className={main.text_side_line}/>
+                    <div className={main.meeting_times_div}>
+                        <h2>{meeting_title}</h2>
+                        <p>
+                            {value.Meeting_Day[0].toUpperCase() + value.Meeting_Day.slice(1)}s at {convert_iso_time(value.Meeting_Start_Time)} {meeting_end_time} in {value.Meeting_Location}
+                        </p>
+                    </div>
+                </div>
+            )
+
+        }
+        info_tiles.push(
+            <div className={main.tile_div}>
+                <h1 className={main.tile_div_subtitle}>Weekly Meeting Times</h1>
+                {tile2_meeting_times}
+            </div>
+        )
+    }
+
+    if (1 in listed_page.Links) {
+        let links = []
+        for (const [key, value] of Object.entries(listed_page.Links)) {
+            let link_name = []
+            if (value[0] !== "none") {
+                link_name.push(value[0])
+            } else {
+                link_name.push(value[1])
+            }
+            links.push(
+                <a href={value[1]} className={main.link}>
+                    <img src={"https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=" + value[1] + "&size=32"}/>
+                    <p>{link_name}</p>
+                </a>
+            )
+        }
+        info_tiles.push(
+            <div className={main.tile_div}>
+                <h1 className={main.tile_div_subtitle}>Links</h1>
+                <div id={main.links_container}>
+                    {links}
+                </div>
+            </div>
+        )
+    }
+    
+    if ("Supervisors" in listed_page.Basic_Info) {
+        if (1 in listed_page.Basic_Info.Supervisors) {
+            let supervisor_list = []
+            for (const [key, value] of Object.entries(listed_page.Basic_Info.Supervisors)) {
+                supervisor_list.push(
+                    <p className={main.supervisor_list}>{value}</p>
+                )
+            }
+            info_tiles.push(
+                <div className={main.tile_div}>
+                    <h1 className={main.tile_div_subtitle}>Supervisors</h1>
+                    {supervisor_list}
+                </div>
+            )
+        }
+    }
+
+    if ("Execs" in listed_page) {
+        if (Object.keys(listed_page.Execs).length > 0) {
+            let exec_list_unformatted = {}
+            for (const [key, value] of Object.entries(listed_page.Execs)) {
+                if (value !== "none") {
+                    // if there is an assigned position title
+                    if (value in exec_list_unformatted) {
+                        exec_list_unformatted[value].push(key)
+                    } else {
+                        exec_list_unformatted[value] = [key]
+                    }
+                } else {
+                    // if the exec is not assigned a position title
+                    if ("Unspecified role" in exec_list_unformatted) {
+                        exec_list_unformatted["Unspecified role"].push(key)
+                    } else {
+                        exec_list_unformatted["Unspecified role"] = [key]
+                    }
+                }
+                
+            }
+            let exec_list_formatted = [];
+            for (const [position, names] of Object.entries(exec_list_unformatted)) {
+                let exec_position_list = []
+                for (const individual_exec of names) {
+                    exec_position_list.push(
+                        <p className={main.generic_body_text}>{individual_exec}</p>
+                    )
+                }
+                exec_list_formatted.push(
+                    <div>
+                        <h2 className={main.exec_position_title}>{position}</h2>
+                        <div className={main.exec_position_container}>
+                            <rect className={main.text_side_line}/>
+                            <div>
+                                {exec_position_list}
+                            </div>
+                        </div>
+                    </div>
+                )
+                //console.log(exec_list_formatted)
+            }
+            info_tiles.push(
+                <div className={main.tile_div}>
+                    <h1 className={main.tile_div_subtitle}>Current Execs</h1>
+                    {exec_list_formatted}
+                </div>
+            );
+        }
+    }
+    info_tiles.push(<div className={main.tile_list_spacer}/>);
+
+    if ("Images" in listed_page && "banner" in listed_page.Images) {
+        // if there is a logo available, use it as favicon for this webpage.
+        // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
+        banner = (
+            <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/banner"}
+            className={main.masked_banner}
+            alt={"Banner of " + listed_page.Metadata.Club_Name}
+            objectFit="cover"
+            layout="fill"
+            />
+        )
+    }
+
+    let return_tiles = [];
+
+    // Desktop site
+    return_tiles.push(
+        <div className = {main.mobileDisabled}>
+            <div className={main.tiles_flex}>
+                <div className={main.banner_div}>
+                    {banner}
+                </div>
+                <div className={main.info_tiles_div}>
+                    <div className={main.tile_div}>
+                        {title_tile_data}
+                    </div>
+                    {info_tiles}
+                </div>
+            </div>
+        </div>
+    );
+
+    // Mobile site
+    return_tiles.push (
+        <div className = {main.mobileEnabled}>
+            <div className={main.tiles_flex}>
+                <div className={main.banner_div}>
+                    {banner}
+                    <div className={main.banner_gradient}></div>
+                    <div className={main.title_tile_mobile}>
+                        {title_tile_data}
+                    </div>
+                </div>
+                {info_tiles}
+            </div>
+        </div>
+    );
+    
+
+    return return_tiles;
 }
 
 // Equivalent to const individualClubPage = ( {listed_page} = props)
@@ -311,7 +320,6 @@ function createClubPageContent(listed_page) {
 const individualClubPage = ( {listed_page} ) => {
     const router = useRouter();
     
-
     const club_logo = [];
     var club_logo_img;
     var pageTitle;
@@ -370,7 +378,6 @@ const individualClubPage = ( {listed_page} ) => {
     
     club_logo.push([logo_cutout_main, logo_cutout_rounded_1, logo_cutout_rounded_2, logo_BG, club_logo_img])
 
-
     // Create club tiles section
     let tiles = [];
 
@@ -391,22 +398,35 @@ const individualClubPage = ( {listed_page} ) => {
             <main id={main.bg}>
                 <NavBar
                     extra_additions={(
-                        <div id={main.header_path_div}>
-                            <a id={main.header_path_link} href="/clubs">CLUB REPOSITORY</a>
-                            <span id={main.header_path_text}> / {club_navbar_path}</span>
-                        </div>
+                        <>
+                            <div id={main.header_path_div}>
+                                <a id={main.header_path_link} href="@/clubs">CLUB REPOSITORY</a>
+                                <span id={main.header_path_text}> / {club_navbar_path}</span>
+                            </div>
+                            <div id={main.mobile_back_button_div}>
+                                <Link href = "../clubs" style={{all:"unset"}}>
+                                    <img src = "../svg_assets/back_arrow.svg" className={main.arrowIcon}/>
+                                </Link>
+                            </div>
+                        </>
                     )}
+                    center_on_mobile={false}
                 />
                     
-                <div>
+                <div id={main.pageContent}>
                     {/* <h1>{listed_page.Metadata.Club_Name}</h1>
                     <p>{listed_page.Basic_Info.Description}</p> */}
-                    {tiles}
-                    {club_logo}
+                    <div>
+                        {tiles}
+                    </div>
+                    
+                    <div className={main.club_logo_desktop}>
+                        {club_logo}
+                    </div>
                 </div>
             </main>
         </>
     )
 }
 
-export default individualClubPage
+export default individualClubPage;
