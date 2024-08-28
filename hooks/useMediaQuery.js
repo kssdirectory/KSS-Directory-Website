@@ -1,7 +1,7 @@
 // Extracted from https://usehooks-ts.com/react-hook/use-media-query
 import { useIsomorphicLayoutEffect } from '@react-spring/web'
 import { useEffect, useState } from 'react'
-import isClientSide from './isClientSide'
+import isClientSide from '../util/isClientSide'
 
 export function useMediaQuery(query) {
   const getMatches = (query) => {

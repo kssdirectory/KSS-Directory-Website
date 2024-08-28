@@ -1,5 +1,5 @@
 import { useIsomorphicLayoutEffect } from "@react-spring/web";
-import isClientSide from "./isClientSide";
+import isClientSide from "../util/isClientSide";
 
 const { useState } = require("react");
 

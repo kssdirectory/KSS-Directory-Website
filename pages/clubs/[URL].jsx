@@ -4,6 +4,7 @@ import main from '../../styles/club_directory/club_pages/main.module.css';
 import NavBar from "../../components/NavBar";
 import { useRouter } from 'next/router'
 import Link from 'next/link';
+import { hexToHSL, hslToHex } from '@/util/util';
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -66,10 +67,68 @@ function convert_iso_time(raw_time) {
     return converted_time
 }
 
+function getClubLogoElement(listed_page, club_accent_color){
+    const club_logo = [];
+    var club_logo_img;
+
+
+    if ("Images" in listed_page && "logo" in listed_page?.Images) {
+        // if there is a logo
+        club_logo_img = (
+            <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/logo"}
+            width="90"
+            height="90"
+            //TODO: make this support non-square logos
+            id={main.club_logo}
+            />
+        )
+    } else {
+        // provide default logo in case webserver is unavailable
+        club_logo_img = (
+            <Image src={"/static/defaultClubLogo.png"}
+            width="90"
+            height="90"
+            //TODO: make this support non-square logos
+            id={main.club_logo} />
+        )
+    }
+
+    let club_accent_hsl = hexToHSL(club_accent_color);
+    console.log("HSL: " + club_accent_hsl)
+
+    // Create club icon
+    const logo_BG = (
+        <div id={main.logo_BG} style={{backgroundColor:hslToHex(club_accent_hsl.h, 100, 88)}} >
+            {club_logo_img}
+        </div>
+    )
+    const logo_cutout_main = (
+        <div id={main.logo_cutout_main}></div>
+    )
+    const logo_cutout_rounded_1 = (
+        // Note: this is disgusting, but idk how else to achieve the inverted rounded effect
+        <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_1}></img>
+    )
+    const logo_cutout_rounded_2 = (
+        // same as above....
+        <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_2}></img>
+    )
+    
+    club_logo.push([logo_cutout_main, logo_cutout_rounded_1, logo_cutout_rounded_2, logo_BG])
+
+
+    return (
+        <div className={main.club_logo_holder}>
+            {club_logo}
+        </div>
+    );
+}
+
 function createClubPageContent(listed_page) {
     var banner;
     var info_tiles = [];
     var title_tile_data;
+    var club_accent_color = "#d8aa64";
 
     var month = "";
 
@@ -148,7 +207,7 @@ function createClubPageContent(listed_page) {
             }
             tile2_meeting_times.push(
                 <div className={main.meeting_times_container}>
-                    <rect className={main.text_side_line}/>
+                    <rect className={main.text_side_line} style={{backgroundColor:club_accent_color}}/>
                     <div className={main.meeting_times_div}>
                         <h2>{meeting_title}</h2>
                         <p>
@@ -243,7 +302,7 @@ function createClubPageContent(listed_page) {
                     <div>
                         <h2 className={main.exec_position_title}>{position}</h2>
                         <div className={main.exec_position_container}>
-                            <rect className={main.text_side_line}/>
+                            <rect className={main.text_side_line} style={{backgroundColor:club_accent_color}}/>
                             <div>
                                 {exec_position_list}
                             </div>
@@ -267,7 +326,7 @@ function createClubPageContent(listed_page) {
         // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
         banner = (
             <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/banner"}
-            className={main.masked_banner}
+            className={main.banner_image}
             alt={"Banner of " + listed_page.Metadata.Club_Name}
             objectFit="cover"
             layout="fill"
@@ -276,13 +335,16 @@ function createClubPageContent(listed_page) {
     }
 
     let return_tiles = [];
+    let club_logo_element = getClubLogoElement(listed_page, club_accent_color);
 
     // Desktop site
     return_tiles.push(
         <div className = {main.mobileDisabled}>
             <div className={main.tiles_flex}>
                 <div className={main.banner_div}>
-                    {banner}
+                    <div className={main.banner_content_container}>
+                        {banner}
+                    </div>
                 </div>
                 <div className={main.info_tiles_div}>
                     <div className={main.tile_div}>
@@ -290,6 +352,8 @@ function createClubPageContent(listed_page) {
                     </div>
                     {info_tiles}
                 </div>
+
+                {club_logo_element}
             </div>
         </div>
     );
@@ -299,11 +363,14 @@ function createClubPageContent(listed_page) {
         <div className = {main.mobileEnabled}>
             <div className={main.tiles_flex}>
                 <div className={main.banner_div}>
-                    {banner}
-                    <div className={main.banner_gradient}></div>
-                    <div className={main.title_tile_mobile}>
-                        {title_tile_data}
+                    <div className={main.banner_content_container}>
+                        {banner}
+                        <div className={main.banner_gradient}></div>
+                        <div className={main.title_tile_mobile}>
+                            {title_tile_data}
+                        </div>
                     </div>
+                    {club_logo_element}
                 </div>
                 {info_tiles}
             </div>
@@ -320,71 +387,29 @@ function createClubPageContent(listed_page) {
 const individualClubPage = ( {listed_page} ) => {
     const router = useRouter();
     
-    const club_logo = [];
-    var club_logo_img;
     var pageTitle;
     var club_navbar_path;
 
-    // if our data is defined in the first place, setup values
-    if (listed_page && !router.isFallback){
-        if ("Images" in listed_page && "logo" in listed_page?.Images) {
-            // if there is a logo
-    
-            club_logo_img = (
-                <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/logo"}
-                width="90"
-                height="90"
-                //TODO: make this support non-square logos
-                id={main.club_logo}
-            />
-            )
-        }
 
+
+    // Create club tiles section
+    let tiles = [];
+    
+    // if our data is defined in the first place, setup values
+    if (listed_page && !router.isFallback) {
+        tiles = createClubPageContent(listed_page);
+        
         // don't do this inline to avoid a weird warning I don't understand
         // https://github.com/vercel/next.js/discussions/38256
         pageTitle = listed_page.Metadata.Club_Name + "- KSS Directory Club Repository";
 
         club_navbar_path = listed_page.Metadata.Category.toUpperCase() + "/" + listed_page.Metadata.Club_Name.toUpperCase();
-
-    } else { // provide suitable fallback values 
+    }    
+    else { // provide suitable fallback values 
         pageTitle = "Loading... - KSS Directory Club Repository";
         club_navbar_path = "Loading.../Loading..."
-
-        // provide default logo in case webserver is unavailable
-        club_logo_img = (
-            <Image src={"/static/defaultClubLogo.png"}
-            width="90"
-            height="90"
-            //TODO: make this support non-square logos
-            id={main.club_logo} />
-        )
     }
 
-    // Create club icon
-    const logo_BG = (
-        <div id={main.logo_BG}></div>
-    )
-    const logo_cutout_main = (
-        <div id={main.logo_cutout_main}></div>
-    )
-    const logo_cutout_rounded_1 = (
-        // Note: this is disgusting, but idk how else to achieve the inverted rounded effect
-        <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_1}></img>
-    )
-    const logo_cutout_rounded_2 = (
-        // same as above....
-        <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_2}></img>
-    )
-    
-    club_logo.push([logo_cutout_main, logo_cutout_rounded_1, logo_cutout_rounded_2, logo_BG, club_logo_img])
-
-    // Create club tiles section
-    let tiles = [];
-
-    if (listed_page && !router.isFallback) {
-        tiles = createClubPageContent(listed_page);
-    }
-    
     return (
         <>
             <Head>
@@ -418,10 +443,6 @@ const individualClubPage = ( {listed_page} ) => {
                     <p>{listed_page.Basic_Info.Description}</p> */}
                     <div>
                         {tiles}
-                    </div>
-                    
-                    <div className={main.club_logo_desktop}>
-                        {club_logo}
                     </div>
                 </div>
             </main>

@@ -1,6 +1,6 @@
 #bg {
     background-color: #D9D9D9;
-    height: 100vh;
+    height: 100dvh;
 }
   
 /* Header stuff */
@@ -64,7 +64,7 @@
 
 /* Tile 1 stuff */
 
-.masked_banner {
+.banner_image {
     overflow: hidden;
 }
 
@@ -73,40 +73,21 @@
     margin-bottom: 25px;
     flex: 2;
     position: relative;
-    border-radius: 32px;
     overflow: hidden;
 }
 
-
-
-
-/* Info Tiles */
-
-.info_tiles_div {
-    display: flex;
-    flex-flow: row wrap;
-    flex: 1;
-    max-width: 500px;
-    position: relative;
-    gap: 12px;
+.banner_content_container {
+    border-radius: 32px;
+    overflow: hidden;
+    width: 100%;
     height: 100%;
-    padding-right: 10px;
-    overflow-x:hidden;
-    overflow-y: scroll;
+    position: absolute;
 }
 
 #logo_BG, #logo_cutout_main {
     position: absolute;
-    bottom: 25px;
-    left: 25px;
-}
-
-#logo_BG {
-    background-color: white;
-    width: 128px;
-    height: 128px;
-    border-radius: 32px;
-    border: 1px solid var(--dark-gray);
+    bottom:0;
+    left:0;
 }
 
 #logo_cutout_main {
@@ -123,21 +104,104 @@
 }
 
 #logo_cutout_rounded_1 {
-    bottom: 25px;
-    left: calc(140px + 25px);
+    bottom: 0px;
+    left: 140px;
 }
 
 #logo_cutout_rounded_2 {
-    left: 25px;
-    bottom: calc(140px + 25px);
+    left: 0px;
+    bottom: 140px;
+}
+
+#logo_BG {
+    background-color: white;
+    width: 128px;
+    height: 128px;
+    border-radius: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#club_logo {
+    border-radius: 24px;
+}
+
+.club_logo_holder {
+    position: absolute;
+    bottom: 25px;
+    left: 0px;
+}
+
+@media (max-width: 1000px) {
+    #logo_cutout_main {
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 32px;
+        left:auto;
+        bottom:auto;
+        right:0;
+        top:0;
+        /* border: 1px solid #D9D9D9; */
+        width: calc(100px + 8px);
+        height: calc(100px + 8px);
+    }
+
+    #logo_cutout_rounded_1, #logo_cutout_rounded_2 {
+        transform: rotate(180deg);
+        /* filter: drop-shadow(-1px 1px 0 #D9D9D9); used to hide seams */
+    }
+
+    #logo_cutout_rounded_1 {
+        bottom: auto;
+        left: auto;
+        top: 107px;
+        right: 0;
+    }
+    
+    #logo_cutout_rounded_2 {
+        left: auto;
+        bottom: auto;
+        top: 0;
+        right: 107px;
+    }
+
+    #logo_BG {
+        left: auto;
+        bottom: auto;
+        top:0;
+        right: 0;
+        border: unset;
+        width: 100px;
+        height: 100px;
+    }    
+
+    #club_logo {
+        width: 76px;
+        height: 76px;
+    }
+
+    .club_logo_holder {
+        bottom:auto;
+        left:auto;
+        top:0px;
+        right:0px;
+    }
 }
 
 
-#club_logo {
-    position: absolute;
-    bottom: calc(25px + 20px);
-    left: calc(25px + 20px);
-    border-radius: 24px;
+/* Info Tiles */
+
+.info_tiles_div {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+    gap: 12px;
+    height: 100%;
+    padding-right: 10px;
+    overflow-x:hidden;
+    overflow-y: scroll;
 }
 
 
@@ -234,7 +298,6 @@
 .text_side_line {
     width: 4px;
     height: inherit;
-    background-color: var(--light-gray);
     border-radius: 25px;
     margin-left: 7px;
 }
@@ -294,9 +357,10 @@
 }
 
 .link img {
-    height: 16px;
-    width: 16px;
+    height: 20px;
+    width: 20px;
     margin-left: 3px;
+    object-fit: contain;
 }
 
 
@@ -435,8 +499,8 @@
         flex-grow: 0;
         min-height: 100px;
     }
-    .club_logo_desktop {
-        visibility: hidden;
+    .club_logo_holder {
+        /* visibility: hidden; */
     }
     .tile_list_spacer{
         height: 3px;
