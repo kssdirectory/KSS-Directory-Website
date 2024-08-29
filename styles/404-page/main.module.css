@@ -117,5 +117,12 @@
     /* animation-name: wiggle;
     animation-duration: 5s;
     animation-iteration-count: infinite; */
-    animation: wiggle 5s cubic-bezier(0.26, 0.02, 0, 0.99) 1.5s infinite;
+    animation: wiggle 7s cubic-bezier(0.26, 0.02, 0, 0.99) 1.5s infinite;
+}
+
+@media (max-width: 800px) {
+    #text {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
