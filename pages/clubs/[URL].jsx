@@ -5,6 +5,7 @@ import NavBar from "../../components/NavBar";
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 import { hexToHSL, hslToHex } from '@/util/util';
+import BackArrowButton from '@/components/BackArrowButton';
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -94,7 +95,7 @@ function getClubLogoElement(listed_page, club_accent_color){
     }
 
     let club_accent_hsl = hexToHSL(club_accent_color);
-    console.log("HSL: " + club_accent_hsl)
+    // console.log("HSL: " + club_accent_hsl)
 
     // Create club icon
     const logo_BG = (
@@ -321,7 +322,7 @@ function createClubPageContent(listed_page) {
     }
     info_tiles.push(<div className={main.tile_list_spacer}/>);
 
-    if ("Images" in listed_page && "banner" in listed_page.Images) {
+    if ("Images" in listed_page && "banner" in listed_page.Images ) {
         // if there is a logo available, use it as favicon for this webpage.
         // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
         banner = (
@@ -425,17 +426,13 @@ const individualClubPage = ( {listed_page} ) => {
                     extra_additions={(
                         <>
                             <div id={main.header_path_div}>
-                                <a id={main.header_path_link} href="@/clubs">CLUB REPOSITORY</a>
+                                <a id={main.header_path_link} href="../clubs">CLUB REPOSITORY</a>
                                 <span id={main.header_path_text}> / {club_navbar_path}</span>
                             </div>
-                            <div id={main.mobile_back_button_div}>
-                                <Link href = "../clubs" style={{all:"unset"}}>
-                                    <img src = "../svg_assets/back_arrow.svg" className={main.arrowIcon}/>
-                                </Link>
-                            </div>
+                            <BackArrowButton href = "../clubs" className={main.mobileEnabled}/>
                         </>
                     )}
-                    center_on_mobile={false}
+                    center_on_mobile={true}
                 />
                     
                 <div id={main.pageContent}>

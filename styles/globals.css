@@ -66,6 +66,15 @@ body, html, #__next {
   }
 }
 
+@keyframes slideInLeftLarge {
+  0% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @keyframes slideInTop {
   0% {
     transform: translateY(-20%);

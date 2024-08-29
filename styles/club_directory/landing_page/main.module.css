@@ -1,8 +1,14 @@
 #bg {
     background-color: #D9D9D9;
-    display: inline-block;
-    min-height: 100vh;
-    min-width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
+}
+
+#pageContent {
+    height: calc(100vh - 64px);
+    position:relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #header_path_div {
@@ -14,16 +20,6 @@
     width: 550px;
     margin-left: 25px;
 }
-
-@media (max-width: 625px) {
-    #header_path_div {
-        margin-left: 10px;
-    }
-    #header_path_text {
-        font-size: 100%;
-    }
-}
-
 
 #header_path_link, #header_path_text {
     margin-block-start: 0em;
@@ -38,15 +34,41 @@
     margin-left: 0;
 }
 
+/* Utility */
+.mobileEnabled {
+    display: none;
+}
+
+.mobileDisabled {
+    display: initial;
+}
+
+@media (max-width: 1000px) {
+    /* Utility */
+    
+    .mobileEnabled {
+        display: initial;
+    }
+    .mobileDisabled {
+        display: none;
+    }
+
+    #header_path_div {
+        display: none;
+    }
+}
+
+
 
 
 /* Top section */
 
 #top_section {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     gap: 12px;
-    height: calc((100vh - 64px) * 2 / 3);
+    height: calc((100dvh - 64px) * 2 / 3);
+    margin-inline: 25px;
 }
 
 #club_repo_title_section {
@@ -98,6 +120,61 @@
 #title_section_kss_dir_logo_mask {
     width: inherit;
     height: inherit;
-    position: relative;
+    position: absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
     mask-image: radial-gradient(circle, rgba(7,33,54,1) 0%, rgba(7,33,54,0) 80%);
+}
+
+@media (max-width: 1000px) {
+    #top_section {
+        margin-inline: 15px;
+    }
+
+    #club_repo_title_section {
+        min-width: 350px;
+    }
+}
+
+@media (max-width: 850px) {
+    #top_section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #title_section_text {
+        padding:24px;
+        padding-bottom: 36px;
+    }
+
+    #title_section_text h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+    
+    #title_section_text p {
+        font-size: 12px;
+        width: auto;
+        margin-top: 0;
+    }
+
+    #title_section_kss_dir_logo {
+        top:-60px;
+        right: -140px;
+        width: 100%;
+        height: 100%;
+    }
+
+    #club_repo_carousel {
+        height: 260px;
+        flex: 0 0 260px;
+    }
+    
+    #club_repo_title_section {
+        min-width: unset;
+        height: 180px;
+        flex: 0 0 180px;
+    }
 }

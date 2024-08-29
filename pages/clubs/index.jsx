@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Head from 'next/head';
 import main from '../../styles/club_directory/landing_page/main.module.css';
 import NavBar from "../../components/NavBar";
+import BackArrowButton from '@/components/BackArrowButton';
 
 
 
@@ -36,20 +37,25 @@ export default function clubsPage({ all_club_pages }) {
             <main id={main.bg}>
                 <NavBar
                     extra_additions={(
-                        <div id={main.header_path_div}>
-                            <p id={main.header_path_link} href="/clubs">CLUB REPOSITORY</p>
-                        </div>
+                        <>                        
+                            <div id={main.header_path_div}>
+                                <p id={main.header_path_link} href="/clubs">CLUB REPOSITORY</p>
+                            </div>
+                            <BackArrowButton href = "../" className={main.mobileEnabled}/>
+                        </>
                     )}
+                    center_on_mobile={true}
                 />
 
-                <div style={{marginLeft:"25px", marginRight:"25px"}}>
+
+                <div id={main.pageContent}>
                     <div id={main.top_section}>
                         <div id={main.club_repo_title_section}>
                             <div id={main.title_section_kss_dir_logo_mask}>
                                 <img src="../../svg_assets/compass_logo_vector.svg" id={main.title_section_kss_dir_logo}></img>
                             </div>
                             <div id={main.title_section_text}>
-                                <h1>CLUB<br/>REPOSITORY</h1>
+                                <h1>Club<br/>Repository</h1>
                                 <p>A treasure trove of up-to-date information on KSS clubs, compiled by their respective execs.</p>
                             </div>
                         </div>

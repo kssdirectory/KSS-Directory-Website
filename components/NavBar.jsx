@@ -1,7 +1,7 @@
 import navbar from "../styles/navbar.module.css";
 import Link from 'next/link';
 
-const NavBar = ({ extra_additions, text_color = "#072136", center_on_mobile = true}) => {
+const NavBar = ({ extra_additions, text_color = "#072136", center_on_mobile = false}) => {
     const logoPositionClass = center_on_mobile ? navbar.navbar_center : navbar.navbar_right;
 
     return (

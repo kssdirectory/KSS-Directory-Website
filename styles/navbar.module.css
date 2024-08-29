@@ -63,13 +63,13 @@
 }
 
 @media (max-width: 625px) {
-    .header_logo_button.navbar_center {
+    .header_logo_button.navbar_right {
         justify-content: right;
     }
-    .header_link.navbar_center {
+    .header_link.navbar_right {
         justify-content: right;
     }
-    .header_logo_div.navbar_center {
+    .header_logo_div.navbar_right {
         margin-right: 10px;
     }
     .kssdir_logo_text {
