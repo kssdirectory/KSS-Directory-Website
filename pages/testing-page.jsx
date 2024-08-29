@@ -14,6 +14,14 @@ function TestingPage() {
         </div>
     ;
 
+    const hallo = 
+        <div>
+            <h1>
+                boo
+            </h1>
+        </div>
+    ;
+
     const hasText = "Some Text"
 
     return (
@@ -29,6 +37,7 @@ function TestingPage() {
                 {hasText}
             </p>
             {hasHTML}
+            {hallo}
         </div>
         </>
     )

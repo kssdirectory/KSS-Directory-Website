@@ -1,0 +1,121 @@
+
+.textContainer {
+    text-align: center;
+}
+
+#heroText, #subheading, #text, #returnButton, #buttonText{
+    animation: 1.5s cubic-bezier(0.26, 0.02, 0, 0.99) 0s 1 textIn;
+    opacity: 0%;
+    animation-fill-mode: forwards;
+    transform: translate(0px, 50px);
+}
+
+#returnButton {
+    display: block;
+    padding-top: 20px;
+    background: #134287;
+    padding-left: auto;
+    padding-right: auto;
+    height: 40px;
+    width: 250px;
+    border-radius: 16px;
+    margin: auto;
+    animation-delay: 2s;
+}
+
+#returnButton:hover {
+    background: #81ADD4;
+    animation-delay: 3s;
+}
+
+#buttonText {
+    padding-top: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    margin: 0;
+    animation-delay: 2s;
+}
+
+
+#heroText{
+    color: #ffffff;
+    animation-delay: 0.9s;
+}
+
+#text {
+    animation-delay: 1s;
+}
+
+#subheading {
+    color: #81ADD4;
+    font-size: 20px;
+    margin: 0;
+    animation-delay: 0.8s;
+}
+
+#returnLink {
+    font-size: 15px;
+    margin: 0;
+    animation-delay: 1.5s;
+}
+
+@keyframes wiggle {
+    0%{
+        transform: rotate(0deg)
+    }
+    20%{
+        transform: rotate(90deg)
+    }
+    40%{
+        transform: rotate(-270deg)
+    }
+    80%{
+        transform: rotate(75deg)
+    }
+    100%{
+        transform: rotate(0deg)
+    }
+}
+
+@keyframes rotateIn {
+    10% {
+        filter: drop-shadow(0px 0px 30px white);
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes textIn {
+    100% {
+        transform: translate(0px, 0px);
+        opacity: 100%;
+    }
+}
+
+#compassIntro{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    opacity: 0;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 40px;
+    width: 200px;
+    height: 200px;
+    animation: 3s cubic-bezier(0.26, 0.02, 0, 0.99) 0s 1 rotateIn;
+    scale: 3;
+    transform: rotate(-45deg);
+    animation-fill-mode: forwards;
+}
+
+#compassInfinite{
+    /* animation-name: wiggle;
+    animation-duration: 5s;
+    animation-iteration-count: infinite; */
+    animation: wiggle 5s cubic-bezier(0.26, 0.02, 0, 0.99) 1.5s infinite;
+}
