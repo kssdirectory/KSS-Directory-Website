@@ -60,7 +60,8 @@ function AboutPage() {
               </div>
             </div>
             <div>
-              <p id = {main.creditsText}>Website by<br/>Matthew Kong & Matthew Kabin.</p>
+            {/* I have ruined the Matthew K. monopoly */}
+              <p id = {main.creditsText}>Website by<br/>Matthew Kong, Matthew Kabin & Ethan Tian.</p>
             </div>
           </div>
         </div>
