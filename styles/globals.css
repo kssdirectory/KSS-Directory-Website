@@ -213,7 +213,23 @@ body, html, #__next {
   flex-basis: 0;
   flex-grow: 1;
   min-width: 0;
+  
+  padding-top: 82px;
   animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft;
+}
+
+.cafMenuBox {
+  border: 1px solid var(--dark-gray);
+  border-radius: 16px;
+}
+
+.cafMenuContainer {
+  padding-top:36px;
+  padding-bottom:36px;
+  padding-right: 24px;
+  padding-left: 24px;
+
+  align-items: center;
 }
 
 .annnouncementContainer{
@@ -259,7 +275,7 @@ body, html, #__next {
   color:var(--light-gray);
   padding-right: 0px;
   padding-top: 12px;
-  font-size: 20px;
+  font-size: 16px;
   font-family: Outfit;
   font-weight: 100;
   max-width: 300px;
@@ -288,12 +304,27 @@ body, html, #__next {
   color:black;
 }
 
+.twoColumnEnabled {
+  display: none;
+}
+
+.twoColumnDisabled{
+  display: initial;
+}
+
 /* Switch to two column layout (all extra info moved to right)*/
 @media (max-width:1500px) {
   .leftInfoContainer {
     flex-grow: 0;
-    /* take out of the flex flow so there aren't any extra gaps */
-    position: absolute ;
+  }
+
+  .twoColumnEnabled {
+    margin-top: 16px;
+    display: initial;
+  }
+
+  .twoColumnDisabled {
+    display: none;
   }
 
   .discordButton{
@@ -316,6 +347,14 @@ body, html, #__next {
     gap: 0;
   }
 
+  .twoColumnEnabled {
+    display: none;
+  }
+  
+  .twoColumnDisabled{
+    display: initial;
+  }
+ 
   .discordButton{
     height: 44px;
     width: 44px;
@@ -334,7 +373,20 @@ body, html, #__next {
     order: -1;
     width: 100%;
     padding-left:0px;
-    padding-top: 32px;
+    padding-top: 16px;
+  }
+
+  .anceCards {
+    margin-top: 16px !important;
+  }
+
+  .leftInfoContainer{
+    order: 0;
+    width: 100%;
+    padding-right:0px;
+    padding-top: 16px;
+    flex-wrap: wrap;
+    display: initial;
   }
 
   .discordIcon{
@@ -797,6 +849,11 @@ body, html, #__next {
   .discordPromptBox{
     border-radius: 30px;
   }
+
+  .cafMenuBox {
+    border-radius: 30px;
+  }
+
   .body {
     padding: 25px;
   }

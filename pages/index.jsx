@@ -667,7 +667,16 @@ export default function Home() {
 
           {/* This wrapper holds the side content (discord prompt, current menu) while also centering the announcements list on screen*/}
           <div class="scrollWrapper">
-            <div class="leftInfoContainer"></div>
+            <div class = "leftInfoContainer">
+              <div class= "twoColumnDisabled">
+                <div class = "cafMenuBox">
+                  <div class = "cafMenuContainer">
+                    <div class = "infoHeaderText">Cafeteria Menu</div>
+                    <div class = "infoBodyText">soup</div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="annnouncementContainer" id = "mainAnnouncementsSection">
               {/* Container used to centre the buttons */}
               {/* Commenting it out because I can't implement the features in time for the start of school... */}
@@ -711,6 +720,14 @@ export default function Home() {
 
                     <img src = "svg_assets/about_page/discord.svg" class="discordIcon"/>
                   </a>
+                </div>  
+              </div>
+              <div class = "twoColumnEnabled">
+                <div class = "cafMenuBox" style = {{marginTop: 16}}>
+                  <div class = "cafMenuContainer">
+                    <div class = "infoHeaderText">Cafeteria Menu</div>
+                    <div class = "infoBodyText">soup</div>
+                  </div>
                 </div>
               </div>
             </div>
