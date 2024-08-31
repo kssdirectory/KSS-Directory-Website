@@ -393,7 +393,7 @@ const individualClubPage = ( {listed_page} ) => {
     
     var pageTitle;
     var club_navbar_path;
-
+    var back_url = "";
 
 
     // Create club tiles section
@@ -403,6 +403,8 @@ const individualClubPage = ( {listed_page} ) => {
     if (listed_page && !router.isFallback) {
         tiles = createClubPageContent(listed_page);
         
+        back_url = listed_page.Metadata.Category.toLowerCase().replace(" ", "-");
+
         // don't do this inline to avoid a weird warning I don't understand
         // https://github.com/vercel/next.js/discussions/38256
         pageTitle = listed_page.Metadata.Club_Name + "- KSS Directory Club Repository";
@@ -432,7 +434,7 @@ const individualClubPage = ( {listed_page} ) => {
                                 <a id={main.header_path_link} href={"../../clubs"}>CLUB REPOSITORY</a>
                                 <span id={main.header_path_text}> / {club_navbar_path}</span>
                             </div>
-                            <BackArrowButton href = {"../../clubs/" + listed_page.Metadata.Category.toLowerCase().replace(" ", "-")} className={main.mobileEnabled}/>
+                            <BackArrowButton href = {"../../clubs/" + back_url} className={main.mobileEnabled}/>
                         </>
                     )}
                     center_on_mobile={true}

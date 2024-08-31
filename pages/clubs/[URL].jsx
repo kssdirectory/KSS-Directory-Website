@@ -7,6 +7,7 @@ import main from '../../styles/club_directory/landing_page/main.module.css';
 import NavBar from '@/components/NavBar';
 import BackArrowButton from '@/components/BackArrowButton';
 import ClubRepoButtonList from '@/components/ClubRepoButtonList';
+import { useRouter } from 'next/router';
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -52,8 +53,13 @@ export const getStaticProps = async (context) => {
 }
 
 export default function MobileClubCategoryPage({ category_name, category_metadata, category_content }) {
+    const router = useRouter();
 
-    const categoryList = <ClubRepoButtonList categoryClubData = {category_content} categoryColor={category_metadata.Color}/>;
+
+    var categoryList;
+    if (!router.isFallback){
+        categoryList = <ClubRepoButtonList categoryClubData = {category_content} categoryColor={category_metadata.Color}/>
+    }
 
 
     return (
