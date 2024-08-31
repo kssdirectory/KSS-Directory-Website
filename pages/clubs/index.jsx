@@ -29,18 +29,11 @@ export default function clubsPage({ all_club_pages }) {
     //         listed_pages.push(i)
     //     }
     // }
-    
 
-    let categories = [];
-
-    for (const [key, value] of Object.entries(all_club_pages)) {
-        categories.push({clubCategoryName:key, clubCategoryData:value});
-    }
-
-    // console.log(categories);
+    //console.log(all_club_pages);
     let mobileCategoryButtons = [];
 
-    const clubCategories = categories.map(({clubCategoryName, clubCategoryData}) => {
+    const clubCategories = all_club_pages.map(([clubCategoryName, clubCategoryData]) => {
         let categoryColor = clubCategoryData.Metadata.Color;
 
         mobileCategoryButtons.push(
