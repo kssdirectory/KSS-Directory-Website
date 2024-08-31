@@ -409,7 +409,7 @@ const individualClubPage = ( {listed_page} ) => {
         // https://github.com/vercel/next.js/discussions/38256
         pageTitle = listed_page.Metadata.Club_Name + "- KSS Directory Club Repository";
 
-        club_navbar_path = listed_page.Metadata.Category.toUpperCase() + "/" + listed_page.Metadata.Club_Name.toUpperCase();
+        club_navbar_path = listed_page.Metadata.Category.toUpperCase() + " / " + listed_page.Metadata.Club_Name.toUpperCase();
     }    
     else { // provide suitable fallback values 
         pageTitle = "Loading... - KSS Directory Club Repository";
