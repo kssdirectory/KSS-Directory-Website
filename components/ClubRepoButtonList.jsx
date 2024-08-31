@@ -17,7 +17,7 @@ function ClubRepoButtonList({categoryClubData, categoryColor = "#6485D8"}) {
     const clubButtons = clubs.map(club => 
         <ClubRepoButton 
             club_name = {club["Club_Name"]}  
-            href = {"../clubs/club-page/" + club["URL"]} 
+            href = {"../clubs/club-pages/" + club["URL"]} 
             banner_image={"banner" in club["Images"] ?  bannerGetRequest(club["URL"]) : ""} 
             categoryColor={categoryColor} 
             key={club["Club_Name"]}

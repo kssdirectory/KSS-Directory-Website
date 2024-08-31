@@ -80,6 +80,7 @@ function getClubLogoElement(listed_page, club_accent_color){
             height="90"
             //TODO: make this support non-square logos
             id={main.club_logo}
+            alt={"Club logo"}
             />
         )
     } else {
@@ -89,7 +90,9 @@ function getClubLogoElement(listed_page, club_accent_color){
             width="90"
             height="90"
             //TODO: make this support non-square logos
-            id={main.club_logo} />
+            id={main.club_logo} 
+            alt={"Club logo"}
+            />
         )
     }
 
@@ -157,13 +160,13 @@ function createClubPageContent(listed_page) {
     let activity = []
     
     if ("Description" in listed_page.Basic_Info) {
-        description.push(<p className={main.title_body_text}>{listed_page.Basic_Info.Description}</p>)
+        description.push(<p className={main.title_body_text} key={"Title Tile Description"}>{listed_page.Basic_Info.Description}</p>)
     }
 
     if (listed_page.Basic_Info.Activity === "Yes") {
         // if the club is set to be currently "active"
         activity.push(
-            <div id={main.activity_div}>
+            <div id={main.activity_div} key={"Activity Div"}>
                 <p style={{color:"#2BB673"}}>Active</p>
                 <img src="/svg_assets/club_pages/checkmark.svg"></img>
             </div>
@@ -171,7 +174,7 @@ function createClubPageContent(listed_page) {
     } else {
         // if the club is set to be currently "inactive"
         activity.push(
-            <div id={main.activity_div}>
+            <div id={main.activity_div} key={"Activity Div"}>
                 <p style={{color:"#8E1111"}}>Inactive</p>
                 <img src="/svg_assets/club_pages/cross.svg"></img>
             </div>
@@ -180,14 +183,14 @@ function createClubPageContent(listed_page) {
     
     // Tile 1: Title
     title_tile_data = (
-        <>
+        <div>
             <h1 id={main.club_name}>{listed_page.Metadata.Club_Name}</h1>
             <div id={main.update_date_activity_container}>
                 {activity}
                 <p id={main.last_modified}>Last updated: {month} {listed_page.Metadata.Last_modified.slice(8,10)}, {listed_page.Metadata.Last_modified.slice(0,4)}</p>
             </div>
             {description}
-        </>
+        </div>
     );
 
     if (1 in listed_page.Meeting_Times) {
@@ -206,7 +209,7 @@ function createClubPageContent(listed_page) {
                 meeting_end_time.push(" to " + convert_iso_time(value.Meeting_End_Time))
             }
             tile2_meeting_times.push(
-                <div className={main.meeting_times_container}>
+                <div className={main.meeting_times_container} key={key}>
                     <rect className={main.text_side_line} style={{backgroundColor:club_accent_color}}/>
                     <div className={main.meeting_times_div}>
                         <h2>{meeting_title}</h2>
@@ -219,7 +222,7 @@ function createClubPageContent(listed_page) {
 
         }
         info_tiles.push(
-            <div className={main.tile_div}>
+            <div className={main.tile_div} key={"Meeting Times"}>
                 <h1 className={main.tile_div_subtitle}>Weekly Meeting Times</h1>
                 {tile2_meeting_times}
             </div>
@@ -236,14 +239,14 @@ function createClubPageContent(listed_page) {
                 link_name.push(value[1])
             }
             links.push(
-                <a href={value[1]} className={main.link}>
+                <a href={value[1]} className={main.link} key={key}>
                     <img src={"https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=" + value[1] + "&size=32"}/>
                     <p>{link_name}</p>
                 </a>
             )
         }
         info_tiles.push(
-            <div className={main.tile_div}>
+            <div className={main.tile_div} key={"Links"}>
                 <h1 className={main.tile_div_subtitle}>Links</h1>
                 <div id={main.links_container}>
                     {links}
@@ -257,11 +260,11 @@ function createClubPageContent(listed_page) {
             let supervisor_list = []
             for (const [key, value] of Object.entries(listed_page.Basic_Info.Supervisors)) {
                 supervisor_list.push(
-                    <p className={main.supervisor_list}>{value}</p>
+                    <p className={main.supervisor_list} key={key}>{value}</p>
                 )
             }
             info_tiles.push(
-                <div className={main.tile_div}>
+                <div className={main.tile_div} key={"Supervisors"}>
                     <h1 className={main.tile_div_subtitle}>Supervisors</h1>
                     {supervisor_list}
                 </div>
@@ -295,11 +298,11 @@ function createClubPageContent(listed_page) {
                 let exec_position_list = []
                 for (const individual_exec of names) {
                     exec_position_list.push(
-                        <p className={main.generic_body_text}>{individual_exec}</p>
+                        <p className={main.generic_body_text} key={individual_exec}>{individual_exec}</p>
                     )
                 }
                 exec_list_formatted.push(
-                    <div>
+                    <div key={position}>
                         <h2 className={main.exec_position_title}>{position}</h2>
                         <div className={main.exec_position_container}>
                             <rect className={main.text_side_line} style={{backgroundColor:club_accent_color}}/>
@@ -312,14 +315,14 @@ function createClubPageContent(listed_page) {
                 //console.log(exec_list_formatted)
             }
             info_tiles.push(
-                <div className={main.tile_div}>
+                <div className={main.tile_div} key={"Execs"}>
                     <h1 className={main.tile_div_subtitle}>Current Execs</h1>
                     {exec_list_formatted}
                 </div>
             );
         }
     }
-    info_tiles.push(<div className={main.tile_list_spacer}/>);
+    info_tiles.push(<div className={main.tile_list_spacer} key={"Spacer"}/>);
 
     if ("Images" in listed_page && "banner" in listed_page.Images ) {
         // if there is a logo available, use it as favicon for this webpage.
@@ -340,7 +343,7 @@ function createClubPageContent(listed_page) {
 
     // Desktop site
     return_tiles.push(
-        <div className = {main.mobileDisabled}>
+        <div className = {main.mobileDisabled} key={"Desktop Tiles"}>
             <div className={main.tiles_flex}>
                 <div className={main.banner_div}>
                     <div className={main.banner_content_container}>
@@ -361,7 +364,7 @@ function createClubPageContent(listed_page) {
 
     // Mobile site
     return_tiles.push (
-        <div className = {main.mobileEnabled}>
+        <div className = {main.mobileEnabled} key={"Mobile Tiles"}>
             <div className={main.tiles_flex}>
                 <div className={main.banner_div}>
                     <div className={main.banner_content_container}>
@@ -426,10 +429,10 @@ const individualClubPage = ( {listed_page} ) => {
                     extra_additions={(
                         <>
                             <div id={main.header_path_div}>
-                                <a id={main.header_path_link} href="../../clubs">CLUB REPOSITORY</a>
+                                <a id={main.header_path_link} href={"../../clubs"}>CLUB REPOSITORY</a>
                                 <span id={main.header_path_text}> / {club_navbar_path}</span>
                             </div>
-                            <BackArrowButton href = "../../clubs" className={main.mobileEnabled}/>
+                            <BackArrowButton href = {"../../clubs/" + listed_page.Metadata.Category.toLowerCase().replace(" ", "-")} className={main.mobileEnabled}/>
                         </>
                     )}
                     center_on_mobile={true}
