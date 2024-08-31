@@ -726,7 +726,8 @@ export default function Home() {
                 <div class = "cafMenuBox" style = {{marginTop: 16}}>
                   <div class = "cafMenuContainer">
                     <div class = "infoHeaderText">Cafeteria Menu</div>
-                    <div class = "infoBodyText">soup</div>
+                    {/* Gonna need actual information here */}
+                    <div class = "infoBodyText">Coming Soon!</div>
                   </div>
                 </div>
               </div>
