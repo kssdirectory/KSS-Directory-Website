@@ -327,7 +327,8 @@ function createClubPageContent(listed_page) {
         // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
         banner = (
             <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/banner"}
-            className={[main.banner_image].join(" ")}
+            className={[main.banner_image, "easeImageload"].join(" ")}
+            onLoad={(e) => e.target.style.opacity = "1"}
             alt={"Banner of " + listed_page.Metadata.Club_Name}
             objectFit="cover"
             layout="fill"

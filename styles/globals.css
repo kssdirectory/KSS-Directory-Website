@@ -201,6 +201,15 @@ body, html, #__next {
     color:var(--dark-gray);
   }
 
+/* Util */
+
+.easeImageload{
+    opacity: 0;
+    -webkit-transition: opacity 0.25s ease-in; 
+    -moz-transition: opacity 0.25s ease-in; 
+    -ms-transition: opacity 0.25s ease-in; 
+    transition: opacity 0.25s ease-in; 
+}
 
 .scrollWrapper{
   display: flex;

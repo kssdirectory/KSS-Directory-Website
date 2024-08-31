@@ -41,9 +41,12 @@ export default function clubsPage({ all_club_pages }) {
     let mobileCategoryButtons = [];
 
     const clubCategories = categories.map(({clubCategoryName, clubCategoryData}) => {
+        let categoryColor = clubCategoryData.Metadata.Color;
+
         mobileCategoryButtons.push(
             <ClubRepoCategoryButton 
                 cateogry_name = {clubCategoryName}
+                categoryColor={categoryColor}
                 // href = {}
             />
         );
@@ -52,11 +55,11 @@ export default function clubsPage({ all_club_pages }) {
             <div key={clubCategoryName}> 
                 <HorizontalScrollElement>       
                     <h2 className={main.club_category_name}>{clubCategoryName}</h2>
-                    <ClubRepoButtonList categoryClubData = {clubCategoryData}/>
+                    <ClubRepoButtonList categoryClubData = {clubCategoryData.Content} categoryColor={categoryColor}/>
                 </HorizontalScrollElement>
             </div>
     )});
-
+ 
 
     
 
