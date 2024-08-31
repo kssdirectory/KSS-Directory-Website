@@ -395,6 +395,15 @@ export default function Home() {
   }
 
 
+  var cafeteriaBoxElement = (
+    <div class = "cafMenuBox" style = {{marginTop: 16}}>
+      <div class = "cafMenuContainer">
+        <div class = "infoHeaderText">Cafeteria Menu</div>
+        {/* Gonna need actual information here */}
+        <div class = "infoBodyText">Coming Soon!</div>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -669,12 +678,7 @@ export default function Home() {
           <div class="scrollWrapper">
             <div class = "leftInfoContainer">
               <div class= "twoColumnDisabled">
-                <div class = "cafMenuBox">
-                  <div class = "cafMenuContainer">
-                    <div class = "infoHeaderText">Cafeteria Menu</div>
-                    <div class = "infoBodyText">soup</div>
-                  </div>
-                </div>
+                {cafeteriaBoxElement}
               </div>
             </div>
             <div class="annnouncementContainer" id = "mainAnnouncementsSection">
@@ -723,13 +727,7 @@ export default function Home() {
                 </div>  
               </div>
               <div class = "twoColumnEnabled">
-                <div class = "cafMenuBox" style = {{marginTop: 16}}>
-                  <div class = "cafMenuContainer">
-                    <div class = "infoHeaderText">Cafeteria Menu</div>
-                    {/* Gonna need actual information here */}
-                    <div class = "infoBodyText">Coming Soon!</div>
-                  </div>
-                </div>
+                {cafeteriaBoxElement}
               </div>
             </div>
           </div>
