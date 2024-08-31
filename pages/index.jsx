@@ -396,7 +396,7 @@ export default function Home() {
 
 
   var cafeteriaBoxElement = (
-    <div class = "cafMenuBox" style = {{marginTop: 16}}>
+    <div class = "cafMenuBox" >
       <div class = "cafMenuContainer">
         <div class = "infoHeaderText">Cafeteria Menu</div>
         {/* Gonna need actual information here */}
@@ -677,8 +677,10 @@ export default function Home() {
           {/* This wrapper holds the side content (discord prompt, current menu) while also centering the announcements list on screen*/}
           <div class="scrollWrapper">
             <div class = "leftInfoContainer">
-              <div class= "twoColumnDisabled">
-                {cafeteriaBoxElement}
+              <div class="infoFlex">
+                <div class= "twoColumnDisabled">
+                  {cafeteriaBoxElement}
+                </div>
               </div>
             </div>
             <div class="annnouncementContainer" id = "mainAnnouncementsSection">
@@ -713,21 +715,23 @@ export default function Home() {
               </div>
             </div>
             <div class="rightInfoContainer">
-              <div class="discordPromptBox">
-                <div class="discordPromptContainer">
-                  <div class="discordPromptTextContainer"> 
-                    <div class="infoHeaderText"> Join our Discord! </div>
-                    <div class="infoBodyText"> Subscribe to specific topics and get daily announcement pings. </div>
-                  </div>
-                  
-                  <a href = "https://discord.gg/BJtVbtqdDY" class="discordButton">
+              <div class="infoFlex">
+                <div class="discordPromptBox">
+                  <div class="discordPromptContainer">
+                    <div class="discordPromptTextContainer"> 
+                      <div class="infoHeaderText"> Join our Discord! </div>
+                      <div class="infoBodyText"> Subscribe to specific topics and get daily announcement pings. </div>
+                    </div>
+                    
+                    <a href = "https://discord.gg/BJtVbtqdDY" class="discordButton">
 
-                    <img src = "svg_assets/about_page/discord.svg" class="discordIcon"/>
-                  </a>
-                </div>  
-              </div>
-              <div class = "twoColumnEnabled">
-                {cafeteriaBoxElement}
+                      <img src = "svg_assets/about_page/discord.svg" class="discordIcon"/>
+                    </a>
+                  </div>  
+                </div>
+                <div class = "twoColumnEnabled">
+                  {cafeteriaBoxElement}
+                </div>
               </div>
             </div>
           </div>

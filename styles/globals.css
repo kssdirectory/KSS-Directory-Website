@@ -227,10 +227,27 @@ body, html, #__next {
   animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft;
 }
 
+.rightInfoContainer{
+  flex-basis: 0;
+  flex-grow: 1;
+  min-width: 0;
+  
+  padding-top: 82px;
+  animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight1;
+}
+
+.infoFlex {
+  display: flex;
+  flex-direction: column;
+  gap:32px;
+
+  position: sticky;
+  top: 16px;
+}
+
 .cafMenuBox {
   border: 1px solid var(--dark-gray);
   border-radius: 16px;
-  position: sticky;
   top: 16px;
 }
 
@@ -247,15 +264,6 @@ body, html, #__next {
   padding-top:50px;
   flex-shrink: 0;
   flex-grow: 0;
-}
-
-.rightInfoContainer{
-  flex-basis: 0;
-  flex-grow: 1;
-  min-width: 0;
-  
-  padding-top: 82px;
-  animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight1;
 }
 
 .discordPromptBox {
@@ -325,13 +333,12 @@ body, html, #__next {
 }
 
 /* Switch to two column layout (all extra info moved to right)*/
-@media (max-width:1500px) {
+@media (max-width:1600px) {
   .leftInfoContainer {
     flex-grow: 0;
   }
 
   .twoColumnEnabled {
-    margin-top: 16px;
     display: initial;
   }
 
@@ -351,6 +358,10 @@ body, html, #__next {
 
 /* Switch to one column layout (extra info moved above announcements)*/
 @media (max-width:1250px){
+  .infoFlex {
+    position: unset;
+  }
+
   .scrollWrapper{
     flex-direction: column;
     align-items: center;
