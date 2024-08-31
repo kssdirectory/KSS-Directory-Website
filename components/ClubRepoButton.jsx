@@ -27,7 +27,7 @@ function ClubRepoButton({club_name, href = "../", categoryColor, banner_image = 
         <div className={styles.category_color_mask_gradient} style = {{background: "linear-gradient(90deg, " + faded_color + " 49%, " + categoryColor + " 100%)"}}/>
         <h2 className={styles.button_title}>{club_name}</h2>
         <div className={styles.button_icon_holder_div}>
-            <img src = "../svg_assets/arrow_icon_white.svg" className={styles.button_corner_icon_image}/>
+            <img src = "/svg_assets/arrow_icon_white.svg" className={styles.button_corner_icon_image}/>
         </div>
         <Link className={styles.link} href = {href} ></Link>
     </div>

@@ -6,7 +6,7 @@ const BackArrowButton = ({href, className}) => {
         <div id={styles.mobile_back_button_div}>
             <div className = {className}>
                 <Link href = {href} style={{all:"unset"}}>
-                    <img src = "../svg_assets/back_arrow.svg" className={styles.arrowIcon}/>
+                    <img src = "/svg_assets/back_arrow.svg" className={styles.arrowIcon}/>
                 </Link>
             </div>
         </div>

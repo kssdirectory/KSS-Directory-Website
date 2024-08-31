@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import main from '../../styles/club_directory/club_pages/main.module.css';
-import NavBar from "../../components/NavBar";
+import main from '../../../styles/club_directory/club_pages/main.module.css';
+import NavBar from "@/components/NavBar";
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 import { hexToHSL, hslToHex } from '@/util/util';
@@ -166,7 +166,7 @@ function createClubPageContent(listed_page) {
         activity.push(
             <div id={main.activity_div}>
                 <p style={{color:"#2BB673"}}>Active</p>
-                <img src="../../svg_assets/club_pages/checkmark.svg"></img>
+                <img src="/svg_assets/club_pages/checkmark.svg"></img>
             </div>
         )
     } else {
@@ -174,7 +174,7 @@ function createClubPageContent(listed_page) {
         activity.push(
             <div id={main.activity_div}>
                 <p style={{color:"#8E1111"}}>Inactive</p>
-                <img src="../../svg_assets/club_pages/cross.svg"></img>
+                <img src="/svg_assets/club_pages/cross.svg"></img>
             </div>
         )
     }
@@ -427,10 +427,10 @@ const individualClubPage = ( {listed_page} ) => {
                     extra_additions={(
                         <>
                             <div id={main.header_path_div}>
-                                <a id={main.header_path_link} href="../clubs">CLUB REPOSITORY</a>
+                                <a id={main.header_path_link} href="../../clubs">CLUB REPOSITORY</a>
                                 <span id={main.header_path_text}> / {club_navbar_path}</span>
                             </div>
-                            <BackArrowButton href = "../clubs" className={main.mobileEnabled}/>
+                            <BackArrowButton href = "../../clubs" className={main.mobileEnabled}/>
                         </>
                     )}
                     center_on_mobile={true}

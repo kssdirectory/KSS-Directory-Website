@@ -18,7 +18,7 @@ function ClubRepoCategoryButton({cateogry_name, href = "../", categoryColor = "#
         <div className={styles.button_image_gradient}/>
         <h2 className={styles.button_title}>{cateogry_name}</h2>
         <div className={styles.button_icon_holder_div}>
-            <img src = "../svg_assets/arrow_icon_white.svg" className={styles.button_corner_icon_image}/>
+            <img src = "/svg_assets/arrow_icon_white.svg" className={styles.button_corner_icon_image}/>
         </div>
         <Link className={styles.link} href = {href} ></Link>
     </div>

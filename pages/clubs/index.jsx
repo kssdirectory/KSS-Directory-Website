@@ -83,7 +83,7 @@ export default function clubsPage({ all_club_pages }) {
                     <div id={main.top_section}>
                         <div id={main.club_repo_title_section}>
                             <div id={main.title_section_kss_dir_logo_mask}>
-                                <img src="../../svg_assets/compass_logo_vector.svg" id={main.title_section_kss_dir_logo}></img>
+                                <img src="/svg_assets/compass_logo_vector.svg" id={main.title_section_kss_dir_logo}></img>
                             </div>
                             <div id={main.title_section_text}>
                                 <h1>Club<br/>Repository</h1>
