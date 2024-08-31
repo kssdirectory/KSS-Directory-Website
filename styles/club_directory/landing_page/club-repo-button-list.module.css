@@ -3,3 +3,14 @@
     flex-direction: row;
     gap: 12px;
 }
+
+@media (max-width: 850px) {
+    .carousel_container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        margin-top: 12px;
+        overflow-y: scroll;
+    }
+}

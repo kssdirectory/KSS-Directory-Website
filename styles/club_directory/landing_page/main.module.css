@@ -107,7 +107,7 @@
 #club_repo_carousel {
     box-sizing: border-box;
     border: 1px solid var(--dark-gray);
-    background-color: #27bd27;
+    background-color: var(--b2BG);
     flex: 2;
     border-radius: 32px;
     height: inherit;

@@ -14,7 +14,7 @@ function ClubRepoCategoryButton({cateogry_name, href = "../", categoryColor = "#
 
     return (
     <div className={styles.button_div}>
-        <img src = {banner_image} className={styles.button_image}/>
+        {/* <img src = {banner_image} className={styles.button_image}/> */}
         <div className={styles.button_image_gradient}/>
         <h2 className={styles.button_title}>{cateogry_name}</h2>
         <div className={styles.button_icon_holder_div}>

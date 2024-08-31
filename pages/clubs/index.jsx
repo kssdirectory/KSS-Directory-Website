@@ -40,7 +40,7 @@ export default function clubsPage({ all_club_pages }) {
             <ClubRepoCategoryButton 
                 cateogry_name = {clubCategoryName}
                 categoryColor={categoryColor}
-                // href = {}
+                href = {"../clubs/" + clubCategoryName.toLowerCase().replace(" ", "-")}
             />
         );
 

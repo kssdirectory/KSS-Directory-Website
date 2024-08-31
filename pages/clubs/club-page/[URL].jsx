@@ -31,8 +31,7 @@ export const getStaticProps = async (context) => {
     const URL = context.params.URL;
     const res = await fetch(webServerURL + "/specific_club_repo/" + URL);
     const data = await res.json();
-    var isValid = true;
-
+    
     // Backend can't find club
     if (data.toString() == "none") {
         return {
