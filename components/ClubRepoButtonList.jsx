@@ -11,7 +11,18 @@ function ClubRepoButtonList({categoryClubData, categoryColor = "#6485D8"}) {
 
     let clubs = [];
     for (const i in categoryClubData) {
-        clubs.push(categoryClubData[i]);
+        if (categoryClubData[i].Listed === "Yes") {
+            clubs.push(categoryClubData[i]);
+            clubs.push(categoryClubData[i]);
+            clubs.push(categoryClubData[i]);
+            clubs.push(categoryClubData[i]);
+            clubs.push(categoryClubData[i]);
+            clubs.push(categoryClubData[i]);
+            clubs.push(categoryClubData[i]);
+            clubs.push(categoryClubData[i]);
+            clubs.push(categoryClubData[i]);
+            clubs.push(categoryClubData[i]);
+        }
     }
 
     const clubButtons = clubs.map(club => 

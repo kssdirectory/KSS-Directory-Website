@@ -1,6 +1,6 @@
 #bg {
     background-color: #D9D9D9;
-    height: 100dvh;
+    height: 100svh;
 }
 
 
@@ -8,7 +8,7 @@
 /* Header stuff */
 
 #pageContent{
-    height: calc(100vh - 64px);
+    height: calc(100svh - 64px);
     position:relative;
     overflow: hidden;
 }

@@ -1,11 +1,40 @@
+@keyframes rotateIn {
+    10% {
+        filter: drop-shadow(0px 0px 30px white);
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0%
+    }
+    100% {
+        opacity: 100%
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-5%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 #bg {
     background-color: #D9D9D9;
-    height: 100dvh;
-    width: 100dvw;
+    height: 100svh;
+    width: 100svw;
 }
 
 #pageContent {
-    height: calc(100vh - 64px);
+    height: calc(100svh - 64px);
     position:relative;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -71,7 +100,7 @@
     margin-inline: 25px;
 }
 
-#club_repo_title_section {
+#club_repo_title_section :global{
     background-color: var(--b0BG);
     border-radius: 32px;
     flex: 1;
@@ -83,6 +112,10 @@
     position: relative;
     border: 1px solid var(--dark-gray);
     box-sizing: border-box;
+
+    transform: translateX(-20%);
+    animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0.1s 1 slideInLeft;
+    animation-fill-mode: forwards;
 }
 
 #title_section_text {
@@ -104,7 +137,7 @@
 }
 
 
-#club_repo_carousel {
+#club_repo_carousel :global{
     box-sizing: border-box;
     border: 1px solid var(--dark-gray);
     background-color: var(--b2BG);
@@ -113,6 +146,11 @@
     height: inherit;
     overflow: hidden;
     position: relative;
+
+
+    transform: translateX(10%);
+    animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0.1s 1 slideInRight2;
+    animation-fill-mode: forwards;
 }
 
 #carousel_gradient {
@@ -125,12 +163,22 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 42.7%, var(--b0BG) 95.17%);
 }
 
+
+  
+
 #title_section_kss_dir_logo {
     height: 115%;
     width: 115%;
     position: absolute;
     top: -250px;
     right: -250px;
+
+
+    transform: rotate(45deg);
+    opacity: 0;
+    
+    animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0.1s 1 rotateIn, 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0.1s 1 fadeIn;
+    animation-fill-mode: forwards;
 }
 
 #title_section_kss_dir_logo_mask {
@@ -150,6 +198,13 @@
     padding-inline:25px;
 }
 
+
+.club_category_carousel {
+    transform: translateX(-5%);
+    animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0.1s 1 slideInLeft;
+    animation-fill-mode: forwards;
+}
+
 .club_category_name {
     margin-top: 48px;
     font-size: 20px;
@@ -160,11 +215,15 @@
     height: 48px;
 }
 
-#mobile_button_container {
+#mobile_button_container :global {
     display: flex;
     flex-direction: column;
     gap:15px;
     margin-top: 15px;
+
+    transform: translateY(10%);
+    animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0.1s 1 slideInBottom;
+    animation-fill-mode: forwards;
 }
 
 .mobile_button_container_horizontal {
@@ -179,6 +238,11 @@
 
     #club_repo_title_section {
         min-width: 350px;
+        border-radius: 20px;
+    }
+    
+    #club_repo_carousel {
+        border-radius: 20px;
     }
 
     #content_section_div {
@@ -215,17 +279,20 @@
         height: 100%;
     }
 
-    #club_repo_carousel {
+    #club_repo_carousel :global {
         height: 260px;
         flex: 0 0 260px;
+
+        transform: translateX(-20%);
+        animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0.1s 1 slideInLeft;
+        animation-fill-mode: forwards;
     }
     
-    #club_repo_title_section {
+    #club_repo_title_section :global{
         min-width: unset;
         max-width: unset;
         height: 180px;
         flex: 0 0 180px;
+        animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft forwards;
     }
-
-
 }

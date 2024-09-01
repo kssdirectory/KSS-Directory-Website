@@ -6,6 +6,12 @@
     overflow: hidden;
 }
 
+@media (max-width: 850px) {
+    .button_div {
+        height: 160px;
+    }
+}
+
 .button_image {
     position: absolute;
     width: 100%;
@@ -17,6 +23,18 @@
     box-sizing: border-box;
 }
 
+@property --gradientPercentage {
+    syntax: '<percentage>';
+    initial-value: 42.7%;
+    inherits: false;
+  }
+  
+@property --gradientColor {
+    syntax: '<color>';
+    initial-value: rgba(0, 0, 0, 0.80);
+    inherits: false;
+}
+
 .button_image_gradient {
     position: absolute;
     width: 100%;
@@ -24,7 +42,16 @@
     left: 0;
     top: 0;
 
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 42.7%, rgba(0, 0, 0, 0.80) 95.17%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) var(--gradientPercentage), var(--gradientColor) 95.17%);
+
+    
+    transition: --gradientColor 0.25s, --gradientPercentage 0.25s;
+    transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+.button_div:hover .button_image_gradient {
+    --gradientColor: rgba(0, 0, 0, 1);
+    --gradientPercentage: 20%;
 }
 
 .link {
@@ -53,6 +80,13 @@
     bottom: 20px;
     left: 20px;
     margin: 0px;
+
+    transition: bottom 0.25s;
+    transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+.button_div:hover .button_title {
+    bottom: 15px;
 }
 
 .button_icon_holder_div {
@@ -61,6 +95,14 @@
     right: 12px;
     width: 30px;
     height: 30px;
+
+    transition: top 0.25s, right 0.25s;
+    transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+.button_div:hover .button_icon_holder_div {
+    top: 8px;
+    right: 8px;
 }
 
 .button_corner_icon_image {

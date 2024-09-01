@@ -45,11 +45,13 @@ export default function clubsPage({ all_club_pages }) {
         );
 
         return (
-            <div key={clubCategoryName}> 
-                <HorizontalScrollElement>       
-                    <h2 className={main.club_category_name}>{clubCategoryName}</h2>
-                    <ClubRepoButtonList categoryClubData = {clubCategoryData.Content} categoryColor={categoryColor}/>
-                </HorizontalScrollElement>
+            <div key={clubCategoryName} > 
+                <h2 className={main.club_category_name}>{clubCategoryName}</h2>
+                <div className={main.club_category_carousel}> 
+                    <HorizontalScrollElement>       
+                        <ClubRepoButtonList categoryClubData = {clubCategoryData.Content} categoryColor={categoryColor}/>
+                    </HorizontalScrollElement>
+                </div>
             </div>
     )});
  
