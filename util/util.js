@@ -66,3 +66,22 @@ export function hexToRgba(hex) {
   }
   throw new Error('Bad Hex');
 }
+
+export function lerp(a, b, t) {
+  return a + (b-a) * t;
+}
+
+export function invLerp(a, b, t) {
+  return (t - a) / (b - a) 
+}
+
+export function clamp(min, max, v) {
+  if (v > max) {
+    return max;
+  }
+  if (v < min) {
+    return min;
+  }
+
+  return v;
+}

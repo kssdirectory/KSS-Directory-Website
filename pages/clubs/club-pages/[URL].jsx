@@ -158,6 +158,10 @@ function createClubPageContent(listed_page) {
 
     let description = []
     let activity = []
+
+    if ("Category_Metadata" in listed_page) {
+        club_accent_color = listed_page.Category_Metadata.Color;
+    }
     
     if ("Description" in listed_page.Basic_Info) {
         description.push(<p className={main.title_body_text} key={"Title Tile Description"}>{listed_page.Basic_Info.Description}</p>)

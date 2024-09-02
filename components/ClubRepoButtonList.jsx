@@ -14,14 +14,7 @@ function ClubRepoButtonList({categoryClubData, categoryColor = "#6485D8"}) {
         if (categoryClubData[i].Listed === "Yes") {
             clubs.push(categoryClubData[i]);
             clubs.push(categoryClubData[i]);
-            clubs.push(categoryClubData[i]);
-            clubs.push(categoryClubData[i]);
-            clubs.push(categoryClubData[i]);
-            clubs.push(categoryClubData[i]);
-            clubs.push(categoryClubData[i]);
-            clubs.push(categoryClubData[i]);
-            clubs.push(categoryClubData[i]);
-            clubs.push(categoryClubData[i]);
+            
         }
     }
 

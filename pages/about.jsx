@@ -44,7 +44,7 @@ function AboutPage() {
           <div className={main.textContainer}>
             <p id = {main.heroTextAbove}>Hey, traveler!</p>
             <h1 id = {main.heroText}>Welcome to the KSS Directory!</h1>
-            <p id = {main.heroTextBody}>KSS Directory is a student-run resource repository for Kingston Secondary School! We aim to catalogue all of the events happening at KSS, and serve as a convenient and organized archive. Daily announcements and many school/studying resources are hosted here, all in one place!</p>
+            <p id = {main.heroTextBody}>KSS Directory is a student-run resource repository for Kingston Secondary School! We aim to catalogue all of the events happening at KSS, and serve as a convenient and organized archive. Daily announcements and many school resources are hosted here, all in one place!</p>
             <div id = {main.heroButtonSection}>
               <div>
                 <a href = "https://discord.gg/BJtVbtqdDY" id = {main.discordButton}>
