@@ -40,11 +40,11 @@ function HorizontalScrollElement({children, category_color}) {
             }
         }
 
-        console.log("New: " + currentScrollValue + " MaxScrollLeft: " + maxScrollLeft);
+        //console.log("New: " + currentScrollValue + " MaxScrollLeft: " + maxScrollLeft);
     }
 
     function rightButton() {
-        console.log("scrolling right");
+        //console.log("scrolling right");
 
         var newValue = scrollElementRef.current.scrollLeft + scrollAmount;
         scrollElementRef.current.scrollLeft = newValue;
@@ -56,7 +56,7 @@ function HorizontalScrollElement({children, category_color}) {
     }
 
     function leftButton() {
-        console.log("scrolling left");
+        //console.log("scrolling left");
 
         var newValue = scrollElementRef.current.scrollLeft - scrollAmount;
         scrollElementRef.current.scrollLeft = newValue;

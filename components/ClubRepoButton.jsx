@@ -22,6 +22,7 @@ function ClubRepoButton({club_name, href = "../", categoryColor, banner_image = 
             height = {720}
             className={[styles.button_image, "easeImageload"].join(" ")}
             alt = {club_name}
+            minimumCacheTTL = {30}
         />
         <div className={styles.button_image_gradient}/>
         <div className={styles.category_color_mask_gradient} style = {{background: "linear-gradient(90deg, " + faded_color + " 49%, " + categoryColor + " 100%)"}}/>

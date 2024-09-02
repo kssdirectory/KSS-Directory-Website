@@ -81,6 +81,7 @@ function getClubLogoElement(listed_page, club_accent_color){
             //TODO: make this support non-square logos
             id={main.club_logo}
             alt={"Club logo"}
+            minimumCacheTTL = {30}
             />
         )
     } else {
@@ -338,6 +339,7 @@ function createClubPageContent(listed_page) {
             alt={"Banner of " + listed_page.Metadata.Club_Name}
             objectFit="cover"
             layout="fill"
+            minimumCacheTTL = {30}
             />
         )
     }
