@@ -15,6 +15,7 @@ function HorizontalScrollElement({children, category_color}) {
     const [arrowLeftEnabled, setArrowLeftEnabled] = useState(false);
 
     const [firstLoad, setfirstLoad] = useState(true);
+    const scrollAmount = 512;
 
     function handleButtonEnabledStates(currentScrollValue) {
         var maxScrollLeft = scrollElementRef.current.scrollWidth - scrollElementRef.current.clientWidth;
@@ -45,7 +46,7 @@ function HorizontalScrollElement({children, category_color}) {
     function rightButton() {
         console.log("scrolling right");
 
-        var newValue = scrollElementRef.current.scrollLeft + 500;
+        var newValue = scrollElementRef.current.scrollLeft + scrollAmount;
         scrollElementRef.current.scrollLeft = newValue;
         handleButtonEnabledStates(newValue);
         // scrollTarget.current += 500;
@@ -57,7 +58,7 @@ function HorizontalScrollElement({children, category_color}) {
     function leftButton() {
         console.log("scrolling left");
 
-        var newValue = scrollElementRef.current.scrollLeft - 500;
+        var newValue = scrollElementRef.current.scrollLeft - scrollAmount;
         scrollElementRef.current.scrollLeft = newValue;
         handleButtonEnabledStates(newValue);
         // scrollTarget.current -= 500;

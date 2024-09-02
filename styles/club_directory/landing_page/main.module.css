@@ -291,8 +291,8 @@
     #club_repo_title_section :global{
         min-width: unset;
         max-width: unset;
-        height: 180px;
-        flex: 0 0 180px;
+        height: 280px;
+        flex: 0 0 280px;
         animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft forwards;
     }
 }
