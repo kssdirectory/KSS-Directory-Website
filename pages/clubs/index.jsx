@@ -97,7 +97,7 @@ export default function clubsPage({ all_club_pages }) {
                                     {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
                                     <div className={main.carousel_gradient}/>
                                     <div id={main.beta_slide_div}>
-                                        <h2>Upcoming Events</h2>
+                                        <h2>Upcoming Events...</h2>
                                         <p>Coming soon to a KSS Directory near you!</p>
                                     </div>
                                 </>

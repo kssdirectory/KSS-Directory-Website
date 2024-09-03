@@ -61,6 +61,7 @@ export default function MobileClubCategoryPage({ category_name, category_metadat
         categoryList = <ClubRepoButtonList categoryClubData = {category_content} categoryColor={category_metadata.Color}/>
     }
 
+    const categoryDescription = "Description" in category_metadata ? category_metadata.Description : "";
 
     return (
         <>
@@ -90,7 +91,7 @@ export default function MobileClubCategoryPage({ category_name, category_metadat
                             </div>
                             <div id={main.title_section_text}>
                                 <h1>{category_name}</h1>
-                                <p>Description.</p>
+                                <p>{categoryDescription}</p>
                             </div>
                         </div>
                     </div>

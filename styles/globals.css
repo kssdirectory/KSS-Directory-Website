@@ -217,6 +217,27 @@ body, html, #__next {
   gap:25px;
 }
 
+.yearSeparatorDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.yearSeparatorLine {
+  background:var(--b4BG);
+  width: 50%;
+  height: 2px;
+  border-radius: 50%;
+}
+
+.yearSeparatorText {
+  color:var(--b4BG);
+  text-align: center;
+  min-width: 200px;
+  margin:0;
+}
+
 /* Now has caf menu */
 .leftInfoContainer{
   flex-basis: 0;
@@ -1563,6 +1584,10 @@ html{scroll-behavior:smooth}
   border-radius: 25px;
   cursor: pointer;
   margin: 0px;
+}
+
+.button4 sup {
+  color: var(--b0BG)
 }
 
 #b4Text {

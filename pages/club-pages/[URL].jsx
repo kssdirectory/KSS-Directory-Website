@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import main from '../../../styles/club_directory/club_pages/main.module.css';
+import main from '../../styles/club_directory/club_pages/main.module.css';
 import NavBar from "@/components/NavBar";
 import { useRouter } from 'next/router'
 import Link from 'next/link';
@@ -81,6 +81,8 @@ function getClubLogoElement(listed_page, club_accent_color){
             //TODO: make this support non-square logos
             id={main.club_logo}
             alt={"Club logo"}
+            className={"easeImageload"}
+            onLoad={(e) => e.target.style.opacity = "1"}
             />
         )
     } else {
@@ -92,6 +94,8 @@ function getClubLogoElement(listed_page, club_accent_color){
             //TODO: make this support non-square logos
             id={main.club_logo} 
             alt={"Club logo"}
+            className={"easeImageload"}
+            onLoad={(e) => e.target.style.opacity = "1"}
             />
         )
     }
@@ -244,8 +248,11 @@ function createClubPageContent(listed_page) {
             }
             links.push(
                 <a href={value[1]} className={main.link} key={key}>
-                    <img src={"https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=" + value[1] + "&size=32"}/>
-                    <p>{link_name}</p>
+                    <div style={{display: "flex", alignItems: "center", flexGrow: "0", maxWidth: "calc(100% - 88px)"}}>
+                        <img src={"http://www.google.com/s2/favicons?sz=32&domain=" + value[1]}/>
+                        <p>{link_name}</p>
+                    </div>
+                    <img src = "/svg_assets/arrow_icon.svg" className={main.linkArrowIcon}/>
                 </a>
             )
         }
