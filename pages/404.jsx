@@ -30,7 +30,7 @@ function pageNotFound() {
                             <div className = {main.textContainer}>
                                     <p id = {main.subheading}>How did you get here?</p>
                                     <h1 id = {main.heroText}>404 - Page Not Found</h1>
-                                    <p id = {main.text}>It seems you've wandered far. Is there something you seek? Stay a while, won't you?</p>
+                                    <p id = {main.text}>It seems you've wandered far. Stay a while, won't you?</p>
                             
                                 <div style = {{paddingTop: "30px", animationDelay: "3s"}}>
                                     <Link id = {main.returnButton} href = "/">
