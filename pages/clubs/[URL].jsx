@@ -57,11 +57,11 @@ export default function MobileClubCategoryPage({ category_name, category_metadat
 
 
     var categoryList;
+    var categoryDescription = "";
     if (!router.isFallback){
         categoryList = <ClubRepoButtonList categoryClubData = {category_content} categoryColor={category_metadata.Color}/>
+        categoryDescription = "Description" in category_metadata ? category_metadata.Description : "";
     }
-
-    const categoryDescription = "Description" in category_metadata ? category_metadata.Description : "";
 
     return (
         <>
