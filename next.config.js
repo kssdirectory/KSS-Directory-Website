@@ -12,6 +12,7 @@ const nextConfig = {
         hostname: "127.0.0.1"
       }
     ],
+    minimumCacheTTL: 60,
   }
 }
 

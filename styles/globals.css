@@ -332,6 +332,11 @@ body, html, #__next {
   display: initial;
 }
 
+/* Early define animation for reasons */
+.anceCards {
+  animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInBottom;
+}
+
 /* Switch to two column layout (all extra info moved to right)*/
 @media (max-width:1600px) {
   .leftInfoContainer {
@@ -353,6 +358,10 @@ body, html, #__next {
 
   .discordIcon{
     width: 28px;
+  }
+  
+  .anceCards {
+    animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft;
   }
 }
 
@@ -433,7 +442,6 @@ body, html, #__next {
     padding:30px;
     margin-bottom: 32px;
     margin-top: 32px;
-    animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInLeft;
   }
 
   .container {

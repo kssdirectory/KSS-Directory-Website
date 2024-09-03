@@ -84,10 +84,10 @@ function HorizontalScrollElement({children, category_color}) {
             <div className={styles.scrollElementHolder} ref={scrollElementRef}>
                 <div className={styles.scrollButtonHolder}>
                     <button type="button" onClick={leftButton} className={styles.scrollButton} style={arrowLeftEnabled ? {opacity:"1"} : {}}>
-                        <Image src="/svg_assets/arrow_right.svg" width={20} height={20} className={styles.arrow_image_left}></Image>    
+                        <Image alt={"Horizontal Scroll Left"} src="/svg_assets/arrow_right.svg" width={20} height={20} className={styles.arrow_image_left}></Image>    
                     </button>  
                     <button type="button" onClick={rightButton} className={styles.scrollButton} style={arrowRightEnabled ? {opacity:"1"} : {}}>
-                        <Image src="/svg_assets/arrow_right.svg" width={20} height={20}></Image>    
+                        <Image alt={"Horizontal Scroll Left"} src="/svg_assets/arrow_right.svg" width={20} height={20}></Image>    
                     </button>   
                 </div>
                 {children}

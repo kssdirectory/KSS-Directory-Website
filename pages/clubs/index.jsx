@@ -7,9 +7,8 @@ import ClubRepoButton from '@/components/ClubRepoButton';
 import ClubRepoButtonList from '@/components/ClubRepoButtonList';
 import ClubRepoCategoryButton from '@/components/ClubRepoCategoryButton';
 import HorizontalScrollElement from '@/components/HorizontalScrollElement';
-
-
-
+import SlideCarousel from '@/components/SlideCarousel';
+import Image from 'next/image';
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -88,12 +87,21 @@ export default function clubsPage({ all_club_pages }) {
                                 <img src="/svg_assets/compass_logo_vector.svg" id={main.title_section_kss_dir_logo}></img>
                             </div>
                             <div id={main.title_section_text}>
-                                <h1>Club<br/>Repository</h1>
+                                <h1>Club<br/>Repository <sup>Beta</sup></h1>
                                 <p>A treasure trove of up-to-date information on KSS clubs, compiled by their respective execs.</p>
                             </div>
                         </div>
                         <div id={main.club_repo_carousel}>
-                            <div id={main.carousel_gradient}/>
+                            <SlideCarousel slides={(
+                                <>
+                                    {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
+                                    <div className={main.carousel_gradient}/>
+                                    <div id={main.beta_slide_div}>
+                                        <h2>Upcoming Events</h2>
+                                        <p>Coming soon to a KSS Directory near you!</p>
+                                    </div>
+                                </>
+                            )}/>
                         </div>
                     </div>
                     <div id={main.content_section_div}>

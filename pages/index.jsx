@@ -396,7 +396,7 @@ export default function Home() {
 
 
   var cafeteriaBoxElement = (
-    <div class = "cafMenuBox" >
+    <div class = "cafMenuBox">
       <div class = "cafMenuContainer">
         <div class = "infoHeaderText">Cafeteria Menu</div>
         {/* Gonna need actual information here */}

@@ -124,6 +124,8 @@
 
 #club_logo {
     border-radius: 18px;
+    width: 90px;
+    height: 90px;
 }
 
 .club_logo_holder {
@@ -415,7 +417,7 @@
     }
 
     .title_body_text {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .meeting_times_div p {

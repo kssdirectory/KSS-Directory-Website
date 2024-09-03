@@ -76,12 +76,11 @@ function getClubLogoElement(listed_page, club_accent_color){
         // if there is a logo
         club_logo_img = (
             <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/logo"}
-            width="90"
-            height="90"
+            width="256"
+            height="256"
             //TODO: make this support non-square logos
             id={main.club_logo}
             alt={"Club logo"}
-            minimumCacheTTL = {30}
             />
         )
     } else {
@@ -339,7 +338,6 @@ function createClubPageContent(listed_page) {
             alt={"Banner of " + listed_page.Metadata.Club_Name}
             objectFit="cover"
             layout="fill"
-            minimumCacheTTL = {30}
             />
         )
     }
