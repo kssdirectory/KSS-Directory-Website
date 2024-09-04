@@ -661,7 +661,7 @@ export default function Home() {
                       </div>
 
                   </div>
-                  <Link class = "button4" href = "clubs">
+                  <Link class = "button4" href = "coming-soon">
                       <div class = "overlapContainer">
 
                           <div class = "background">
@@ -687,8 +687,8 @@ export default function Home() {
                                   <div class = "foreground">
                                     <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
                                     <div id = "b4Text">
-                                      <h3>CLUB REPOSITORY <sup>BETA</sup></h3>
-                                      <h4>A comprehensive list of KSS clubs, kept up to date by club executives.</h4>
+                                      <h3>Other Resources</h3>
+                                      {/* <h4>A comprehensive list of KSS clubs, kept up to date by club executives.</h4> */}
                                     </div>
                                   </div>
                               </div>
