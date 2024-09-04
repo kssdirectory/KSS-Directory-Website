@@ -687,8 +687,8 @@ export default function Home() {
                                   <div class = "foreground">
                                     <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
                                     <div id = "b4Text">
-                                      <h3>Other Resources</h3>
-                                      {/* <h4>A comprehensive list of KSS clubs, kept up to date by club executives.</h4> */}
+                                      <h3>OTHER RESOURCES</h3>
+                                      <h4>Some other resources compiled by KSS Directory Maintainers</h4>
                                     </div>
                                   </div>
                               </div>
