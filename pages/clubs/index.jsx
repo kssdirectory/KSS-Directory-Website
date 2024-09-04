@@ -39,6 +39,7 @@ export default function clubsPage({ all_club_pages }) {
             <ClubRepoCategoryButton 
                 cateogry_name = {clubCategoryName}
                 categoryColor={categoryColor}
+                categoryImage = {webServerURL + "/static_image/repo_category_images/" + clubCategoryName.replace(" ", "_").toLowerCase() + ".svg"}
                 href = {"../clubs/" + clubCategoryName.toLowerCase().replace(" ", "-")}
             />
         );
@@ -88,7 +89,7 @@ export default function clubsPage({ all_club_pages }) {
                             </div>
                             <div id={main.title_section_text}>
                                 <h1>Club<br/>Repository <sup>Beta</sup></h1>
-                                <p>A treasure trove of up-to-date information on KSS clubs, compiled by their respective execs.</p>
+                                <p>A treasure trove of up-to-date information on KSS clubs, compiled by their respective teams.</p>
                             </div>
                         </div>
                         <div id={main.club_repo_carousel}>
@@ -97,8 +98,8 @@ export default function clubsPage({ all_club_pages }) {
                                     {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
                                     <div className={main.carousel_gradient}/>
                                     <div id={main.beta_slide_div}>
-                                        <h2>Upcoming Events...</h2>
-                                        <p>Coming soon to a KSS Directory near you!</p>
+                                        <h2>Attention Club Executives!</h2>
+                                        <p>Please contact a KSS Directory Maintainer at kss.directory@gmail.com to claim or create your club page!</p>
                                     </div>
                                 </>
                             )}/>
