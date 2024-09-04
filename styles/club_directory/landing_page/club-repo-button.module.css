@@ -27,7 +27,7 @@
 @property --gradientPercentage {
     syntax: '<percentage>';
     initial-value: 42.7%;
-    inherits: false;
+    inherits: false; 
   }
   
 @property --gradientColor {

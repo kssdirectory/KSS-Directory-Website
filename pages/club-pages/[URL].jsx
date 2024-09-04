@@ -168,7 +168,7 @@ function createClubPageContent(listed_page) {
     }
     
     if ("Description" in listed_page.Basic_Info) {
-        description.push(<p className={main.title_body_text} key={"Title Tile Description"}>{listed_page.Basic_Info.Description}</p>)
+        description.push(<p className={main.title_body_text} key={"Title Tile Description"}>{listed_page.Basic_Info.Description.trim()}</p>)
     }
 
     if (listed_page.Basic_Info.Activity === "Yes") {
@@ -201,73 +201,77 @@ function createClubPageContent(listed_page) {
         </div>
     );
 
-    if (1 in listed_page.Meeting_Times) {
-        let tile2_meeting_times = []
+    if (listed_page.Meeting_Times) {
+        if (Object.keys(listed_page.Meeting_Times).length > 0) {
+            let tile2_meeting_times = []
 
-        for (const [key, value] of Object.entries(listed_page.Meeting_Times)) {
-            // iterate through each meeting time and push it as a <div> to tile2_meeting_times
-            let meeting_title = []
-            if ("Meeting_Title" in value) {
-                meeting_title.push(value.Meeting_Title)
-            } else {
-                meeting_title.push("Meeting " + key)
-            }
-            let meeting_end_time = []
-            if ("Meeting_End_Time" in value) {
-                meeting_end_time.push(" to " + convert_iso_time(value.Meeting_End_Time))
-            }
-            tile2_meeting_times.push(
-                <div className={main.meeting_times_container} key={key}>
-                    <rect className={main.text_side_line} style={{backgroundColor:club_accent_color}}/>
-                    <div className={main.meeting_times_div}>
-                        <h2>{meeting_title}</h2>
-                        <p>
-                            {value.Meeting_Day[0].toUpperCase() + value.Meeting_Day.slice(1)}s at {convert_iso_time(value.Meeting_Start_Time)} {meeting_end_time} in {value.Meeting_Location}
-                        </p>
+            for (const [key, value] of Object.entries(listed_page.Meeting_Times)) {
+                // iterate through each meeting time and push it as a <div> to tile2_meeting_times
+                let meeting_title = []
+                if ("Meeting_Title" in value) {
+                    meeting_title.push(value.Meeting_Title)
+                } else {
+                    meeting_title.push("Meeting " + key)
+                }
+                let meeting_end_time = []
+                if ("Meeting_End_Time" in value) {
+                    meeting_end_time.push(" to " + convert_iso_time(value.Meeting_End_Time))
+                }
+                tile2_meeting_times.push(
+                    <div className={main.meeting_times_container} key={key}>
+                        <rect className={main.text_side_line} style={{backgroundColor:club_accent_color}}/>
+                        <div className={main.meeting_times_div}>
+                            <h2>{meeting_title}</h2>
+                            <p>
+                                {value.Meeting_Day[0].toUpperCase() + value.Meeting_Day.slice(1)}s at {convert_iso_time(value.Meeting_Start_Time)} {meeting_end_time} in {value.Meeting_Location}
+                            </p>
+                        </div>
                     </div>
+                )
+
+            }
+            info_tiles.push(
+                <div className={main.tile_div} key={"Meeting Times"}>
+                    <h1 className={main.tile_div_subtitle}>Weekly Meeting Times</h1>
+                    {tile2_meeting_times}
                 </div>
             )
-
         }
-        info_tiles.push(
-            <div className={main.tile_div} key={"Meeting Times"}>
-                <h1 className={main.tile_div_subtitle}>Weekly Meeting Times</h1>
-                {tile2_meeting_times}
-            </div>
-        )
     }
 
-    if (1 in listed_page.Links) {
-        let links = []
-        for (const [key, value] of Object.entries(listed_page.Links)) {
-            let link_name = []
-            if (value[0] !== "none") {
-                link_name.push(value[0])
-            } else {
-                link_name.push(value[1])
+    if (listed_page.Links) {
+        if (Object.keys(listed_page.Links).length > 0) {
+            let links = []
+            for (const [key, value] of Object.entries(listed_page.Links)) {
+                let link_name = []
+                if (value[0] !== "none") {
+                    link_name.push(value[0])
+                } else {
+                    link_name.push(value[1])
+                }
+                links.push(
+                    <a href={value[1]} className={main.link} key={key}>
+                        <div style={{display: "flex", alignItems: "center", flexGrow: "0", maxWidth: "calc(100% - 88px)"}}>
+                            <img src={"http://www.google.com/s2/favicons?sz=32&domain=" + value[1]}/>
+                            <p>{link_name}</p>
+                        </div>
+                        <img src = "/svg_assets/arrow_icon.svg" className={main.linkArrowIcon}/>
+                    </a>
+                )
             }
-            links.push(
-                <a href={value[1]} className={main.link} key={key}>
-                    <div style={{display: "flex", alignItems: "center", flexGrow: "0", maxWidth: "calc(100% - 88px)"}}>
-                        <img src={"http://www.google.com/s2/favicons?sz=32&domain=" + value[1]}/>
-                        <p>{link_name}</p>
+            info_tiles.push(
+                <div className={main.tile_div} key={"Links"}>
+                    <h1 className={main.tile_div_subtitle}>Links</h1>
+                    <div id={main.links_container}>
+                        {links}
                     </div>
-                    <img src = "/svg_assets/arrow_icon.svg" className={main.linkArrowIcon}/>
-                </a>
+                </div>
             )
         }
-        info_tiles.push(
-            <div className={main.tile_div} key={"Links"}>
-                <h1 className={main.tile_div_subtitle}>Links</h1>
-                <div id={main.links_container}>
-                    {links}
-                </div>
-            </div>
-        )
     }
     
     if ("Supervisors" in listed_page.Basic_Info) {
-        if (1 in listed_page.Basic_Info.Supervisors) {
+        if (listed_page.Basic_Info.Supervisors != "Unspecified") {
             let supervisor_list = []
             for (const [key, value] of Object.entries(listed_page.Basic_Info.Supervisors)) {
                 supervisor_list.push(
