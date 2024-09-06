@@ -9,6 +9,11 @@ const nextConfig = {
         port: '8080'
       },
       {
+        protocol: 'https',
+        hostname: 'be2d-35-211-79-95.ngrok-free.app',
+        port: ''
+      },
+      {
         hostname: "127.0.0.1"
       }
     ],
