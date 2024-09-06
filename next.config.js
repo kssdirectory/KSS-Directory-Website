@@ -4,13 +4,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '35.211.79.95',
-        port: '8080'
-      },
-      {
         protocol: 'https',
-        hostname: 'be2d-35-211-79-95.ngrok-free.app',
+        hostname: 'api.kss.directory',
         port: ''
       },
       {
