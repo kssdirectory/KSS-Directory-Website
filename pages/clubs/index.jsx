@@ -13,13 +13,23 @@ import Image from 'next/image';
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 
-export const getServerSideProps = async () => {
+// export const getServerSideProps = async () => {
+//     const res = await fetch(webServerURL + "/club_repo_list")
+//     const data = await res.json();
+//     return {
+//         props: { all_club_pages: data }
+//     }
+// }
+
+export const getStaticProps = async (context) => {
     const res = await fetch(webServerURL + "/club_repo_list")
     const data = await res.json();
     return {
-        props: { all_club_pages: data }
+        props: { all_club_pages: data },
+        revalidate: 60
     }
 }
+
 
 export default function clubsPage({ all_club_pages }) {
     // let listed_pages = []
