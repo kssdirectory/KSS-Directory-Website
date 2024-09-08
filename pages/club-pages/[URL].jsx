@@ -75,7 +75,7 @@ function getClubLogoElement(listed_page, club_accent_color){
     if ("Images" in listed_page && "logo" in listed_page?.Images) {
         // if there is a logo
         club_logo_img = (
-            <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/logo"}
+            <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/logo?hash=" + listed_page["Images"]["logo"]["Hash"]}
             width="256"
             height="256"
             //TODO: make this support non-square logos
@@ -343,7 +343,7 @@ function createClubPageContent(listed_page) {
         // if there is a logo available, use it as favicon for this webpage.
         // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
         banner = (
-            <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/banner"}
+            <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/banner?hash=" + listed_page["Images"]["banner"]["Hash"]}
             className={[main.banner_image, "easeImageload"].join(" ")}
             onLoad={(e) => e.target.style.opacity = "1"}
             alt={"Banner of " + listed_page.Metadata.Club_Name}
