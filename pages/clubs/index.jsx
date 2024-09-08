@@ -99,7 +99,7 @@ export default function clubsPage({ all_club_pages }) {
                             </div>
                             <div id={main.title_section_text}>
                                 <h1>Club<br/>Repository <sup>Beta</sup></h1>
-                                <p>A treasure trove of up-to-date information on KSS clubs, compiled by their respective teams.</p>
+                                <p>A treasure trove of up-to-date information on KSS clubs & teams, compiled by their respective executives.</p>
                             </div>
                         </div>
                         <div id={main.club_repo_carousel}>
@@ -109,7 +109,7 @@ export default function clubsPage({ all_club_pages }) {
                                     <div className={main.carousel_gradient}/>
                                     <div id={main.beta_slide_div}>
                                         <h2>Attention Club Executives!</h2>
-                                        <p>Please contact a KSS Directory Maintainer at kss.directory@gmail.com to claim or create your club page!</p>
+                                        <p>Please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page!</p>
                                     </div>
                                 </>
                             )}/>
