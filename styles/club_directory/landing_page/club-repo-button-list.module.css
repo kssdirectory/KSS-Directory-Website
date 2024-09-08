@@ -1,0 +1,28 @@
+@keyframes slideInBottom {
+    0% {
+        transform: translateY(100px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.carousel_container{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+@media (max-width: 850px) {
+    .carousel_container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        margin-top: 12px;
+        overflow-y: scroll;
+        
+        transform: translateY(100px);
+        animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0.1s 1 slideInBottom forwards;
+    }
+}

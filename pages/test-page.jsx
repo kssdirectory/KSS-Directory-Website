@@ -14,7 +14,7 @@ const TestPage = () => {
       const mainColour = "#BA7312";
       const heroContent = <div className={main.heroSection}>
         <img
-        src="../art_assets/waifu1.png"
+        src="/art_assets/waifu1.png"
         style={{width:500,height:500}}
         ></img>
         

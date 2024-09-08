@@ -1,14 +1,14 @@
 #bg {
     background-color: #D9D9D9;
-    height: 100dvh;
+    height: 100svh;
 }
-  
+
 
 
 /* Header stuff */
 
 #pageContent{
-    height: calc(100vh - 64px);
+    height: calc(100svh - 64px);
     position:relative;
     overflow: hidden;
 }
@@ -72,6 +72,7 @@
 }
 
 .banner_content_container {
+    background-color: var(--b1BG);
     border-radius: 32px;
     overflow: hidden;
     width: 100%;
@@ -123,6 +124,8 @@
 
 #club_logo {
     border-radius: 18px;
+    width: 90px;
+    height: 90px;
 }
 
 .club_logo_holder {
@@ -195,15 +198,15 @@
 
 .info_tiles_div {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     flex: 1;
     max-width: 500px;
     position: relative;
     gap: 12px;
     height: 100%;
     padding-right: 10px;
-    overflow-x:hidden;
-    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 
@@ -218,12 +221,12 @@
 
 .tile_div :global {
     animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight1;
-    width: 100%;
+    width: auto;
     border-radius: 32px;
     background-color: white;
     border: 1px solid var(--dark-gray);
     padding: 48px;
-
+    height: fit-content;
 }
 
 .tile_div_subtitle {
@@ -261,6 +264,8 @@
 #last_modified {
     font-size: 16px;
     margin: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 #activity_div {
@@ -330,44 +335,63 @@
 
 #links_container {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     gap: 8px;
 }
 
 .link {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     gap: 6px;
-    background-color: #EDEDED;
-    border-radius: 25px;
+    background-color: #FFFFFF;
+    border-radius: 16px;
     border: 1px solid var(--light-gray);
-    height: auto;
+    min-height: 32px;
+    height: unset;
     margin: 0;
-    padding: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
+
+    transition: 0.25s background-color;
 }
 
 .link p {
-    font-size: 14px;
+    font-size: 18px;
     margin: 0px;
-    width: auto;
-    margin-right: 6px;
-    color: var(--dark-gray)
+    margin-left: 8px;
+    width: 100%;
+    word-wrap: break-word;
+    color: black;
+
+    transition: 0.25s color;
 }
 
 .link:hover {
-    background-color: #cccccc;
+    background-color: #D9D9D9;
     text-decoration: none;
 }
 
+.link:hover p {
+    color: var(--blue-link);
+}
+
 .link img {
-    height: 20px;
-    width: 20px;
-    margin-left: 3px;
+    height: 32px;
+    width: 32px;
+    margin-left:6px;
+    flex-shrink: 0;
     object-fit: contain;
 }
 
-
+.link .linkArrowIcon {
+    height: 32px;
+    width: 32px;
+    margin-right:6px;
+    object-fit: contain;
+}
 
 /* Tile 4: Supervisors */
 
@@ -414,7 +438,7 @@
     }
 
     .title_body_text {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .meeting_times_div p {
@@ -427,6 +451,8 @@
     
     #last_modified {
         font-size: 14px;
+        padding-top: 4px;
+        padding-bottom: 4px;
     }
 
     #activity_div p {
@@ -492,10 +518,6 @@
         flex-shrink: 0;
         flex-grow: 0;
         min-height: 100px;
-    }
-    .club_logo_holder {
-        /* visibility: hidden; */
-        
     }
     .tile_list_spacer{
         height: 3px;

@@ -5,13 +5,14 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'musical-blindly-cheetah.ngrok-free.app',
+        hostname: 'api.kss.directory',
         port: ''
       },
       {
         hostname: "127.0.0.1"
       }
     ],
+    minimumCacheTTL: 345600,
   }
 }
 

@@ -82,6 +82,15 @@ export default function Home() {
   const [index, updateIndex] = useState(0)
   const numAnceTotal = 7
   let loadMore = <button class="loadMore" onClick={() => updateIndex(index + 1)}>Load more...</button>
+
+  const yearSeparator = (
+    <div className="yearSeparatorDiv" key="YearSeparator">  
+      <div className='yearSeparatorLine'/>
+      <p className='yearSeparatorText'>Last Year</p>
+      <div className='yearSeparatorLine'/>
+    </div>
+  );
+
   const errorCheck = []
 
   // Resources modal stuff
@@ -249,6 +258,8 @@ export default function Home() {
       loadMore = <button class="loadMore-disabled">Load more...</button>
     }
 
+    let yearSeparatorInserted = false;
+
     for (const [key, value] of Object.entries(anceList)) {
       // iterating through anceList, which is an object
       // each 'value' is another object (stored as a string) that represents all of the announcements for a given day.
@@ -276,6 +287,10 @@ export default function Home() {
         // anceTags is a list of all the announcement categories
         const anceTags = []
 
+        // format: [YYYY][MM][DD]
+        let anceCardDate = 99999999;
+        const yearCutoffDate = 20240810;
+
         for (const [sectionNum, section] of Object.entries(valueDict)) {
           // iterating through each individual announcement in the dictionary of the full day's announcements
 
@@ -290,6 +305,8 @@ export default function Home() {
 
             // date
             dateIdentifierList.push(<div class="dateIdentifier-date" key = {section[2]+section[3]+section[1]+sectionNum}>{section[2] + "/" + section[3] + "/" + section[1]}</div>)
+            
+            anceCardDate = parseInt(section[1].toString() + section[2].toString() + section[3].toString());
 
             indivAnce.push(<div key = {sectionNum + "dateIdentifierList"}>{dateIdentifierList}</div>)
 
@@ -387,6 +404,12 @@ export default function Home() {
           }
         }
 
+        // Insert year separator (somewhat janky solution)
+        if (!yearSeparatorInserted && anceCardDate < yearCutoffDate) {
+          anceCards.push(yearSeparator);
+          yearSeparatorInserted = true;
+        }
+
         // pushing the indivAnce list to anceCards, which is the base Announcement card part
         // CSS class of "anceCards" used to determine how the announcement card itself looks.
         anceCards.push(<div class="anceCards" key = {key + "anceCards"}>{indivAnce}</div>)
@@ -395,6 +418,15 @@ export default function Home() {
   }
 
 
+  var cafeteriaBoxElement = (
+    <div class = "cafMenuBox">
+      <div class = "cafMenuContainer">
+        <div class = "infoHeaderText">Cafeteria Menu</div>
+        {/* Gonna need actual information here */}
+        <div class = "infoBodyText">Coming Soon!</div>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -653,9 +685,10 @@ export default function Home() {
                                       </div>
                                   </div>
                                   <div class = "foreground">
+                                    <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
                                     <div id = "b4Text">
                                       <h3>OTHER RESOURCES</h3>
-                                      <h4>A database of other resources to help with your school life!</h4>
+                                      <h4>Some other resources compiled by KSS Directory Maintainers</h4>
                                     </div>
                                   </div>
                               </div>
@@ -668,12 +701,9 @@ export default function Home() {
           {/* This wrapper holds the side content (discord prompt, current menu) while also centering the announcements list on screen*/}
           <div class="scrollWrapper">
             <div class = "leftInfoContainer">
-              <div class= "twoColumnDisabled">
-                <div class = "cafMenuBox">
-                  <div class = "cafMenuContainer">
-                    <div class = "infoHeaderText">Cafeteria Menu</div>
-                    <div class = "infoBodyText">soup</div>
-                  </div>
+              <div class="infoFlex">
+                <div class= "twoColumnDisabled">
+                  {cafeteriaBoxElement}
                 </div>
               </div>
             </div>
@@ -709,26 +739,22 @@ export default function Home() {
               </div>
             </div>
             <div class="rightInfoContainer">
-              <div class="discordPromptBox">
-                <div class="discordPromptContainer">
-                  <div class="discordPromptTextContainer"> 
-                    <div class="infoHeaderText"> Join our Discord! </div>
-                    <div class="infoBodyText"> Subscribe to specific topics and get daily announcement pings. </div>
-                  </div>
-                  
-                  <a href = "https://discord.gg/BJtVbtqdDY" class="discordButton">
+              <div class="infoFlex">
+                <div class="discordPromptBox">
+                  <div class="discordPromptContainer">
+                    <div class="discordPromptTextContainer"> 
+                      <div class="infoHeaderText"> Join our Discord! </div>
+                      <div class="infoBodyText"> Subscribe to specific topics and get daily announcement pings. </div>
+                    </div>
+                    
+                    <a href = "https://discord.gg/BJtVbtqdDY" class="discordButton">
 
-                    <img src = "svg_assets/about_page/discord.svg" class="discordIcon"/>
-                  </a>
-                </div>  
-              </div>
-              <div class = "twoColumnEnabled">
-                <div class = "cafMenuBox" style = {{marginTop: 16}}>
-                  <div class = "cafMenuContainer">
-                    <div class = "infoHeaderText">Cafeteria Menu</div>
-                    {/* Gonna need actual information here */}
-                    <div class = "infoBodyText">Coming Soon!</div>
-                  </div>
+                      <img src = "svg_assets/about_page/discord.svg" class="discordIcon"/>
+                    </a>
+                  </div>  
+                </div>
+                <div class = "twoColumnEnabled">
+                  {cafeteriaBoxElement}
                 </div>
               </div>
             </div>
