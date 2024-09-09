@@ -105,7 +105,7 @@ function getClubLogoElement(listed_page, club_accent_color){
 
     // Create club icon
     const logo_BG = (
-        <div id={main.logo_BG} style={{backgroundColor:hslToHex(club_accent_hsl.h, 100, 88)}} >
+        <div id={main.logo_BG} style={{backgroundColor:hslToHex(club_accent_hsl.h, 80, 65)}} >
             {club_logo_img}
         </div>
     )
@@ -167,6 +167,13 @@ function createClubPageContent(listed_page) {
         club_accent_color = listed_page.Category_Metadata.Color;
     }
     
+    let pageClaim = (
+        <div className={main.tile_div} key={"Important!"} style = {{backgroundColor: "var(--b0BG)"}}>
+            <h1 className={main.tile_div_subtitle} style = {{color: "#ffffff"}}><strong>PAGE CLAIM</strong></h1>
+            <p style = {{color: "#ffffff"}}>If you are a member of this club’s executive team/supervisor, please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim this page.</p>
+        </div>
+    )
+
     if ("Description" in listed_page.Basic_Info) {
         description.push(<p className={main.title_body_text} key={"Title Tile Description"}>{listed_page.Basic_Info.Description.trim()}</p>)
     }
@@ -369,9 +376,9 @@ function createClubPageContent(listed_page) {
                     <div className={main.tile_div}>
                         {title_tile_data}
                     </div>
+                    {pageClaim}
                     {info_tiles}
                 </div>
-
                 {club_logo_element}
             </div>
         </div>
@@ -391,6 +398,7 @@ function createClubPageContent(listed_page) {
                     </div>
                     {club_logo_element}
                 </div>
+                {pageClaim}
                 {info_tiles}
             </div>
         </div>

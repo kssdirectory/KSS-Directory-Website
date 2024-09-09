@@ -79,15 +79,17 @@ function HorizontalScrollElement({children, category_color}) {
         setfirstLoad(false);
     }
 
+    console.log("category colour is currently: " + category_color);
+
     return (
         <>
             <div className={styles.scrollElementHolder} ref={scrollElementRef}>
                 <div className={styles.scrollButtonHolder}>
-                    <button type="button" onClick={leftButton} className={styles.scrollButton} style={arrowLeftEnabled ? {opacity:"1"} : {}}>
-                        <Image alt={"Horizontal Scroll Left"} src="/svg_assets/arrow_right.svg" width={20} height={20} className={styles.arrow_image_left}></Image>    
+                    <button type="button" onClick={leftButton} className={styles.scrollButton} style={arrowLeftEnabled ? {opacity:"1", backgroundColor: category_color } : {backgroundColor: category_color}}>
+                        <Image alt={"Horizontal Scroll Left"} src="/svg_assets/arrow.svg" width={20} height={20} className={styles.arrow_image_left}></Image>    
                     </button>  
-                    <button type="button" onClick={rightButton} className={styles.scrollButton} style={arrowRightEnabled ? {opacity:"1"} : {}}>
-                        <Image alt={"Horizontal Scroll Left"} src="/svg_assets/arrow_right.svg" width={20} height={20}></Image>    
+                    <button type="button" onClick={rightButton} className={styles.scrollButton} style={arrowRightEnabled ? {opacity:"1", backgroundColor: category_color } : {backgroundColor: category_color}}>
+                        <Image alt={"Horizontal Scroll Right"} src="/svg_assets/arrow.svg" width={20} height={20}></Image>    
                     </button>   
                 </div>
                 {children}

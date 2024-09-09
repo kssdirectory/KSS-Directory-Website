@@ -58,7 +58,7 @@ export default function clubsPage({ all_club_pages }) {
             <div key={clubCategoryName} > 
                 <h2 className={main.club_category_name}>{clubCategoryName}</h2>
                 <div className={main.club_category_carousel}> 
-                    <HorizontalScrollElement>       
+                    <HorizontalScrollElement category_color = {categoryColor}>       
                         <ClubRepoButtonList categoryClubData = {clubCategoryData.Content} categoryColor={categoryColor}/>
                     </HorizontalScrollElement>
                 </div>
