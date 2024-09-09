@@ -13,6 +13,14 @@
     transition: opacity cubic-bezier(0.02, 0.38, 0.22, 0.98) 0.25s;
 }
 
+.scrollButton img {
+    transition: opacity 0.15s;
+}
+
+.scrollButton:hover img {
+    opacity: 60%;
+}
+
 .arrow_image_left {
     transform: scaleX(-1);
 }

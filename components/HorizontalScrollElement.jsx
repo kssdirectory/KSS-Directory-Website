@@ -1,10 +1,11 @@
 import Image from "next/image";
 import styles from "../styles/club_directory/landing_page/horizontal-scroll-element.module.css"; 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { clamp, lerp } from "@/util/util";
 import useAnimationFrame from "@/hooks/useAnimationFrame";
 import isClientSide from "@/util/isClientSide";
 import useIsClientSide from "@/hooks/useIsClientSide";
+import useWindowSize from "@/hooks/useWindowSize";
 
 
 function HorizontalScrollElement({children, category_color}) {
@@ -72,12 +73,19 @@ function HorizontalScrollElement({children, category_color}) {
     //     console.log("Target: " + scrollTarget.current + " Position: " + scrollElementRef.current.scrollLeft);
     // }
     var clientSide = useIsClientSide();
+    var windowSize = useWindowSize();
 
     // useAnimationFrame(animate);
     if (clientSide && firstLoad){
         handleButtonEnabledStates(scrollElementRef.current.scrollLeft);
         setfirstLoad(false);
     }
+
+    useEffect(() => {
+        if (!firstLoad) {
+            handleButtonEnabledStates(scrollElementRef.current.scrollLeft);
+        }
+    }, [windowSize])
 
     //console.log("category colour is currently: " + category_color);
 
