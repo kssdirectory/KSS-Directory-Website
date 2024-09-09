@@ -79,7 +79,7 @@ function HorizontalScrollElement({children, category_color}) {
         setfirstLoad(false);
     }
 
-    console.log("category colour is currently: " + category_color);
+    //console.log("category colour is currently: " + category_color);
 
     return (
         <>

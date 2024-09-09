@@ -62,6 +62,7 @@
 
 .banner_image {
     overflow: hidden;
+    object-fit: cover;
 }
 
 .banner_div {
@@ -248,7 +249,7 @@
 
 /* Tile 1: Title */
 
-#club_name {
+.club_name {
     margin: 0;
     font-weight: 600;
     font-size: 30px;
@@ -429,7 +430,7 @@
     }
 
     /* Text Stuff */
-    #club_name{
+    .club_name{
         color: white;
     }
 
@@ -498,7 +499,7 @@
     }
     .banner_div :global {
         margin-bottom: 0;
-        flex-grow: 1;
+        flex-grow: 0;
         flex-shrink: 0;
         height:340px;
         flex-basis: auto;
