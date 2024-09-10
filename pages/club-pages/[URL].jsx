@@ -105,7 +105,7 @@ function getClubLogoElement(listed_page, club_accent_color){
 
     // Create club icon
     const logo_BG = (
-        <div id={main.logo_BG} style={{backgroundColor:hslToHex(club_accent_hsl.h, 80, 65)}} >
+        <div id={main.logo_BG} style={{backgroundColor:hslToHex(club_accent_hsl.h, 60, 65)}} >
             {club_logo_img}
         </div>
     )
@@ -160,19 +160,19 @@ function createClubPageContent(listed_page) {
         }
     }
 
+    let pageClaim = (
+        <div className={main.tile_div} key={"Important!"} style = {{backgroundColor: "var(--b1BG)"}}>
+            <h1 className={main.club_name} style = {{color: "#ffffff"}}>Page Claim</h1>
+            <p className={main.generic_body_text} style = {{color: "#ffffff"}}>If you are a member of this club’s executive team/supervisor, please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim and edit this page.</p>
+        </div>
+    )
+
     let description = []
     let activity = []
 
     if ("Category_Metadata" in listed_page) {
         club_accent_color = listed_page.Category_Metadata.Color;
     }
-    
-    let pageClaim = (
-        <div className={main.tile_div} key={"Important!"} style = {{backgroundColor: "var(--b0BG)"}}>
-            <h1 className={main.tile_div_subtitle} style = {{color: "#ffffff"}}><strong>PAGE CLAIM</strong></h1>
-            <p style = {{color: "#ffffff"}}>If you are a member of this club’s executive team/supervisor, please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim this page.</p>
-        </div>
-    )
 
     if ("Description" in listed_page.Basic_Info) {
         description.push(<p className={main.title_body_text} key={"Title Tile Description"}>{listed_page.Basic_Info.Description.trim()}</p>)
@@ -199,7 +199,7 @@ function createClubPageContent(listed_page) {
     // Tile 1: Title
     title_tile_data = (
         <div>
-            <h1 id={main.club_name}>{listed_page.Metadata.Club_Name}</h1>
+            <h1 className={main.club_name}>{listed_page.Metadata.Club_Name}</h1>
             <div id={main.update_date_activity_container}>
                 {activity}
                 <p id={main.last_modified}>Last updated: {month} {listed_page.Metadata.Last_modified.slice(8,10)}, {listed_page.Metadata.Last_modified.slice(0,4)}</p>
@@ -354,7 +354,6 @@ function createClubPageContent(listed_page) {
             className={[main.banner_image, "easeImageload"].join(" ")}
             onLoad={(e) => e.target.style.opacity = "1"}
             alt={"Banner of " + listed_page.Metadata.Club_Name}
-            objectFit="cover"
             layout="fill"
             />
         )

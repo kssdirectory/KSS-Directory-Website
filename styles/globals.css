@@ -362,6 +362,7 @@ body, html, #__next {
 /* Switch to two column layout (all extra info moved to right)*/
 @media (max-width:1600px) {
   .leftInfoContainer {
+    display: none;
     flex-grow: 0;
   }
 
@@ -1657,6 +1658,11 @@ html{scroll-behavior:smooth}
   /* When the user has an uber wide screen */
   .wrapper {
     width: 1980px;
+  }
+
+  .scrollWrapper {
+    width: 1980px;
+    margin-inline: auto;
   }
 }
 

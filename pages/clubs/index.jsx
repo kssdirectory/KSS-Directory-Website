@@ -103,7 +103,7 @@ export default function clubsPage({ all_club_pages }) {
                             </div>
                         </div>
                         <div id={main.club_repo_carousel}>
-                            <SlideCarousel slides={(
+                            <SlideCarousel slides={[
                                 <>
                                     {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
                                     <div className={main.carousel_gradient}/>
@@ -112,7 +112,7 @@ export default function clubsPage({ all_club_pages }) {
                                         <p>Please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page!</p>
                                     </div>
                                 </>
-                            )}/>
+                            ]}/>
                         </div>
                     </div>
                     <div id={main.content_section_div}>
