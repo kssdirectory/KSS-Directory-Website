@@ -287,4 +287,8 @@
     #heroButtonSection {
         margin-top: 48px;
     }
+
+    .copyrightBox {
+        position: unset;
+    }
 }
