@@ -3,23 +3,26 @@ import { clamp } from "@/util/util";
 import { useEffect, useRef, useState } from "react";
 import styles from "styles/club_directory/landing_page/slide-carousel.module.css"
 
-function SlideCarousel({children}) {
+function SlideCarousel({children, autoScroll}) {
     const [slidePosition, setSlidePosition] = useState(0);
     const windowSize = useWindowSize();
 
     const slideElementRef = useRef(null);
     const slideViewportRef = useRef(null);
+    const leftButtonRef = useRef(null);
+    const rightButtonRef = useRef(null);
 
     const maxSlideIndex = children.length - 1;
 
-    function jumpToSlide(index) {
-        console.log("AA: " + index)
-        setSlidePosition(index);
-    }
+    const autoScrollTimerMs = 10 * 1000; // ms between each autoscroll event
+    const autoScrollEnabled = useRef(autoScroll);
+
+    // timeout object for canceling if need be
+    let autoScrollObject = undefined;
 
     const positionIndicators = children.map((slide, index) => {
         return (
-            <button onClick={() => { jumpToSlide(index); }} className={styles.position_indicator_bubble} key={"Slide " + index}>
+            <button onClick={() => { setSlidePosition(index); autoScrollEnabled.current = false; }} className={styles.position_indicator_bubble} key={"Slide " + index}>
                 <div className={styles.position_indicator_inner_bubble} style={slidePosition == index ? {width: "17px", height: "17px"} : {}} />
             </button>
         );
@@ -32,14 +35,37 @@ function SlideCarousel({children}) {
 
     useEffect(() => {
         calculateOffset();
-    }, [windowSize, slidePosition])
+        //updateButtonStates();
+    }, [windowSize, slidePosition]);
+
+    useEffect(() => {
+        if (autoScrollEnabled.current) {
+            autoScrollObject = setTimeout(() => {
+                let nextSlide = slidePosition + 1;
+                if (nextSlide > maxSlideIndex) {
+                    nextSlide = 0;
+                }
+                //console.log(slidePosition + " " + nextSlide)
+
+                setSlidePosition(nextSlide);
+            }, autoScrollTimerMs);
+        }
+        // runs on unmount
+        return () => clearTimeout(autoScrollObject);
+    }, [slidePosition]);
 
     function rightButton() {
         setSlidePosition(clamp(0, maxSlideIndex, slidePosition + 1));
+
+        // disable autoscroll when button clicked
+        autoScrollEnabled.current = false;
     }
 
     function leftButton() {
         setSlidePosition(clamp(0, maxSlideIndex, slidePosition - 1));
+
+        // disable autoscroll when button clicked
+        autoScrollEnabled.current = false;
     }
 
     return (
@@ -50,18 +76,17 @@ function SlideCarousel({children}) {
                 </div>
             </div>  
             <div className={styles.navigation_control_div}>
-                <div className={styles.arrow_button_div}>
-                    <button onClick={leftButton} className={styles.nav_button}>
-                        <img className={styles.chevronLeft}/>
-                    </button>
-                    <button onClick={rightButton} className={styles.nav_button}>
-                        <img className={styles.chevronRight}/>
-                    </button>
-                </div>
+                <button onClick={leftButton} disabled={slidePosition <= 0 ? true : false} className={styles.nav_button}>
+                    <img src="/svg_assets/chevron_right_big.svg" ref={leftButtonRef} className={styles.chevronLeft}/>
+                </button>
 
                 <div className={styles.position_indicator_div}>
                     {positionIndicators}
                 </div>
+
+                <button onClick={rightButton} disabled={slidePosition >= maxSlideIndex ? true : false} className={styles.nav_button}>
+                    <img src="/svg_assets/chevron_right_big.svg" ref={rightButtonRef} className={styles.chevronRight}/>
+                </button>
             </div>
         </>
     );

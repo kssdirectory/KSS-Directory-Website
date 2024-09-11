@@ -104,7 +104,7 @@ export default function clubsPage({ all_club_pages }) {
                             </div>
                         </div>
                         <div id={styles.club_repo_carousel}>
-                            <SlideCarousel> 
+                            <SlideCarousel autoScroll = {true}> 
                                 <SlideCarouselPage name="ClubExecPromptPage" >
                                     {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
                                     <div className={styles.carousel_gradient}/>

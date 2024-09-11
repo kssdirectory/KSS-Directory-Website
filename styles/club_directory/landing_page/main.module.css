@@ -165,6 +165,8 @@
     height: 100%;
     top: 0;
     left: 0;
+
+    object-fit: cover;
 }
 
 .carousel_gradient {
@@ -186,7 +188,7 @@
 #club_repo_carousel :global{
     box-sizing: border-box;
     border: 1px solid var(--dark-gray);
-    background-color: var(--b2BG);
+    background-color: var(--b0BG);
     flex: 2;
     border-radius: 32px;
     height: inherit;
@@ -309,6 +311,7 @@
 
     .generic_slide {
         padding: 24px;
+        margin-bottom: 32px;
     }
 
     .beta_slide_div h2 {
