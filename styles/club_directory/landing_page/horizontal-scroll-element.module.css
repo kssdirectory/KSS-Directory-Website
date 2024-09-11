@@ -14,15 +14,35 @@
 }
 
 .scrollButton img {
-    transition: opacity 0.15s;
+    transition: opacity 0.15s, transform 0.25s;
 }
 
 .scrollButton:hover img {
     opacity: 60%;
 }
 
+.scrollButton:active img {
+    opacity: 40%;
+}
+
 .arrow_image_left {
     transform: scaleX(-1);
+}
+
+.scrollButton:hover .arrow_image_left {
+    transform: scaleX(-1) translateX(5%);
+}
+
+.scrollButton:hover .arrow_image_right {
+    transform: translateX(5%);
+}
+
+.scrollButton:active .arrow_image_left {
+    transform: scaleX(-1) translateX(15%);
+}
+
+.scrollButton:active .arrow_image_right {
+    transform: translateX(15%);
 }
 
 .scrollElementHolder {

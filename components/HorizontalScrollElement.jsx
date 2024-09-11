@@ -16,7 +16,7 @@ function HorizontalScrollElement({children, category_color}) {
     const [arrowLeftEnabled, setArrowLeftEnabled] = useState(false);
 
     const [firstLoad, setfirstLoad] = useState(true);
-    const scrollAmount = 512;
+    const scrollAmount = 560;
 
     function handleButtonEnabledStates(currentScrollValue) {
         var maxScrollLeft = scrollElementRef.current.scrollWidth - scrollElementRef.current.clientWidth;
@@ -97,7 +97,7 @@ function HorizontalScrollElement({children, category_color}) {
                         <Image alt={"Horizontal Scroll Left"} src="/svg_assets/arrow.svg" width={20} height={20} className={styles.arrow_image_left}></Image>    
                     </button>  
                     <button type="button" onClick={rightButton} className={styles.scrollButton} style={arrowRightEnabled ? {opacity:"1", backgroundColor: category_color } : {backgroundColor: category_color}}>
-                        <Image alt={"Horizontal Scroll Right"} src="/svg_assets/arrow.svg" width={20} height={20}></Image>    
+                        <Image alt={"Horizontal Scroll Right"} src="/svg_assets/arrow.svg" width={20} height={20} className={styles.arrow_image_right}></Image>    
                     </button>   
                 </div>
                 {children}

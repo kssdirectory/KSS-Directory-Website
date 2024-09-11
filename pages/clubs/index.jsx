@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head';
-import main from '../../styles/club_directory/landing_page/main.module.css';
+import styles from '../../styles/club_directory/landing_page/main.module.css';
 import NavBar from "../../components/NavBar";
 import BackArrowButton from '@/components/BackArrowButton';
 import ClubRepoButton from '@/components/ClubRepoButton';
@@ -9,6 +9,7 @@ import ClubRepoCategoryButton from '@/components/ClubRepoCategoryButton';
 import HorizontalScrollElement from '@/components/HorizontalScrollElement';
 import SlideCarousel from '@/components/SlideCarousel';
 import Image from 'next/image';
+import SlideCarouselPage from '@/components/SlideCarouselPage';
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -56,8 +57,8 @@ export default function clubsPage({ all_club_pages }) {
 
         return (
             <div key={clubCategoryName} > 
-                <h2 className={main.club_category_name}>{clubCategoryName}</h2>
-                <div className={main.club_category_carousel}> 
+                <h2 className={styles.club_category_name}>{clubCategoryName}</h2>
+                <div className={styles.club_category_carousel}> 
                     <HorizontalScrollElement category_color = {categoryColor}>       
                         <ClubRepoButtonList categoryClubData = {clubCategoryData.Content} categoryColor={categoryColor}/>
                     </HorizontalScrollElement>
@@ -77,62 +78,78 @@ export default function clubsPage({ all_club_pages }) {
                 {/* Not the individual logo of each club because that'd be a PITA, especially if they didn't use a perfectly square logo...*/}
                 <link rel="icon" sizes="76x76" href="../static/compassLogo.ico" />
             </Head>
-            <main id={main.bg}>
+            <main id={styles.bg}>
                 <NavBar
                     extra_additions={(
                         <>                        
-                            <div id={main.header_path_div}>
-                                <p id={main.header_path_link} href="/clubs">CLUB REPOSITORY</p>
+                            <div id={styles.header_path_div}>
+                                <p id={styles.header_path_link} href="/clubs">CLUB REPOSITORY</p>
                             </div>
-                            <BackArrowButton href = "../" className={main.mobileEnabled}/>
+                            <BackArrowButton href = "../" className={styles.mobileEnabled}/>
                         </>
                     )}
                     center_on_mobile={true}
                 />
 
 
-                <div id={main.pageContent}>
-                    <div id={main.top_section}>
-                        <div id={main.club_repo_title_section}>
-                            <div id={main.title_section_kss_dir_logo_mask}>
-                                <img src="/svg_assets/compass_logo_vector.svg" id={main.title_section_kss_dir_logo}></img>
+                <div id={styles.pageContent}>
+                    <div id={styles.top_section}>
+                        <div id={styles.club_repo_title_section}>
+                            <div id={styles.title_section_kss_dir_logo_mask}>
+                                <img src="/svg_assets/compass_logo_vector.svg" id={styles.title_section_kss_dir_logo}></img>
                             </div>
-                            <div id={main.title_section_text}>
+                            <div id={styles.title_section_text}>
                                 <h1>Club<br/>Repository <sup>Beta</sup></h1>
                                 <p>A treasure trove of up-to-date information on KSS clubs & teams, compiled by their respective executives.</p>
                             </div>
                         </div>
-                        <div id={main.club_repo_carousel}>
-                            <SlideCarousel slides={[
-                                <>
+                        <div id={styles.club_repo_carousel}>
+                            <SlideCarousel> 
+                                <SlideCarouselPage name="ClubExecPromptPage" >
                                     {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
-                                    <div className={main.carousel_gradient}/>
-                                    <div id={main.beta_slide_div}>
+                                    <div className={styles.carousel_gradient}/>
+                                    <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
                                         <h2>Attention Club Executives!</h2>
                                         <p>Please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page!</p>
                                     </div>
-                                </>
-                            ]}/>
+                                </SlideCarouselPage>
+                                <SlideCarouselPage name="TestPage1" >
+                                    {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
+                                    <div className={styles.carousel_gradient}/>
+                                    <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
+                                        <h2>Page1 </h2>
+                                        <p>Please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page!</p>
+                                    </div>
+                                </SlideCarouselPage>
+                                <SlideCarouselPage name="TestPage2" >
+                                    <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
+                                    <div className={styles.carousel_gradient}/>
+                                    <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
+                                        <h2>Page2</h2>
+                                        <p>Please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page!</p>
+                                    </div>
+                                </SlideCarouselPage>
+                            </SlideCarousel>
                         </div>
                     </div>
-                    <div id={main.content_section_div}>
-                        <div className={main.mobileDisabled}>
+                    <div id={styles.content_section_div}>
+                        <div className={styles.mobileDisabled}>
                             {clubCategories}
-                            <div className={main.spacer_div}/>
+                            <div className={styles.spacer_div}/>
                         </div>
-                        <div className={main.mobileEnabled}>
-                            <div id = {main.mobile_button_container}>
-                                <div className = {main.mobile_button_container_horizontal}>
+                        <div className={styles.mobileEnabled}>
+                            <div id = {styles.mobile_button_container}>
+                                <div className = {styles.mobile_button_container_horizontal}>
                                     {mobileCategoryButtons[0]}
                                     {mobileCategoryButtons[1]}
                                 </div>
                                 {mobileCategoryButtons[2]}
-                                <div className = {main.mobile_button_container_horizontal}>
+                                <div className = {styles.mobile_button_container_horizontal}>
                                     {mobileCategoryButtons[3]}
                                     {mobileCategoryButtons[4]}
                                 </div>
                             </div>
-                            <div className={main.spacer_div}/>
+                            <div className={styles.spacer_div}/>
                         </div>
                     </div>
                     {/* {listed_pages.map(listed_page => (
