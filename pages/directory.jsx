@@ -28,7 +28,7 @@ function homepage() {
             <div className = {main.background}>
                 <div className = {main.body}>
                     <div id = {main.hero}>
-                        <h1 className = {main.heroText}>supporting student-made sources</h1>
+                        <h1 className = {main.heroText}>supporting <br/><strong>student-made</strong> <br/>services</h1>
                         <div id = {main.starLogo}>
                             <img src = "svg_assets/logo_assets/innerStar.svg" id = {star.innerStar}/>
                             <svg id = {star.outerStarSVGBox1}>
