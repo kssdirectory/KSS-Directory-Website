@@ -117,16 +117,16 @@ export default function clubsPage({ all_club_pages }) {
                                     {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
                                     <div className={styles.carousel_gradient}/>
                                     <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
-                                        <h2>Page1 </h2>
-                                        <p>Please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page!</p>
+                                        <h2>Spread the word!</h2>
+                                        <p>KSS Directory's Club Repository is open for business!</p>
                                     </div>
                                 </SlideCarouselPage>
                                 <SlideCarouselPage name="TestPage2" >
                                     <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
                                     <div className={styles.carousel_gradient}/>
                                     <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
-                                        <h2>Page2</h2>
-                                        <p>Please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page!</p>
+                                        <h2>I'm a slideshow!</h2>
+                                        <p>Check back later for important club events!</p>
                                     </div>
                                 </SlideCarouselPage>
                             </SlideCarousel>
