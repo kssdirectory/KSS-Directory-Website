@@ -1,4 +1,4 @@
-import navbar from "../styles/directory/directorynavbar.module.css";
+import navbar from "/styles/directorynavbar.module.css";
 import Link from 'next/link';
 
 const NavBar = ({ extra_additions, text_color = "#072136", center_on_mobile = false}) => {
@@ -12,7 +12,7 @@ const NavBar = ({ extra_additions, text_color = "#072136", center_on_mobile = fa
                         <div className={navbar.kssdir_logo_BG}>
                             <img src = "/svg_assets/compass_logo_vector.svg" className={navbar.kssdir_logo}/>
                         </div>
-                        <p style={{color:text_color}} className={navbar.kssdir_logo_text}>KSS DIRECTORY</p>                        
+                        <p style={{color:text_color}} className={navbar.kssdir_logo_text}>DIRECTORY</p>                        
                     </div>
                 </Link>
             </div>

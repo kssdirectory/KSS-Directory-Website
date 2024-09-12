@@ -1,41 +1,92 @@
-.background {
-    width: 100%;
-    height: 100%;
-    background-color: #072136;
+.content {
+    background: #072136;
+    height: calc(100svh - 64px);
+    position:relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .body {
-    padding: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 #hero {
     display: flex;
+    align-items: center;
     width: 100%;
-    margin: auto;
-    height: 700px;
+    height: 600px;
+    position: relative;
 }
 
 .heroText {
     color: #ffffff;
-    bottom: 50px;
+    width: 500px;
+    padding-left: 100px;
+    font-size: 4rem; 
+}
+
+.heroContent_div {
+    z-index: 1;
+    display: flex;
+    padding: 50px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.backgroundImage {
+    width: 100%;
+    height: inherit;
+    position: absolute;
+
+}
+
+.gradient1 {
+    background: linear-gradient(0deg, #072136 0%, rgba(7, 33, 54, 0.00) 60.73%);
+}
+
+.gradient2 {
+    background: linear-gradient(116deg, #113451 26.59%, rgba(17, 52, 81, 0.00) 78.7%);
+}
+
+.gradient1, .gradient2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 /* yoink */
 
-#starLogo {
-    position: inherit;
+@keyframes slideIn {
 
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 40px;
-    width: 200px;
-    height: 200px;
-    animation: 3s cubic-bezier(0.26, 0.02, 0, 0.99) 0s 1 rotateIn;
-    scale: 3;
-    transform: rotate(-45deg);
-    animation-fill-mode: forwards;
+    40% {
+        filter: drop-shadow(0px 0px 20px white);
+    }
+    100% {
+        opacity: 100%;
+        transform: translate(0px, 0px);
+        
+    }
+}
+
+@keyframes fadeIn {
+    60% {
+        opacity: 100%
+    }
+    80% {
+        filter: drop-shadow(0px 0px 25px white);
+    }
+    100% {
+        opacity: 100%
+    }
+}
+
+@keyframes traceOutline {
+    100% {
+        opacity: 100%;
+        stroke-dashoffset: 570;
+    }
 }
 
 @keyframes rotateIn {
@@ -46,4 +97,112 @@
         scale: 0.8;
         transform: rotate(0deg);
     }
+}
+
+@keyframes slideUp {
+    100% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+.body {
+    height: 100dvh;
+    width: 100%;
+    background: #072136;
+    overflow: hidden;
+    padding-bottom: 40px;
+    position: relative;
+}
+
+#starLogo {
+
+    margin-right: 100px;
+    top: 40px;
+    width: 200px;
+    height: 200px;
+    animation: 3s cubic-bezier(0.26, 0.02, 0, 0.99) 0s 1 rotateIn;
+    scale: 3;
+    transform: rotate(-45deg);
+    animation-fill-mode: forwards;
+}
+
+
+#ring1, #ring2, #ring3, #ring4, #innerStar, .outerStar, #outerStarSVGBox1, #outerStarSVGBox2, #innerRing1, #innerRing2, #innerRing3, #innerRing4, #outerRing1, #outerRing2, #outerRing3, #outerRing4 {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+}
+
+#innerStar {
+    animation: 3s linear 0s 1 fadeIn;
+    opacity: 0%;
+    animation-fill-mode: forwards;
+    
+}
+
+.outerStar {
+    opacity: 50%;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: 3s cubic-bezier(0.34, 0.01, 0.09, 0.99) 0s 1 traceOutline;
+    animation-fill-mode: forwards;
+}
+
+#outerStarSVGBox1 {
+    transform: rotate(180deg);
+}
+
+
+
+
+#ring2 {
+    transform: rotate(90deg);
+}
+
+#ring3 {
+    transform: rotate(180deg);
+}
+
+#ring4 {
+    transform: rotate(270deg);
+}
+
+#innerRing1, #innerRing2, #innerRing3, #innerRing4, #outerRing1, #outerRing2, #outerRing3, #outerRing4 {
+    animation: 1s cubic-bezier(0.8, 0.02, 0.09, 0.99) 0s 1 slideIn;
+    transform: translate(100px, -100px);
+    opacity: 0%;
+    animation-fill-mode: forwards;
+}
+
+#innerRing1 {
+    animation-delay: 0.5s
+}
+
+#outerRing1 {
+    animation-delay: 0.6s;
+}
+
+#innerRing2 {
+    animation-delay: 0.8s;
+}
+
+#outerRing2 {
+    animation-delay: 0.9s;
+}
+
+#innerRing3 {
+    animation-delay: 1.1s
+}
+
+#outerRing3 {
+    animation-delay: 1.2s;
+}
+
+#innerRing4 {
+    animation-delay: 1.4s
+}
+
+#outerRing4 {
+    animation-delay: 1.5s;
 }

@@ -1,0 +1,86 @@
+.header {
+    height: 64px;
+    justify-content: flex-start;
+}
+
+.kssdir_logo_BG {
+    height: 36px;
+    width: 36px;
+    background-color: #072136;
+    border-radius: 50%;
+}
+
+.header_logo_button {
+    position: absolute;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 0;
+    height: 64px;
+    width: 100vw;
+}
+
+.header_link {
+    width:200px;
+    margin:0;
+    height:inherit; 
+    display:inline-flex; 
+    text-decoration:none;
+    justify-content: center;
+}
+
+.header_logo_div {
+    display: inline-flex;
+    align-content: center;
+    flex-flow: row wrap;
+}
+
+.header_logo_div:hover {
+    opacity: 50%;
+}
+
+.kssdir_logo {
+    position: relative;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.kssdir_logo_text {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 12px;
+    font-family: Outfit;
+    font-weight: bold;
+    color: #072136;
+    align-content: center;
+    justify-content: center;
+}
+
+@media (max-width: 625px) {
+    .header_logo_button.navbar_right {
+        justify-content: right;
+    }
+    .header_link.navbar_right {
+        justify-content: right;
+    }
+    .header_logo_div.navbar_right {
+        margin-right: 10px;
+    }
+    .kssdir_logo_text {
+        margin-left: 6px;
+        font-size: 105%;
+    }
+    .kssdir_logo_BG {
+        width: 32px;
+        height: 32px;
+    }
+    .kssdir_logo {
+        height: 28px;
+    }
+}
