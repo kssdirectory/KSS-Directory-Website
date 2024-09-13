@@ -160,12 +160,18 @@ function createClubPageContent(listed_page) {
         }
     }
 
-    let pageClaim = (
-        <div className={main.tile_div} key={"Important!"} style = {{backgroundColor: "var(--b1BG)"}}>
-            <h1 className={main.club_name} style = {{color: "#ffffff"}}>Page Claim</h1>
-            <p className={main.generic_body_text} style = {{color: "#ffffff"}}>If you are a member of this club’s executive team/supervisor, please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim and edit this page.</p>
-        </div>
-    )
+    let pageClaim;
+
+    if ("Claimed" in listed_page.Metadata) {
+        if (listed_page.Metadata.Claimed !== "Yes") {
+            pageClaim = (
+                <div className={main.tile_div} key={"Important!"} style = {{backgroundColor: "var(--b1BG)"}}>
+                    <h1 className={main.club_name} style = {{color: "#ffffff"}}>Page Claim</h1>
+                    <p className={main.generic_body_text} style = {{color: "#ffffff"}}>If you are a member of this club’s executive team/supervisor, please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim and edit this page.</p>
+                </div>
+            )
+        }
+    }
 
     let description = []
     let activity = []

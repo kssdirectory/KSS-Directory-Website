@@ -14,7 +14,7 @@ function SlideCarousel({children, autoScroll}) {
 
     const maxSlideIndex = children.length - 1;
 
-    const autoScrollTimerMs = 10 * 1000; // ms between each autoscroll event
+    const autoScrollTimerMs = 7 * 1000; // ms between each autoscroll event
     const autoScrollEnabled = useRef(autoScroll);
 
     // timeout object for canceling if need be
