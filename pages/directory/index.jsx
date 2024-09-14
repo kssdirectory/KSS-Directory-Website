@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Link from "next/link"
 import React from 'react'
-import main from "../styles/directory/main.module.css"
-import star from '../styles/about-page/main.module.css'
+import main from "/styles/directory/main.module.css"
 import NavBar from '@/components/directory/DirectoryNavBar.jsx'
-import BackArrowButton from '@/components/BackArrowButton';
 import Image from "next/image"
 
 function homepage() {
@@ -26,10 +24,11 @@ function homepage() {
                     // )}
                 />
             </div>
-            <div className = {main.content}>
+            <div className = {main.page}>
                 <div style = {{flexDirection:"column", display:"flex", height:"100dvh"}} class="flex-container">
                     <div style = {{flexShrink:"0"}}>
                         <div className = {main.body}>
+
                             <div id = {main.hero}>
                                 <Image src="/static/sunset.png" alt="bleh" fill={true}/>
                                 <rect className = {main.gradient2}/>
@@ -67,6 +66,10 @@ function homepage() {
                                     </div>
                                 </div>
                             </div>
+                            <div className = {main.content}>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>

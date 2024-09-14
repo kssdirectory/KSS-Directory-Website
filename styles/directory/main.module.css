@@ -1,4 +1,4 @@
-.content {
+.page {
     background: #072136;
     height: calc(100svh - 64px);
     position:relative;
@@ -15,6 +15,12 @@
     overflow: hidden;
     padding-bottom: 40px;
     position: relative;
+}
+
+#content {
+    display: flex;
+    align-items: center;
+    width: 100vw;
 }
 
 #hero {
@@ -71,20 +77,11 @@
     height: 100%;
     opacity: 0%;
     background: linear-gradient(40deg, #072136 15.76%, #113451 83.87%);
-    animation: 3s cubic-bezier(0.26, 0.02, 0, 0.99) 0s 1 bgFadeIn;
+    animation: 3.25s cubic-bezier(0.26, 0.02, 0, 0.99) 0s 1 bgFadeIn;
     animation-fill-mode: forwards;
     border-radius: 50%;
     z-index: -10;
 }
-
-/* .logoBackground {
-    height: 240px;
-    width: 240px;
-    background-color: #072136;
-    border-radius: 50%;
-    animation: 3s cubic-bezier(0.26, 0.02, 0, 0.99) 0s 1 bgFadeIn;
-    z-index: 0;
-} */
 
 .gradient1 {
     background: linear-gradient(0deg, #072136 0%, rgba(7, 33, 54, 0.00) 60.73%);
@@ -130,7 +127,7 @@
 }
 
 @keyframes bgFadeIn {
-    80% {
+    70% {
         opacity: 0%;
         filter: drop-shadow(0px 0px 25px white);
     }
