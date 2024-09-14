@@ -1,33 +1,30 @@
-.header {
-    display: inline-flex;
+.headerFlex {
+    display: flex;
     height: 64px;
     width: 100vw;
     justify-content: space-between;
     align-items: center;
 }
 
-.header p {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 12px;
+.headerOptionsDiv p {
     font-family: Outfit;
     font-weight: bold;
     color: #072136;
-    align-content: center;
-    justify-content: center;
 }
 
 .headerOptionsDiv {
     display: flex;
-    width: 100px;
+    width: 30vw;
     height: inherit;
-    margin-right: 30px;
+    margin-right: 10px;
+    justify-content: flex-end;
+    align-content: baseline;
 }
 
 .headerOption {
     height: inherit;
-    align-content: center;
-    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
 }
 
 .dir_logo_BG {
@@ -39,7 +36,6 @@
 }
 
 .header_logo_button {
-    position: absolute;
     display: inline-flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -55,6 +51,7 @@
     display:inline-flex; 
     text-decoration:none;
     justify-content: center;
+    align-items: center;
 }
 
 .header_logo_div {
@@ -78,6 +75,9 @@
 }
 
 .kssdir_logo_text {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 12px;
     font-family: Outfit;
     font-weight: bold;
     color: #072136;
