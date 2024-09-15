@@ -100,33 +100,33 @@ export default function clubsPage({ all_club_pages }) {
                             </div>
                             <div id={styles.title_section_text}>
                                 <h1>Club<br/>Repository <sup>Beta</sup></h1>
-                                <p>A treasure trove of up-to-date information on KSS clubs & teams, compiled by their respective executives.</p>
+                                <p>A treasure trove of up-to-date information on KSS clubs & teams, compiled by their respective executives. </p>
                             </div>
                         </div>
                         <div id={styles.club_repo_carousel}>
-                            <SlideCarousel autoScroll = {true}> 
+                            <SlideCarousel autoScroll = {true} autoscrollTimeSeconds={5}> 
                                 <SlideCarouselPage name="ClubExecPromptPage" >
                                     {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
                                     <div className={styles.carousel_gradient}/>
                                     <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
                                         <h2>Attention Club Executives!</h2>
-                                        <p>Please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page!</p>
+                                        <p>Host all your club information and links in one convenient place! Contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page.</p>
                                     </div>
                                 </SlideCarouselPage>
                                 <SlideCarouselPage name="TestPage1" >
+                                    <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
+                                    <div className={styles.carousel_gradient}/>
+                                    <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
+                                        <h2>I'm a slideshow!</h2>
+                                        <p>Check back soon for upcoming club events!</p>
+                                    </div>
+                                </SlideCarouselPage>
+                                <SlideCarouselPage name="TestPage2" >
                                     {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
                                     <div className={styles.carousel_gradient}/>
                                     <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
                                         <h2>Spread the word!</h2>
                                         <p>KSS Directory's Club Repository is open for business!</p>
-                                    </div>
-                                </SlideCarouselPage>
-                                <SlideCarouselPage name="TestPage2" >
-                                    <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
-                                    <div className={styles.carousel_gradient}/>
-                                    <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
-                                        <h2>I'm a slideshow!</h2>
-                                        <p>Check back later for important club events!</p>
                                     </div>
                                 </SlideCarouselPage>
                             </SlideCarousel>
