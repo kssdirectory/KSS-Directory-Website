@@ -417,13 +417,48 @@ export default function Home() {
     }
   }
 
+// idk how the backend is gonna link so have fun putting this into an if statement later
+
+let weeklyCafMenu = []; 
+
+  // weeklyCafMenu.push(
+  //   <div className = "cafDayContainer">
+  //     <rect className = "cafTextLine"></rect>
+  //     <div className = "cafDayInformation">
+  //       <h2>[Day of Week]</h2>
+  //       <p>[$x.xx] | [food item]</p>
+  //     </div>
+  //   </div>
+  // )
+
+  weeklyCafMenu.push(
+    <div className = "cafDayContainer">
+      <rect className = "cafTextLine"></rect>
+      <div className = "cafDayInformation">
+        <h2>Tuesday</h2>
+        <p>$2 | Mac & Cheese</p>
+      </div>
+    </div>
+  )
+
+  weeklyCafMenu.push(
+    <div className = "cafDayContainer">
+      <rect className = "cafTextLine"></rect>
+      <div className = "cafDayInformation">
+        <h2>Wednesday</h2>
+        <p>$3 | Pizza (Pepperoni/Cheese)</p>
+      </div>
+    </div>
+  )
 
   var cafeteriaBoxElement = (
-    <div class = "cafMenuBox">
-      <div class = "cafMenuContainer">
-        <div class = "infoHeaderText">Cafeteria Menu</div>
-        {/* Gonna need actual information here */}
-        <div class = "infoBodyText">Coming Soon!</div>
+    <div className = "cafMenuBox">
+      <div className = "cafTitleCard">
+        <div className = "infoHeaderText">Cafeteria Menu</div>
+        <div className = "infoBodyText">Take a look ahead at this week's lunchtime cafeteria menu!</div>
+      </div>
+      <div className = "cafMenuContainer">
+        {weeklyCafMenu}
       </div>
     </div>
   );

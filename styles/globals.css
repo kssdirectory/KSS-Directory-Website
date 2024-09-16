@@ -267,21 +267,6 @@ body, html, #__next {
   top: 16px;
 }
 
-.cafMenuBox {
-  border: 1px solid var(--dark-gray);
-  border-radius: 16px;
-  top: 16px;
-}
-
-.cafMenuContainer {
-  padding-top:36px;
-  padding-bottom:36px;
-  padding-right: 24px;
-  padding-left: 24px;
-
-  align-items: center;
-}
-
 .annnouncementContainer{
   padding-top:50px;
   flex-shrink: 0;
@@ -454,6 +439,63 @@ body, html, #__next {
     padding-top:0px;
     width: 100%;
   }
+}
+
+/* Caf Menu Stuff */
+
+.cafMenuBox {
+  border: 1px solid var(--dark-gray);
+  border-radius: 16px;
+  top: 16px;
+}
+
+.cafMenuContainer {
+  padding-top: 12px;
+  padding-bottom: 36px;
+  padding-right: 24px;
+  padding-left: 24px;
+
+  align-items: center;
+}
+
+.cafTitleCard {
+  padding-top:36px;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.cafTextLine {
+  width: 4px;
+  height: inherit;
+  border-radius: 25px;
+  margin-left: 7px;
+  background-color: #072136;
+}
+
+.cafDayContainer {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.cafDayInformation {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 4px;
+}
+
+.cafDayContainer h2 {
+  color:#626262;
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.cafDayContainer p {
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 /* Stuff for the announcemnt cards */
@@ -1649,11 +1691,6 @@ html{scroll-behavior:smooth}
 .button4:active #b4GradientOpaque {
   opacity: 100%;
 }
-
-
-
-
-
 
 @media all and (min-width: 2080px) {
   /* When the user has an uber wide screen */
