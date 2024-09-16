@@ -16,7 +16,7 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    z-index: 0;
+    z-index: 2;
     height: 64px;
     width: 100vw;
 }
