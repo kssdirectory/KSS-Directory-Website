@@ -452,6 +452,7 @@ body, html, #__next {
 
   .annnouncementContainer{
     padding-top:0px;
+    width: 100%;
   }
 }
 

@@ -78,7 +78,7 @@ export default function clubsPage({ all_club_pages }) {
                 {/* Not the individual logo of each club because that'd be a PITA, especially if they didn't use a perfectly square logo...*/}
                 <link rel="icon" sizes="76x76" href="../static/compassLogo.ico" />
             </Head>
-            <main id={styles.bg}>
+            <main id={styles.bg_mainpage}>
                 <NavBar
                     extra_additions={(
                         <>                        
