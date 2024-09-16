@@ -16,7 +16,7 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: 0;
     height: 64px;
     width: 100vw;
 }
@@ -28,6 +28,7 @@
     display:inline-flex; 
     text-decoration:none;
     justify-content: center;
+    z-index: 2;
 }
 
 .header_logo_div {
