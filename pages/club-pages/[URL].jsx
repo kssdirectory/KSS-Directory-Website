@@ -245,7 +245,7 @@ function createClubPageContent(listed_page) {
             }
             info_tiles.push(
                 <div className={main.tile_div} key={"Meeting Times"}>
-                    <h1 className={main.tile_div_subtitle}>Weekly Meeting Times</h1>
+                    <h1 className={main.tile_div_subtitle}>Meeting Times</h1>
                     {tile2_meeting_times}
                 </div>
             )
@@ -293,7 +293,7 @@ function createClubPageContent(listed_page) {
             }
             info_tiles.push(
                 <div className={main.tile_div} key={"Supervisors"}>
-                    <h1 className={main.tile_div_subtitle}>Supervisors</h1>
+                    <h1 className={main.tile_div_subtitle}>Supervisor(s)</h1>
                     {supervisor_list}
                 </div>
             )
@@ -344,7 +344,7 @@ function createClubPageContent(listed_page) {
             }
             info_tiles.push(
                 <div className={main.tile_div} key={"Execs"}>
-                    <h1 className={main.tile_div_subtitle}>Current Execs</h1>
+                    <h1 className={main.tile_div_subtitle}>Executive Team</h1>
                     {exec_list_formatted}
                 </div>
             );
