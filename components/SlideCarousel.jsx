@@ -3,7 +3,7 @@ import { clamp } from "@/util/util";
 import { useEffect, useRef, useState } from "react";
 import styles from "styles/club_directory/landing_page/slide-carousel.module.css"
 
-function SlideCarousel({children, autoScroll}) {
+function SlideCarousel({children, autoScroll, autoscrollTimeSeconds = 6}) {
     const [slidePosition, setSlidePosition] = useState(0);
     const windowSize = useWindowSize();
 
@@ -14,7 +14,7 @@ function SlideCarousel({children, autoScroll}) {
 
     const maxSlideIndex = children.length - 1;
 
-    const autoScrollTimerMs = 7 * 1000; // ms between each autoscroll event
+    const autoScrollTimerMs = autoscrollTimeSeconds * 1000; // ms between each autoscroll event
     const autoScrollEnabled = useRef(autoScroll);
 
     // timeout object for canceling if need be

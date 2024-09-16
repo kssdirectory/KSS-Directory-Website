@@ -214,6 +214,37 @@ function createClubPageContent(listed_page) {
         </div>
     );
 
+    if (listed_page.Links) {
+        if (Object.keys(listed_page.Links).length > 0) {
+            let links = []
+            for (const [key, value] of Object.entries(listed_page.Links)) {
+                let link_name = []
+                if (value[0] !== "none") {
+                    link_name.push(value[0])
+                } else {
+                    link_name.push(value[1])
+                }
+                links.push(
+                    <a href={value[1]} className={main.link} key={key}>
+                        <div style={{display: "flex", alignItems: "center", flexGrow: "0", maxWidth: "calc(100% - 88px)"}}>
+                            <img src={"http://www.google.com/s2/favicons?sz=32&domain=" + value[1]}/>
+                            <p>{link_name}</p>
+                        </div>
+                        <img src = "/svg_assets/arrow_icon.svg" className={main.linkArrowIcon}/>
+                    </a>
+                )
+            }
+            info_tiles.push(
+                <div className={main.tile_div} key={"Links"}>
+                    <h1 className={main.tile_div_subtitle}>Links</h1>
+                    <div id={main.links_container}>
+                        {links}
+                    </div>
+                </div>
+            )
+        }
+    }
+
     if (listed_page.Meeting_Times) {
         if (Object.keys(listed_page.Meeting_Times).length > 0) {
             let tile2_meeting_times = []
@@ -247,37 +278,6 @@ function createClubPageContent(listed_page) {
                 <div className={main.tile_div} key={"Meeting Times"}>
                     <h1 className={main.tile_div_subtitle}>Meeting Times</h1>
                     {tile2_meeting_times}
-                </div>
-            )
-        }
-    }
-
-    if (listed_page.Links) {
-        if (Object.keys(listed_page.Links).length > 0) {
-            let links = []
-            for (const [key, value] of Object.entries(listed_page.Links)) {
-                let link_name = []
-                if (value[0] !== "none") {
-                    link_name.push(value[0])
-                } else {
-                    link_name.push(value[1])
-                }
-                links.push(
-                    <a href={value[1]} className={main.link} key={key}>
-                        <div style={{display: "flex", alignItems: "center", flexGrow: "0", maxWidth: "calc(100% - 88px)"}}>
-                            <img src={"http://www.google.com/s2/favicons?sz=32&domain=" + value[1]}/>
-                            <p>{link_name}</p>
-                        </div>
-                        <img src = "/svg_assets/arrow_icon.svg" className={main.linkArrowIcon}/>
-                    </a>
-                )
-            }
-            info_tiles.push(
-                <div className={main.tile_div} key={"Links"}>
-                    <h1 className={main.tile_div_subtitle}>Links</h1>
-                    <div id={main.links_container}>
-                        {links}
-                    </div>
                 </div>
             )
         }
