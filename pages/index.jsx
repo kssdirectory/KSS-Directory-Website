@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from 'react';
 import OfficialResourcesModal from "@/components/index/OfficialResourcesModal" 
 import Modal from 'react-modal';
+import CafeteriaMenu from '@/components/cafeteriaBox';
 
 headers: new Headers({
   "ngrok-skip-browser-warning": "true",
@@ -419,50 +420,6 @@ export default function Home() {
 
 // idk how the backend is gonna link so have fun putting this into an if statement later
 
-let weeklyCafMenu = []; 
-
-  // weeklyCafMenu.push(
-  //   <div className = "cafDayContainer">
-  //     <rect className = "cafTextLine"></rect>
-  //     <div className = "cafDayInformation">
-  //       <h2>[Day of Week]</h2>
-  //       <p>[$x.xx] | [food item]</p>
-  //     </div>
-  //   </div>
-  // )
-
-  weeklyCafMenu.push(
-    <div className = "cafDayContainer">
-      <rect className = "cafTextLine"></rect>
-      <div className = "cafDayInformation">
-        <h2>Tuesday</h2>
-        <p>$2 | Mac & Cheese</p>
-      </div>
-    </div>
-  )
-
-  weeklyCafMenu.push(
-    <div className = "cafDayContainer">
-      <rect className = "cafTextLine"></rect>
-      <div className = "cafDayInformation">
-        <h2>Wednesday</h2>
-        <p>$3 | Pizza (Pepperoni/Cheese)</p>
-      </div>
-    </div>
-  )
-
-  var cafeteriaBoxElement = (
-    <div className = "cafMenuBox">
-      <div className = "cafTitleCard">
-        <div className = "infoHeaderText">Cafeteria Menu</div>
-        <div className = "infoBodyText">Take a look ahead at this week's lunchtime cafeteria menu!</div>
-      </div>
-      <div className = "cafMenuContainer">
-        {weeklyCafMenu}
-      </div>
-    </div>
-  );
-
   return (
     <>
       <Head>
@@ -738,7 +695,7 @@ let weeklyCafMenu = [];
             <div class = "leftInfoContainer">
               <div class="infoFlex">
                 <div class= "twoColumnDisabled">
-                  {cafeteriaBoxElement}
+                  <CafeteriaMenu/>
                 </div>
               </div>
             </div>
@@ -789,7 +746,7 @@ let weeklyCafMenu = [];
                   </div>  
                 </div>
                 <div class = "twoColumnEnabled">
-                  {cafeteriaBoxElement}
+                  <CafeteriaMenu/>
                 </div>
               </div>
             </div>

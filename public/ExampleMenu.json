@@ -1,0 +1,25 @@
+[
+    {
+        "Day": "Tuesday",
+        "Items": [
+            {
+                "Price": "$2",
+                "Item": "Mac & Cheese"
+            },
+            {
+                "Price": "$3",
+                "Item": "Soup & Chicken"
+            }
+        ]
+        
+    },
+    {
+        "Day": "Wednesday",
+        "Items": [
+            {
+                "Price": "$3",
+                "Item": "Pizza (Pepperoni/Cheese)"
+            }
+        ]
+    }
+]
