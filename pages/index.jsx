@@ -451,6 +451,26 @@ let weeklyCafMenu = [];
     </div>
   )
 
+  weeklyCafMenu.push(
+    <div className = "cafDayContainer">
+      <rect className = "cafTextLine"></rect>
+      <div className = "cafDayInformation">
+        <h2>Thursday</h2>
+        <p>$3 | Panini</p>
+      </div>
+    </div>
+  )
+
+  weeklyCafMenu.push(
+    <div className = "cafDayContainer">
+      <rect className = "cafTextLine"></rect>
+      <div className = "cafDayInformation">
+        <h2>Friday</h2>
+        <p>$3 | Tacos (Beef & Veggie)</p>
+      </div>
+    </div>
+  )
+
   var cafeteriaBoxElement = (
     <div className = "cafMenuBox">
       <div className = "cafTitleCard">
