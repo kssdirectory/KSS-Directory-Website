@@ -25,8 +25,13 @@ function CafeteriaMenu() {
           ),
       })
 
-    if (isPending) return loading;
-    if (error) return loading;
+    if (isPending) {
+        return loading;
+    };
+
+    if (error) {
+        return loading;
+    };
 
     let weeklyCafMenu = [];
 
