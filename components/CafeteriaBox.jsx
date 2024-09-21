@@ -3,7 +3,7 @@ import caf from "../styles/cafeteria-box.module.css"
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-function cafeteriaMenu() {
+function CafeteriaMenu() {
 
     const loading = (
         <div className = {caf.cafMenuBox}>
@@ -63,4 +63,4 @@ function cafeteriaMenu() {
     )
  };
 
- export default cafeteriaMenu;
+ export default CafeteriaMenu;
