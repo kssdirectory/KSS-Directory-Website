@@ -1,13 +1,10 @@
 import caf from "../styles/cafeteria-box.module.css"
 
-const getMenu = async () => {
-    const response = await fetch("../public/ExampleMenu.json");
-    const menu = await response.json();
-    console.log(menu);
+export const getMenu = async () => {
+    const res = await fetch("/public/ExampleMenu.json");
+    const data = await res.json();
 
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+    const menu = data;
 
     return {
         menu
@@ -18,17 +15,17 @@ function cafeteriaBoxElement() {
     let weeklyCafMenu = [];
     let weeksMenu = getMenu();
 
+    console.log("week's menu is: " + Object.entries(weeksMenu));
+
     for ( const[key, value] of Object.entries(weeksMenu)) {
 
         let foodItems = [];
 
         for ( const[key, value] of Object.entries(weeksMenu.Items)) {
             foodItems.push(
-                <p className = {caf.infoBodyText}></p>
+                <p className = {caf.infoBodyText} key = {Item}></p>
             )
         }
-
-        // ima fix this tmrw this is a mess
 
         weeklyCafMenu.push(
         <div className = {caf.cafDayContainer}>
