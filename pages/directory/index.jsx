@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from "next/link"
 import React from 'react'
-import main from "/styles/directory/main.module.css"
+import main from "/styles/directory/index/main.module.css"
 import NavBar from '@/components/directory/DirectoryNavBar.jsx'
 import Image from "next/image"
 
@@ -34,7 +34,7 @@ function homepage() {
                                 <rect className = {main.gradient2}/>
                                 <rect className = {main.gradient1}/>
                                 <div className = {main.heroContent_div}>
-                                    <h1 className = {main.heroText}>supporting <br/>student-made <br/>services</h1>
+                                    <h1 className = {main.heroText}>supporting <br/>student-made <br/>solutions</h1>
                                     <div className = {main.heroLogoDiv}>
                                         <div id = {main.starLogo}>
                                             <img src = "svg_assets/logo_assets/innerStar.svg" id = {main.innerStar}/>
@@ -66,10 +66,12 @@ function homepage() {
                                     </div>
                                 </div>
                             </div>
-                            <div className = {main.content}>
+
+
+                            
+                            <div id = {main.whatWeDo}>
 
                             </div>
-
                         </div>
                     </div>
                 </div>

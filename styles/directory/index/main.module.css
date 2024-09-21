@@ -17,7 +17,7 @@
     position: relative;
 }
 
-#content {
+#whatWeDo {
     display: flex;
     align-items: center;
     width: 100vw;
@@ -35,7 +35,8 @@
     color: #ffffff;
     width: 500px;
     padding-left: 100px;
-    font-size: 4rem; 
+    font-size: 3.5rem; 
+    font-weight: 1000;
 }
 
 .heroContent_div {

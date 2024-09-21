@@ -18,7 +18,7 @@ const NavBar = ({ extra_additions, text_color = "#072136", center_on_mobile = fa
                     </Link>
                 </div>
                 <div className = {navbar.headerOptionsDiv}>
-                    <Link href = "/" className = {navbar.headerOption}>
+                    <Link href = "/directory/#whatWeDo" className = {navbar.headerOption}>
                         <p>What We Do</p>
                     </Link>
                     <Link href = "/" className = {navbar.headerOption}>
