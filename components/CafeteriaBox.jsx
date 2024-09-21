@@ -1,43 +1,42 @@
+import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 import caf from "../styles/cafeteria-box.module.css"
 
-export const getMenu = async () => {
-    const res = await fetch("/public/ExampleMenu.json");
-    const data = await res.json();
-
-    const menu = data;
-
-    return {
-        menu
-    }
-}
+const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 function cafeteriaBoxElement() {
+    const { isPending, error, data } = useQuery({
+        queryKey: ['cafMenu'],
+        queryFn: () =>
+          fetch(webServerURL + '/testing').then((res) =>
+            res.json(),
+          ),
+      })
+
+    if (isPending) return 'Loading...'
+    if (error) return 'An error has occurred: ' + error.message   
+
     let weeklyCafMenu = [];
-    let weeksMenu = getMenu();
 
-    console.log("week's menu is: " + Object.entries(weeksMenu));
-
-    for ( const[key, value] of Object.entries(weeksMenu)) {
-
+    for (const entry of data) {
         let foodItems = [];
 
-        for ( const[key, value] of Object.entries(weeksMenu.Items)) {
-            foodItems.push(
-                <p className = {caf.infoBodyText} key = {Item}></p>
-            )
+        for (const item of entry.Items) {
+          foodItems.push(
+            <p>{item.Price + " | " + item.Item}</p>
+          )
         }
 
         weeklyCafMenu.push(
-        <div className = {caf.cafDayContainer}>
-            <rect className = {caf.cafTextLine}></rect>
-            <div className = {caf.cafDayInformation}>
-            <h2>[Day of Week]</h2>
-            {daysFood}
+            <div className = {caf.cafDayContainer}>
+                <rect className = {caf.cafTextLine}></rect>
+                <div className = {caf.cafDayInformation}>
+                <h2>{entry.Day}</h2>
+                {foodItems}
+                </div>
             </div>
-        </div>
-        );
-    }   
-    
+        );   
+    }
+
     return (
         <div className = {caf.cafMenuBox}>
             <div className = {caf.cafTitleCard}>
