@@ -55,6 +55,12 @@ body, html, #__next {
     font-weight: 500;
   }
 
+  @font-face {
+    font-family: Outfit;
+    src: url("Outfit-Black.ttf");
+    font-weight: 1000;
+  }
+
 /* Page load animations */
 
 @keyframes slideInLeft {
