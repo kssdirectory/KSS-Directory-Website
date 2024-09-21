@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from 'react';
 import OfficialResourcesModal from "@/components/index/OfficialResourcesModal" 
 import Modal from 'react-modal';
-import CafeteriaMenu from '@/components/cafeteriaBox';
+import CafeteriaMenu from '@/components/CafeteriaBox';
 
 headers: new Headers({
   "ngrok-skip-browser-warning": "true",
