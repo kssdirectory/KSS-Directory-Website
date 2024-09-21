@@ -5,7 +5,7 @@ const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 function CafeteriaMenu() {
 
-    const loading = (
+    const errorScreen = (
         <div className = {caf.cafMenuBox}>
             <div className = {caf.cafTitleCard}>
                 <div className = {caf.infoHeaderText}>Cafeteria Menu</div>
@@ -29,16 +29,17 @@ function CafeteriaMenu() {
     })
 
     if (isPending) {
-        return loading;
+        return errorScreen;
     };
 
     if (isError) {
         return loading;
     };
 
+    let menuData = data;
     let weeklyCafMenu = [];
 
-    for (const entry of data) {
+    for (const entry of menuData) {
         let foodItems = [];
 
         for (const item of entry.Items) {
