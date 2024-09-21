@@ -4,6 +4,19 @@ import caf from "../styles/cafeteria-box.module.css"
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 function cafeteriaBoxElement() {
+
+    const loading = (
+        <div className = {caf.cafMenuBox}>
+            <div className = {caf.cafTitleCard}>
+                <div className = {caf.infoHeaderText}>Cafeteria Menu</div>
+                <div className = {caf.infoBodyText}>Take a look ahead at this week's lunchtime cafeteria menu!</div>
+            </div>
+            <div className = {caf.cafMenuContainer}>
+                <h1>Error?</h1>
+            </div>
+        </div>
+    )
+
     const { isPending, error, data } = useQuery({
         queryKey: ['cafMenu'],
         queryFn: () =>
@@ -12,8 +25,8 @@ function cafeteriaBoxElement() {
           ),
       })
 
-    if (isPending) return 'Loading...'
-    if (error) return 'An error has occurred: ' + error.message   
+    if (isPending) return loading;
+    if (error) return loading;
 
     let weeklyCafMenu = [];
 
