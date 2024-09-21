@@ -17,19 +17,22 @@ function CafeteriaMenu() {
         </div>
     )
 
-    const { isPending, error, data } = useQuery({
+    const { isPending, isError, data } = useQuery({
         queryKey: ['cafMenu'],
-        queryFn: () =>
-          fetch(webServerURL + '/testing').then((res) =>
-            res.json(),
-          ),
-      })
+        queryFn: async () => {
+            const res = await fetch(webServerURL + '/testing')
+            if (!res.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return res.json()
+        },
+    })
 
     if (isPending) {
         return loading;
     };
 
-    if (error) {
+    if (isError) {
         return loading;
     };
 
