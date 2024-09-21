@@ -5,14 +5,14 @@ const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 function CafeteriaMenu() {
 
-    const errorScreen = (
+    const loading = (
         <div className = {caf.cafMenuBox}>
             <div className = {caf.cafTitleCard}>
                 <div className = {caf.infoHeaderText}>Cafeteria Menu</div>
                 <div className = {caf.infoBodyText}>Take a look ahead at this week's lunchtime cafeteria menu!</div>
             </div>
             <div className = {caf.cafMenuContainer}>
-                <h1>Error?</h1>
+                <div className = {caf.infoBodyText}>Loading... </div>
             </div>
         </div>
     )
@@ -29,7 +29,7 @@ function CafeteriaMenu() {
     })
 
     if (isPending) {
-        return errorScreen;
+        return loading;
     };
 
     if (isError) {
