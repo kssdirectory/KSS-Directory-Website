@@ -227,7 +227,9 @@ function createClubPageContent(listed_page) {
                 links.push(
                     <a href={value[1]} className={main.link} key={key}>
                         <div style={{display: "flex", alignItems: "center", flexGrow: "0", maxWidth: "calc(100% - 88px)"}}>
-                            <img src={"http://www.google.com/s2/favicons?sz=32&domain=" + value[1]}/>
+                            <img 
+                                src={"http://www.google.com/s2/favicons?sz=32&domain=" + value[1]}
+                            />
                             <p>{link_name}</p>
                         </div>
                         <img src = "/svg_assets/arrow_icon.svg" className={main.linkArrowIcon}/>

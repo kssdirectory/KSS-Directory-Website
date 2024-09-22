@@ -5,6 +5,7 @@ import React from 'react';
 import OfficialResourcesModal from "@/components/index/OfficialResourcesModal" 
 import Modal from 'react-modal';
 import CafeteriaMenu from '@/components/CafeteriaBox';
+import useIsClientSide from '@/hooks/useIsClientSide';
 
 headers: new Headers({
   "ngrok-skip-browser-warning": "true",
@@ -111,6 +112,14 @@ export default function Home() {
     document.body.style.overflow = 'auto'
     setResModalIsOpen(false);
   }
+
+  // Handle edgecase when using back arrow
+  if (useIsClientSide()) {
+    if (!(anceModalIsOpen || resModalIsOpen)) {
+      document.body.style.overflow = 'auto';
+    }
+  }
+
   
   //console.log("URL IS: " + webServerURL);
   useEffect(() => {
@@ -146,6 +155,8 @@ export default function Home() {
       });
 
   }, [index])
+
+  
 
   useEffect(() => {
     // Function for retrieving club info data from web server
@@ -191,18 +202,20 @@ export default function Home() {
               } else {
                 clubDtlsFlexTemp.push(<div class = "clubDtlsFlexItemBG">
                   <h2 class = "clubDtlsFlexItemTitle">{i}</h2>
-                  <h2 class = "clubDtlsFlexItemDtls">{response[i]}</h2>
+                  <h2 class = "clubDtlsFlexItemDtls" >{response[i]}</h2>
                 </div>)
               }
               
             }
           }
 
-          const socialsListFileNames = ["discord", "instagram", "classroom", "linktr", "tiktok", "youtu"]
+          const socialsListFileNames = ["discord", "instagram", "classroom", "linktr", "tiktok", "youtube"]
 
+          let socialsContainerObject = <></>;
           if ("Socials" in response) {
             let socialsList = []
             let socialsListNotReact = []
+
             for (let i = 0; i < response["Socials"].length; i++) {
               for (const k of socialsListFileNames) {
                 if (response["Socials"][i].includes(k)) {
@@ -214,22 +227,46 @@ export default function Home() {
                   socialsListNotReact.push(response["Socials"][i])
                 }
               } 
-            } if (socialsList.length !== response["Socials"].length) {
-                for (const i of response["Socials"]) {
-                  if (!socialsListNotReact.includes(i)) {
-                    socialsList.push(
-                      <a style = {{"background": "rgba(255, 255, 255, 0)", "padding": "0px", "border": "0px", "margin": "0px", "padding": "0px", "height": "auto"}} href={i} target="_blank">
-                        <img src = {"svg_assets/socials_icons/unknown.svg"} class = "socialsButtons"/>
-                      </a>
-                    )
-                  }
+            } 
+
+            if (socialsList.length !== response["Socials"].length) {
+              for (const i of response["Socials"]) {
+                if (!socialsListNotReact.includes(i)) {
+                  socialsList.push(
+                    <a style = {{"background": "rgba(255, 255, 255, 0)", "padding": "0px", "border": "0px", "margin": "0px", "padding": "0px", "height": "auto"}} href={i} target="_blank">
+                      <img src = {"svg_assets/socials_icons/unknown.svg"} class = "socialsButtons"/>
+                    </a>
+                  )
                 }
               }
-            setSocialsListBG(<div id = "socialsListBG">{socialsList}</div>)
-          } else {
-            setSocialsListBG('')
+            }
+            
+            socialsContainerObject = <div id = "socialsListBG">{socialsList}</div>;
           }
-          setClubDtlsFlex(clubDtlsFlexTemp)
+
+          let clubRepoPromptObject = <></>;
+          if ("Club_Repo_URL" in response) {
+            clubRepoPromptObject = (
+              <Link className="anceModalClubRepoPrompt" href={"/club-pages/" + response["Club_Repo_URL"]}>
+                <div className="clubRepoPromptText">
+                  <h2 className="clubDtlsFlexItemTitle">Club Repository</h2>
+                  <h2 className="clubDtlsFlexItemDtls">Check out more info on this club’s repository page!</h2>
+                </div>
+                <svg className="clubRepoPromptArrow" viewBox="0 0 50 50" version="1.1">
+                    <path d="M13.107,13.107L13.107,17.227L29.427,17.241L11.645,35.023L14.568,37.945L32.348,20.164L32.334,36.484L36.484,36.484L36.484,13.107L13.106,13.107L13.107,13.107Z"/>
+                </svg>
+              </Link>
+            );
+          }
+
+          setClubDtlsFlex(clubDtlsFlexTemp);
+
+          setSocialsListBG(
+            <div className="verticalModalFlex">
+              {socialsContainerObject}
+              {clubRepoPromptObject}
+            </div>
+          );
 
         } else {
           setModalColour("#A1A1A1")

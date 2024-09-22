@@ -43,9 +43,10 @@ export default function clubsPage({ all_club_pages }) {
     //console.log(all_club_pages);
     let mobileCategoryButtons = [];
 
-    const clubCategories = all_club_pages.map(([clubCategoryName, clubCategoryData]) => {
-        let categoryColor = clubCategoryData.Metadata.Color;
-
+    const clubCategories = all_club_pages.map((clubCategoryData) => {
+        const categoryColor = clubCategoryData.Metadata.Color;
+        const clubCategoryName = clubCategoryData["Category Name"];
+        
         mobileCategoryButtons.push(
             <ClubRepoCategoryButton 
                 cateogry_name = {clubCategoryName}

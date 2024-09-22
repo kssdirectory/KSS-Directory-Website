@@ -17,10 +17,10 @@ export const getStaticPaths = async () => {
     const res = await fetch(webServerURL + "/club_repo_list")
     const data = await res.json();
 
-    const paths = data.map(([clubCategoryName, clubCategoryData]) => {
+    const paths = data.map((clubCategory) => {
         // console.log("AAA: " + clubCategoryName)
         return {
-            params: { URL: clubCategoryName.toLowerCase().replace(" ", "-") }
+            params: { URL: clubCategory["Category Name"].toLowerCase().replace(" ", "-") }
         }
     })
 
@@ -36,7 +36,8 @@ export const getStaticProps = async (context) => {
     const data = await res.json();
    
 
-    for (var [clubCategoryName, clubCategoryData] of data) {
+    for (var clubCategoryData of data) {
+        const clubCategoryName = clubCategoryData["Category Name"]
         // console.log("WHYY " + clubCategoryName + " URL " + URL)
         if (URL.toLowerCase() === clubCategoryName.toLowerCase().replace(" ", "-")) {
             return {
