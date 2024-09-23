@@ -13,12 +13,20 @@ function CafeteriaMenu() {
     const { isPending, isError, data } = useQuery({
         queryKey: ['cafMenu'],
         queryFn: async () => {
-            const res = await fetch(webServerURL + '/testing')
+            const res = await fetch(webServerURL + '/cafeteria_menu')
             if (!res.ok) {
                 throw new Error('Network response was not ok')
             }
-            return res.json()
+
+            const data = await res.json();
+
+            if (data.toString() == "none") {
+                throw new Error('No cafeteria data!')
+            }
+            
+            return data;
         },
+        refetchOnWindowFocus: false,
     })
 
     if (isPending) {
