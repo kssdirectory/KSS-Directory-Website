@@ -7,7 +7,7 @@ function NotFound() {
       <link rel="icon" sizes="76x76" href="../static/compassLogo.ico" />
       
       <div style={{marginLeft: 25 + 'px'}}>
-        <div style={{flexDirection:"row", flexWrap:"nowrap", display:"inline-flex", alignItems:"center"}} class="flex-container">
+        <div style={{flexDirection:"row", flexWrap:"nowrap", display:"inline-flex", alignItems:"center"}} className="flex-container">
           <div style={{background:"#efefef", borderRadius:"10px", marginTop:"15px", padding:"20px"}}>
             <h1>404 - Page Not Found</h1>
             <b style={{marginBottom: "30px", display:"inline-block"}}> 

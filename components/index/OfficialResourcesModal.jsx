@@ -19,7 +19,7 @@ function KSSResourcesMobile({openState, afterOpen, closeModal}) {
             <div id = {styles.resourcesPopupModalBGClick} onClick = {closeModal}/>
             <div style = {{position: "absolute", top:"0px", bottom:"0px", left:"0px", right:"0px", paddingRight: "calc(100vw/10)",  paddingLeft: "calc(100vw/10)", background: "var(--b3BG)", margin: "25px", borderRadius: "32px", animation: "0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInTop"}}>
                 
-                <div class = "overlapContainer" style={{overflow:"hidden"}}>
+                <div className = "overlapContainer" style={{overflow:"hidden"}}>
                     <div className={styles.modalBackgroundContainer} >
                         <div className = {styles.modalBackground} >
                             <div id={styles.logoContainer}>

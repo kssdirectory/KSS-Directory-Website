@@ -83,7 +83,7 @@ export default function Home() {
 
   const [index, updateIndex] = useState(0)
   const numAnceTotal = 7
-  let loadMore = <button class="loadMore" onClick={() => updateIndex(index + 1)}>Load more...</button>
+  let loadMore = <button className="loadMore" onClick={() => updateIndex(index + 1)}>Load more...</button>
 
   const yearSeparator = (
     <div className="yearSeparatorDiv" key="YearSeparator">  
@@ -195,14 +195,14 @@ export default function Home() {
           for (const i of [ "Location", "Supervisor(s)", "Meeting times/dates"]) {
             if (i in response) {
               if (i == "Meeting times/dates") {
-                clubDtlsFlexTemp.push(<div class = "clubDtlsFlexItemBG" style = {{"flex": 1.6}}>
-                  <h2 class = "clubDtlsFlexItemTitle">{i}</h2>
-                  <h2 class = "clubDtlsFlexItemDtls">{response[i]}</h2>
+                clubDtlsFlexTemp.push(<div className = "clubDtlsFlexItemBG" style = {{"flex": 1.6}}>
+                  <h2 className = "clubDtlsFlexItemTitle">{i}</h2>
+                  <h2 className = "clubDtlsFlexItemDtls">{response[i]}</h2>
                 </div>)
               } else {
-                clubDtlsFlexTemp.push(<div class = "clubDtlsFlexItemBG">
-                  <h2 class = "clubDtlsFlexItemTitle">{i}</h2>
-                  <h2 class = "clubDtlsFlexItemDtls" >{response[i]}</h2>
+                clubDtlsFlexTemp.push(<div className = "clubDtlsFlexItemBG">
+                  <h2 className = "clubDtlsFlexItemTitle">{i}</h2>
+                  <h2 className = "clubDtlsFlexItemDtls" >{response[i]}</h2>
                 </div>)
               }
               
@@ -221,7 +221,7 @@ export default function Home() {
                 if (response["Socials"][i].includes(k)) {
                   socialsList.push(
                     <a style = {{"background": "rgba(255, 255, 255, 0)", "padding": "0px", "border": "0px", "margin": "0px", "padding": "0px", "height": "auto"}} href={response["Socials"][i]} target="_blank">
-                      <img src = {"svg_assets/socials_icons/" + k + ".svg"} class = "socialsButtons"/>
+                      <img src = {"svg_assets/socials_icons/" + k + ".svg"} className = "socialsButtons"/>
                     </a>
                   )
                   socialsListNotReact.push(response["Socials"][i])
@@ -234,7 +234,7 @@ export default function Home() {
                 if (!socialsListNotReact.includes(i)) {
                   socialsList.push(
                     <a style = {{"background": "rgba(255, 255, 255, 0)", "padding": "0px", "border": "0px", "margin": "0px", "padding": "0px", "height": "auto"}} href={i} target="_blank">
-                      <img src = {"svg_assets/socials_icons/unknown.svg"} class = "socialsButtons"/>
+                      <img src = {"svg_assets/socials_icons/unknown.svg"} className = "socialsButtons"/>
                     </a>
                   )
                 }
@@ -293,7 +293,7 @@ export default function Home() {
 
       // If it is the last one, then this sets loadMore (which is the button that loads more announcements) to a disabled state
       // This prevents users from clicking on it, which prevents the front-end from sending a "none"-type HTTP request (I think that's what they're called?) 
-      loadMore = <button class="loadMore-disabled">Load more...</button>
+      loadMore = <button className="loadMore-disabled">Load more...</button>
     }
 
     let yearSeparatorInserted = false;
@@ -339,10 +339,10 @@ export default function Home() {
             const dateIdentifierList = []
 
             // day
-            dateIdentifierList.push(<div class="dateIdentifier-day" key = {section[0]+sectionNum}>{<div>{section[0]}</div>}</div>)
+            dateIdentifierList.push(<div className="dateIdentifier-day" key = {section[0]+sectionNum}>{<div>{section[0]}</div>}</div>)
 
             // date
-            dateIdentifierList.push(<div class="dateIdentifier-date" key = {section[2]+section[3]+section[1]+sectionNum}>{section[2] + "/" + section[3] + "/" + section[1]}</div>)
+            dateIdentifierList.push(<div className="dateIdentifier-date" key = {section[2]+section[3]+section[1]+sectionNum}>{section[2] + "/" + section[3] + "/" + section[1]}</div>)
             
             anceCardDate = parseInt(section[1].toString() + section[2].toString() + section[3].toString());
 
@@ -386,7 +386,7 @@ export default function Home() {
                 if (!repeatAnceTypeCheck.includes(indivAnceSort[i][0][0])) {
                   // checks if the announcement has already been parsed
                   // again, this is necessary because of the weird duplicating behaviour of NextJS/React I think?
-                  const anceType = <div class="anceType" key = {i + "anceType" + key2}>{indivAnceSort[i][0][0]}</div>
+                  const anceType = <div className="anceType" key = {i + "anceType" + key2}>{indivAnceSort[i][0][0]}</div>
                   repeatAnceTypeCheck.push(indivAnceSort[i][0][0])
                   specificAnceSect.push(anceType)
                 }
@@ -400,31 +400,31 @@ export default function Home() {
 
                     if (indivAnceSort[i][k][4] !== "none") {
                       let indivAnceColour = hslToHex(indivAnceSort[i][k][4], 80, 40)
-                      specificAnceBrief.push(<div class="anceTag" key = {k + "anceSorted" + key2} style = {{"background": indivAnceColour + 10, "border": "1px solid " + indivAnceColour, "color": indivAnceColour}}>{indivAnceSort[i][k][1]}</div>)
+                      specificAnceBrief.push(<div className="anceTag" key = {k + "anceSorted" + key2} style = {{"background": indivAnceColour + 10, "border": "1px solid " + indivAnceColour, "color": indivAnceColour}}>{indivAnceSort[i][k][1]}</div>)
                     } else {
-                      specificAnceBrief.push(<div class="anceTag" key = {k + "anceSorted" + key2} style = {{"background": "#62626210", "border": "1px solid #626262", "color": "#626262"}}>{indivAnceSort[i][k][1]}</div>)
+                      specificAnceBrief.push(<div className="anceTag" key = {k + "anceSorted" + key2} style = {{"background": "#62626210", "border": "1px solid #626262", "color": "#626262"}}>{indivAnceSort[i][k][1]}</div>)
                     }
 
 
                     // announcement brief description
-                    specificAnceBrief.push(<div class="anceBrief" key = {k + " " + i + "anceBrief" + key2}>{indivAnceSort[i][k][2]}</div>)
+                    specificAnceBrief.push(<div className="anceBrief" key = {k + " " + i + "anceBrief" + key2}>{indivAnceSort[i][k][2]}</div>)
 
                     // container css class used here to allow for the announcement tag and brief description to be in the same line.
-                    specificAnce.push(<div class="container" key = {k + " " + i +"specificAnce" + key2}>{specificAnceBrief}</div>)
+                    specificAnce.push(<div className="container" key = {k + " " + i +"specificAnce" + key2}>{specificAnceBrief}</div>)
 
                     // announcement detailed description
                     // if (indivAnceSort[i][k][3].length > 86) {
                     //   // just like with the announcement brief description, this checks if the detailed description is too long
 
-                    //   specificAnce.push(<div class="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3].slice(0, 86) + "..."}</div>)
+                    //   specificAnce.push(<div className="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3].slice(0, 86) + "..."}</div>)
                     // } else {
-                    //   specificAnce.push(<div class="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3]}</div>)
+                    //   specificAnce.push(<div className="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3]}</div>)
                     // }
-                    specificAnce.push(<div class="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3]}</div>)
+                    specificAnce.push(<div className="anceDtls" key = {k + " " + i + "anceDtls" + key2}>{indivAnceSort[i][k][3]}</div>)
 
                     // All of the parts of a specific individual announcement are pushed (as React objects) to this list
                     // It is given the CSS class called "anceSection" so that the hover effect can work
-                    specificAnceSect.push(<div class="anceSection" key = {k + " " + i + "anceSection" + key2} onClick = {() => {openAnceModal(); setModalCont([valueDict[0], ances])}}>{specificAnce}</div>)
+                    specificAnceSect.push(<div className="anceSection" key = {k + " " + i + "anceSection" + key2} onClick = {() => {openAnceModal(); setModalCont([valueDict[0], ances])}}>{specificAnce}</div>)
                     // put valueDict[0] for the announcement date details
                     // put ances for the specific announcement details
 
@@ -450,7 +450,7 @@ export default function Home() {
 
         // pushing the indivAnce list to anceCards, which is the base Announcement card part
         // CSS class of "anceCards" used to determine how the announcement card itself looks.
-        anceCards.push(<div class="anceCards" key = {key + "anceCards"}>{indivAnce}</div>)
+        anceCards.push(<div className="anceCards" key = {key + "anceCards"}>{indivAnce}</div>)
       }
     }
   }
@@ -473,7 +473,7 @@ export default function Home() {
         <link rel="icon" sizes="76x76" href="static/compassLogo.ico" />
 
       </Head>
-        <main class="body">
+        <main className="body">
           <div>
               <Modal
                 isOpen={anceModalIsOpen}
@@ -483,29 +483,29 @@ export default function Home() {
                 overlayClassName="popupOverlay"
                 
               >
-                <div class = "announcementPopupModalBG">
-                  <div class = "announcementPopupModalBGClick" onClick = {closeAnceModal}>
+                <div className = "announcementPopupModalBG">
+                  <div className = "announcementPopupModalBGClick" onClick = {closeAnceModal}>
                   </div>
-                  <div class = "announcementPopupModal">
-                    <div class = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
-                      <div class = "background" style = {{"background": modalColour}} id = "announcementPopupModalColourBG"></div>
-                      <div class = "foreground" id = "announcementPopupModalColourFG">
-                        <div class = "overlapContainer" style = {{"width": "100%"}}>
-                          <div class = "background">
+                  <div className = "announcementPopupModal">
+                    <div className = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
+                      <div className = "background" style = {{"background": modalColour}} id = "announcementPopupModalColourBG"></div>
+                      <div className = "foreground" id = "announcementPopupModalColourFG">
+                        <div className = "overlapContainer" style = {{"width": "100%"}}>
+                          <div className = "background">
                             <h3 id = "announcementPopupModalTagBG">{modalCont[1][1]}</h3>
                           </div>
-                          <div class = "foreground">
-                            <div class = "overlapContainer">
-                              <div class = "background">
+                          <div className = "foreground">
+                            <div className = "overlapContainer">
+                              <div className = "background">
                                 <div id = "announcementPopupModalTagFlexBox">
-                                  <div class = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
+                                  <div className = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
                                   <div id = "announcementPopupModalTag">
                                     <h3 id = "announcementPopupModalTagText">{modalCont[1][1]}</h3>
                                   </div>
-                                  <div class = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
+                                  <div className = "announcementPopupModalTagSides" style = {{"background": modalColour}}></div>
                                 </div>
                               </div>
-                              <div class = "foreground">
+                              <div className = "foreground">
                                 <button onClick={closeAnceModal} id = "announcementPopupModalXIconBG">
                                   <img src = "svg_assets/x_icon.svg" id = "announcementPopupModalXIcon"/>
                                 </button>
@@ -516,9 +516,9 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div class = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
-                      <div class = "background" id = "announcementPopupModalColourBelowBG" style = {{"background": modalColour}}></div>
-                      <div class = "foreground" id = "announcementPopupModalColourBelowFG"></div>
+                    <div className = "overlapContainer" id = "overlapContainerAnnouncementPopupModalColourBG">
+                      <div className = "background" id = "announcementPopupModalColourBelowBG" style = {{"background": modalColour}}></div>
+                      <div className = "foreground" id = "announcementPopupModalColourBelowFG"></div>
                     </div>
                     <div style = {{"transform": "translateY(-48px)"}}>
                       <h2 id = "announcementPopupModalAnceBrief">{modalCont[1][2]}</h2>
@@ -545,38 +545,38 @@ export default function Home() {
               />
           </div>
 
-          <div class = "wrapper">
-              <Link class = "button0" href = "about">
-                  <div class = "overlapContainer">
+          <div className = "wrapper">
+              <Link className = "button0" href = "about">
+                  <div className = "overlapContainer">
 
-                      <div class = "background">
+                      <div className = "background">
                           <div style = {{ "position": "absolute", "overflow": "hidden", "width": "100%", "height": "100%" }}>
                               <div id = "heroButtonText1">KSS
-                                  <span class = "heroButtonTextOutline"> DIRECTORY KSS DIRECTORY</span>
+                                  <span className = "heroButtonTextOutline"> DIRECTORY KSS DIRECTORY</span>
                               </div>
                               <div id = "heroButtonText2">
-                                  <span class = "heroButtonTextOutline"> KSS DIRECTORY KSS </span>
+                                  <span className = "heroButtonTextOutline"> KSS DIRECTORY KSS </span>
                                   DIRECT
-                                  <span class = "heroButtonTextOutline">ORY KSS DIRECTORY</span>
+                                  <span className = "heroButtonTextOutline">ORY KSS DIRECTORY</span>
                               </div>
                               <div id = "heroButtonText3">
-                                  <span class = "heroButtonTextOutline">KSS DIRECTORY KSS DIRECT</span>
+                                  <span className = "heroButtonTextOutline">KSS DIRECTORY KSS DIRECT</span>
                                   ORY
                               </div>
                           </div>
                       </div>
 
-                      <div class = "foreground">
-                          <div class = "overlapContainer">
-                              <div class = "background">
-                                  <div class = "overlapContainer">
-                                      <div class = "background" id = "b0GradientOpaque"></div>
-                                      <div class = "foreground" id = "b0Gradient"></div>
+                      <div className = "foreground">
+                          <div className = "overlapContainer">
+                              <div className = "background">
+                                  <div className = "overlapContainer">
+                                      <div className = "background" id = "b0GradientOpaque"></div>
+                                      <div className = "foreground" id = "b0Gradient"></div>
                                   </div>
                               </div>
-                              <div class = "foreground">
+                              <div className = "foreground">
                                   <h5>Learn more!</h5>
-                                  <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
+                                  <img src = "svg_assets/arrow_icon.svg" className = "arrowIcon"/>
                                   <div id = "b0Text">
                                     <img src = "svg_assets/compass_logo_vector.svg" id = "b0CompassLogo"/>
                                     <h4 style = {{ "color": "white" }}>KSS Directory is a student-run resource repository for Kingston Secondary School! Scroll down to see a full announcement archive, or click on one of the buttons on the right to access the plethora of other KSS resources.</h4>
@@ -586,38 +586,38 @@ export default function Home() {
                       </div>
                   </div>
               </Link>
-              <div class = "verticalButtonWrapper1">
-                  <a href = "#mainAnnouncementsSection" class = "button1">
+              <div className = "verticalButtonWrapper1">
+                  <a href = "#mainAnnouncementsSection" className = "button1">
                       
-                      <div class = "overlapContainer">
+                      <div className = "overlapContainer">
                           
-                          <div class = "background">
+                          <div className = "background">
                               <div id = "b1Ance1">
-                                  <div class = "b1AnceTag"></div>
+                                  <div className = "b1AnceTag"></div>
                                   <div id = "b1AnceBrief1"></div>
                                   <div id = "b1AnceDetails1"></div>
                               </div>
                               <div id = "b1Ance2">
-                                  <div class = "b1AnceTag"></div>
+                                  <div className = "b1AnceTag"></div>
                                   <div id = "b1AnceBrief2"></div>
                                   <div id = "b1AnceDetails2"></div>
                               </div>
                               <div id = "b1Ance3">
-                                  <div class = "b1AnceTag"></div>
+                                  <div className = "b1AnceTag"></div>
                                   <div id = "b1AnceBrief3"></div>
                                   <div id = "b1AnceDetails3"></div>
                               </div>
                           </div>
 
-                          <div class = "foreground">
-                              <div class = "overlapContainer">
-                                  <div class = "background">
-                                      <div class = "overlapContainer">
-                                          <div class = "background" id = "b1GradientOpaque"></div>
-                                          <div class = "foreground" id = "b1Gradient"></div>
+                          <div className = "foreground">
+                              <div className = "overlapContainer">
+                                  <div className = "background">
+                                      <div className = "overlapContainer">
+                                          <div className = "background" id = "b1GradientOpaque"></div>
+                                          <div className = "foreground" id = "b1Gradient"></div>
                                       </div>
                                   </div>
-                                  <div class = "foreground">
+                                  <div className = "foreground">
                                     <div id = "b1Text">
                                       <h3>ANNOUNCEMENTS</h3>
                                       <h4>Scroll to see a complete archive of KSS announcements!</h4>
@@ -627,24 +627,24 @@ export default function Home() {
                           </div>
                       </div>
                   </a>
-                  <Link class = "button2" href = "map-page">
-                      <div class = "overlapContainer">
+                  <Link className = "button2" href = "map-page">
+                      <div className = "overlapContainer">
 
-                          <div class = "background">
+                          <div className = "background">
                               <div style = {{ "position": "absolute", "width": "100%", "height": "100%", "overflow": "hidden", "border-radius": "25px" }}>
                                   <img src = "svg_assets/b2Map.svg" id = "b2Map"/>
                               </div>
                           </div>
-                          <div class = "foreground">
-                              <div class = "overlapContainer">
-                                  <div class = "background">
-                                      <div class = "overlapContainer">
-                                          <div class = "background" id = "b2GradientOpaque"></div>
-                                          <div class = "foreground" id = "b2Gradient"></div>
+                          <div className = "foreground">
+                              <div className = "overlapContainer">
+                                  <div className = "background">
+                                      <div className = "overlapContainer">
+                                          <div className = "background" id = "b2GradientOpaque"></div>
+                                          <div className = "foreground" id = "b2Gradient"></div>
                                       </div>
                                   </div>
-                                  <div class = "foreground">
-                                      <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
+                                  <div className = "foreground">
+                                      <img src = "svg_assets/arrow_icon.svg" className = "arrowIcon"/>
                                       <div id = "b2Text">
                                         <h3>INTERACTIVE MAP</h3>
                                         <h4>Click to view an interactive map of KSS and its surrounding area!</h4>
@@ -655,66 +655,66 @@ export default function Home() {
                       </div>
                   </Link>
               </div>
-              <div class = "verticalButtonWrapper2">
-                  <div class = "button3">
+              <div className = "verticalButtonWrapper2">
+                  <div className = "button3">
 
-                      <div class = "overlapContainer">
+                      <div className = "overlapContainer">
 
-                          <div class = "background">
+                          <div className = "background">
                             <img src = "svg_assets/kssLogo.svg" id = "kssLogo"/>
                           </div>
 
-                          <div class = "foreground">
-                              <div class = "overlapContainer">
-                                  <div class = "background">
-                                      <div class = "overlapContainer">
-                                          <div class = "background" id = "b3GradientOpaque"></div>
-                                          <div class = "foreground" id = "b3Gradient">
+                          <div className = "foreground">
+                              <div className = "overlapContainer">
+                                  <div className = "background">
+                                      <div className = "overlapContainer">
+                                          <div className = "background" id = "b3GradientOpaque"></div>
+                                          <div className = "foreground" id = "b3Gradient">
                                           </div>
                                       </div>
                                   </div>
-                                  <div class = "foreground">
-                                      <div class="b3LinkContainer" >
-                                          <div class = "b3Links"><a href="https://outlook.office365.com/owa/calendar/KCVIStudentServices1@limestoneschools.onmicrosoft.com/bookings/" target="_blank"><h4>Student Services</h4></a></div>
-                                          <div class = "b3Links"><a href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Board/School%20Year%20Calendar/2024-07-02-2024-2025-LDSB%20School%20Year%20Calendar.pdf" target="_blank"><h4>School Year Calendar</h4></a></div>
-                                          <div class = "b3Links"><a href="https://app.myblueprint.ca/student/dashboard" target="_blank"><h4>My Blueprint (Course Selection)</h4></a></div>
-                                          <div class = "b3Links"><a href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank"><h4>D2L Minds Online</h4></a></div>
-                                          <div class = "b3Links"><a href="https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank"><h4>Aspen (Course Schedules)</h4></a></div>
+                                  <div className = "foreground">
+                                      <div className="b3LinkContainer" >
+                                          <div className = "b3Links"><a href="https://outlook.office365.com/owa/calendar/KCVIStudentServices1@limestoneschools.onmicrosoft.com/bookings/" target="_blank"><h4>Student Services</h4></a></div>
+                                          <div className = "b3Links"><a href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Board/School%20Year%20Calendar/2024-07-02-2024-2025-LDSB%20School%20Year%20Calendar.pdf" target="_blank"><h4>School Year Calendar</h4></a></div>
+                                          <div className = "b3Links"><a href="https://app.myblueprint.ca/student/dashboard" target="_blank"><h4>My Blueprint (Course Selection)</h4></a></div>
+                                          <div className = "b3Links"><a href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank"><h4>D2L Minds Online</h4></a></div>
+                                          <div className = "b3Links"><a href="https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank"><h4>Aspen (Course Schedules)</h4></a></div>
                                       </div>
                                       <h3>OFFICIAL KSS RESOURCES</h3>
                                   </div>
                               </div>
                           </div>
 
-                          <div onClick={OpenResModal} class = "button3MobileLink"/>
+                          <div onClick={OpenResModal} className = "button3MobileLink"/>
                       </div>
 
                   </div>
-                  <Link class = "button4" href = "clubs">
-                      <div class = "overlapContainer">
+                  <Link className = "button4" href = "clubs">
+                      <div className = "overlapContainer">
 
-                          <div class = "background">
-                              <div class = "overlapContainer">
-                                  <div class = "background">
+                          <div className = "background">
+                              <div className = "overlapContainer">
+                                  <div className = "background">
                                       <img src = "svg_assets/b4Folder.svg" id = "b4Folder"/>
                                   </div>
-                                  <div class = "foreground">
+                                  <div className = "foreground">
                                       <img src = "svg_assets/b4Arrow.svg" id = "b4Arrow" />
                                   </div>
                               </div>
                               
                           </div>
 
-                          <div class = "foreground">
-                              <div class = "overlapContainer">
-                                  <div class = "background">
-                                      <div class = "overlapContainer">
-                                          <div class = "background" id = "b4GradientOpaque"></div>
-                                          <div class = "foreground" id = "b4Gradient"></div>
+                          <div className = "foreground">
+                              <div className = "overlapContainer">
+                                  <div className = "background">
+                                      <div className = "overlapContainer">
+                                          <div className = "background" id = "b4GradientOpaque"></div>
+                                          <div className = "foreground" id = "b4Gradient"></div>
                                       </div>
                                   </div>
-                                  <div class = "foreground">
-                                    <img src = "svg_assets/arrow_icon.svg" class = "arrowIcon"/>
+                                  <div className = "foreground">
+                                    <img src = "svg_assets/arrow_icon.svg" className = "arrowIcon"/>
                                     <div id = "b4Text">
                                       <h3>CLUB REPOSITORY <sup>BETA</sup></h3>
                                       <h4>Information on KSS Clubs compiled by their respective teams!</h4>
@@ -728,31 +728,31 @@ export default function Home() {
           </div>
 
           {/* This wrapper holds the side content (discord prompt, current menu) while also centering the announcements list on screen*/}
-          <div class="scrollWrapper">
-            <div class = "leftInfoContainer">
-              <div class="infoFlex">
-                <div class= "twoColumnDisabled">
+          <div className="scrollWrapper">
+            <div className = "leftInfoContainer">
+              <div className="infoFlex">
+                <div className= "twoColumnDisabled">
                   <CafeteriaMenu/>
                 </div>
               </div>
             </div>
-            <div class="annnouncementContainer" id = "mainAnnouncementsSection">
+            <div className="annnouncementContainer" id = "mainAnnouncementsSection">
               {/* Container used to centre the buttons */}
               {/* Commenting it out because I can't implement the features in time for the start of school... */}
               {/*
-                <div class="buttonCentre">
-                  <div style={{ "width": "34rem", "margin-top": '1.5rem', "margin-bottom": '3rem' }} class="buttonCentre">
+                <div className="buttonCentre">
+                  <div style={{ "width": "34rem", "margin-top": '1.5rem', "margin-bottom": '3rem' }} className="buttonCentre">
 
-                    <button class="regularButton" style={{ "margin-left": "0" }}>Date</button>
+                    <button className="regularButton" style={{ "margin-left": "0" }}>Date</button>
 
-                    <button class="regularButton" id = "searchButton">
-                      <div class="container">
+                    <button className="regularButton" id = "searchButton">
+                      <div className="container">
                         <span id = "searchButtonText">Search</span>
-                        <img src = "svg_assets/searchIcon.svg" class = "searchIcon" />
+                        <img src = "svg_assets/searchIcon.svg" className = "searchIcon" />
                       </div>
                     </button>
 
-                    <button class="regularButton" style={{ "margin-right": "0" }}>Club</button>
+                    <button className="regularButton" style={{ "margin-right": "0" }}>Club</button>
                   </div>
                 </div>
               */}
@@ -761,28 +761,28 @@ export default function Home() {
               {anceCards}
 
               {/* container class used here so that the "load more" button can be centred horizontally */}
-              <div class="buttonCentre">
+              <div className="buttonCentre">
                 {/* this is to call the button was set before */}
                 {/* needs to be a React compeonent because it changes depending on if there are any announcements available to load. */}
                 {loadMore}
               </div>
             </div>
-            <div class="rightInfoContainer">
-              <div class="infoFlex">
-                <div class="discordPromptBox">
-                  <div class="discordPromptContainer">
-                    <div class="discordPromptTextContainer"> 
-                      <div class="infoHeaderText"> Join our Discord! </div>
-                      <div class="infoBodyText"> Subscribe to specific topics and get daily announcement pings. </div>
+            <div className="rightInfoContainer">
+              <div className="infoFlex">
+                <div className="discordPromptBox">
+                  <div className="discordPromptContainer">
+                    <div className="discordPromptTextContainer"> 
+                      <div className="infoHeaderText"> Join our Discord! </div>
+                      <div className="infoBodyText"> Subscribe to specific topics and get daily announcement pings. </div>
                     </div>
                     
-                    <a href = "https://discord.gg/BJtVbtqdDY" class="discordButton">
+                    <a href = "https://discord.gg/BJtVbtqdDY" className="discordButton">
 
-                      <img src = "svg_assets/about_page/discord.svg" class="discordIcon"/>
+                      <img src = "svg_assets/about_page/discord.svg" className="discordIcon"/>
                     </a>
                   </div>  
                 </div>
-                <div class = "twoColumnEnabled">
+                <div className = "twoColumnEnabled">
                   <CafeteriaMenu/>
                 </div>
               </div>

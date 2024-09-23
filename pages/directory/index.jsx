@@ -28,7 +28,7 @@ function homepage() {
                 />
             </div>
             <div className = {main.page}>
-                <div style = {{flexDirection:"column", display:"flex", height:"100dvh"}} class="flex-container">
+                <div style = {{flexDirection:"column", display:"flex", height:"100dvh"}} className="flex-container">
                     <div style = {{flexShrink:"0"}}>
                         <div className = {main.body}>
 

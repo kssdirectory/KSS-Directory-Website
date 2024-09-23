@@ -17,7 +17,7 @@ function pageNotFound() {
                     <link rel="icon" sizes="76x76" href="static/compassLogo.ico" />
             </Head>
             <div style = {{background:"var(--b0BG)"}}>
-                <div style = {{flexDirection:"column", display:"flex", height:"100dvh"}} class="flex-container">
+                <div style = {{flexDirection:"column", display:"flex", height:"100dvh"}} className="flex-container">
                     <div style = {{flexShrink:"0"}}>
                         {/* <NavBar
                             text_color='#ffffff'>
