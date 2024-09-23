@@ -5,6 +5,9 @@ import main from "/styles/directory/index/main.module.css"
 import NavBar from '@/components/directory/DirectoryNavBar.jsx'
 import Image from "next/image"
 
+// sick page
+// very cool
+// :thumbsup:
 function homepage() {
     return (
         <>
