@@ -40,12 +40,36 @@ function CafeteriaMenu() {
     let menuData = data;
     let weeklyCafMenu = [];
 
-    for (const entry of menuData) {
+    let menuDataSorted = [];
+
+    for (const entry of menuData){
+        switch(entry.Day) {
+            case "Monday":
+                menuDataSorted[0] = entry;
+                break;
+            case "Tuesday":
+                menuDataSorted[1] = entry;
+                break;
+            case "Wednesday":
+                menuDataSorted[2] = entry;
+                break;
+            case "Thursday":
+                menuDataSorted[3] = entry;
+                break;
+            case "Friday":
+                menuDataSorted[4] = entry;
+                break;
+        };
+    };
+
+    console.log(menuDataSorted);
+
+    for (const entry of menuDataSorted) {
         let foodItems = [];
 
         for (const item of entry.Items) {
           foodItems.push(
-            <p>{item.Price + " | " + item.Item}</p>
+            <p>{"$" + item.Price.replace("$", "") + " | " + item.Item}</p>
           )
         }
 
