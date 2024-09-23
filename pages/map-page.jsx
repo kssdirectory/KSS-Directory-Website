@@ -16,7 +16,7 @@ export default function Home() {
       
       
       <div style={{background:"var(--b0BG)"}}>
-        <div style={{flexDirection:"column", display:"flex", height:"100dvh"}} class="flex-container">
+        <div style={{flexDirection:"column", display:"flex", height:"100dvh"}} className="flex-container">
           <div style={{flexShrink:"0"}}>
             <NavBar
               extra_additions={(

@@ -51,7 +51,7 @@ function CafeteriaMenu() {
 
         weeklyCafMenu.push(
             <div className = {caf.cafDayContainer}>
-                <rect className = {caf.cafTextLine}></rect>
+                <div className = {caf.cafTextLine}></div>
                 <div className = {caf.cafDayInformation}>
                 <h2>{entry.Day}</h2>
                 {foodItems}
