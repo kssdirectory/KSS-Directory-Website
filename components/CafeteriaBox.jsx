@@ -42,6 +42,7 @@ function CafeteriaMenu() {
 
     let menuDataSorted = [];
 
+    // Kinda scuffed lol :P
     for (const entry of menuData){
         switch(entry.Day) {
             case "Monday":
@@ -65,6 +66,11 @@ function CafeteriaMenu() {
     console.log(menuDataSorted);
 
     for (const entry of menuDataSorted) {
+        // Handle case where not all days are present
+        if (entry == undefined) {
+            continue;
+        }
+
         let foodItems = [];
 
         for (const item of entry.Items) {
