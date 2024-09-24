@@ -194,18 +194,19 @@ export default function Home() {
           let clubDtlsFlexTemp = []
           for (const i of [ "Location", "Supervisor(s)", "Meeting times/dates"]) {
             if (i in response) {
-              if (i == "Meeting times/dates") {
-                clubDtlsFlexTemp.push(<div className = "clubDtlsFlexItemBG" style = {{"flex": 1.6}}>
-                  <h2 className = "clubDtlsFlexItemTitle">{i}</h2>
-                  <h2 className = "clubDtlsFlexItemDtls">{response[i]}</h2>
-                </div>)
-              } else {
-                clubDtlsFlexTemp.push(<div className = "clubDtlsFlexItemBG">
-                  <h2 className = "clubDtlsFlexItemTitle">{i}</h2>
-                  <h2 className = "clubDtlsFlexItemDtls" >{response[i]}</h2>
-                </div>)
+              if (response[i] != "") {
+                if (i == "Meeting times/dates") {
+                  clubDtlsFlexTemp.push(<div className = "clubDtlsFlexItemBG" style = {{"flex": 1.6}}>
+                    <h2 className = "clubDtlsFlexItemTitle">{i}</h2>
+                    <h2 className = "clubDtlsFlexItemDtls">{response[i]}</h2>
+                  </div>)
+                } else {
+                  clubDtlsFlexTemp.push(<div className = "clubDtlsFlexItemBG">
+                    <h2 className = "clubDtlsFlexItemTitle">{i}</h2>
+                    <h2 className = "clubDtlsFlexItemDtls" >{response[i]}</h2>
+                  </div>)
+                }
               }
-              
             }
           }
 

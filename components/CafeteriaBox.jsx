@@ -63,7 +63,7 @@ function CafeteriaMenu() {
         };
     };
 
-    console.log(menuDataSorted);
+    //console.log(menuDataSorted);
 
     for (const entry of menuDataSorted) {
         // Handle case where not all days are present
