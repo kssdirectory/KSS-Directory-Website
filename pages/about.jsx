@@ -62,9 +62,6 @@ function AboutPage() {
             <div>
             {/* I have ruined the Matthew K. monopoly */}
               <p id = {main.creditsText}>Website by<br/>Matthew Kong, Matthew Kabin & Ethan Tian.</p>
-              {/* <div className = {main.copyrightBox}>
-                <p id = {main.creditsText}>Copyright © 2024 KSS Directory. All Rights Reserved.</p>
-              </div> */}
             </div>
           </div>
         </div>

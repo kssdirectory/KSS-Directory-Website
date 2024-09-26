@@ -287,8 +287,29 @@
     #heroButtonSection {
         margin-top: 48px;
     }
+}
 
-    .copyrightBox {
-        position: unset;
-    }
+/* ------------------- NEW ABOUT PAGE STUFF ------------------- */
+
+.columnsDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 110%;
+}
+
+.verticalDiv {
+    display: flex;
+    flex-direction: column;
+    width: 16%;
+    height: inherit;
+}
+
+.outlinedBox {
+    background: #2878BE; 
+    width: 15.5vw;
+    border: 5px solid var(--light-gray);
+    border-radius: 16px;
+    margin-bottom: 10px;
+
 }
