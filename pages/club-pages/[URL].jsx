@@ -1,13 +1,17 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import main from '../../styles/club_directory/club_pages/main.module.css';
+import styles from '../../styles/club_directory/club_pages/main.module.css';
 import NavBar from "@/components/NavBar";
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 import { hexToHSL, hslToHex } from '@/util/util';
 import BackArrowButton from '@/components/BackArrowButton';
+import dayjs from 'dayjs';
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+var isoWeek = require("dayjs/plugin/isoWeek");
+dayjs.extend(isoWeek)
 
 // -------------------- Routing & Setup -------------------- //
 
@@ -40,8 +44,16 @@ export const getStaticProps = async (context) => {
         }
     }
 
+
+
+    const clubSpecificAnnouncements = await fetch(webServerURL + "/ance/batch/20/0/" + data.Metadata.Tag);
+    let clubSpecificAnnouncementData = await clubSpecificAnnouncements.json();
+
+
+
+
     return {
-        props: { listed_page:data},
+        props: { listed_page:data, announcement_data:clubSpecificAnnouncementData},
         revalidate: 30 // re-generate the page if it's been more than thirty seconds since the last request, while regenerating, will still show old page, but next visitor will see new page.
     }
 }
@@ -67,6 +79,27 @@ function convert_iso_time(raw_time) {
     return converted_time
 }
 
+function getWeekCategoryHeader(year, month, day) {
+    var anceDate = new Date(year, month - 1, day);
+    var dayJSDate = dayjs(anceDate);
+
+    var anceWeekOfYear = dayJSDate.isoWeek();
+    var todayWeekOfYear = dayjs().isoWeek();
+
+    if (anceWeekOfYear == todayWeekOfYear) {
+        return "This Week";
+    }
+    else if (anceWeekOfYear == todayWeekOfYear - 1) {
+        return "Last Week";
+    }
+    else if (anceWeekOfYear == todayWeekOfYear - 2) {
+        return "Two Weeks Ago";
+    }
+    else {
+        return undefined;
+    }
+}
+
 function getClubLogoElement(listed_page, club_accent_color){
     const club_logo = [];
     var club_logo_img;
@@ -79,7 +112,7 @@ function getClubLogoElement(listed_page, club_accent_color){
             width="256"
             height="256"
             //TODO: make this support non-square logos
-            id={main.club_logo}
+            id={styles.club_logo}
             alt={"Club logo"}
             className={"easeImageload"}
             onLoad={(e) => e.target.style.opacity = "1"}
@@ -92,7 +125,7 @@ function getClubLogoElement(listed_page, club_accent_color){
             width="90"
             height="90"
             //TODO: make this support non-square logos
-            id={main.club_logo} 
+            id={styles.club_logo} 
             alt={"Club logo"}
             className={"easeImageload"}
             onLoad={(e) => e.target.style.opacity = "1"}
@@ -105,33 +138,33 @@ function getClubLogoElement(listed_page, club_accent_color){
 
     // Create club icon
     const logo_BG = (
-        <div id={main.logo_BG} style={{backgroundColor:hslToHex(club_accent_hsl.h, 60, 65)}} >
+        <div id={styles.logo_BG} style={{backgroundColor:hslToHex(club_accent_hsl.h, 60, 65)}} >
             {club_logo_img}
         </div>
     )
     const logo_cutout_main = (
-        <div id={main.logo_cutout_main}></div>
+        <div id={styles.logo_cutout_main}></div>
     )
     const logo_cutout_rounded_1 = (
         // Note: this is disgusting, but idk how else to achieve the inverted rounded effect
-        <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_1}></img>
+        <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={styles.logo_cutout_rounded_1}></img>
     )
     const logo_cutout_rounded_2 = (
         // same as above....
-        <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={main.logo_cutout_rounded_2}></img>
+        <img src={"../../svg_assets/club_pages/inverse_rounded_corner.svg"} id={styles.logo_cutout_rounded_2}></img>
     )
     
     club_logo.push([logo_cutout_main, logo_cutout_rounded_1, logo_cutout_rounded_2, logo_BG])
 
 
     return (
-        <div className={main.club_logo_holder}>
+        <div className={styles.club_logo_holder}>
             {club_logo}
         </div>
     );
 }
 
-function createClubPageContent(listed_page) {
+function createClubPageContent(listed_page, announcement_data) {
     var banner;
     var info_tiles = [];
     var title_tile_data;
@@ -165,9 +198,9 @@ function createClubPageContent(listed_page) {
     if ("Claimed" in listed_page.Metadata) {
         if (listed_page.Metadata.Claimed !== "Yes") {
             pageClaim = (
-                <div className={main.tile_div} key={"Important!"} style = {{backgroundColor: "var(--b1BG)"}}>
-                    <h1 className={main.club_name} style = {{color: "#ffffff"}}>Page Claim</h1>
-                    <p className={main.generic_body_text} style = {{color: "#ffffff"}}>If you are a member of this club’s executive team/supervisor, please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim and edit this page.</p>
+                <div className={styles.tile_div} key={"Important!"} style = {{backgroundColor: "var(--b1BG)"}}>
+                    <h1 className={styles.club_name} style = {{color: "#ffffff"}}>Page Claim</h1>
+                    <p className={styles.generic_body_text} style = {{color: "#ffffff"}}>If you are a member of this club’s executive team/supervisor, please contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim and edit this page.</p>
                 </div>
             )
         }
@@ -179,15 +212,16 @@ function createClubPageContent(listed_page) {
     if ("Category_Metadata" in listed_page) {
         club_accent_color = listed_page.Category_Metadata.Color;
     }
+    var club_accent_hsl = hexToHSL(club_accent_color);
 
     if ("Description" in listed_page.Basic_Info) {
-        description.push(<p className={main.title_body_text} key={"Title Tile Description"}>{listed_page.Basic_Info.Description.trim()}</p>)
+        description.push(<p className={styles.title_body_text} key={"Title Tile Description"}>{listed_page.Basic_Info.Description.trim()}</p>)
     }
 
     if (listed_page.Basic_Info.Activity === "Yes") {
         // if the club is set to be currently "active"
         activity.push(
-            <div id={main.activity_div} key={"Activity Div"}>
+            <div id={styles.activity_div} key={"Activity Div"}>
                 <p style={{color:"#2BB673"}}>Active</p>
                 <img src="/svg_assets/club_pages/checkmark.svg"></img>
             </div>
@@ -195,7 +229,7 @@ function createClubPageContent(listed_page) {
     } else {
         // if the club is set to be currently "inactive"
         activity.push(
-            <div id={main.activity_div} key={"Activity Div"}>
+            <div id={styles.activity_div} key={"Activity Div"}>
                 <p style={{color:"#8E1111"}}>Inactive</p>
                 <img src="/svg_assets/club_pages/cross.svg"></img>
             </div>
@@ -205,10 +239,10 @@ function createClubPageContent(listed_page) {
     // Tile 1: Title
     title_tile_data = (
         <div>
-            <h1 className={main.club_name}>{listed_page.Metadata.Club_Name}</h1>
-            <div id={main.update_date_activity_container}>
+            <h1 className={styles.club_name}>{listed_page.Metadata.Club_Name}</h1>
+            <div id={styles.update_date_activity_container}>
                 {activity}
-                <p id={main.last_modified}>Last updated: {month} {listed_page.Metadata.Last_modified.slice(8,10)}, {listed_page.Metadata.Last_modified.slice(0,4)}</p>
+                <p id={styles.last_modified}>Last updated: {month} {listed_page.Metadata.Last_modified.slice(8,10)}, {listed_page.Metadata.Last_modified.slice(0,4)}</p>
             </div>
             {description}
         </div>
@@ -225,25 +259,99 @@ function createClubPageContent(listed_page) {
                     link_name.push(value[1])
                 }
                 links.push(
-                    <a href={value[1]} className={main.link} key={key}>
+                    <a href={value[1]} className={styles.link} key={key}>
                         <div style={{display: "flex", alignItems: "center", flexGrow: "0", maxWidth: "calc(100% - 88px)"}}>
                             <img 
                                 src={"http://www.google.com/s2/favicons?sz=32&domain=" + value[1]}
                             />
                             <p>{link_name}</p>
                         </div>
-                        <img src = "/svg_assets/arrow_icon.svg" className={main.linkArrowIcon}/>
+                        <img src = "/svg_assets/arrow_icon.svg" className={styles.linkArrowIcon}/>
                     </a>
                 )
             }
             info_tiles.push(
-                <div className={main.tile_div} key={"Links"}>
-                    <h1 className={main.tile_div_subtitle}>Links</h1>
-                    <div id={main.links_container}>
+                <div className={styles.tile_div} key={"Links"}>
+                    <h1 className={styles.tile_div_subtitle}>Links</h1>
+                    <div id={styles.links_container}>
                         {links}
                     </div>
                 </div>
             )
+        }
+    }
+
+    //console.log("ANNOUNCEMENT DATA ???????????????? " + JSON.stringify(announcement_data));
+    if (announcement_data != undefined) {
+        if (announcement_data.toString() != "none") {
+            const trimmed_announcement_list = announcement_data.announcements.slice(0, 3);
+
+            let weekIdList = [];
+            const announcements_days = trimmed_announcement_list.map(day => {
+                const day_ance_list = [];
+                const day_identifier = day.date[0];
+                
+                for (var ance of day.announcementData) {
+                    day_ance_list.push(
+                        <>
+                            <div className={styles.announcementDayList}>
+                                <h2 style={{backgroundColor: "hsla(" + club_accent_hsl.h + ", 60%, 65%, 0.2)", color:club_accent_color, borderColor:club_accent_color}} >{day_identifier}</h2>
+                                <div>
+                                    <p className={styles.anceTitle}>{ance.anceTitle}</p>
+                                    <p className={styles.anceDescription}>{ance.description.charAt(0).toUpperCase() + ance.description.slice(1)}</p>
+                                </div>
+                            </div>
+                        </>
+                    );
+                }
+
+                weekIdList.push(getWeekCategoryHeader(day.date[1], day.date[2], day.date[3]));
+
+                return (
+                    <div className={styles.announcementDayContainer}>
+                            
+
+                            {/* <div className={main.text_side_line} style={{background:club_accent_color}}/> */}
+                            {day_ance_list}
+
+                    </div>
+                );
+            });
+
+            //console.log(weekIdList);
+            let final_day_list = [];
+            let last_week_id = "";
+
+            for (let i = 0; i < announcements_days.length; i++) {
+                if (weekIdList[i] == undefined) { // Ignore announcements more than two weeks ago
+                    continue;
+                }
+
+                if (last_week_id != weekIdList[i]) {
+                    // add week separator before announcement
+                    final_day_list.push(
+                        <>
+                            <div className={styles.week_separator}>
+                                <h2 className={styles.week_separator_text} style={{color:club_accent_color}}>{weekIdList[i]}</h2>
+                                <div className={styles.week_separator_line} style={{backgroundColor:club_accent_color}}/>
+                            </div>
+                        </>
+                    );
+
+                    last_week_id = weekIdList[i];
+                }
+                
+                final_day_list.push(announcements_days[i]);
+            }
+
+            if (final_day_list.length > 0) {
+                info_tiles.push(
+                    <div className={styles.tile_div} key={"Recent Announcements"}>
+                        <h1 className={styles.tile_div_subtitle}>Recent Announcements</h1>
+                        {final_day_list}
+                    </div>
+                );
+            }
         }
     }
 
@@ -264,9 +372,9 @@ function createClubPageContent(listed_page) {
                     meeting_end_time.push(" to " + convert_iso_time(value.Meeting_End_Time))
                 }
                 tile2_meeting_times.push(
-                    <div className={main.meeting_times_container} key={key}>
-                        <rect className={main.text_side_line} style={{backgroundColor:club_accent_color}}/>
-                        <div className={main.meeting_times_div}>
+                    <div className={styles.meeting_times_container} key={key}>
+                        <rect className={styles.text_side_line} style={{backgroundColor:club_accent_color}}/>
+                        <div className={styles.meeting_times_div}>
                             <h2>{meeting_title}</h2>
                             <p>
                                 {value.Meeting_Day[0].toUpperCase() + value.Meeting_Day.slice(1)}s at {convert_iso_time(value.Meeting_Start_Time)} {meeting_end_time} in {value.Meeting_Location}
@@ -277,8 +385,8 @@ function createClubPageContent(listed_page) {
 
             }
             info_tiles.push(
-                <div className={main.tile_div} key={"Meeting Times"}>
-                    <h1 className={main.tile_div_subtitle}>Meeting Times</h1>
+                <div className={styles.tile_div} key={"Meeting Times"}>
+                    <h1 className={styles.tile_div_subtitle}>Meeting Times</h1>
                     {tile2_meeting_times}
                 </div>
             )
@@ -290,12 +398,12 @@ function createClubPageContent(listed_page) {
             let supervisor_list = []
             for (const [key, value] of Object.entries(listed_page.Basic_Info.Supervisors)) {
                 supervisor_list.push(
-                    <p className={main.supervisor_list} key={key}>{value}</p>
+                    <p className={styles.supervisor_list} key={key}>{value}</p>
                 )
             }
             info_tiles.push(
-                <div className={main.tile_div} key={"Supervisors"}>
-                    <h1 className={main.tile_div_subtitle}>Supervisor(s)</h1>
+                <div className={styles.tile_div} key={"Supervisors"}>
+                    <h1 className={styles.tile_div_subtitle}>Supervisor(s)</h1>
                     {supervisor_list}
                 </div>
             )
@@ -328,14 +436,14 @@ function createClubPageContent(listed_page) {
                 let exec_position_list = []
                 for (const individual_exec of names) {
                     exec_position_list.push(
-                        <p className={main.generic_body_text} key={individual_exec}>{individual_exec}</p>
+                        <p className={styles.generic_body_text} key={individual_exec}>{individual_exec}</p>
                     )
                 }
                 exec_list_formatted.push(
                     <div key={position}>
-                        <h2 className={main.exec_position_title}>{position}</h2>
-                        <div className={main.exec_position_container}>
-                            <rect className={main.text_side_line} style={{backgroundColor:club_accent_color}}/>
+                        <h2 className={styles.exec_position_title}>{position}</h2>
+                        <div className={styles.exec_position_container}>
+                            <rect className={styles.text_side_line} style={{backgroundColor:club_accent_color}}/>
                             <div>
                                 {exec_position_list}
                             </div>
@@ -345,21 +453,21 @@ function createClubPageContent(listed_page) {
                 //console.log(exec_list_formatted)
             }
             info_tiles.push(
-                <div className={main.tile_div} key={"Execs"}>
-                    <h1 className={main.tile_div_subtitle}>Executive Team</h1>
+                <div className={styles.tile_div} key={"Execs"}>
+                    <h1 className={styles.tile_div_subtitle}>Executive Team</h1>
                     {exec_list_formatted}
                 </div>
             );
         }
     }
-    info_tiles.push(<div className={main.tile_list_spacer} key={"Spacer"}/>);
+    info_tiles.push(<div className={styles.tile_list_spacer} key={"Spacer"}/>);
 
     if ("Images" in listed_page && "banner" in listed_page.Images ) {
         // if there is a logo available, use it as favicon for this webpage.
         // const img = fetch(webServerURL + "/club_images/" + listed_page.Metadata.URL + "/logo")
         banner = (
             <Image src={webServerURL + "/specific_club_images/" + listed_page.Metadata.URL + "/banner?hash=" + listed_page["Images"]["banner"]["Hash"]}
-            className={[main.banner_image, "easeImageload"].join(" ")}
+            className={[styles.banner_image, "easeImageload"].join(" ")}
             onLoad={(e) => e.target.style.opacity = "1"}
             alt={"Banner of " + listed_page.Metadata.Club_Name}
             layout="fill"
@@ -372,15 +480,15 @@ function createClubPageContent(listed_page) {
 
     // Desktop site
     return_tiles.push(
-        <div className = {main.mobileDisabled} key={"Desktop Tiles"}>
-            <div className={main.tiles_flex}>
-                <div className={main.banner_div}>
-                    <div className={main.banner_content_container}>
+        <div className = {styles.mobileDisabled} key={"Desktop Tiles"}>
+            <div className={styles.tiles_flex}>
+                <div className={styles.banner_div}>
+                    <div className={styles.banner_content_container}>
                         {banner}
                     </div>
                 </div>
-                <div className={main.info_tiles_div}>
-                    <div className={main.tile_div}>
+                <div className={styles.info_tiles_div}>
+                    <div className={styles.tile_div}>
                         {title_tile_data}
                     </div>
                     {pageClaim}
@@ -393,13 +501,13 @@ function createClubPageContent(listed_page) {
 
     // Mobile site
     return_tiles.push (
-        <div className = {main.mobileEnabled} key={"Mobile Tiles"}>
-            <div className={main.tiles_flex}>
-                <div className={main.banner_div}>
-                    <div className={main.banner_content_container}>
+        <div className = {styles.mobileEnabled} key={"Mobile Tiles"}>
+            <div className={styles.tiles_flex}>
+                <div className={styles.banner_div}>
+                    <div className={styles.banner_content_container}>
                         {banner}
-                        <div className={main.banner_gradient}></div>
-                        <div className={main.title_tile_mobile}>
+                        <div className={styles.banner_gradient}></div>
+                        <div className={styles.title_tile_mobile}>
                             {title_tile_data}
                         </div>
                     </div>
@@ -418,9 +526,9 @@ function createClubPageContent(listed_page) {
 // Equivalent to const individualClubPage = ( {listed_page} = props)
 // since we just need to destructure from whatever argument is passed to the func.
 // Damn that's weird. Javascript is weird.
-const individualClubPage = ( {listed_page} ) => {
+const individualClubPage = ( {listed_page, announcement_data} ) => {
     const router = useRouter();
-    
+
     var pageTitle;
     var club_navbar_path;
     var back_url = "";
@@ -431,7 +539,7 @@ const individualClubPage = ( {listed_page} ) => {
     
     // if our data is defined in the first place, setup values
     if (listed_page && !router.isFallback) {
-        tiles = createClubPageContent(listed_page);
+        tiles = createClubPageContent(listed_page, announcement_data);
         
         back_url = listed_page.Metadata.Category.toLowerCase().replace(" ", "-");
 
@@ -456,21 +564,21 @@ const individualClubPage = ( {listed_page} ) => {
                 <link rel="icon" sizes="76x76" href="../static/compassLogo.ico" />
             </Head>
 
-            <main id={main.bg}>
+            <main id={styles.bg}>
                 <NavBar
                     extra_additions={(
                         <>
-                            <div id={main.header_path_div}>
-                                <a id={main.header_path_link} href={"../../clubs"}>CLUB REPOSITORY</a>
-                                <span id={main.header_path_text}> / {club_navbar_path}</span>
+                            <div id={styles.header_path_div}>
+                                <a id={styles.header_path_link} href={"../../clubs"}>CLUB REPOSITORY</a>
+                                <span id={styles.header_path_text}> / {club_navbar_path}</span>
                             </div>
-                            <BackArrowButton href = {"../../clubs/" + back_url} className={main.mobileEnabled}/>
+                            <BackArrowButton href = {"../../clubs/" + back_url} className={styles.mobileEnabled}/>
                         </>
                     )}
                     center_on_mobile={true}
                 />
                     
-                <div id={main.pageContent}>
+                <div id={styles.pageContent}>
                     {/* <h1>{listed_page.Metadata.Club_Name}</h1>
                     <p>{listed_page.Basic_Info.Description}</p> */}
                     <div>
