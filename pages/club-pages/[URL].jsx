@@ -47,8 +47,13 @@ export const getStaticProps = async (context) => {
 
 
     const clubSpecificAnnouncements = await fetch(webServerURL + "/ance/batch/20/0/" + data.Metadata.Tag);
-    const clubSpecificAnnouncementData = await clubSpecificAnnouncements.json();
+    let clubSpecificAnnouncementData = await clubSpecificAnnouncements.json();
 
+    if ("detail" in clubSpecificAnnouncementData) {
+        if (clubSpecificAnnouncementData.detail = "Not Found") {
+            clubSpecificAnnouncementData = null;
+        }
+    }
 
 
     return {
@@ -280,6 +285,7 @@ function createClubPageContent(listed_page, announcement_data) {
         }
     }
 
+    console.log("ANNOUNCEMENT DATA ???????????????? " + JSON.stringify(announcement_data));
     if (announcement_data != undefined) {
         if (announcement_data.toString() != "none") {
             const trimmed_announcement_list = announcement_data.announcements.slice(0, 3);
