@@ -49,11 +49,7 @@ export const getStaticProps = async (context) => {
     const clubSpecificAnnouncements = await fetch(webServerURL + "/ance/batch/20/0/" + data.Metadata.Tag);
     let clubSpecificAnnouncementData = await clubSpecificAnnouncements.json();
 
-    if ("detail" in clubSpecificAnnouncementData) {
-        if (clubSpecificAnnouncementData.detail = "Not Found") {
-            clubSpecificAnnouncementData = null;
-        }
-    }
+
 
 
     return {
