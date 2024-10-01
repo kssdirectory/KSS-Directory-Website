@@ -96,7 +96,7 @@ function getWeekCategoryHeader(year, month, day) {
     else if (anceWeekOfYear == todayWeekOfYear - 1) {
         return "Last Week";
     }
-    else if (anceWeekOfYear == todayWeekOfYear - 1) {
+    else if (anceWeekOfYear == todayWeekOfYear - 2) {
         return "Two Weeks Ago";
     }
     else {
@@ -285,7 +285,7 @@ function createClubPageContent(listed_page, announcement_data) {
         }
     }
 
-    console.log("ANNOUNCEMENT DATA ???????????????? " + JSON.stringify(announcement_data));
+    //console.log("ANNOUNCEMENT DATA ???????????????? " + JSON.stringify(announcement_data));
     if (announcement_data != undefined) {
         if (announcement_data.toString() != "none") {
             const trimmed_announcement_list = announcement_data.announcements.slice(0, 3);
@@ -322,7 +322,7 @@ function createClubPageContent(listed_page, announcement_data) {
                 );
             });
 
-
+            //console.log(weekIdList);
             let final_day_list = [];
             let last_week_id = "";
 
@@ -336,7 +336,7 @@ function createClubPageContent(listed_page, announcement_data) {
                     final_day_list.push(
                         <>
                             <div className={styles.week_separator}>
-                                <h2 className={styles.week_separator_text} style={{color:club_accent_color}}>{weekIdList[0]}</h2>
+                                <h2 className={styles.week_separator_text} style={{color:club_accent_color}}>{weekIdList[i]}</h2>
                                 <div className={styles.week_separator_line} style={{backgroundColor:club_accent_color}}/>
                             </div>
                         </>
