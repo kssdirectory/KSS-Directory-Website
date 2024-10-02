@@ -3,10 +3,10 @@ import Image from 'next/image';
 import styles from '../../styles/club_directory/club_pages/main.module.css';
 import NavBar from "@/components/NavBar";
 import { useRouter } from 'next/router'
-import Link from 'next/link';
 import { hexToHSL, hslToHex } from '@/util/util';
 import BackArrowButton from '@/components/BackArrowButton';
 import dayjs from 'dayjs';
+import { useQuery } from '@tanstack/react-query';
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -46,14 +46,14 @@ export const getStaticProps = async (context) => {
 
 
 
-    const clubSpecificAnnouncements = await fetch(webServerURL + "/ance/batch/20/0/" + data.Metadata.Tag);
-    let clubSpecificAnnouncementData = await clubSpecificAnnouncements.json();
+    // const clubSpecificAnnouncements = await fetch(webServerURL + "/ance/batch/20/0/" + data.Metadata.Tag);
+    // let clubSpecificAnnouncementData = await clubSpecificAnnouncements.json();
 
 
 
 
     return {
-        props: { listed_page:data, announcement_data:clubSpecificAnnouncementData},
+        props: { listed_page:data},
         revalidate: 30 // re-generate the page if it's been more than thirty seconds since the last request, while regenerating, will still show old page, but next visitor will see new page.
     }
 }
@@ -281,7 +281,6 @@ function createClubPageContent(listed_page, announcement_data) {
         }
     }
 
-    //console.log("ANNOUNCEMENT DATA ???????????????? " + JSON.stringify(announcement_data));
     if (announcement_data != undefined) {
         if (announcement_data.toString() != "none") {
             const trimmed_announcement_list = announcement_data.announcements.slice(0, 3);
@@ -309,8 +308,6 @@ function createClubPageContent(listed_page, announcement_data) {
 
                 return (
                     <div className={styles.announcementDayContainer}>
-                            
-
                             {/* <div className={main.text_side_line} style={{background:club_accent_color}}/> */}
                             {day_ance_list}
 
@@ -318,7 +315,6 @@ function createClubPageContent(listed_page, announcement_data) {
                 );
             });
 
-            //console.log(weekIdList);
             let final_day_list = [];
             let last_week_id = "";
 
@@ -346,9 +342,11 @@ function createClubPageContent(listed_page, announcement_data) {
 
             if (final_day_list.length > 0) {
                 info_tiles.push(
-                    <div className={styles.tile_div} key={"Recent Announcements"}>
-                        <h1 className={styles.tile_div_subtitle}>Recent Announcements</h1>
-                        {final_day_list}
+                    <div className={styles.tile_expand}>
+                        <div className={styles.tile_div} key={"Recent Announcements"}>
+                            <h1 className={styles.tile_div_subtitle}>Recent Announcements</h1>
+                            {final_day_list}
+                        </div>
                     </div>
                 );
             }
@@ -526,20 +524,39 @@ function createClubPageContent(listed_page, announcement_data) {
 // Equivalent to const individualClubPage = ( {listed_page} = props)
 // since we just need to destructure from whatever argument is passed to the func.
 // Damn that's weird. Javascript is weird.
-const individualClubPage = ( {listed_page, announcement_data} ) => {
+const individualClubPage = ( {listed_page} ) => {
     const router = useRouter();
+
+    const { isPending, isError, data } = useQuery({
+        queryKey: ['anceData', listed_page.Metadata.Tag],
+        queryFn: async () => {
+            const res = await fetch(webServerURL + "/ance/batch/20/0/" + listed_page.Metadata.Tag);
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await res.json();
+            console.log(data);
+
+            if (data.toString() == "none") {
+                throw new Error();
+            }
+            
+            return data;
+        },
+        refetchOnWindowFocus: false,
+    })
 
     var pageTitle;
     var club_navbar_path;
     var back_url = "";
-
 
     // Create club tiles section
     let tiles = [];
     
     // if our data is defined in the first place, setup values
     if (listed_page && !router.isFallback) {
-        tiles = createClubPageContent(listed_page, announcement_data);
+        tiles = createClubPageContent(listed_page, data);
         
         back_url = listed_page.Metadata.Category.toLowerCase().replace(" ", "-");
 

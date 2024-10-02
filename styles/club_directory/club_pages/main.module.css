@@ -220,6 +220,20 @@
     margin: 0;
 }
 
+@keyframes growTile {
+    0% {
+        max-height: 0%;
+    }
+    100% {
+        max-height: 100%;
+    }
+}
+
+/* The actual jankiest thing ever, kind of */
+.tile_expand {
+    animation: 0.6s cubic-bezier(0.23, 0.55, 0.61, 0.77) 0s 1 growTile forwards;
+}
+
 .tile_div :global {
     animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight1;
     width: auto;
@@ -227,7 +241,7 @@
     background-color: white;
     border: 1px solid var(--dark-gray);
     padding: 48px;
-    height: fit-content;
+
 }
 
 .tile_div_subtitle {
