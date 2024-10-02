@@ -528,7 +528,7 @@ const individualClubPage = ( {listed_page} ) => {
     const router = useRouter();
 
     const { isPending, isError, data } = useQuery({
-        queryKey: ['anceData', listed_page.Metadata.Tag],
+        queryKey: ['anceData'],
         queryFn: async () => {
             const res = await fetch(webServerURL + "/ance/batch/20/0/" + listed_page.Metadata.Tag);
             if (!res.ok) {
