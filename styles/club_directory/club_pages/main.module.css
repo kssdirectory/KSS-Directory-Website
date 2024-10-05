@@ -220,6 +220,20 @@
     margin: 0;
 }
 
+@keyframes growTile {
+    0% {
+        max-height: 0%;
+    }
+    100% {
+        max-height: 100%;
+    }
+}
+
+/* The actual jankiest thing ever, kind of */
+.tile_expand {
+    animation: 0.6s cubic-bezier(0.23, 0.55, 0.61, 0.77) 0s 1 growTile forwards;
+}
+
 .tile_div :global {
     animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInRight1;
     width: auto;
@@ -227,7 +241,7 @@
     background-color: white;
     border: 1px solid var(--dark-gray);
     padding: 48px;
-    height: fit-content;
+
 }
 
 .tile_div_subtitle {
@@ -300,7 +314,7 @@
 
 .meeting_times_container, .exec_position_container {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     gap: 16px;
     margin-top: 12px;
 }
@@ -310,11 +324,12 @@
     height: inherit;
     border-radius: 25px;
     margin-left: 7px;
+    flex-shrink: 0;
 }
 
 .meeting_times_div {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     gap: 4px;
 }
 
@@ -409,6 +424,72 @@
     margin-bottom: 12px;
 }
 
+/* Recent Announcements */
+
+.announcementDayList {
+    display: flex;
+    gap: 16px;
+}
+
+.announcementDayContainer h2{
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    display: inline-block;
+    border-radius: 25px;
+
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+
+    border: 1px solid;
+    height: fit-content;
+}
+
+.anceTitle {
+    color: var(--dark-gray);
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.anceDescription {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.week_separator {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+
+    width: 100%;
+    position: relative;
+}
+
+.week_separator_text {
+    background: white;
+    flex-shrink: 0;
+
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.week_separator_line {
+    background-color: var(--b0BG);
+    width: 100%;
+    height: 5px;
+    border-radius: 20px;
+
+    /* position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%); */
+}
 
 /* Utility */
 .mobileEnabled {

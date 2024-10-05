@@ -90,11 +90,16 @@ function CafeteriaMenu() {
         );   
     }
 
+    let menuTextPrompt = "Take a look ahead at this week's lunchtime cafeteria menu!";
+    if (weeklyCafMenu.length == 0) {
+        menuTextPrompt = "This week's menu hasn't been posted yet. Check back soon!"
+    }
+
     return (
         <div className = {caf.cafMenuBox}>
             <div className = {caf.cafTitleCard}>
                 <div className = {caf.infoHeaderText}>Cafeteria Menu</div>
-                <div className = {caf.infoBodyText}>Take a look ahead at this week's lunchtime cafeteria menu!</div>
+                <div className = {caf.infoBodyText}>{menuTextPrompt}</div>
             </div>
             <div className = {caf.cafMenuContainer}>
                 {weeklyCafMenu}
