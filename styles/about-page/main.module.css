@@ -306,10 +306,48 @@
 }
 
 .outlinedBox {
-    background: #2878BE; 
     width: 15.5vw;
-    border: 5px solid var(--light-gray);
+    border: 3px solid var(--light-gray);
     border-radius: 16px;
     margin-bottom: 10px;
 
+}
+
+/* ------- Info Boxes ------- */
+
+.titleHeader {
+    width: inherit;
+    overflow: hidden;
+}
+
+.infoContainer {
+
+}
+
+.imageGradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) var(--gradientPercentage), var(--gradientColor) 95.17%);
+
+    
+    transition: --gradientColor 0.25s, --gradientPercentage 0.25s;
+    transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+.titleHeader:hover .imageGradient {
+    --gradientColor: rgba(0, 0, 0, 1);
+    --gradientPercentage: 20%;
+}
+
+.maskGradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+
+    mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, black 100%);
 }
