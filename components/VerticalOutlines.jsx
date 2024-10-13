@@ -14,7 +14,7 @@ function verticalOutlines(props) {
     };
 
     return (
-        <div className = {main.verticalDiv} style = {{marginTop: vertOffset.toString() + "px"}}>
+        <div className = {main.verticalDiv} style = {{marginTop: vertOffset.toString() + "vh"}}>
             <TITLE/>
             <TextBox/>
             {boxes}
