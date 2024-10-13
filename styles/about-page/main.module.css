@@ -51,7 +51,6 @@
     width: 100%;
     background: #072136;
     overflow: hidden;
-    padding-bottom: 40px;
     position: relative;
 }
 
@@ -294,8 +293,11 @@
 .columnsDiv {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 120%;
     height: 110%;
+    position: absolute;
+    overflow-x: hidden;
+    left: -10%;
 }
 
 .verticalDiv {
@@ -317,16 +319,37 @@
 
 .titleHeader {
     width: 100%;
-    height: 140px;
+    height: 250px;
     border-radius: 16px;
     position: relative;
     overflow: hidden;
     margin-bottom: 10px;
 }
 
-
 .infoContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: center;
+    border-radius: 16px;
+    margin-bottom: 10px;
+}
 
+.textDiv {
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+.textDiv h2 {
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.textDiv p {
+    margin-top: 5px;
 }
 
 .titleImage {
@@ -363,8 +386,8 @@
 }
 
 .titleText {
-    color: white;
-    font-size: 18px;
+    color: #ffffff;
+    font-size: 24px;
     position: absolute;
     bottom: 20px;
     left: 20px;

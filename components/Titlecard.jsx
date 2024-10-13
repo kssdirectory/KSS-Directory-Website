@@ -16,7 +16,7 @@ function titlecard() {
             />
             <div className = {main.imageGradient}/>
             <div className={main.maskGradient} style = {{background: "linear-gradient(180deg, " + buttonColor + " 49%, " + buttonColor + " 100%)"}}/>
-            <h2 className = {main.titleText}>Web & Bot Development</h2>
+            <h2 className = {main.titleText}>Web & Bot <br/> Development</h2>
         </div>
     )
 }

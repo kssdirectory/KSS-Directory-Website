@@ -1,6 +1,6 @@
 import main from '../styles/about-page/main.module.css'
 import TITLE from '@/components/Titlecard'
-
+import TextBox from '@/components/InfoBox'
 
 function verticalOutlines(heightList, vertOffset) {
     var boxes = [];
@@ -15,6 +15,7 @@ function verticalOutlines(heightList, vertOffset) {
     return (
         <div className = {main.verticalDiv}>
             <TITLE/>
+            <TextBox/>
             {boxes}
         </div>
     )
