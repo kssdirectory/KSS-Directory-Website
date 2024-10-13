@@ -2,9 +2,10 @@ import main from '../styles/about-page/main.module.css'
 import TITLE from '@/components/Titlecard'
 import TextBox from '@/components/InfoBox'
 
-function verticalOutlines(heightList, vertOffset) {
+function verticalOutlines(props) {
     var boxes = [];
-    heightList = [20, 10, 50, 40, 30];
+    var heightList = props.heightList;
+    var vertOffset = props.vertOffset;
 
     for (const height of heightList) {
         boxes.push(
@@ -13,7 +14,7 @@ function verticalOutlines(heightList, vertOffset) {
     };
 
     return (
-        <div className = {main.verticalDiv}>
+        <div className = {main.verticalDiv} style = {{marginTop: vertOffset.toString() + "px"}}>
             <TITLE/>
             <TextBox/>
             {boxes}
