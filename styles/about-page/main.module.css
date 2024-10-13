@@ -306,8 +306,8 @@
 }
 
 .outlinedBox {
-    width: 15.5vw;
-    border: 3px solid var(--light-gray);
+    width: 100%;
+    border: 1px solid var(--light-gray);
     border-radius: 16px;
     margin-bottom: 10px;
 
@@ -316,13 +316,28 @@
 /* ------- Info Boxes ------- */
 
 .titleHeader {
-    width: 16%;
-    height: 10vh;
+    width: 100%;
+    height: 140px;
+    border-radius: 16px;
+    position: relative;
     overflow: hidden;
+    margin-bottom: 10px;
 }
+
 
 .infoContainer {
 
+}
+
+.titleImage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top:0;
+    object-fit: cover;
+    box-sizing: border-box;
+    border-radius: 20px;
 }
 
 .imageGradient {
@@ -334,7 +349,6 @@
 
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) var(--gradientPercentage), var(--gradientColor) 95.17%);
 
-    
     transition: --gradientColor 0.25s, --gradientPercentage 0.25s;
     transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
 }

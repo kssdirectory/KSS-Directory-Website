@@ -2,7 +2,7 @@ import main from '../styles/about-page/main.module.css'
 import TITLE from '@/components/Titlecard'
 
 
-function verticalOutlines(heightList) {
+function verticalOutlines(heightList, vertOffset) {
     var boxes = [];
     heightList = [20, 10, 50, 40, 30];
 
@@ -14,6 +14,7 @@ function verticalOutlines(heightList) {
 
     return (
         <div className = {main.verticalDiv}>
+            <TITLE/>
             {boxes}
         </div>
     )
