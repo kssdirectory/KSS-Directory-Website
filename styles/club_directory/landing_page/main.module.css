@@ -38,7 +38,7 @@
 
 #bg_mainpage {
     background-color: #D9D9D9;
-    height: 100svh;
+    height: 100lvh;
     width: 100svw;
 /* 
     animation: 0.5s ease-in-out 0s 1 bgFadeIn forwards; */
@@ -46,12 +46,12 @@
 
 #bg {
     background-color: #D9D9D9;
-    height: 100svh;
+    height: 100lvh;
     width: 100svw;
 }
 
 #pageContent {
-    height: calc(100svh - 64px);
+    height: calc(100lvh - 64px);
     position:relative;
     overflow-y: scroll;
     overflow-x: hidden;
