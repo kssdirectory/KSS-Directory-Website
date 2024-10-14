@@ -51,7 +51,6 @@
     width: 100%;
     background: #072136;
     overflow: hidden;
-    padding-bottom: 40px;
     position: relative;
 }
 
@@ -294,8 +293,11 @@
 .columnsDiv {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    height: 110%;
+    width: 140%;
+    height: 120%;
+    position: absolute;
+    overflow-x: hidden;
+    left: -20%;
 }
 
 .verticalDiv {
@@ -306,10 +308,91 @@
 }
 
 .outlinedBox {
-    background: #2878BE; 
-    width: 15.5vw;
-    border: 5px solid var(--light-gray);
+    width: 100%;
+    border: 1px solid var(--light-gray);
     border-radius: 16px;
     margin-bottom: 10px;
 
+}
+
+/* ------- Info Boxes ------- */
+
+.titleHeader {
+    width: 100%;
+    height: 50vh;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.infoContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: center;
+    border-radius: 16px;
+    margin-bottom: 10px;
+}
+
+.textDiv {
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+.textDiv h2 {
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.textDiv p {
+    margin-top: 5px;
+}
+
+.titleImage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top:0;
+    object-fit: cover;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.imageGradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) var(--gradientPercentage), var(--gradientColor) 95.17%);
+
+    transition: --gradientColor 0.25s, --gradientPercentage 0.25s;
+    transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
+}
+
+.maskGradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+
+    mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, black 100%);
+}
+
+.titleText {
+    color: #ffffff;
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0px;
+
+    transition: bottom 0.25s;
+    transition-timing-function: cubic-bezier(0.34, -0.01, 0, 0.99);
 }

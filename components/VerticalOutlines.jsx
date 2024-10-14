@@ -1,17 +1,22 @@
 import main from '../styles/about-page/main.module.css'
+import TITLE from '@/components/Titlecard'
+import TextBox from '@/components/InfoBox'
 
-function verticalOutlines(heightList) {
+function verticalOutlines(props) {
     var boxes = [];
-    heightList = [200, 100, 900, 400, 300];
+    var heightList = props.heightList;
+    var vertOffset = props.vertOffset;
 
-    for (const height in heightList) {
+    for (const height of heightList) {
         boxes.push(
-            <rect className = {main.outlinedBox} style = {{height: height.toString() + "px"}}/>
+            <rect className = {main.outlinedBox} style = {{height: height.toString() + "vh"}}/>
         )
     };
 
     return (
-        <div className = {main.verticalDiv}>
+        <div className = {main.verticalDiv} style = {{marginTop: vertOffset.toString() + "vh"}}>
+            <TITLE/>
+            <TextBox/>
             {boxes}
         </div>
     )
