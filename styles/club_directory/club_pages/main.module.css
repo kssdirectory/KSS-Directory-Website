@@ -1,6 +1,6 @@
 #bg {
     background-color: #D9D9D9;
-    height: 100svh;
+    height: 100lvh;
 }
 
 
@@ -8,7 +8,7 @@
 /* Header stuff */
 
 #pageContent{
-    height: calc(100svh - 64px);
+    height: calc(100lvh - 64px);
     position:relative;
     overflow: hidden;
 }
@@ -281,6 +281,7 @@
     margin: 0;
     padding-top: 8px;
     padding-bottom: 8px;
+    color: var(--light-gray);
 }
 
 #activity_div {
@@ -535,6 +536,7 @@
         font-size: 14px;
         padding-top: 4px;
         padding-bottom: 4px;
+        color: var(--lighter-gray);
     }
 
     #activity_div p {
@@ -588,7 +590,7 @@
     }
     .banner_gradient {
         position: absolute;
-        background: linear-gradient(180deg, rgba(7, 33, 54, 0.48) 20%, var(--b0BG));
+        background: linear-gradient(180deg, rgba(7, 33, 54, 0.20) 40%, var(--b0BG));
         top:0;
         bottom: 0;
         left: 0;

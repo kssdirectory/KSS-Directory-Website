@@ -1,6 +1,6 @@
 .page {
     background: #072136;
-    height: calc(100svh - 64px);
+    height: calc(100lvh - 64px);
     position:relative;
     overflow-y: scroll;
     overflow-x: hidden;
