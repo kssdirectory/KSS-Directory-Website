@@ -281,7 +281,7 @@
     margin: 0;
     padding-top: 8px;
     padding-bottom: 8px;
-    color: var(--lighter-gray);
+    color: var(--light-gray);
 }
 
 #activity_div {
@@ -536,6 +536,7 @@
         font-size: 14px;
         padding-top: 4px;
         padding-bottom: 4px;
+        color: var(--lighter-gray);
     }
 
     #activity_div p {
