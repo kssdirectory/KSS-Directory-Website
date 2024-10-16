@@ -1,12 +1,26 @@
-export function hslToHex(h, s, l) {
-    l /= 100;
-    const a = s * Math.min(l, 1 - l) / 100;
-    const f = n => {
-      const k = (n + h / 30) % 12;
-      const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-      return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
-    };
-    return `#${f(0)}${f(8)}${f(4)}`;
+// export function hslToHex(h, s, l) {
+//     l /= 100;
+//     const a = s * Math.min(l, 1 - l) / 100;
+//     const f = n => {
+//       const k = (n + h / 30) % 12;
+//       const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+//       return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+//     };
+//     return `#${f(0)}${f(8)}${f(4)}`;
+// }
+
+export function hslToHex(hue, sat, light) {
+  // Function to turn HSL values into hex, which is needed becuase the web server provides the 
+  // colour for the banner of each club as a hue value. The JSX(?) here doesn't recognize HSL
+  // for some reason....
+  light /= 100;
+  const a = sat * Math.min(light, 1 - light) / 100;
+  const f = n => {
+    const k = (n + hue / 30) % 12;
+    const color = light - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
 }
 
 export function hexToHSL(H) {

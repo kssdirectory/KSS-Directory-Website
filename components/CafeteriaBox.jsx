@@ -9,7 +9,7 @@ function CafeteriaMenu() {
         <>
         </>
     )
-
+    // idk how the backend is gonna link so have fun putting this into an if statement later
     const { isPending, isError, data } = useQuery({
         queryKey: ['cafMenu'],
         queryFn: async () => {
