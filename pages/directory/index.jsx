@@ -12,7 +12,7 @@ function homepage() {
     return (
         <>
             <Head>
-                <title>Directory</title>
+                <title>myDirectory</title>
                 <meta name="description" content="Directory is a student-run non-profit that aims to help students personally create resources for their school environments." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" sizes="76x76" href="static/compassLogo.ico" />
