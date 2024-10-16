@@ -225,13 +225,13 @@
         max-height: 0%;
     }
     100% {
-        max-height: 100%;
+        max-height: 400%;
     }
 }
 
 /* The actual jankiest thing ever, kind of */
 .tile_expand {
-    animation: 0.6s cubic-bezier(0.23, 0.55, 0.61, 0.77) 0s 1 growTile forwards;
+    animation: 1s cubic-bezier(0.23, 0.55, 0.61, 0.77) 0s 1 growTile forwards;
 }
 
 .tile_div :global {
