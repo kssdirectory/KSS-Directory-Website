@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
-import caf from "../styles/cafeteria-box.module.css"
+import caf from "@/styles/cafeteria-box.module.css"
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 

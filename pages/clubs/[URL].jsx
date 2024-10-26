@@ -6,7 +6,7 @@ import Head from 'next/head';
 import main from '../../styles/club_directory/landing_page/main.module.css';
 import NavBar from '@/components/NavBar';
 import BackArrowButton from '@/components/BackArrowButton';
-import ClubRepoButtonList from '@/components/ClubRepoButtonList';
+import ClubRepoButtonList from '@/components/club-repo/ClubRepoButtonList';
 import { useRouter } from 'next/router';
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;

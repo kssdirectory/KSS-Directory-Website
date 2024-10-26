@@ -1,4 +1,4 @@
-import main from '../styles/about-page/main.module.css'
+import main from '@/styles/about-page/main.module.css'
 import Image from "next/image";
 
 function titlecard() {

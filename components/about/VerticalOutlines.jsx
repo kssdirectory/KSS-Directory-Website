@@ -1,6 +1,6 @@
-import main from '../styles/about-page/main.module.css'
-import TITLE from '@/components/Titlecard'
-import TextBox from '@/components/InfoBox'
+import main from '@/styles/about-page/main.module.css'
+import TITLE from '@/components/about/Titlecard'
+import TextBox from '@/components/about/InfoBox'
 
 function verticalOutlines(props) {
     var boxes = [];

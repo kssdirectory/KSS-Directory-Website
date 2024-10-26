@@ -1,5 +1,6 @@
-import styles from "../styles/club_directory/landing_page/club-repo-button-list.module.css"
+import styles from "@/styles/club_directory/landing_page/club-repo-button-list.module.css"
 import ClubRepoButton from "./ClubRepoButton";
+
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 

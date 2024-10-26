@@ -3,13 +3,12 @@ import Head from 'next/head';
 import styles from '../../styles/club_directory/landing_page/main.module.css';
 import NavBar from "../../components/NavBar";
 import BackArrowButton from '@/components/BackArrowButton';
-import ClubRepoButton from '@/components/ClubRepoButton';
-import ClubRepoButtonList from '@/components/ClubRepoButtonList';
-import ClubRepoCategoryButton from '@/components/ClubRepoCategoryButton';
+import ClubRepoCategoryButton from '@/components/club-repo/ClubRepoCategoryButton';
 import HorizontalScrollElement from '@/components/HorizontalScrollElement';
 import SlideCarousel from '@/components/SlideCarousel';
 import Image from 'next/image';
 import SlideCarouselPage from '@/components/SlideCarouselPage';
+import ClubRepoButtonList from '@/components/club-repo/ClubRepoButtonList';
 
 const webServerURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 

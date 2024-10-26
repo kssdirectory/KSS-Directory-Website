@@ -1,5 +1,5 @@
 import main from '../styles/about-page/main.module.css'
-import Column from '@/components/VerticalOutlines';
+import Column from '@/components/about/VerticalOutlines';
 import Head from 'next/head';
 import Link from "next/link";
 import React from 'react';
