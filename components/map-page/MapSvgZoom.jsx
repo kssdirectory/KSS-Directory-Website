@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import QuickPinchZoom, { make3dTransformValue, make2dTransformValue, hasTranslate3DSupport } from "react-quick-pinch-zoom";
 import { ReactSVG } from "react-svg";
 import styles from "@/styles/map-page/map-page.module.css"
@@ -52,6 +52,49 @@ const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor
       });
     }
   };
+
+  let [isTouch, setIsTouch] = useState(!matchMedia('(pointer:fine)').matches);
+  let [keyValue, setKeyValue] = useState(0);
+
+  function handleClick({pointerType}) {
+      if (pointerType === "mouse") {
+        if(isTouch) {
+          setIsTouch(false);
+
+          // Reason for this atrocity is because this poorly written library only checks the isTouch prop in it's constructor
+          // which react helpfully only runs once at the beginning when the page loads
+          // lovely
+          // here's why I'm changing the key
+          // https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key
+          setKeyValue(keyValue + 1);
+        }
+      }
+      
+      if (pointerType === "touch") {
+        if(!isTouch) {
+          setIsTouch(true);
+          setKeyValue(keyValue + 1);
+        }
+      }
+  }
+
+ 
+
+  useEffect( () => {
+    document.addEventListener("pointerup", handleClick);
+
+    return () => {
+      document.removeEventListener("pointerup", handleClick);
+    }
+  }, []);
+
+  function getTouch() {
+    // console.log(!matchMedia('(pointer:fine)').matches);
+    // return !matchMedia('(pointer:fine)').matches;
+    //console.log("Rerunning constructor. I hate this library. Touch value is now " + isTouch);
+    return isTouch;
+  }
+
   
   return (
     <div style={{height:"100%", width:"100%", position:"relative"}}>
@@ -74,6 +117,9 @@ const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor
       //onZoomEnd={toggleWillChange}
       onZoomUpdate={toggleWillChange}
       shouldInterceptWheel={shouldInterceptWheel}
+      isTouch={getTouch}
+
+      key={keyValue}
 
       style={{height:"100%"}}
     >
