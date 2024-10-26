@@ -58,6 +58,13 @@
     padding-top: 260px;
 }
 
+#starLogoDiv {
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    margin: auto;
+}
+
 #starLogo {
     position: absolute;
 
@@ -99,9 +106,6 @@
 #outerStarSVGBox1 {
     transform: rotate(180deg);
 }
-
-
-
 
 #ring2 {
     transform: rotate(90deg);
@@ -219,12 +223,21 @@
     animation: 1s linear
 }
 
-#whatsUpButton:hover, #discordButton:hover {
+#myDirectoryButton {
+    display: block;
+    background: #2878BE;
+    height: 44px;
+    border-radius: 16px;
+    margin: 0px;
+    animation: 1s linear
+}
+
+#whatsUpButton:hover, #discordButton:hover, #myDirectoryButton:hover {
     text-decoration: none;
     background: #626262;
 }
 
-#whatsUpButtonText {
+#whatsUpButton p, #myDirectoryButton p {
     padding-left: 20px;
     padding-right: 20px;
     color: white;
