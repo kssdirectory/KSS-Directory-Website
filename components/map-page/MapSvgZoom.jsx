@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import QuickPinchZoom, { make3dTransformValue, make2dTransformValue, hasTranslate3DSupport } from "react-quick-pinch-zoom";
 import { ReactSVG } from "react-svg";
 import styles from "@/styles/map-page/map-page.module.css"
+import { useIsomorphicLayoutEffect } from "@react-spring/web";
 
 const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor2_roof, floor3, floorState}) => {
   const isSafari = typeof window !== 'undefined' ? /^((?!chrome|android).)*safari/i.test(navigator.userAgent) : false;
@@ -53,11 +54,12 @@ const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor
     }
   };
 
-  let [isTouch, setIsTouch] = useState(!matchMedia('(pointer:fine)').matches);
+  const [isTouch, setIsTouch] = useState(!matchMedia('(pointer:fine)').matches);
   let [keyValue, setKeyValue] = useState(0);
 
   function handleClick({pointerType}) {
       if (pointerType === "mouse") {
+        //console.log("mouse clicked, touch state: " + isTouch);
         if(isTouch) {
           setIsTouch(false);
 
@@ -67,26 +69,30 @@ const MapSvgZoom = ({windowSize, setZoomFunc, floor1, floor1_roof, floor2, floor
           // here's why I'm changing the key
           // https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key
           setKeyValue(keyValue + 1);
+
+          //console.log("mouse");
         }
       }
       
-      if (pointerType === "touch") {
+      else if (pointerType === "touch") {
+        //console.log("touched, touch state " + isTouch);
         if(!isTouch) {
           setIsTouch(true);
           setKeyValue(keyValue + 1);
+          //console.log("touch");
         }
       }
   }
 
  
 
-  useEffect( () => {
+  useIsomorphicLayoutEffect( () => {
     document.addEventListener("pointerup", handleClick);
 
     return () => {
       document.removeEventListener("pointerup", handleClick);
     }
-  }, []);
+  }, [keyValue, isTouch]);
 
   function getTouch() {
     // console.log(!matchMedia('(pointer:fine)').matches);
