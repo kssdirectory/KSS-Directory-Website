@@ -1,7 +1,7 @@
 # KSS Directory Frontend
 This is the repo for KSS Directory's frontend.
 
-Note that this is only the frontend of KSS Directory; the frontend repository can be found [here](https://github.com/HynixCJR/KSS-Directory-Backend).
+Note that this is only the frontend of KSS Directory; the backend repository can be found [here](https://github.com/HynixCJR/KSS-Directory-Backend).
 This README.md file serves as documentation for the KSS Directory Frontend.
 
 ## Table of Contents
