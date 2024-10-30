@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../styles/club_directory/club_pages/main.module.css';
+import main from '@/styles/club_directory/landing_page/main.module.css'
 import NavBar from "@/components/NavBar";
 import { useRouter } from 'next/router'
 import { hexToHSL, hslToHex } from '@/util/util';
@@ -458,7 +459,7 @@ function createClubPageContent(listed_page, announcement_data) {
             );
         }
     }
-    info_tiles.push(<div className={styles.tile_list_spacer} key={"Spacer"}/>);
+    info_tiles.push(<div className={styles.tile_list_spacer} key={"Spacer2"}/>);
 
     if ("Images" in listed_page && "banner" in listed_page.Images ) {
         // if there is a logo available, use it as favicon for this webpage.
@@ -486,6 +487,7 @@ function createClubPageContent(listed_page, announcement_data) {
                     </div>
                 </div>
                 <div className={styles.info_tiles_div}>
+                    <div className={styles.tile_list_spacer} key={"Spacer"}/>
                     <div className={styles.tile_div}>
                         {title_tile_data}
                     </div>
@@ -594,12 +596,14 @@ const individualClubPage = ( {listed_page} ) => {
                     )}
                     center_on_mobile={true}
                 />
-                    
-                <div id={styles.pageContent}>
-                    {/* <h1>{listed_page.Metadata.Club_Name}</h1>
-                    <p>{listed_page.Basic_Info.Description}</p> */}
-                    <div>
-                        {tiles}
+                
+                <div id={main.page_content_background}>
+                    <div id={styles.pageContent}>
+                        {/* <h1>{listed_page.Metadata.Club_Name}</h1>
+                        <p>{listed_page.Basic_Info.Description}</p> */}
+                        <div>
+                            {tiles}
+                        </div>
                     </div>
                 </div>
             </main>

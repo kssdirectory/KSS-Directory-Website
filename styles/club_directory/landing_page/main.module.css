@@ -37,7 +37,7 @@
 }
 
 #bg_mainpage {
-    background-color: #D9D9D9;
+    background-color: var(--page-background-color-darker);
     height: 100lvh;
     width: 100svw;
 /* 
@@ -45,7 +45,7 @@
 }
 
 #bg {
-    background-color: #D9D9D9;
+    background-color: var(--page-background-color-darker);
     height: 100lvh;
     width: 100svw;
 }
@@ -55,6 +55,12 @@
     position:relative;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+#page_content_background {
+    background-color: var(--page-background-color);
+    border-radius: 32px 32px 0px 0px;
+    overflow: hidden;
 }
 
 #header_path_div {
@@ -115,6 +121,7 @@
     gap: 12px;
     height: calc((100dvh - 64px) * 2 / 3);
     margin-inline: 25px;
+    margin-top: 25px;
 }
 
 #club_repo_title_section :global{
@@ -288,6 +295,7 @@
 @media (max-width: 1000px) {
     #top_section {
         margin-inline: 15px;
+        margin-top: 15px;
     }
 
     #club_repo_title_section {
@@ -296,6 +304,10 @@
     }
     
     #club_repo_carousel {
+        border-radius: 20px;
+    }
+
+    #page_content_background {
         border-radius: 20px;
     }
 

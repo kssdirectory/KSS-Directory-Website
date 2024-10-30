@@ -11,6 +11,9 @@ body, html, #__next {
   --light-gray: #A1A1A1;
   --lighter-gray: #f0f0f0;
   --blue-link: #2878BE;
+  --page-background-color: #ffffff;
+  --page-background-color-darker: #f0f0f0;
+  /* --page-background-color: #D9D9D9; */
 
   --b0BG: #072136;
   --b1BG: #113451;
@@ -23,6 +26,7 @@ body, html, #__next {
   /* just adding padding to the whole body */
   padding: 10px;
   padding-bottom: 0;
+  background-color: var(--page-background-color);
 }
 
 .disabled {
@@ -41,7 +45,8 @@ body, html, #__next {
   @font-face {
     font-family: Outfit;
     src: url("Outfit-Bold.ttf");
-    font-weight: bold
+    font-weight: bold;
+    font-display: block;
   }
 
   @font-face {
@@ -283,6 +288,7 @@ body, html, #__next {
 .discordPromptBox {
   border: 1px solid var(--dark-gray);
   border-radius: 16px;
+  background-color: #FFFFFF;
 }
 
 .discordPromptContainer{
@@ -458,6 +464,7 @@ body, html, #__next {
   padding:30px;
   margin-bottom: 32px;
   margin-top: 32px;
+  background-color: #FFFFFF;
 }
 
 .container {

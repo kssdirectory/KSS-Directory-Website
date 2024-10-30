@@ -2,6 +2,7 @@
     border: 1px solid var(--dark-gray);
     border-radius: 16px;
     top: 16px;
+    background-color: #FFFFFF;
   }
   
   .cafMenuContainer {

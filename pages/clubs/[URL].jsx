@@ -83,22 +83,23 @@ export default function MobileClubCategoryPage({ category_name, category_metadat
                     center_on_mobile={true}
                 />
 
-
-                <div id={main.pageContent}>
-                    <div id={main.top_section}>
-                        <div id={main.club_repo_title_section}>
-                            <div id={main.title_section_kss_dir_logo_mask}>
-                                <img src="/svg_assets/compass_logo_vector.svg" id={main.title_section_kss_dir_logo}></img>
-                            </div>
-                            <div id={main.title_section_text}>
-                                <h1>{category_name}</h1>
-                                <p>{categoryDescription}</p>
+                <div id={main.page_content_background}>
+                    <div id={main.pageContent}>
+                        <div id={main.top_section}>
+                            <div id={main.club_repo_title_section}>
+                                <div id={main.title_section_kss_dir_logo_mask}>
+                                    <img src="/svg_assets/compass_logo_vector.svg" id={main.title_section_kss_dir_logo}></img>
+                                </div>
+                                <div id={main.title_section_text}>
+                                    <h1>{category_name}</h1>
+                                    <p>{categoryDescription}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div id={main.content_section_div}>
-                        {categoryList}
-                        <div className={main.spacer_div}/>
+                        <div id={main.content_section_div}>
+                            {categoryList}
+                            <div className={main.spacer_div}/>
+                        </div>
                     </div>
                 </div>
             </main>

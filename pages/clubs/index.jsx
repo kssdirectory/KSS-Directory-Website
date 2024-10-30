@@ -89,76 +89,79 @@ export default function clubsPage({ all_club_pages }) {
                         </>
                     )}
                     center_on_mobile={true}
+                    navbar_color={"var(--page-background-color-darker)"}
                 />
 
-
-                <div id={styles.pageContent}>
-                    <div id={styles.top_section}>
-                        <div id={styles.club_repo_title_section}>
-                            <div id={styles.title_section_kss_dir_logo_mask}>
-                                <img src="/svg_assets/compass_logo_vector.svg" id={styles.title_section_kss_dir_logo}></img>
-                            </div>
-                            <div id={styles.title_section_text}>
-                                <h1>Club<br/>Repository <sup>Beta</sup></h1>
-                                <p>A treasure trove of up-to-date information on KSS clubs & teams, compiled by their respective executives. </p>
-                            </div>
-                        </div>
-                        <div id={styles.club_repo_carousel}>
-                            <SlideCarousel autoScroll = {true} autoscrollTimeSeconds={5}> 
-                                <SlideCarouselPage name="ClubExecPromptPage" >
-                                    {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
-                                    <div className={styles.carousel_gradient}/>
-                                    <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
-                                        <h2>Attention Club Executives!</h2>
-                                        <p>Host all your club information and links in one convenient place! Contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page.</p>
-                                    </div>
-                                </SlideCarouselPage>
-                                <SlideCarouselPage name="TestPage1" >
-                                    <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
-                                    <div className={styles.carousel_gradient}/>
-                                    <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
-                                        <h2>I'm a slideshow!</h2>
-                                        <p>Check back soon for upcoming club events!</p>
-                                    </div>
-                                </SlideCarouselPage>
-                                <SlideCarouselPage name="TestPage2" >
-                                    {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
-                                    <div className={styles.carousel_gradient}/>
-                                    <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
-                                        <h2>Spread the word!</h2>
-                                        <p>KSS Directory's Club Repository is open for business!</p>
-                                    </div>
-                                </SlideCarouselPage>
-                            </SlideCarousel>
-                        </div>
-                    </div>
-                    <div id={styles.content_section_div}>
-                        <div className={styles.mobileDisabled}>
-                            {clubCategories}
-                            <div className={styles.spacer_div}/>
-                        </div>
-                        <div className={styles.mobileEnabled}>
-                            <div id = {styles.mobile_button_container}>
-                                <div className = {styles.mobile_button_container_horizontal}>
-                                    {mobileCategoryButtons[0]}
-                                    {mobileCategoryButtons[1]}
+                <div id={styles.page_content_background}>
+                    <div id={styles.pageContent}>
+                        <div id={styles.top_section}>
+                            <div id={styles.club_repo_title_section}>
+                                <div id={styles.title_section_kss_dir_logo_mask}>
+                                    <img src="/svg_assets/compass_logo_vector.svg" id={styles.title_section_kss_dir_logo}></img>
                                 </div>
-                                {mobileCategoryButtons[2]}
-                                <div className = {styles.mobile_button_container_horizontal}>
-                                    {mobileCategoryButtons[3]}
-                                    {mobileCategoryButtons[4]}
+                                <div id={styles.title_section_text}>
+                                    <h1>Club<br/>Repository <sup>Beta</sup></h1>
+                                    <p>A treasure trove of up-to-date information on KSS clubs & teams, compiled by their respective executives. </p>
                                 </div>
                             </div>
-                            <div className={styles.spacer_div}/>
-                        </div>
-                    </div>
-                    {/* {listed_pages.map(listed_page => (
-                        <Link href={'/clubs/' + listed_page.Content.Metadata.URL} key={listed_page.Content.Metadata.URL}>
-                            <div>
-                                <h3 style={{color:"gray"}}>{listed_page.Content.Metadata.Club_Name}</h3>
+                            <div id={styles.club_repo_carousel}>
+                                <SlideCarousel autoScroll = {true} autoscrollTimeSeconds={5}> 
+                                    <SlideCarouselPage name="ClubExecPromptPage" >
+                                        {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
+                                        <Image src="/static/Sample Image 6.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
+                                        <div className={styles.carousel_gradient}/>
+                                        <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
+                                            <h2>Attention Club Executives!</h2>
+                                            <p>Host all your club information and links in one convenient place! Contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page.</p>
+                                        </div>
+                                    </SlideCarouselPage>
+                                    <SlideCarouselPage name="TestPage1" >
+                                        <div className={styles.carousel_gradient}/>  
+                                        <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
+                                            <h2>I'm a slideshow!</h2>
+                                            <p>Check back here later for upcoming club events!</p>
+                                        </div>
+                                    </SlideCarouselPage>
+                                    <SlideCarouselPage name="TestPage2" >
+                                        {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
+                                        <Image src="/static/Sample Image 7.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} objectFit={""} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
+                                        <div className={styles.carousel_gradient}/>
+                                        <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
+                                            <h2>Spread the word!</h2>
+                                            <p>KSS Directory's Club Repository is open for business!</p>
+                                        </div>
+                                    </SlideCarouselPage>
+                                </SlideCarousel>
                             </div>
-                        </Link>
-                    ))} */}
+                        </div>
+                        <div id={styles.content_section_div}>
+                            <div className={styles.mobileDisabled}>
+                                {clubCategories}
+                                <div className={styles.spacer_div}/>
+                            </div>
+                            <div className={styles.mobileEnabled}>
+                                <div id = {styles.mobile_button_container}>
+                                    <div className = {styles.mobile_button_container_horizontal}>
+                                        {mobileCategoryButtons[0]}
+                                        {mobileCategoryButtons[1]}
+                                    </div>
+                                    {mobileCategoryButtons[2]}
+                                    <div className = {styles.mobile_button_container_horizontal}>
+                                        {mobileCategoryButtons[3]}
+                                        {mobileCategoryButtons[4]}
+                                    </div>
+                                </div>
+                                <div className={styles.spacer_div}/>
+                            </div>
+                        </div>
+                        {/* {listed_pages.map(listed_page => (
+                            <Link href={'/clubs/' + listed_page.Content.Metadata.URL} key={listed_page.Content.Metadata.URL}>
+                                <div>
+                                    <h3 style={{color:"gray"}}>{listed_page.Content.Metadata.Club_Name}</h3>
+                                </div>
+                            </Link>
+                        ))} */}
+                    </div>
                 </div>
             </main>
             

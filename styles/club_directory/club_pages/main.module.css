@@ -1,5 +1,5 @@
 #bg {
-    background-color: #D9D9D9;
+    background-color: var(--page-background-color-darker);
     height: 100lvh;
 }
 
@@ -68,6 +68,7 @@
 .banner_div {
     position: relative;
     margin-bottom: 25px;
+    margin-top: 25px;
     flex: 2;
     position: relative;
 }
@@ -88,7 +89,7 @@
 }
 
 #logo_cutout_main {
-    background-color: #D9D9D9;
+    background-color: var(--page-background-color);
     width: calc(128px + 12px);
     height: calc(128px + 12px);
     border-top-right-radius: 32px;
@@ -150,7 +151,7 @@
     }
 
     #logo_cutout_rounded_1, #logo_cutout_rounded_2 {
-        transform: rotate(180deg) translateX(-1px);
+        transform: rotate(180deg) translateX(-1px) translateY(1px);
         /* filter: drop-shadow(-1px 1px 0 #D9D9D9); used to hide seams */
     }
 
@@ -231,7 +232,7 @@
 
 /* The actual jankiest thing ever, kind of */
 .tile_expand {
-    animation: 1s cubic-bezier(0.23, 0.55, 0.61, 0.77) 0s 1 growTile forwards;
+    animation: 4s cubic-bezier(0.23, 0.55, 0.61, 0.77) 0s 1 growTile forwards;
 }
 
 .tile_div :global {
@@ -570,6 +571,7 @@
         flex-direction: column;
         padding-left: 15px;
         padding-right: 15px;
+        padding-top: 15px;
         margin:0;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -586,6 +588,7 @@
         flex-shrink: 0;
         height:340px;
         flex-basis: auto;
+        margin-top: 0px;
         animation: 0.5s cubic-bezier(0.02, 0.38, 0.22, 0.98) 0s 1 slideInTop;
     }
     .banner_gradient {
