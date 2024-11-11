@@ -108,10 +108,10 @@ export default function clubsPage({ all_club_pages }) {
                                 <SlideCarousel autoScroll = {true} autoscrollTimeSeconds={5}> 
                                     <SlideCarouselPage name="ClubExecPromptPage" >
                                         {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
-                                        <Image src="/static/Sample Image 6.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
+                                        <Image src="/static/Sample Image 9.webp" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
                                         <div className={styles.carousel_gradient}/>
                                         <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
-                                            <h2>Attention Club Executives!</h2>
+                                            <h2 className={styles.club_exec_slide_span_color} >Attention <span>Club Executives!</span></h2>
                                             <p>Host all your club information and links in one convenient place! Contact a KSS Directory Maintainer at kssdirectory@gmail.com to claim or create your club page.</p>
                                         </div>
                                     </SlideCarouselPage>
@@ -124,7 +124,7 @@ export default function clubsPage({ all_club_pages }) {
                                     </SlideCarouselPage>
                                     <SlideCarouselPage name="TestPage2" >
                                         {/* <Image src="/static/sunset.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} className={[main.beta_slide_image, "easeImageload"].join(" ")} /> */}
-                                        <Image src="/static/Sample Image 7.png" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} objectFit={""} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
+                                        <Image src="/static/Sample Image 7.webp" alt="" fill={true} onLoad={(e) => e.target.style.opacity = "1"} objectFit={""} className={[styles.beta_slide_image, "easeImageload"].join(" ")} />
                                         <div className={styles.carousel_gradient}/>
                                         <div className={[styles.beta_slide_div, styles.generic_slide].join(" ")}>
                                             <h2>Spread the word!</h2>

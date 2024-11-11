@@ -183,6 +183,11 @@
     margin-bottom: 0px;
 }
 
+.club_exec_slide_span_color span {
+    color: var(--b3BG);
+    font-weight: bold;
+}
+
 .beta_slide_image {
     position: absolute;
     width: 100%;
