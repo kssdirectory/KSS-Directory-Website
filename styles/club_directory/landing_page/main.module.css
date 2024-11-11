@@ -95,6 +95,10 @@
     display: initial;
 }
 
+.showArrowAlways {
+    display: initial;
+}
+
 @media (max-width: 850px) {
     /* Utility */
     

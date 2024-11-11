@@ -77,7 +77,7 @@ export default function MobileClubCategoryPage({ category_name, category_metadat
                 <NavBar
                     extra_additions={(
                         <>                        
-                            <BackArrowButton href = "../clubs" className={main.mobileEnabled}/>
+                            <BackArrowButton href = "../clubs" className={main.showArrowAlways}/>
                         </>
                     )}
                     center_on_mobile={true}
