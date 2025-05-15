@@ -38,7 +38,7 @@ function KSSResourcesMobile({openState, afterOpen, closeModal}) {
                         <div className = {styles.mobileResourceLinkContainer}><a className={styles.resourceLink} href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Board/School%20Year%20Calendar/2024-07-02-2024-2025-LDSB%20School%20Year%20Calendar.pdf" target="_blank">School Year Calendar</a></div>
                         <div className = {styles.mobileResourceLinkContainer}><a className={styles.resourceLink} href="https://app.myblueprint.ca/student/dashboard" target="_blank">My Blueprint (Course Selection)</a></div>
                         <div className = {styles.mobileResourceLinkContainer}><a className={styles.resourceLink} href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank">D2L Minds Online</a></div>
-                        <div className = {styles.mobileResourceLinkContainer}><a className={styles.resourceLink} href="https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank">Aspen (Course Schedules)</a></div>
+                        <div className = {styles.mobileResourceLinkContainer}><a className={styles.resourceLink} href="https://ldsb.myontarioedu.ca/aspen-go/student/schedule" target="_blank">Aspen (Course Schedules)</a></div>
                         <div style={{height:"20px"}}/>
                     </div>
                 </div>
