@@ -6,7 +6,7 @@ import React from 'react';
 
 function aboutTest() {
 
-    var vertOffsets = [0, 0, 93, 95, 0, 0];
+    var vertOffsets = [0, 0, 93, 98, 0, 0];
     var heights = [50, 100, 40, 20, 30];
     var vertColumns = [];
 
@@ -15,6 +15,8 @@ function aboutTest() {
             <Column
                 vertOffset = {offset}
                 heightList = {heights}
+                line1 = {"Web & Bot"}
+                line2 = {"Development"}
             />
         )
     };
