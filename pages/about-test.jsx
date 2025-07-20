@@ -9,6 +9,7 @@ function aboutTest() {
     var vertOffsets = [0, 0, 93, 98, 0, 0];
     var heights = [50, 100, 40, 20, 30];
     var vertColumns = [];
+    var contributors = [["Matthew Kong", "2024-2025"], ["Matthew Kabin","2024-2026"], ["Ethan Tian", "2024-2026"]]
 
     for (const offset of vertOffsets) {
         vertColumns.push(
@@ -17,6 +18,7 @@ function aboutTest() {
                 heightList = {heights}
                 line1 = {"Web & Bot"}
                 line2 = {"Development"}
+                nameList = {contributors}
             />
         )
     };
