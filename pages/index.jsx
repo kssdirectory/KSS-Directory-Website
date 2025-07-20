@@ -229,7 +229,7 @@ export default function Home() {
                                           <div className = "b3Links"><a href="https://cdnsm5-ss16.sharpschool.com/UserFiles/Servers/Server_352698/File/Board/School%20Year%20Calendar/2024-07-02-2024-2025-LDSB%20School%20Year%20Calendar.pdf" target="_blank"><h4>School Year Calendar</h4></a></div>
                                           <div className = "b3Links"><a href="https://app.myblueprint.ca/student/dashboard" target="_blank"><h4>My Blueprint (Course Selection)</h4></a></div>
                                           <div className = "b3Links"><a href="https://ldsb.elearningontario.ca/d2l/home/13979494" target="_blank"><h4>D2L Minds Online</h4></a></div>
-                                          <div className = "b3Links"><a href="https://ldsb.myontarioedu.ca/aspen/logonSSO.do?deploymentId=ldsbsis&districtId=*dst" target="_blank"><h4>Aspen (Course Schedules)</h4></a></div>
+                                          <div className = "b3Links"><a href="https://ldsb.myontarioedu.ca/aspen-go/student/schedule" target="_blank"><h4>Aspen (Course Schedules)</h4></a></div>
                                       </div>
                                       <h3>OFFICIAL KSS RESOURCES</h3>
                                   </div>
