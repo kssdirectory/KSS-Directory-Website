@@ -2,6 +2,7 @@ import main from '@/styles/about-page/main.module.css';
 // import TITLE from '@/components/about/Titlecard'
 import TextBox from '@/components/about/InfoBox';
 import Image from "next/image";
+import Header from '@/components/about/BigTextBox';
 
 function verticalOutlines(props) {
     
@@ -40,6 +41,7 @@ function verticalOutlines(props) {
             <TextBox
                 nameList = {names}
             />
+            <Header/>
             {boxes}
         </div>
     )
