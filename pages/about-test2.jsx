@@ -7,21 +7,17 @@ import React from 'react';
 
 function aboutTest() {
 
-    var vertOffsets = [0, 0, 93, 98, 0, 0];
-    var heights = [50, 100, 40, 20, 30];
     var vertColumns = [];
-    var contributors = [["Matthew Kong", "2024-2025"], ["Matthew Kabin","2024-2026"], ["Ethan Tian", "2024-2026"]]
+    var webContributors = [["Matthew Kong", "2024-2025"], ["Matthew Kabin","2024-2026"], ["Ethan Tian", "2024-2026"]];
+    var discordContributors = [["Hilary Sun", "2022-2023"], ["Carrie Zhang", "2023-2024"], ["Ali Elsebaie", "2024-2025"], ["Valerie Sun", "2024-2026"]];
+    var artContributors = [["Arzoi Bajwa", "2024-2025"], ["Matthew Kong", "2023-2024"], ["Ethan Tian", "2024-2026"]];
+    var marketingContributors = [["Carrie Zhang", "2024-2025"], ["Matthew Kong", "2023-2024"], ["Selina Zhou", "2024-2025"]];
+    var contributorList = [webContributors, discordContributors, artContributors, marketingContributors]
 
-    for (const offset of vertOffsets) {
-        vertColumns.push(
-            <Column
-                vertOffset = {offset}
-                heightList = {heights}
-                line1 = {"Web & Bot"}
-                line2 = {"Development"}
-                nameList = {contributors}
-            />
-        )
+
+
+    for (const contributor of contributorList) {
+
     };
 
     return (
@@ -31,7 +27,6 @@ function aboutTest() {
                 <Hero/>
               </div>
             </div>    
-        
     );
 }
 
